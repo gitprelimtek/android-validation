@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:key="eat_preferencescreen">
+
+    <PreferenceCategory
+        android:key="security_category"
+        android:title="Security">
+
+        <ListPreference android:key="authentication_service"
+            android:title="Authentication Service"
+            android:summary="Null"
+            android:entries="@array/auth_service"
+            android:entryValues="@array/auth_service"
+            android:defaultValue="None"
+            />
+
+        <EditTextPreference
+            android:key="serviceEmail"
+            android:summary="Customer service email"
+            android:requiresFadingEdge="horizontal"
+            android:defaultValue="@string/eat_service_email"
+            android:editable="false"
+            android:title="Service Email"/>
+
+        <EditTextPreference
+            android:key="remoteServer"
+            android:summary="Remote server"
+            android:requiresFadingEdge="horizontal"
+            android:title="Remote server"
+            android:editable="true"
+            android:defaultValue="@string/eat_app_server"/>
+
+        <EditTextPreference
+            android:key="remoteServerPort"
+            android:summary="Remote server port"
+            android:requiresFadingEdge="horizontal"
+            android:title="Remote server Port"
+            android:editable="true"
+            android:defaultValue="@string/eat_app_server_port"/>
+
+        <SwitchPreference
+            android:key="remoteServerTLSEnabled"
+            android:defaultValue="false"
+            android:title="TLS Enabled?"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="app_category"
+        android:title="App Settings">
+
+        <ListPreference android:key="base_currency"
+            android:title="Base Currency"
+            android:summary="USD"
+            android:entries="@array/currency_names"
+            android:entryValues="@array/currency_codes"
+            android:defaultValue="USD"
+            />
+
+
+        <ListPreference android:key="date_format"
+            android:title="Date format"
+            android:summary=""
+            android:entries="@array/date_format_example"
+            android:entryValues="@array/date_format"
+            android:defaultValue="@array/date_format"
+            />
+
+        <EditTextPreference android:key="base_amt"
+            android:title="Base Amount"
+            android:summary="0.0"
+            android:dialogTitle="Base Amount"
+            android:inputType="numberDecimal"
+            android:defaultValue="0.0" />
+
+        <SwitchPreference
+            android:key="notifications"
+            android:defaultValue="true"
+            android:title="Enable message notifications"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="help_category"
+        android:title="Help">
+
+
+        <Preference
+            android:key="feedback"
+            android:summary="Report technical issues or suggest new features"
+            android:title="Send feedback"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

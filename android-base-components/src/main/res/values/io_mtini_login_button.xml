@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="io_mtini_login_button_text_color">#fffffe</color>
+    <color name="io_mtini_login_button_background_color">#ff00796b</color>
+    <color name="io_mtini_deactivate_login_button_background_color">#ff77796b</color>
+
+    <string name="io_mtini_login_button_text_log_in">Continue with EAT</string>
+    <string name="io_mtini_login_button_text_logged_in">Logged in</string>
+    <string name="io_mtini_login_button_text_log_out">Log out</string>
+</resources>
