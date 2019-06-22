@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/custom_telephone_countrycode_view"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectedTelephoneTextView"/>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+            <TextView android:text="Country Code"/>
+
+            <TextView android:text="Phone Number"/>
+
+        </TableRow>
+        <TableRow>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/prefix_country_code_spinner"
+                android:entries="@array/PhoneCountryCode"></Spinner>
+
+            <EditText
+                android:id="@+id/suffix_telephone_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:text=""
+                android:inputType="phone"
+                android:layout_margin="2dp"
+                />
+
+        </TableRow>
+    </TableLayout>
+
+
+
+
+
+
+</LinearLayout>

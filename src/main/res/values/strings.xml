@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="eat_service_email">info@mtini.io</string>
+    <string name="eat_app_server">10.69.180.132</string>
+    <string name="eat_app_server_port">8080</string>
+
+</resources>
