@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">EstateTenantManagerAp</string>
+    <string name="action_settings">Settings</string>
+    <string name="user_settings">User Preferences</string>
+    <string name="switch_str">Switch</string>
+    <string name="estate_list">List of Estates</string>
+    <string name="estate_details">Details of Estate</string>
+    <string name="estate_tenant_activity">Estate Tenants Activity</string>
+    <string name="tenant_details">Tenant Details</string>
+    <string name="welcome">Welcome to My Movie DVD Collection List on Sale</string>
+    <string name="discount">Buy All times and get a nice 20% discount!</string>
+    <string name="add_cart">Add to Shopping Cart</string>
+    <string name="checkout">Check Out</string>
+    <string name="details">Movie Description</string>
+    <string name="thanks">Thank You for shopping with us! These are your items</string>
+    <string name="detail_title">Details</string>
+    <string name="add_estate">New Estate</string>
+    <string name="add_tenant">New Tenant</string>
+    <!--tooltips -->
+    <string name="view_estatelist_btn_tooltip">Click to view list of estates.</string>
+    <string name="edit_estate_btn_tooltip">Click to edit estate details.</string>
+    <string name="delete_estat_btn_tooltip">Click to delete current estate images.</string>
+    <string name="edit_tenant_btn_tooltip">Click to edit current tenant details.</string>
+    <string name="add_tenant_btn_tooltip">Click to add a tenant.</string>
+    <string name="add_estate_btn_tooltip">Click to add a new estate.</string>
+    <string name="delete_tenant_btn_tooltip">Click to delete current tenant.</string>
+    <string name="delete_tenant_images_btn_tooltip">Click to delete tenant images.</string>
+    <string name="add_tenant_images_btn_tooltip">Click to add a tenant image.</string>
+    <string name="edit_tenant_images_btn_tooltip">Click to edit tenant images.</string>
+    <string name="view_tenantlist_btn_tooltip">Click to view list of tenants.</string>
+    <string name="edit_estate_images_tooltip">Click to edit Estate images.</string>
+    <string name="photo_images_tooltip">Click to use camera for an image.</string>
+    <string name="gallery_images_tooltip">Click to browse gallery for an image.</string>
+    <string name="external_images_tooltip">Click to browse external drive for an image.</string>
+    <string name="edit_tenant_payments_button_tooltip">Click to update payments information.</string>
+    <string name="save_close_btn_tooltip">Click save your changes and close this dialog.</string>
+    <string name="phone_number_tooltip">Click to enter telephone number with country code (+1 4155551212)</string>
+    <string name="email_tooltip">Email (somebody@somewhere.com)</string>
+    <string name="estate_name_tooltip">Enter the name of building, property or company</string>
+    <string name="tenant_name_tooltip">Enter the name used by person or business as tenant name.</string>
+    <string name="address_tooltip">Enter the property or estate address.</string>
+    <string name="scheduled_rent_tooltip">Enter the rent due per schedule period indicated here.</string>
+    <string name="pay_schedule_tooltip">Select a how often rent payments are expected, i.e. weekly, biweekly, monthly.</string>
+    <!-- Confirmation dialog -->
+    <string name="delete">Delete</string>
+    <string name="close">Close</string>
+    <string name="update">Update</string>
+    <string name="save">Save</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="save_close">Save and Close</string>
+    <string name="edit">Edit</string>
+
+    <string name="edit_estate">Edit Estate</string>
+    <string name="edit_tenant">Edit Tenant</string>
+    <string name="edit_images">Edit Images</string>
+    <string name="verify_token">Verify Token</string>
+    <string name="create_wallet">Create wallet</string>
+    <string name="update_payments">Payments</string>
+    <string name="error_message">Error</string>
+    <string name="error_value_required">Error. Value required.</string>
+    <string name="dialog_changes_message">You are about to commit changes. Continue?</string>
+    <string name="dialog_changes_title">Confirmation.</string>
+    <string name="dialog_delete_image">Delete current image ?</string>
+    <string name="dialog_image_details">Image details.</string>
+    <string name="dialog_loading_message">Loading. Please wait.</string>
+    <string name="dialog_verify_token">Verify security token.</string>
+    <string name="dialog_verify_token_msg">Please enter the security token you received.</string>
+    <string name="dialog_create_wallet">Create a new wallet.</string>
+    <string name="dialog_create_wallet_msg">Use this interface to create a new wallet. \n A passphrase is optional. We recommend that you encrypt your wallet using a
+    passphrase which will ensure maximum security. However, it is important that you save your password in a keystore on your device or write it down
+        somewhere safe. If you loose your passphrase you will not be able to recover your data. </string>
+    <!--image handling UI -->
+    <string name="photo">Photo</string>
+    <string name="gallery">Gallery</string>
+    <string name="external">External</string>
+
+    <string name="facebook_app_id">600318390400582</string>
+    <string name="fb_login_protocol_scheme">fb600318390400582</string>
+
+    <string name="eat_app_server_tls_enabled">false</string>
+    <!--<string name="eat_app_server">10.0.2.2</string>hardware-->
+    <string name="eat_service_phone">+254 3331212</string>
+    <string name="total_estate_balance">Total balance from all tenants in this estate.</string>
+    <string name="decrypt_wallet">Decrypt</string>
+    <string name="dialog_decrypt_wallet">Decrypt Wallet</string>
+    <string name="dialog_decrypt_wallet_msg">Use the wallet password you  set when creating/updating the wallet corresponding to email and or phone number submitted.</string>
+
+    <!-- Pattern validator and error messages -->
+    <string name="phone_match_pattern">^(\\+)[1-9]{1}([0-9][\s]*){9,16}$</string>
+    <string name="phone_with_countrycode_3group_match_pattern">^(\\+[1-9]{1}[0-9]{0,2})(\\ )(([0-9][\s]*){9,16})$</string>
+    <string name="email_match_pattern">^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$</string>
+    <string name="string_gt_3_lt_20">^[A-Z0-9._%+\-+/ /]{3,20}$</string>
+    <string name="currency_digits_ge0_match_pattern">"^[0-9]{1,20}+\\.[0-9]{1,2}$"</string>
+
+    <string name="required_error_message">Error. Value required.</string>
+    <string name="error_phone_match_pattern">Expected a phone number with country code i.e. (+141545551212)</string>
+    <string name="error_email_match_pattern">An email with proper form and without special characters except \'_\' , i.e. (some_body@some.com)</string>
+    <string name="error_string_gt_3_lt_20">Expected at least 3 characters but less than 20 without special characters except
+        \'-\' or \'_\'.</string>
+    <string name="error_currency_ge0">Expected currency value greater or equal to zero.</string>
+    <string name="error_currency_gt0">Expected currency value greater than zero.</string>
+</resources>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <import type="java.lang.String"/>
+        <import type="io.mtini.android.view.TextViewValueConverter"/>
+        <import type="io.mtini.model.TenantModel"/>
+        <import type="com.prelimtek.android.validation.adapter.DatePickerBindingAdapter"/>
+        <variable name="tenant" type="TenantModel" />
+        <variable name="conv" type="TextViewValueConverter" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:scrollbars="vertical"
+        android:scrollIndicators="right"
+        android:id="@+id/rentPaymentLinearLayout"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Process Rent Payment"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textShowTenantDetails"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@android:color/white"
+            android:id="@+id/tenantShowDetailsLinearLayout"
+            android:layout_below="@+id/textShowTenantDetails">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/money"
+                android:layout_margin="@dimen/page_icon_margin"
+                android:id="@+id/tenantImage"
+                />
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="@dimen/table_padding"
+                        android:stretchColumns="1">
+
+
+                        <TableRow android:padding="@dimen/table_row_padding">
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Status:"
+                                android:id="@+id/statusLabel"/>
+
+                            <Spinner
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:entries="@{TenantModel.getStatusItems()}"
+                                app:selectedSpinnerValue="@={TextViewValueConverter.statusToStr(tenant.status)}"
+
+                                android:focusableInTouchMode="true"
+                                android:defaultFocusHighlightEnabled="true"
+                                android:nextFocusDown="@id/estateType"
+
+                                app:onFocusValueRequired="@{tenant.status}"
+                                app:errorLabel="@{statusLabel}"
+                                app:errorMessage="@{@string/error_value_required}"
+                                />
+
+                        </TableRow>
+
+                        <TableRow android:padding="@dimen/table_row_padding">
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/notesLabel"
+                                android:text="Notes:" />
+
+                            <EditText android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@={tenant.notes}"
+
+                                app:validationRule="@{@string/string_gt_3_lt_20}"
+                                app:required="@{false}"
+                                app:errorMessage="@{@string/error_string_gt_3_lt_20}"
+                                app:errorLabel="@{notesLabel}"
+                                />
+
+                        </TableRow>
+
+
+
+                        <TableRow android:padding="@dimen/table_row_padding">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/rentPaidLabel"
+                                    android:text="Rent Paid:"
+                                    />
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@={tenant.currency}"
+                                    android:id="@+id/currencyTextView"/>
+                            </LinearLayout>
+
+                            <!--
+                            Note!
+                            Unlike other values this is NOT two way binding.
+                            It assumes a value of 0.
+                            -->
+
+                            <EditText android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:bindFinancial="@={tenant.rent}"
+                                android:inputType="numberDecimal"
+                                android:text="0.00"
+                                android:id="@+id/rentEditTxt"
+                                app:validationRule="@{@string/currency_digits_ge0_match_pattern}"
+                                app:required="@{true}"
+                                app:errorMessage="@{@string/error_currency_ge0}"
+                                app:errorLabel="@{rentPaidLabel}"
+                                />
+
+                        </TableRow>
+
+                        <TableRow android:padding="@dimen/table_row_padding">
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Paid Date:" />
+
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="@{(v) -> DatePickerBindingAdapter.onClickDate(v,tenant.paidDate)}"
+                                app:bindDate="@={tenant.paidDate}"
+                                android:inputType="date"
+                                android:id="@+id/rentPaidDateEditTxt"/>
+
+                        </TableRow>
+
+                        <TableRow android:padding="@dimen/table_row_padding">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Adjust Balance:"
+                                    android:inputType="numberDecimal"
+                                    />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{tenant.currency}"
+                                    android:id="@+id/currencyBalanceTextView"
+                                    />
+                            </LinearLayout>
+
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:bindFinancial="@={tenant.balance}"
+                                android:inputType="numberDecimal"
+                                android:id="@+id/balanceEditTxt"
+                                />
+
+                        </TableRow>
+
+                        <TableRow android:padding="@dimen/table_row_padding">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Adjust Due Date:" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="@{(v) -> DatePickerBindingAdapter.onClickDate(v,tenant.dueDate)}"
+                                app:bindDate="@={tenant.dueDate}"
+                                android:inputType="date"
+                                android:id="@+id/rentDueDateEditTxt"/>
+
+                        </TableRow>
+
+
+                    </TableLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                >
+
+
+                                <com.prelimtek.android.customcomponents.view.CustomImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_margin="@dimen/btn_layout_margin"
+                                    android:tooltipText="@string/save_close_btn_tooltip"
+                                    app:imageSrc="@drawable/save_close_24"
+                                    app:text="@string/save_close"
+                                    android:id="@+id/updateTenantBtn"
+                                    />
+
+
+
+                                <com.prelimtek.android.customcomponents.view.CustomImageButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_margin="@dimen/btn_layout_margin"
+                                    android:tooltipText="@string/cancel"
+                                    app:imageSrc="@drawable/trash"
+                                    app:text="@string/cancel"
+                                    android:id="@+id/cancelTenantEditBtn"
+                                    />
+
+                            </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</layout>
