@@ -1,0 +1,9 @@
+<resources>
+    <string name="dialog_delete_image">Delete current image ?</string>
+    <string name="dialog_image_details">Image details.</string>
+
+    <string name="photo">Photo</string>
+    <string name="gallery">Gallery</string>
+    <string name="external">External</string>
+
+</resources>
