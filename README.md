@@ -1,1 +1,1 @@
-# android-base-components
+# Estate tenant manager project
