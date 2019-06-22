@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical"
+        android:scrollIndicators="top"
+        android:fadeScrollbars="false"
+        android:focusedByDefault="true">
+
+    <ListView
+        android:orientation="horizontal"
+        android:id="@+id/image_list_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    </ScrollView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/page_icon_margin"
+        android:id="@+id/current_image_view_id"
+        />
+
+</android.support.constraint.ConstraintLayout>
