@@ -34,6 +34,7 @@ public class Wallet <T> implements Serializable {
 	 * */
 	private String id,id2;
 
+	/*
 	private Wallet(){
 		generateKeyPairs(null);
 	}
@@ -46,6 +47,7 @@ public class Wallet <T> implements Serializable {
 		id = hashed_idHex;id2=hashed_id2Hex;
 		generateKeyPairs(null);
 	}
+	*/
 
 	public Wallet(@Nonnull String hashed_idHex, @Nullable String hashed_id2Hex,@Nonnull CharSequence keyphrase){
 		id = hashed_idHex;id2=hashed_id2Hex;
@@ -237,7 +239,12 @@ public class Wallet <T> implements Serializable {
 		return hash;
 	}
 
-	public  static class WalletException extends IOException {
+	public  static class WalletException extends Exception{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -2480207234057205389L;
+
 		public WalletException(String s){super(s);}
 	}
 }
