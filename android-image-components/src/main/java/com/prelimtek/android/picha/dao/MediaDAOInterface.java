@@ -1,8 +1,6 @@
 package com.prelimtek.android.picha.dao;
 
-import com.prelimtek.android.basecomponents.dao.BaseDAOInterface;
-
-public interface MediaDAOInterface  extends BaseDAOInterface {
+public interface MediaDAOInterface  {
 
     public String getImageById(String id);
 

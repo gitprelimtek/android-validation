@@ -1,1 +1,1 @@
-include ':app', ':android-base-components', ':android-validation', ':android-crypto', ':android-image-components'
+include ':app', ':android-base-components', ':android-validation', ':ptek-crypto-utils', ':android-image-components', ':mtini-eat-protos'

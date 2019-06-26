@@ -30,8 +30,7 @@ import io.mtini.android.http.GenericRemoteRESTTask;
 import io.mtini.android.http.RemoteRESTTask;
 
 import com.prelimtek.android.basecomponents.dao.BaseDAOInterface;
-import com.prelimtek.android.crypto.SecurityModel;
-import com.prelimtek.android.crypto.Wallet;
+import com.prelimtek.utils.crypto.Wallet;
 import com.prelimtek.android.picha.dao.MediaDAOInterface;
 
 import io.mtini.proto.EATRequestResponseProtos;
@@ -39,7 +38,7 @@ import io.mtini.proto.EstateAccountProtos;
 import io.mtini.proto.MtiniWalletProtos;
 
 //TODO exception handling for logging and reporting - make it bubble up to UI. Call a service?
-public class RemoteDAO extends AbstractDAO implements MediaDAOInterface {
+public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOInterface {
 
     private static String TAG = Class.class.getSimpleName();
 

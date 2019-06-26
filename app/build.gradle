@@ -93,6 +93,7 @@ dependencies {
     implementation project(':android-validation')
     implementation project(':android-base-components')
     implementation project(':android-image-components')
-    implementation project(':android-crypto')
+    implementation project(':ptek-crypto-utils')
+    implementation project(':mtini-eat-protos')
 
 }

@@ -7,9 +7,9 @@
     <data>
         <import type="com.prelimtek.android.validation.adapter.FormValidationAdapter"/>
         <import type="com.prelimtek.android.validation.adapter.TelephoneBindingAdapter"/>
-        <import type="com.prelimtek.android.crypto.SecurityModel"/>
+        <import type="io.mtini.model.SecurityModel"/>
         <variable name="formValidator" type="FormValidationAdapter" />
-        <variable name="security" type="com.prelimtek.android.crypto.SecurityModel" />
+        <variable name="security" type="io.mtini.model.SecurityModel" />
     </data>
 
 <LinearLayout

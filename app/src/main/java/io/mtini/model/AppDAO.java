@@ -20,8 +20,7 @@ import java.util.UUID;
 
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 
-import com.prelimtek.android.crypto.SecurityModel;
-import com.prelimtek.android.crypto.Wallet;
+import com.prelimtek.utils.crypto.Wallet;
 import io.mtini.proto.EATRequestResponseProtos;
 import io.mtini.proto.EstateAccountProtos;
 

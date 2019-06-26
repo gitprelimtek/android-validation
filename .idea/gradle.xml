@@ -7,9 +7,13 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/.." />
-            <option value="$PROJECT_DIR$/../app" />
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/android-base-components" />
+            <option value="$PROJECT_DIR$/android-image-components" />
+            <option value="$PROJECT_DIR$/android-validation" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/mtini-eat-protos" />
+            <option value="$PROJECT_DIR$/ptek-crypto-utils" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

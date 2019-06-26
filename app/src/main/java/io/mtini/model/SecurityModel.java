@@ -1,16 +1,17 @@
-package com.prelimtek.android.crypto;
+package io.mtini.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-
 import org.bitcoinj.core.Sha256Hash;
-
-import java.io.Serializable;
 
 import com.prelimtek.android.basecomponents.Configuration;
 
-public class SecurityModel extends BaseObservable implements Serializable,Cloneable{
+import com.prelimtek.utils.crypto.UserInterface;
+
+import io.mtini.android.tenantmanager.BR;
+
+public class SecurityModel extends BaseObservable implements UserInterface {
 
     @Bindable
     public String getPhoneNumber() {

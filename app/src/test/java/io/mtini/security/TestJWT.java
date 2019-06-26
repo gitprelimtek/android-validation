@@ -1,6 +1,6 @@
 package io.mtini.security;
 
-import com.prelimtek.android.crypto.JWTManager;
+import com.prelimtek.utils.crypto.JWTManager;
 
 import org.junit.Before;
 import org.junit.Rule;

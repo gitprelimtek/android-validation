@@ -31,11 +31,11 @@ import io.mtini.android.tenantmanager.R;
 import io.mtini.android.tenantmanager.databinding.LoginEatPhoneEmailDialogfragmentLayoutBinding;
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 
-import com.prelimtek.android.crypto.BitcoinCryptoUtils;
-import com.prelimtek.android.crypto.Wallet;
+import com.prelimtek.utils.crypto.BitcoinCryptoUtils;
+import com.prelimtek.utils.crypto.Wallet;
 
-import com.prelimtek.android.crypto.SecurityModel;
-import com.prelimtek.android.crypto.JWTManager;
+import io.mtini.model.SecurityModel;
+import com.prelimtek.utils.crypto.JWTManager;
 
 public class EATLoginFragment extends DialogFragment {
 

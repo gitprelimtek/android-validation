@@ -3,10 +3,11 @@ package io.mtini.model;
 import java.util.List;
 
 import com.prelimtek.android.basecomponents.dao.BaseDAOInterface;
-import com.prelimtek.android.crypto.dao.CryptoDAOInterface;
+import com.prelimtek.utils.crypto.Wallet;
+import com.prelimtek.utils.crypto.dao.CryptoDAOInterface;
 import com.prelimtek.android.picha.dao.MediaDAOInterface;
 
-public interface AppDAOInterface extends CryptoDAOInterface,MediaDAOInterface {
+public interface AppDAOInterface extends CryptoDAOInterface<SecurityModel,Wallet>,MediaDAOInterface,BaseDAOInterface {
 
     enum ImageTblDescription{
 

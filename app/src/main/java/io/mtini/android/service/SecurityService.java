@@ -15,13 +15,13 @@ import java.util.Date;
 
 import com.prelimtek.android.basecomponents.Configuration;
 
-import com.prelimtek.android.crypto.Wallet;
+import com.prelimtek.utils.crypto.Wallet;
 import io.mtini.model.AppDAO;
 import io.mtini.model.RemoteDAO;
 import io.mtini.model.RemoteDAOListener;
-import com.prelimtek.android.crypto.SecurityModel;
+import io.mtini.model.SecurityModel;
 import io.mtini.proto.EATRequestResponseProtos;
-import com.prelimtek.android.crypto.JWTManager;
+import com.prelimtek.utils.crypto.JWTManager;
 import io.mtini.android.view.component.EATLoginFragment;
 
 public class SecurityService  extends IntentService {

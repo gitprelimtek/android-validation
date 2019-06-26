@@ -17,8 +17,7 @@ import java.util.List;
 
 import com.prelimtek.android.basecomponents.Configuration;
 
-import com.prelimtek.android.crypto.SecurityModel;
-import com.prelimtek.android.crypto.Wallet;
+import com.prelimtek.utils.crypto.Wallet;
 
 public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 

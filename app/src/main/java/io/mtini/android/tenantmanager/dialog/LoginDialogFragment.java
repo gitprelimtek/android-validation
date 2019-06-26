@@ -40,13 +40,13 @@ import io.mtini.android.tenantmanager.R;
 import io.mtini.android.tenantmanager.UserSettingsActivity;
 
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
-import com.prelimtek.android.crypto.Wallet;
+import com.prelimtek.utils.crypto.Wallet;
 
 import io.mtini.model.AppDAO;
 import io.mtini.model.RemoteDAO;
-import com.prelimtek.android.crypto.SecurityModel;
+import io.mtini.model.SecurityModel;
 
-import com.prelimtek.android.crypto.JWTManager;
+import com.prelimtek.utils.crypto.JWTManager;
 import io.mtini.android.view.component.EATLoginButton;
 import io.mtini.android.view.component.EATLoginFragment;
 
