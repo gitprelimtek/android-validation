@@ -110,7 +110,7 @@ public class Wallet <T> implements Serializable {
 	 * Rules preHas.length > 20
 	 * */
 	@Deprecated
-	private static String generateWalletAddress(String email, String phoneNumber)throws WalletException{
+	public static String generateWalletAddress(String email, String phoneNumber)throws WalletException{
 
 		String preHash = email+phoneNumber;
 		System.out.println("Prehash -> "+preHash);
