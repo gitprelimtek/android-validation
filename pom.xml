@@ -5,8 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.mtini.eat.protos</groupId>
-	<artifactId>eat_protos</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<artifactId>eat-protos</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
 	
