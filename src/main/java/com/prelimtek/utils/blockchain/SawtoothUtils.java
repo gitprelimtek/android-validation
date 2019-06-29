@@ -20,7 +20,12 @@ import sawtooth.sdk.protobuf.Batch;
 import sawtooth.sdk.protobuf.BatchHeader;
 import sawtooth.sdk.protobuf.Transaction;
 import sawtooth.sdk.protobuf.TransactionHeader;
-import sawtooth.sdk.client.Signing;
+import sawtooth.sdk.signing.Context;
+import sawtooth.sdk.signing.CryptoFactory;
+import sawtooth.sdk.signing.PrivateKey;
+import sawtooth.sdk.signing.Secp256k1PrivateKey;
+import sawtooth.sdk.signing.Signer;
+//import sawtooth.sdk.client.Signing;
 import sawtooth.sdk.processor.Utils;
 
 public class SawtoothUtils {
@@ -82,10 +87,25 @@ public class SawtoothUtils {
 		return builder.build();
 	}
 	
+	/**TODO test! This is the most significant change since switching from sawtooth-SNAPSHOT*/
 	public static String createHeaderSignature(GeneratedMessageV3 header, ECKey privateKey){
 		
-		String signedHeader  = Signing.sign(privateKey,header.toByteArray());
+		//String signedHeader  = Signing.sign(privateKey,header.toByteArray());
+		//ECKey.fromPrivate(privKeyBytes)
+		Context context = CryptoFactory.createContext("secp256k1");
+		PrivateKey spk_privateKey = Secp256k1PrivateKey.fromHex(privateKey.getPrivateKeyAsHex());
+		String signedHeader = new Signer(context,spk_privateKey).sign(header.toByteArray());
+		return signedHeader;
+	}
 	
+	
+	public static String sign(byte[] data , ECKey privateKey){
+		
+		//String signedHeader  = Signing.sign(data);
+		//ECKey.fromPrivate(privKeyBytes)
+		Context context = CryptoFactory.createContext("secp256k1");
+		PrivateKey spk_privateKey = Secp256k1PrivateKey.fromHex(privateKey.getPrivateKeyAsHex());
+		String signedHeader = new Signer(context,spk_privateKey).sign(data);
 		return signedHeader;
 	}
 	
