@@ -1,7 +1,8 @@
-package com.prelimtek.android.crypto;
+package com.prelimtek.utils.crypto;
 
-import android.os.Build;
+//import android.os.Build;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -33,6 +34,7 @@ public class Wallet <T> implements Serializable {
 	 * */
 	private String id,id2;
 
+	/*
 	private Wallet(){
 		generateKeyPairs(null);
 	}
@@ -45,6 +47,7 @@ public class Wallet <T> implements Serializable {
 		id = hashed_idHex;id2=hashed_id2Hex;
 		generateKeyPairs(null);
 	}
+	*/
 
 	public Wallet(@Nonnull String hashed_idHex, @Nullable String hashed_id2Hex,@Nonnull CharSequence keyphrase){
 		id = hashed_idHex;id2=hashed_id2Hex;
@@ -107,7 +110,7 @@ public class Wallet <T> implements Serializable {
 	 * Rules preHas.length > 20
 	 * */
 	@Deprecated
-	private static String generateWalletAddress(String email, String phoneNumber)throws WalletException{
+	public static String generateWalletAddress(String email, String phoneNumber)throws WalletException{
 
 		String preHash = email+phoneNumber;
 		System.out.println("Prehash -> "+preHash);
@@ -116,7 +119,7 @@ public class Wallet <T> implements Serializable {
 		return "WALLET_"+ Sha256Hash.of(preHash.getBytes()).toString();
 	}
 
-	public static String generateWalletAddress(SecurityModel sModel)throws WalletException{
+	public static String generateWalletAddress(UserInterface sModel)throws WalletException{
 
 		String preHash = strip(sModel.getUserName()+sModel.getEmail()+sModel.getPhoneNumber());
 		System.out.println("Prehash -> "+preHash);
@@ -216,20 +219,32 @@ public class Wallet <T> implements Serializable {
 	@Override
 	public int hashCode() {
 		Object[] elems = new Object[]{transactionOutputs, publicKeyHex, privateKeyHex, id, id2};
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			return Objects.hash(elems);
-		}else{
+		int hash = -1;
+
+		try {
+
+			hash = Objects.hash(elems);
+
+		} catch(RuntimeException e){
+
 
 			int result = 1;
 
 			for (Object element : elems)
 				result = 31 * result + (element == null ? 0 : element.hashCode());
 
-			return result;
+			hash =  result;
 		}
+
+		return hash;
 	}
 
 	public  static class WalletException extends Exception{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -2480207234057205389L;
+
 		public WalletException(String s){super(s);}
 	}
 }

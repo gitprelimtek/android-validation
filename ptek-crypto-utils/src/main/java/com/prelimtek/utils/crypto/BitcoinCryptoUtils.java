@@ -1,4 +1,4 @@
-package com.prelimtek.android.crypto;
+package com.prelimtek.utils.crypto;
 
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hashing;
