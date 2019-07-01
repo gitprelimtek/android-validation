@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 apply plugin: 'com.android.library'
 
 android {
@@ -35,10 +36,14 @@ android {
 =======
 apply plugin: 'java-library'
 >>>>>>> renamed crypto subtree to ptek-crypto-util; removed base-components and android dependency
+=======
+apply plugin: 'java-library'
+>>>>>>> 167fa4864801ae23d5bf7554b4ab8958ba1f1ea7
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     implementation 'com.android.support:appcompat-v7:27.1.1'
     //implementation 'com.android.support:design:27.1.1'
@@ -49,10 +54,14 @@ dependencies {
 =======
     testImplementation 'junit:junit:4.12'
 >>>>>>> renamed crypto subtree to ptek-crypto-util; removed base-components and android dependency
+=======
+    testImplementation 'junit:junit:4.12'
+>>>>>>> 167fa4864801ae23d5bf7554b4ab8958ba1f1ea7
 
     implementation 'com.google.protobuf:protobuf-java-util:3.2.0'
 
     implementation 'io.jsonwebtoken:jjwt:0.7.0'
+<<<<<<< HEAD
 <<<<<<< HEAD
     //implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
     implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
@@ -65,4 +74,8 @@ dependencies {
     implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
 
 >>>>>>> renamed crypto subtree to ptek-crypto-util; removed base-components and android dependency
+=======
+    implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
+
+>>>>>>> 167fa4864801ae23d5bf7554b4ab8958ba1f1ea7
 }
