@@ -1,12 +1,9 @@
-package com.prelimtek.utils.crypto;
-/**
+package com.prelimtek.android.crypto;
+
+
 import android.util.Base64;
 
 import com.google.common.base.Charsets;
-
-import java.security.Key;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.crypto.spec.SecretKeySpec;
 
@@ -14,9 +11,14 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+import java.security.Key;
+import java.util.Date;
+
+import java.util.Calendar;
 //import java.util.Date;
 
-
+/**
  * Is a simplified class for creating expirable JWT tokens.
  * Default expiration is 2hrs.
  * Default signing algorithm is HS256
@@ -24,22 +26,22 @@ import io.jsonwebtoken.SignatureAlgorithm;
  * Note: when using ES (elliptic curve) such ES256 signingkey should be a private key.
  *
  * @author kndungu
-
-public class JWTManagerV1 {
+ **/
+public class JWTManager {
 
 	private static int FLAG = Base64.NO_WRAP;
 	//The JWT signature algorithm we will be using to sign the token
     private SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-
-	//2hrs
+	
+	//2hrs 
 	long expirationMillis  = 720000;
-
+	
    private  String signingKey = null;
-	public JWTManagerV1(String _signingKey){
+	public JWTManager(String _signingKey){
 		signingKey =_signingKey;
 	}
-
-	public JWTManagerV1(SignatureAlgorithm algo, String _signingKey){
+	
+	public JWTManager(SignatureAlgorithm algo, String _signingKey){
 		signatureAlgorithm = algo;
 		signingKey =_signingKey;
 	}
@@ -181,4 +183,3 @@ public class JWTManagerV1 {
     }
 
 }
- **/

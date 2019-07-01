@@ -1,8 +1,7 @@
-package com.prelimtek.utils.crypto;
+package com.prelimtek.android.crypto;
 
-//import android.os.Build;
+import android.os.Build;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -117,7 +116,7 @@ public class Wallet <T> implements Serializable {
 		return "WALLET_"+ Sha256Hash.of(preHash.getBytes()).toString();
 	}
 
-	public static String generateWalletAddress(UserInterface sModel)throws WalletException{
+	public static String generateWalletAddress(SecurityModel sModel)throws WalletException{
 
 		String preHash = strip(sModel.getUserName()+sModel.getEmail()+sModel.getPhoneNumber());
 		System.out.println("Prehash -> "+preHash);
@@ -217,27 +216,20 @@ public class Wallet <T> implements Serializable {
 	@Override
 	public int hashCode() {
 		Object[] elems = new Object[]{transactionOutputs, publicKeyHex, privateKeyHex, id, id2};
-		int hash = -1;
-
-		try {
-
-			hash = Objects.hash(elems);
-
-		} catch(RuntimeException e){
-
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			return Objects.hash(elems);
+		}else{
 
 			int result = 1;
 
 			for (Object element : elems)
 				result = 31 * result + (element == null ? 0 : element.hashCode());
 
-			hash =  result;
+			return result;
 		}
-
-		return hash;
 	}
 
-	public  static class WalletException extends IOException {
+	public  static class WalletException extends Exception{
 		public WalletException(String s){super(s);}
 	}
 }
