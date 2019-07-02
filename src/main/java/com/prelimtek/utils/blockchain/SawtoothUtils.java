@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.bitcoinj.core.ECKey;
-import org.junit.Assert;
+
 import org.spongycastle.util.encoders.Hex;
 
 import com.google.common.base.Charsets;
@@ -62,7 +62,7 @@ public class SawtoothUtils {
 		ByteString hashedPayload = ByteString.copyFromUtf8(
 				Utils.hash512(encodedPayload.toByteArray()));
 		
-		Assert.assertTrue(hashedPayload.isValidUtf8());
+		//Assert.assertTrue(hashedPayload.isValidUtf8());
 		
 		TransactionHeader header = createTrxnHeader(hashedPayload,publicKey,inputAddresses,outputAddresses);
 		
