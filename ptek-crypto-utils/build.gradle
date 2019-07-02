@@ -3,11 +3,12 @@ apply plugin: 'java-library'
   dependencies {
      implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-      testImplementation 'junit:junit:4.12'
+     testImplementation 'junit:junit:4.12'
 
-      implementation 'com.google.protobuf:protobuf-java-util:3.6.1'
-
-      implementation 'io.jsonwebtoken:jjwt:0.7.0'
+     implementation 'com.google.protobuf:protobuf-java-util:3.6.1'
+     implementation 'io.jsonwebtoken:jjwt:0.7.0'
      implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
+     implementation 'org.hyperledger.sawtooth:sawtooth-sdk-protos:v0.1.2'
+     implementation 'org.hyperledger.sawtooth:sawtooth-sdk-signing:v0.1.2'
 
   }
