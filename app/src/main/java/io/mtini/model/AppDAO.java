@@ -256,7 +256,7 @@ public class AppDAO implements AppDAOInterface {
 
     @Deprecated
     @Override
-    public void updateWallet(String address, String oldAddress, SecurityModel securityModel, Wallet wallet, String action) throws RemoteDAO.RemoteDAOException, Wallet.WalletException {
+    public void updateWallet(String address, String oldAddress, SecurityModel securityModel, Wallet wallet, String action) throws RemoteDAO.RemoteDAOException {
 
 
             remoteDao.updateWallet(address,oldAddress,securityModel,wallet,action);
@@ -266,7 +266,7 @@ public class AppDAO implements AppDAOInterface {
     }
 
     @Override
-    public Wallet getMyWallet(String address, SecurityModel securityModel) throws RemoteDAO.RemoteDAOException, Wallet.WalletException {
+    public Wallet getMyWallet(String address, SecurityModel securityModel) throws RemoteDAO.RemoteDAOException{
         Wallet wallet = localDao.getMyWallet(address, securityModel);
 
         if(wallet==null)
