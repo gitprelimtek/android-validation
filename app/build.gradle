@@ -59,6 +59,11 @@ android {
         }
     }* **/
 
+
+}
+//added this to resolve compilation error: Program type already present:
+configurations {
+    compile.exclude group: 'javax.xml.bind', module: 'jaxb-api'
 }
 
 dependencies {
