@@ -67,18 +67,26 @@ public class EditTenantDetailsDialogFragment extends DialogFragment {
                         dialogBuilder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked OK button
-                                Dialog progress = DialogUtils.startProgressDialog(getActivity());
+                                //TODO figure out why the initial cancel does not hide alertdialog
                                 try {
+                                        Dialog progress = DialogUtils.startProgressDialog(getActivity());
 
-                                    updateComplete(newTenant, oldTenant);
-                                }catch(Throwable e){
-                                    Log.e(TAG,e.getMessage(),e);
-                                    progress.dismiss();
-                                    DialogUtils.startErrorDialog(getActivity(),"An error occurred. '"+e.getLocalizedMessage()+"'" );
-                                    return;
+                                        try {
+                                            updateComplete(newTenant, oldTenant);
+                                        } catch (Throwable e) {
+                                            Log.e(TAG, e.getMessage(), e);
+                                            progress.dismiss();
+                                            DialogUtils.startErrorDialog(getActivity(), "An error occurred. '" + e.getLocalizedMessage() + "'");
+                                            return;
+                                        }
+
+                                        progress.dismiss();
+                                        dismiss();
+                                        dialog.cancel();//or is dismiss
+                                } catch (Throwable e) {
+                                    Log.e(TAG, e.getMessage(), e);
                                 }
-                                progress.dismiss();
-                                dismiss();
+
                             }
                         });
 
