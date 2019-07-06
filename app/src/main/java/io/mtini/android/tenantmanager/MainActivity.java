@@ -19,6 +19,7 @@ import android.widget.Switch;
 
 import io.mtini.android.service.DataRefreshService;
 
+import com.prelimtek.android.basecomponents.Configuration;
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 import io.mtini.android.tenantmanager.dialog.LoginDialogFragment;
 import io.mtini.model.AppDAO;
@@ -145,6 +146,8 @@ public class MainActivity extends AppCompatActivity implements LoginDialogFragme
         int id = item.getItemId();
         Intent intent = null;
         switch (id) {
+            case R.id.version:
+                DialogUtils.startInfoDialog(this,"App Version",Configuration.configuredPreferences(this).getVersionText());
             case R.id.search:
                 showError("Search has not been implemented. Coming soon!");
                 return true;
