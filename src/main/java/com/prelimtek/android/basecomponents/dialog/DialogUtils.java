@@ -69,4 +69,25 @@ public class DialogUtils {
         return errorDialog;
     }
 
+    public static AlertDialog startInfoDialog(Context context, CharSequence title, String message){
+        if(Looper.myLooper()==null)Looper.prepare();
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        //TODO add icon dialogBuilder.setIcon()
+        dialogBuilder.setMessage(message);
+        if(title!=null)
+            dialogBuilder.setTitle(title);
+        dialogBuilder.setPositiveButton(R.string.ok,new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+
+        AlertDialog errorDialog = dialogBuilder.create();
+        errorDialog.setCanceledOnTouchOutside(true);
+        errorDialog.show();
+        return errorDialog;
+    }
+
 }
