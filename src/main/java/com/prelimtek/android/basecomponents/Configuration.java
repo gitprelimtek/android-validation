@@ -2,7 +2,12 @@ package com.prelimtek.android.basecomponents;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.databinding.InverseMethod;
+import android.preference.EditTextPreference;
 import android.preference.PreferenceManager;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
@@ -87,6 +92,8 @@ public class Configuration {
 
     private Configuration(Context context){
         this.context = context;
+        versionCode = getVersionCode(context);
+        versionName = getVersionName(context);
         PreferenceManager.setDefaultValues(context.getApplicationContext(),R.xml.preferences,false);
     }
 
@@ -134,6 +141,49 @@ public class Configuration {
         return conf;
     }
 
+    public static int getVersionCode(Context context) {
+        PackageManager pm = context.getPackageManager();
+        try {
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            return pi.versionCode;
+        } catch (PackageManager.NameNotFoundException ex) {}
+        return 0;
+    }
+
+
+    public static String getVersionName(Context context) {
+        PackageManager pm = context.getPackageManager();
+        try {
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            return pi.versionName;
+        } catch (PackageManager.NameNotFoundException ex) {}
+        return "";
+    }
+
+    public String getVersionText(){
+
+        String ret =  "Version Name: "+versionName+" ; Version Code: "+versionCode;
+
+        return ret;
+    }
+
+
+    @InverseMethod("versionPrefText")
+    public static String versionString(EditTextPreference textPref){
+       Context context =  textPref.getContext();
+       int code = 0;//getVersionCode(context);
+       String name = " ";//getVersionName(context);
+       String ret =  "Version Name: "+name+" ; Version Code: "+code;
+       textPref.setText(ret);
+       return ret;
+    }
+
+    public static EditTextPreference versionPrefText(EditTextPreference textPref, String s){
+
+        return textPref;
+    }
+
+
     public String remoteHostUrl;
     public String customerId;
     public String apikey;
@@ -144,5 +194,7 @@ public class Configuration {
     public SimpleDateFormat dateFormat;
     public String authService;
     public String walletJson;
+    public String versionName;
+    public int versionCode;
 
 }
