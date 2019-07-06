@@ -7,7 +7,10 @@
     <string name="estate_details">Details of Estate</string>
     <string name="estate_tenant_activity">Estate Tenants Activity</string>
     <string name="tenant_details">Tenant Details</string>
-    <string name="welcome">Welcome to My Movie DVD Collection List on Sale</string>
+    <string name="welcome">\t Welcome to Estate and Tenant management application. This app will help you organize your property and tenants
+    on your mobile device and on the go. This app is like a scratchpad with pictures which will help you capture more details for future reference. \n
+    \t This is a premium version that gives you a better experience; it includes automatic backup; sharing across multiple devices; and it has  exceptional security.
+    The security uses high level encryption to enforce data ownership.</string>
     <string name="discount">Buy All times and get a nice 20% discount!</string>
     <string name="add_cart">Add to Shopping Cart</string>
     <string name="checkout">Check Out</string>
@@ -100,4 +103,5 @@
         \'-\' or \'_\'.</string>
     <string name="error_currency_ge0">Expected currency value greater or equal to zero.</string>
     <string name="error_currency_gt0">Expected currency value greater than zero.</string>
+    <string name="start_estate_list">Click here to view Estates list</string>
 </resources>

@@ -22,22 +22,40 @@
 
     <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:text="@string/welcome"/>
+    <!--<android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_menu_myplaces" />
+-->
+    <com.prelimtek.android.customcomponents.view.CustomImageButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="@dimen/fab_margin"
+        app:textPosition="text_top"
+        app:text="@string/start_estate_list"
+        app:imageSrc="@drawable/bldg_city"
+        app:imageWidth="@dimen/btn_height"></com.prelimtek.android.customcomponents.view.CustomImageButton>
 
-    <Switch
+    <!--Switch
         android:id="@+id/switch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
         android:layout_gravity="bottom"
         android:text="Switch " />
-
+-->
 
 
 </android.support.design.widget.CoordinatorLayout>

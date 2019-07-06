@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements LoginDialogFragme
         });
         //fab.hide();
 
+         /*
         Switch switchBtn = (Switch) findViewById(R.id.switch2);
         switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements LoginDialogFragme
         });
 
 
-        /*
+
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     "io.mtini.android.tenantmanager",
