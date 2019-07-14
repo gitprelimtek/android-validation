@@ -82,9 +82,9 @@ public class ImagesModel extends BaseObservable implements Serializable, Cloneab
 
     @Override
     public ImagesModel clone() throws CloneNotSupportedException {
-        List imageNamesClone = null;
+        List<String> imageNamesClone = null;
         if(imageNames!=null){
-            imageNamesClone = new ArrayList(imageNames);
+            imageNamesClone = new ArrayList<String>(imageNames);
         }
 
         ImagesModel clone = (ImagesModel)super.clone();

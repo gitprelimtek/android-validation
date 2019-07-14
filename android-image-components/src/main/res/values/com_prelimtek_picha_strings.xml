@@ -6,4 +6,11 @@
     <string name="gallery">Gallery</string>
     <string name="external">External</string>
 
+    <string name="photo_images_tooltip">Click to use camera for an image.</string>
+    <string name="gallery_images_tooltip">Click to browse gallery for an image.</string>
+    <string name="external_images_tooltip">Click to browse external drive for an image.</string>
+
+    <string name="save_close_btn_tooltip">Click save your changes and close this dialog.</string>
+
+
 </resources>
