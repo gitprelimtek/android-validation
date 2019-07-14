@@ -11,4 +11,5 @@ apply plugin: 'java-library'
      implementation 'org.hyperledger.sawtooth:sawtooth-sdk-protos:v0.1.2'
      implementation 'org.hyperledger.sawtooth:sawtooth-sdk-signing:v0.1.2'
  	 implementation 'org.hyperledger.sawtooth:sawtooth-sdk-transaction-processor:v0.1.2'
+      //implementation 'javax.xml.bind:jaxb-api:2.3.1'
   }
