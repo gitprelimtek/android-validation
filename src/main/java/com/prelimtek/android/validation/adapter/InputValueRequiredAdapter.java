@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.prelimtek.android.basecomponents.ResourcesUtils;
 import com.prelimtek.android.validation.R;
 
 
@@ -447,7 +448,8 @@ public class InputValueRequiredAdapter {
 
         public static void setError(TextView view, String message){
             if(view==null)return;
-            view.setTextColor(view.getResources().getColor(R.color.Red_700));
+            //view.setTextColor(view.getResources().getColor(R.color.Red_700));
+            view.setTextColor(ResourcesUtils.getColor(view,R.color.Red_700));
             view.setError(message);
 
         }
