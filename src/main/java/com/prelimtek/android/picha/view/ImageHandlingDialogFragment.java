@@ -335,6 +335,7 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         mImageView.setImageBitmap(bitmap);
     }
 
+    @SuppressWarnings("deprecation")
     private Bitmap getCompressedImage(String path, int targetW, int targetH){
 
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
