@@ -3,6 +3,7 @@ package com.prelimtek.android.customcomponents.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
@@ -16,11 +17,12 @@ import android.widget.TextView;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.prelimtek.android.basecomponents.ResourcesUtils;
 import com.prelimtek.android.customcomponents.R;
 
 public class CustomImageButton extends LinearLayout {
 
-    public enum Direction {text_top, text_left, text_right, text_bottom};
+    public enum Direction {text_top, text_left, text_right, text_bottom}
     protected Direction direction;
     protected AttributeSet attrs = null;
     protected RelativeLayout viewlayout;
@@ -95,15 +97,43 @@ public class CustomImageButton extends LinearLayout {
     }
 
     public void reDrawUI(boolean activated){
+        
         super.setClickable(activated);
 
-        if(activated) {
-            viewlayout.setBackgroundColor(getResources().getColor(R.color.io_mtini_custom_button_background_color));
-            textview.setTextColor(getResources().getColor(R.color.io_mtini_custom_button_text_color));
+        int bcgrnColor= ResourcesUtils.getColor(this,R.color.io_mtini_custom_button_background_color);
+        int textColor = ResourcesUtils.getColor(this,R.color.io_mtini_custom_button_text_color);
+
+        int deac_bcgrnColor = ResourcesUtils.getColor(this,R.color.io_mtini_deactivate_custom_button_background_color);
+        int deac_textColor = ResourcesUtils.getColor(this,R.color.io_mtini_deactivate_custom_button_text_color);
+
+        /*
+        android.content.res.Resources.Theme theme = getContext().getTheme();
+
+        if (Build.VERSION.SDK_INT < 23) {
+
+            //use for backwards compatibility with API levels below 23
+             bcgrnColor = getResources().getColor(R.color.io_mtini_custom_button_background_color);
+             textColor = getResources().getColor(R.color.io_mtini_custom_button_text_color);
+
+             deac_bcgrnColor = getResources().getColor(R.color.io_mtini_deactivate_custom_button_background_color);
+             deac_textColor = getResources().getColor(R.color.io_mtini_deactivate_custom_button_text_color);
+
+        } else {
+
+             bcgrnColor = getResources().getColor(R.color.io_mtini_custom_button_background_color, theme);
+             textColor = getResources().getColor(R.color.io_mtini_custom_button_text_color, theme);
+
+            deac_bcgrnColor = getResources().getColor(R.color.io_mtini_deactivate_custom_button_background_color,theme);
+            deac_textColor = getResources().getColor(R.color.io_mtini_deactivate_custom_button_text_color,theme);
         }
-        else {
-            viewlayout.setBackgroundColor(getResources().getColor(R.color.io_mtini_deactivate_custom_button_background_color));
-            textview.setTextColor(getResources().getColor(R.color.io_mtini_deactivate_custom_button_text_color));
+        */
+
+        if(activated) {
+            viewlayout.setBackgroundColor(bcgrnColor);
+            textview.setTextColor(textColor);
+        } else {
+            viewlayout.setBackgroundColor(deac_bcgrnColor);
+            textview.setTextColor(deac_textColor);
         }
 
     }
