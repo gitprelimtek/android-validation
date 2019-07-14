@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.prelimtek.android.basecomponents.Configuration;
+import com.prelimtek.android.basecomponents.ResourcesUtils;
 
 import io.mtini.android.tenantmanager.R;
 import io.mtini.model.EstateModel;
@@ -80,9 +81,9 @@ public class TextViewValueConverter {
     public static BigDecimal highlightBalance(TextView view,
                                           final BigDecimal amount ){
         if(amount.longValue()>=0){
-            view.setTextColor(view.getResources().getColor(R.color.Teal_700));
+            view.setTextColor(ResourcesUtils.getColor(view,R.color.Teal_700));
         }else{
-            view.setTextColor(view.getResources().getColor(R.color.Red_700));
+            view.setTextColor(ResourcesUtils.getColor(view,R.color.Red_700));
         }
         return amount;
     }

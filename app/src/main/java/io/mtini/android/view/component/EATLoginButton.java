@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.prelimtek.android.basecomponents.ResourcesUtils;
 import com.prelimtek.android.customcomponents.view.CustomImageButton;
 
 import io.mtini.android.tenantmanager.R;
@@ -50,13 +51,13 @@ public class EATLoginButton extends CustomImageButton {
         TypedArray ta = getContext().obtainStyledAttributes(attrs,R.styleable.CustomImageButton,0,0);
 
         try {
-            viewlayout.setBackgroundColor(getResources().getColor(R.color.io_mtini_login_button_background_color));
+            viewlayout.setBackgroundColor(ResourcesUtils.getColor(this,R.color.io_mtini_login_button_background_color));
 
             imageview.setPadding(7,7,5,7);
             textview.setPadding(5,7,7,7);
 
             //viewparams.
-            textview.setTextColor(getResources().getColor(R.color.io_mtini_login_button_text_color ));
+            textview.setTextColor(ResourcesUtils.getColor(this,R.color.io_mtini_login_button_text_color ));
             setShowText( true );
             setText(getResources().getString(R.string.io_mtini_login_button_text_log_in));
             setImageSrc(getResources().getResourceName(R.drawable.add_person_group_40));
@@ -81,10 +82,10 @@ public class EATLoginButton extends CustomImageButton {
         super.setClickable(activated);
 
         if(activated)
-            viewlayout.setBackgroundColor(getResources().getColor(R.color.io_mtini_login_button_background_color));
+            viewlayout.setBackgroundColor(ResourcesUtils.getColor(this,R.color.io_mtini_login_button_background_color));
             //viewlayout.setForegroundTintMode(PorterDuff.Mode.DARKEN);
         else
-            viewlayout.setBackgroundColor(getResources().getColor(R.color.io_mtini_deactivate_login_button_background_color));
+            viewlayout.setBackgroundColor(ResourcesUtils.getColor(this,R.color.io_mtini_deactivate_login_button_background_color));
             //viewlayout.setForegroundTintMode(PorterDuff.Mode.CLEAR);
     }
 

@@ -17,7 +17,9 @@ import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.entity.ByteArrayEntity;
 import cz.msebera.android.httpclient.entity.ContentType;
-import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+//import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.impl.client.CloseableHttpClient;
+import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
 import cz.msebera.android.httpclient.message.BasicHeader;
 import io.mtini.model.RemoteDAOListener;
 import io.mtini.proto.EATRequestResponseProtos;
@@ -187,7 +189,12 @@ public class GenericRemoteRESTTask extends AsyncTask<EATRequestResponseProtos.EA
     @Override
     protected EATRequestResponseProtos.EATRequestResponse.Response doInBackground(EATRequestResponseProtos.EATRequestResponse.Request ... requests) {
 
-        HttpClient httpClient = new DefaultHttpClient();
+        //HttpClient httpClient = new DefaultHttpClient();
+        HttpClient httpClient  = HttpClientBuilder.create()
+                .disableAuthCaching()
+                .disableRedirectHandling()
+                .evictExpiredConnections()
+                .build();
 
         HttpEntity entity = null;
 
@@ -232,7 +239,14 @@ public class GenericRemoteRESTTask extends AsyncTask<EATRequestResponseProtos.EA
                 _listener.onError(e);
 
         }finally {
-            ((DefaultHttpClient) httpClient).close();
+           // ((DefaultHttpClient) httpClient).close();
+
+            try {
+                ((CloseableHttpClient) httpClient).close();
+            } catch (IOException e) {
+                Log.e(TAG, e.getMessage());
+            }
+
         }
 
 
