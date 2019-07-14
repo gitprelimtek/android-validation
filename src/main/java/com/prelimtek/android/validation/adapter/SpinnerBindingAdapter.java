@@ -5,11 +5,13 @@ import android.databinding.BindingAdapter;
 import android.databinding.InverseBindingAdapter;
 import android.databinding.InverseBindingListener;
 
+import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 
 
@@ -19,7 +21,8 @@ public final class SpinnerBindingAdapter {
     private SpinnerBindingAdapter() {}
 
     //SETTER
-    @BindingAdapter(value = {"app:selectedSpinnerValue", "app:selectedSpinnerValueAttrChanged"}, requireAll = false)
+    @SuppressWarnings("unchecked")
+    @BindingAdapter(value = {"selectedSpinnerValue", "selectedSpinnerValueAttrChanged"}, requireAll = false)
     public static void bindSpinnerData(Spinner pAppCompatSpinner, String newSelectedValue, final InverseBindingListener newTextAttrChanged) {
 
         pAppCompatSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -32,14 +35,14 @@ public final class SpinnerBindingAdapter {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        if (newSelectedValue != null) {
+        if (newSelectedValue != null && pAppCompatSpinner.getAdapter() instanceof ArrayAdapter ) {
             int pos = ((ArrayAdapter<String>) pAppCompatSpinner.getAdapter()).getPosition(newSelectedValue);
             pAppCompatSpinner.setSelection(pos, true);
         }
     }
 
     //GETTER
-    @InverseBindingAdapter(attribute = "app:selectedSpinnerValue", event = "app:selectedSpinnerValueAttrChanged")
+    @InverseBindingAdapter(attribute = "selectedSpinnerValue", event = "selectedSpinnerValueAttrChanged")
     public static String captureSelectedValue(Spinner pAppCompatSpinner) {
         return (String) pAppCompatSpinner.getSelectedItem();
     }
