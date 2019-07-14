@@ -227,7 +227,7 @@ public class EstateDetailsActivity extends AppCompatActivity
 
             String modelId = oldImages.getModelId();
 
-           List commonList = Lists.newArrayList(images.getImageNames());
+           List<String> commonList = Lists.newArrayList(images.getImageNames());
             commonList.retainAll(oldImages.getImageNames());
 
             List<String> toAdd = Lists.newArrayList(images.getImageNames());

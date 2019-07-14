@@ -49,7 +49,7 @@ public class EstateActivity extends AppCompatActivity
 
         ListView listView = (ListView) findViewById(R.id.estateslistView);
 
-        ObservableList<EstateModel> estates = new ObservableArrayList();
+        ObservableList<EstateModel> estates = new ObservableArrayList<EstateModel>();
         estates.addAll(dbHelper.getMyEstateList());
 
         int count = estates.size();

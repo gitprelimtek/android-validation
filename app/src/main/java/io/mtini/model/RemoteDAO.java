@@ -799,7 +799,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
     }
 
 
-    public ArrayMap<String,List> getAccountState() throws RemoteDAOException {
+    public ArrayMap<String,List<?>> getAccountState() throws RemoteDAOException {
         List<EstateModel> estates = new ArrayList<EstateModel>();
         List<TenantModel> tenants = new ArrayList<TenantModel>();
 
@@ -861,7 +861,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
             throw new RemoteDAOException("APIkey error");
         }
 
-        ArrayMap<String,List> ret =  new ArrayMap<String,List>();
+        ArrayMap<String,List<?>> ret =  new ArrayMap<String,List<?>>();
         ret.put("estates",estates);
         ret.put("tenants",tenants);
 

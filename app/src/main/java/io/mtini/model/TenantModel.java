@@ -306,7 +306,7 @@ public class TenantModel extends BaseObservable implements Serializable,Cloneabl
     }
 
     public static String[] getScheduleItems(){
-        List<String> ret = new ArrayList(SCHEDULE.values().length);
+        List<String> ret = new ArrayList<String>(SCHEDULE.values().length);
 
         for(SCHEDULE schedule : SCHEDULE.values()){
             ret.add(schedule.name());
@@ -316,7 +316,7 @@ public class TenantModel extends BaseObservable implements Serializable,Cloneabl
     }
 
     public static String[] getStatusItems(){
-        List<String> ret = new ArrayList(STATUS.values().length);
+        List<String> ret = new ArrayList<String>(STATUS.values().length);
 
         for(STATUS status : STATUS.values()){
             ret.add(status.name());

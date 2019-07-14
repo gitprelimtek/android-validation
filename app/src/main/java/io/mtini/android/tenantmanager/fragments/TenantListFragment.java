@@ -1,6 +1,7 @@
 package io.mtini.android.tenantmanager.fragments;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ListFragment;
 import android.os.Build;
 import android.os.Bundle;
@@ -99,6 +100,8 @@ public class TenantListFragment extends ListFragment {
         }
     }
 
+
+    @SuppressWarnings("deprecation")
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

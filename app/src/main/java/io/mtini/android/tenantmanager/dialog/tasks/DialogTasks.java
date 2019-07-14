@@ -2,7 +2,7 @@ package io.mtini.android.tenantmanager.dialog.tasks;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
+//import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Looper;
@@ -12,6 +12,7 @@ import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 /**
  * NOTE: Still under testing.
  * */
+@SuppressWarnings("deprecation")
 public class DialogTasks extends AsyncTask<DialogTasks.DialogType,Void,Dialog> {
 
     public DialogTasks(Context _context, CharSequence _title, CharSequence _message){
@@ -47,8 +48,8 @@ public class DialogTasks extends AsyncTask<DialogTasks.DialogType,Void,Dialog> {
 
         if(dialog instanceof AlertDialog){
             ((AlertDialog)dialog).setMessage(message);
-        } else if(dialog instanceof ProgressDialog){
-            ((ProgressDialog)dialog).setMessage(message);
+        } else if(dialog instanceof android.app.ProgressDialog){
+            ((android.app.ProgressDialog)dialog).setMessage(message);
         };
 
         return dialog;

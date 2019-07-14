@@ -326,17 +326,17 @@ public class AppDAO implements AppDAOInterface {
         return localDao.updateTenant(newtenant, estate);
     }
 
-
+    @SuppressWarnings("unchecked")
     public void uploadData()throws RemoteDAO.RemoteDAOException {
 
-        ArrayMap<String,List> data = null;
+        ArrayMap<String,List<?>> data = null;
 
             //data = getRemoteDao().getMyEstateAndTenantsList();
         data = getRemoteDao().getAccountState();
 
 
-        List<EstateModel> estates = data.get("estates");
-        List<TenantModel> tenants = data.get("tenants");
+        List<EstateModel> estates = (List<EstateModel>)data.get("estates");
+        List<TenantModel> tenants = (List<TenantModel>)data.get("tenants");
 
         for(EstateModel estate : estates){
             getLocalDao().addEstate(estate);

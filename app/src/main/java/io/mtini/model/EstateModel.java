@@ -168,7 +168,7 @@ public class EstateModel extends BaseObservable implements Serializable, Cloneab
         notifyPropertyChanged(BR.contacts);}
 
     public static String[] getEstateTypeItems(){
-        List<String> ret = new ArrayList(EstateModel.TYPE.values().length);
+        List<String> ret = new ArrayList<String>(EstateModel.TYPE.values().length);
 
         for(EstateModel.TYPE type : EstateModel.TYPE.values()){
             ret.add(type.name());
