@@ -9,9 +9,19 @@ android {
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
-        versionName "0.0.1-standalone-SNAPSHOT"
+        versionName "0.0.1-SNAPSHOT"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+    }
+
+    flavorDimensions "version"
+    productFlavors{
+        full{
+            minSdkVersion 25
+            dimension "version"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
     }
 
     buildTypes {
@@ -64,13 +74,12 @@ android {
     lintOptions {
         checkReleaseBuilds true
     }
+    dexOptions {
+    }
 }
 //added this to resolve compilation error: Program type already present ...ModuleUtil:
 configurations {
     compile.exclude group: 'javax.xml.bind', module: 'jaxb-api'
-    //compile.exclude group: 'javax.xml.bind', module: 'jaxb-api'
-
-
 }
 
 
@@ -102,5 +111,4 @@ dependencies {
     implementation project(':android-image-components')
     implementation project(':ptek-crypto-utils')
     implementation project(':mtini-eat-protos')
-
 }
