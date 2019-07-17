@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 
+import java.util.Date;
+
 import io.mtini.android.tenantmanager.R;
 import io.mtini.android.tenantmanager.databinding.ProcessRentPaymentLayoutBinding;
 import io.mtini.android.tenantmanager.databinding.TenantDetailLayoutBinding;
@@ -44,7 +46,8 @@ public class PaymentHandlingDialogFragment extends DialogFragment {
         ProcessRentPaymentLayoutBinding binding  = DataBindingUtil.inflate(
                 inflater, R.layout.process_rent_payment_layout, container, false);
         View view = binding.getRoot();
-        binding.setTenant((TenantModel)currentTenant.createClone());
+        TenantModel clonedTenant = cloneAndResetStatus(currentTenant);
+        binding.setTenant(clonedTenant);
 
         //Setup update button to finally persist changes
         View updateBtn = view.findViewById(R.id.updateTenantBtn);
@@ -54,6 +57,11 @@ public class PaymentHandlingDialogFragment extends DialogFragment {
                     public void onClick(final View v) {
                         final TenantModel oldTenant = currentTenant;
                         ProcessRentPaymentLayoutBinding binding  = DataBindingUtil.findBinding(v);
+
+                        if(!validate(binding)){
+
+                            return;
+                        }
                         final TenantModel newTenant = binding.getTenant();
                         //TODO verify before calling this updateComplete?
                         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -105,6 +113,31 @@ public class PaymentHandlingDialogFragment extends DialogFragment {
         return view;
     }
 
+    private TenantModel cloneAndResetStatus(TenantModel tenant) {
+        TenantModel clonedTenant = tenant.createClone();
+        clonedTenant.setRent(null);
+        clonedTenant.setNotes(null);
+        clonedTenant.setBalance(null);
+        clonedTenant.setPaidDate(new Date().getTime());
+        clonedTenant.setStatus(null);
+        return clonedTenant;
+    }
+
+    private boolean validate(ProcessRentPaymentLayoutBinding binding){
+
+        if( isEmpty(binding.statusLabel.getError())
+                && isEmpty( binding.notesLabel.getError())
+                && isEmpty(binding.rentPaidLabel.getError())
+                && isEmpty(binding.rentPaidDateEditTxt.getError())
+                && isEmpty(binding.rentDueDateEditTxt.getError())){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isEmpty(CharSequence seq){
+        return seq==null || seq.length() == 0;
+    }
 
     @Override
     public void onStart() {

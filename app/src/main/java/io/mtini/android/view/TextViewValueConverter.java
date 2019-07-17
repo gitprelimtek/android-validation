@@ -80,7 +80,7 @@ public class TextViewValueConverter {
     @InverseMethod("highlightBalance")
     public static BigDecimal highlightBalance(TextView view,
                                           final BigDecimal amount ){
-        if(amount.longValue()>=0){
+        if(amount.longValue()<=0){
             view.setTextColor(ResourcesUtils.getColor(view,R.color.Teal_700));
         }else{
             view.setTextColor(ResourcesUtils.getColor(view,R.color.Red_700));

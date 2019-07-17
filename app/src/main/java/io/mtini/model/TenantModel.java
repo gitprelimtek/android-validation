@@ -76,7 +76,7 @@ public class TenantModel extends BaseObservable implements Serializable,Cloneabl
     BigDecimal rentDue = new BigDecimal(0);//this scheduled payment expected
     Long dueDate;//is calculated by paySchedule
 
-    BigDecimal balance = new BigDecimal(0);//is payment overdue or overpayments indicated by +/-
+    BigDecimal balance = new BigDecimal(0);//balance indicates remaining debt - is payment overdue or overpayments indicated by +/-
     String contacts;
     Long paidDate = System.currentTimeMillis();
     BigDecimal rent = new BigDecimal(0);//this is actual pay on paidDate
@@ -376,11 +376,6 @@ public class TenantModel extends BaseObservable implements Serializable,Cloneabl
         return builder.toString();
     }
 
-    public BigDecimal calculateBalance(){
-        //return balance.add(rentDue.subtract(rent));
-        return balance.subtract(rentDue.subtract(rent));
-    }
-
     /**Is called after database confirmation.*/
     public void resetRentValue(){
 
@@ -397,10 +392,10 @@ public class TenantModel extends BaseObservable implements Serializable,Cloneabl
 
         if( now<=dueDate ){
 
-            //balance = balance.subtract(rent);
-            balance = balance.add(rent);
+            balance = balance.subtract(rent);
+            //balance = balance.add(rent);
 
-            if(balance.intValue()<0){
+            if(balance.intValue()>0){
                 status = status!=STATUS.late ? STATUS.balance : STATUS.late;
             } else {
                 status = STATUS.paid;
@@ -408,8 +403,9 @@ public class TenantModel extends BaseObservable implements Serializable,Cloneabl
 
         }else{
 
-            //balance = balance.add(rentDue);
-            balance = balance.subtract(rentDue);
+            balance = balance.subtract(rent);
+            balance = balance.add(rentDue);
+            //balance = balance.subtract(rentDue);
 
             if(dueDate<=paidDate){
                 //nothing
