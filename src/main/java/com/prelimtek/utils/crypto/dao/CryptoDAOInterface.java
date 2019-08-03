@@ -1,8 +1,9 @@
 package com.prelimtek.utils.crypto.dao;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-public interface CryptoDAOInterface<T1,T2>  {
+public interface CryptoDAOInterface<T1,T2>  extends Serializable {
 
     public String getPrivateKey(String id);
 
