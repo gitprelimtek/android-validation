@@ -1,6 +1,8 @@
 package com.prelimtek.android.picha.dao;
 
-public interface MediaDAOInterface  {
+import java.io.Serializable;
+
+public interface MediaDAOInterface  extends Serializable {
 
     public String getImageById(String id);
 
