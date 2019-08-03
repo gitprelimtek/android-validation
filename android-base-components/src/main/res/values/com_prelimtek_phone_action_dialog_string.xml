@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="whatsapp_btn_tooltip_text">Whatsapp calls or texts</string>
+    <string name="phonecall_btn_tooltip_text">Make a phone call</string>
+    <string name="textmsg_btn_tooltip_text">Text message</string>
+
+</resources>
