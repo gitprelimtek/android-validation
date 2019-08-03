@@ -35,7 +35,7 @@ public class TelephoneActionDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        System.out.println("!!!!!!!!!!!!     onCreateView called ");
+
         super.onCreateView(inflater, container, savedInstanceState);
 
         if (savedInstanceState != null) {
@@ -46,32 +46,15 @@ public class TelephoneActionDialogFragment extends DialogFragment {
 
         final String phoneNumber = telephoneNumberArg;
 
-        Context context = getContext();
-
         View view = inflater.inflate(R.layout.phonenumber_action_dialog_layout, null);
-
 
         View whatsappMessageButton = view.findViewById(R.id.whatsapp_icon_btn);
         whatsappMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 TelephonyUtils.composeWhatsappMessage(getActivity(),phoneNumber);
-                //intent call
-                /*if (Build.VERSION.SDK_INT > 22) {
-                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.SEND_SMS) !=
-                            PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS}, WHATSAPP_MESG_REQ_CODE);
-                        Log.w(TAG,"Requesting Permission SEND_SMS .");
-                        return;
-                    }
 
-                    Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
-                    whatsappIntent.setData(Uri.parse("sms:"+phoneNumber));
-                    whatsappIntent.setPackage("com.whatsapp");
-                    startActivity(Intent.createChooser(whatsappIntent,""));
-                    //startActivityForResult(whatsappIntent,WHATSAPP_MESG_REQ_CODE );//a response is sent to onRequestPermissionsResult mthd
-
-                }*/
             }
         });
 
@@ -79,21 +62,9 @@ public class TelephoneActionDialogFragment extends DialogFragment {
         textMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 TelephonyUtils.composeSMSMessage(getActivity(),phoneNumber);
-                //intent call
-                /*if (Build.VERSION.SDK_INT > 22) {
-                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.SEND_SMS) !=
-                            PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS}, TEXT_MESG_REQ_CODE);
-                        Log.w(TAG,"Requesting Permission SEND_SMS .");
-                        return;
-                    }
 
-                Intent callIntent = new Intent(Intent.ACTION_VIEW);
-                callIntent.setData(Uri.parse("sms:"+phoneNumber));
-                startActivityForResult(callIntent,TEXT_MESG_REQ_CODE );//a response is sent to onRequestPermissionsResult mthd
-
-                }*/
             }
         });
 
@@ -101,20 +72,9 @@ public class TelephoneActionDialogFragment extends DialogFragment {
         phoneCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                TelephonyUtils.makePhoneCall(getActivity(),phoneNumber);
-                /*if (Build.VERSION.SDK_INT > 22) {
-                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) !=
-                            PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, PHONE_CALL_REQ_CODE);
-                        Log.w(TAG,"Requesting Permission CALL_PHONE .");
-                        return;
-                    }
 
-                    //intent call
-                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel:+" + phoneNumber));
-                    startActivityForResult(callIntent,PHONE_CALL_REQ_CODE);//a response is sent to onRequestPermissionsResult mthd
-                }*/
+                TelephonyUtils.makePhoneCall(getActivity(),phoneNumber);
+
             }
         });
 
@@ -130,8 +90,9 @@ public class TelephoneActionDialogFragment extends DialogFragment {
                     Snackbar.make(this.getView(),"Permission CALL_PHONE granted. Please press call button again.", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     Log.i(TAG,"Permission CALL_PHONE granted. ");
+
                 }else{
-                    DialogUtils.startErrorDialog(this.getContext(),"Permission CALL_PHONE denied. contact administrator. ");
+                    DialogUtils.startErrorDialog(this.getActivity(),"Permission CALL_PHONE denied. contact administrator. ");
                     Log.w(TAG,"Permission CALL_PHONE denied. ");
 
                 }
@@ -142,7 +103,7 @@ public class TelephoneActionDialogFragment extends DialogFragment {
                             .setAction("Action", null).show();
                     Log.i(TAG,"Permission SEND_SMS granted. ");
                 }else{
-                    DialogUtils.startErrorDialog(this.getContext(),"Permission SEND_SMS denied. contact administrator. ");
+                    DialogUtils.startErrorDialog(this.getActivity(),"Permission SEND_SMS denied. contact administrator. ");
                     Log.w(TAG,"Permission SEND_SMS denied. ");
 
                 }
@@ -153,7 +114,7 @@ public class TelephoneActionDialogFragment extends DialogFragment {
                             .setAction("Action", null).show();
                     Log.i(TAG,"Permission SEND_SMS granted. ");
                 }else{
-                    DialogUtils.startErrorDialog(this.getContext(),"Permission SEND_SMS denied. contact administrator. "+grantResults[0]);
+                    DialogUtils.startErrorDialog(this.getActivity(),"Permission SEND_SMS denied. contact administrator. "+grantResults[0]);
                     Log.w(TAG,"Permission SEND_SMS denied. "+grantResults[0]);
 
                 }

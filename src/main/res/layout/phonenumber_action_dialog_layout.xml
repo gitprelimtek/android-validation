@@ -8,22 +8,28 @@
 
     <ImageButton
         android:id="@+id/whatsapp_icon_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:tooltipText="@string/whatsapp_btn_tooltip_text"
         android:src="@drawable/whatsapp_icon"/>
 
 
     <ImageButton
         android:id="@+id/text_msg_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:tooltipText="@string/textmsg_btn_tooltip_text"
         android:src="@drawable/text_msg"/>
 
 
     <ImageButton
         android:id="@+id/make_phonecall_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:tooltipText="@string/phonecall_btn_tooltip_text"
         android:src="@drawable/make_phonecall"
         android:clickable="true"
         android:autoLink="phone"/>
