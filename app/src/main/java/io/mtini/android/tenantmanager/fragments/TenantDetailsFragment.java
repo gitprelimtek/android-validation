@@ -28,14 +28,28 @@ public class TenantDetailsFragment extends Fragment {
     }
 
     public static String TAG = Class.class.getSimpleName();
-    //public final static String ARG_POSITION = "position";
+
     public final static String ARG_SELECTED_TENANT = "selectedTenant";
     public final static String ARG_SELECTED_TENANT_IMAGES = "selectedTenantImageModel";
-    //int mCurrentPosition = -1;
+
     TenantModel currentTenant = null;
     ImagesModel currentImagesModel = null;
+    AppDAO dbHelper = null;
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
+        currentTenant = (TenantModel)getArguments().getSerializable(ARG_SELECTED_TENANT);
+        currentImagesModel = (ImagesModel)getArguments().getSerializable(ARG_SELECTED_TENANT_IMAGES);
+
+        try {
+            dbHelper =  AppDAO.builder().open(getActivity());
+        } catch (Exception e) {
+            Log.e(TAG,e.getMessage());
+        }
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,27 +57,10 @@ public class TenantDetailsFragment extends Fragment {
 
         super.onCreateView(inflater, container, savedInstanceState);
 
-        // If activity recreated (such as from screen rotate), restore
-        // the previous article selection set by onSaveInstanceState().
-        // This is primarily necessary when in the two-pane layout.
-        if (savedInstanceState != null) {
-            //mCurrentPosition = savedInstanceState.getInt(ARG_POSITION);
-            currentTenant = (TenantModel)savedInstanceState.getSerializable(ARG_SELECTED_TENANT);
-            currentImagesModel = (ImagesModel)savedInstanceState.getSerializable(ARG_SELECTED_TENANT_IMAGES);
-        }else if(getArguments()!=null) {
-
-            currentTenant = (TenantModel)getArguments().getSerializable(ARG_SELECTED_TENANT);
-            currentImagesModel = (ImagesModel)getArguments().getSerializable(ARG_SELECTED_TENANT_IMAGES);
-        }
-
         TenantDetailLayoutBinding  binding  = DataBindingUtil.inflate(
                 inflater, R.layout.tenant_detail_layout, container, false);
         View view = binding.getRoot();
         binding.setTenant(currentTenant);
-
-        //TODO initialize uneditable imageListview here. Is onstart() the right place?
-
-
 
 
         View editButton = view.findViewById(R.id.editTenantBtn);
@@ -105,9 +102,10 @@ public class TenantDetailsFragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager fm = getFragmentManager();
                 ImageHandlingDialogFragment editImagesDialogFragment = new ImageHandlingDialogFragment();
-                editImagesDialogFragment.setDBHelper(dbHelper.getLocalDao());
+                //editImagesDialogFragment.setDBHelper(dbHelper.getLocalDao());
                 Bundle args = new Bundle();
                 args.putSerializable(ImageHandlingDialogFragment.ARG_SELECTED_MODEL_IMAGE, fragmentImagesModel);
+                args.putSerializable(ImageHandlingDialogFragment.ARG_DB_HELPER, dbHelper.getLocalDao());
                 editImagesDialogFragment.setArguments(args);
                 editImagesDialogFragment.show(fm, "fragment_edit_tenant_images");
 
@@ -130,24 +128,17 @@ public class TenantDetailsFragment extends Fragment {
         });
 
 
+
         return view;
 
-    }
-
-    AppDAO dbHelper = null;
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        try {
-            dbHelper =  AppDAO.builder().open(getActivity());
-        } catch (Exception e) {
-            Log.e(TAG,e.getMessage());
-        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        PhotoProcUtil.showOrRefreshImageListFragment(currentImagesModel,getFragmentManager(),dbHelper,false);
+
     }
 
     @Override
@@ -158,6 +149,7 @@ public class TenantDetailsFragment extends Fragment {
         }
     }
 
+    /*
     @Override
     public void onStart() {
         super.onStart();
@@ -166,6 +158,7 @@ public class TenantDetailsFragment extends Fragment {
         // onStart is a good place to do this because the layout has already been
         // applied to the fragment at this point so we can safely call the method
         // below that sets the article text.
+        //TODO move these to onCreateView
         Bundle args = getArguments();
         if (args != null) {
             // Set article based on argument passed in
@@ -202,11 +195,13 @@ public class TenantDetailsFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
+        //TODO this is not necessary because this page does not directly modify data; memory location is tracked by downstream processes, in terms of data changes
         // Save the current tenant selection in case we need to recreate the fragment
         outState.putSerializable(ARG_SELECTED_TENANT, currentTenant);
-        //TODO save imagemodel as well??
+
     }
+
+    */
 
 
 }
