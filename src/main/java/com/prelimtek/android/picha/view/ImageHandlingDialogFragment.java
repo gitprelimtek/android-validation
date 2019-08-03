@@ -62,17 +62,40 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
 
     private OnImageEditedModelListener editCallBack = null;
 
-    public static String TAG = Class.class.getSimpleName();
+    public final static String TAG = Class.class.getSimpleName();
 
     public final static String ARG_SELECTED_MODEL_IMAGE = "selectedModelImages";
+    public final static String ARG_DB_HELPER = "dbHelper";
 
     private ImagesModel currentImagesModel = null;
+    private ImagesModel oldImagesModel = null;
+    private ImageHandlingFragmentLayoutBinding binding;
 
-    @NonNull
     private MediaDAOInterface dbHelper;
 
-    public void setDBHelper(MediaDAOInterface localDao) {
-        dbHelper = localDao;
+    /*public void setDBHelper(MediaDAOInterface localDao) {
+      */
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        oldImagesModel = (ImagesModel)getArguments().getSerializable(ARG_SELECTED_MODEL_IMAGE);
+        dbHelper = (MediaDAOInterface)getArguments().getSerializable(ARG_DB_HELPER);
+
+        if (savedInstanceState != null) {
+
+            currentImagesModel = (ImagesModel)savedInstanceState.getSerializable(ARG_SELECTED_MODEL_IMAGE);
+
+        }else if(currentImagesModel==null && getArguments() != null) {
+
+            try {
+                currentImagesModel = null == oldImagesModel ?null:oldImagesModel.clone();//.createClone();
+            }catch(CloneNotSupportedException e){
+                e.printStackTrace();
+            }
+
+        }
     }
 
     @Override
@@ -84,26 +107,12 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
 
         // If activity recreated (such as from screen rotate), restore
         // the previous model selection set by onSaveInstanceState().
-        ImagesModel imagesModel = null;
-        if (savedInstanceState != null) {
-            imagesModel = (ImagesModel) savedInstanceState.getSerializable(ARG_SELECTED_MODEL_IMAGE);
-        } else if (getArguments() != null) {
-            imagesModel = (ImagesModel) getArguments().getSerializable(ARG_SELECTED_MODEL_IMAGE);
-        }
 
-        try {
 
-            //dbHelper =  AppDAO.builder().open(this.getActivity());
-
-            currentImagesModel = imagesModel.clone();
-
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
-        }
 
         //Bind view to image model
         View view = inflater.inflate( R.layout.image_handling_fragment_layout, container, false);
-        ImageHandlingFragmentLayoutBinding binding  = DataBindingUtil.findBinding(view);
+         binding  = DataBindingUtil.findBinding(view);
         if(binding==null){
             binding = DataBindingUtil.bind(view);
         }
@@ -111,7 +120,7 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
 
         //create action listeners
         View updateBtn = view.findViewById(R.id.update_images_Btn );
-        final ImagesModel oldImagesModel = imagesModel;
+        //final ImagesModel oldImagesModel = imagesModel;
         updateBtn.setOnClickListener(
 
                 new View.OnClickListener(){
@@ -164,8 +173,8 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
             @Override
             public void onClick(View v) {
 
-                //hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
                 dispatchTakePictureIntent();
+                //dispatchPhotoFile = PhotoProcUtil.dispatchTakePictureIntent(getActivity());
             }
         });
 
@@ -174,9 +183,9 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
             @Override
             public void onClick(View v) {
 
-                //hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
-                //dispatchLoadPhotoIntent();
                 pickGalleryImage();
+                //PhotoProcUtil.pickGalleryImage(getActivity());
+
             }
         });
 
@@ -186,9 +195,8 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
             @Override
             public void onClick(View v) {
 
-                //hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
-                //dispatchLoadPhotoIntent();
                 pickExternalStorageImage();
+                //PhotoProcUtil.pickExternalStorageImage(getActivity());
             }
         });
 
@@ -249,55 +257,74 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         }
     }
 
+
     public static final int REQUEST_IMAGE_CAPTURE_CODE = 1001;
     public static final int REQUEST_TAKE_PHOTO_CODE = 2001;
     public static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 3001;
 
     private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            // Create the File where the photo should go
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-                ex.printStackTrace();
+
+        if ((ActivityCompat.checkSelfPermission(
+                getActivity(),
+                Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
+                &&
+                (ActivityCompat.checkSelfPermission(
+                        getActivity(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            // Ensure that there's a camera activity to handle the intent
+            if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                // Create the File where the photo should go
+                File photoFile = null;
+                try {
+                    photoFile = createImageFile();
+                } catch (IOException ex) {
+                    // Error occurred while creating the File
+                    ex.printStackTrace();
+                }
+                // Continue only if the File was successfully created
+                if (photoFile != null) {
+                    Uri photoURI = FileProvider.getUriForFile(getActivity(),
+                            "io.mtini.android.fileprovider",
+                            photoFile);
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                    this.startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO_CODE);
+                    //System.out.println("IntentData = "+takePictureIntent.getData());
+                }
             }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(getActivity(),
-                        "io.mtini.android.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                this.startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO_CODE);
-                //System.out.println("IntentData = "+takePictureIntent.getData());
-            }
+        }else{
+            //request permission
+            ActivityCompat.requestPermissions(
+                    getActivity(),
+                    new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_TAKE_PHOTO_CODE
+            );
         }
     }
 
     String mCurrentPhotoPath;
 
-    @Deprecated
+
     private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        //File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);//
-        //getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);//
 
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
+            // Create an image file name
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String imageFileName = "JPEG_" + timeStamp + "_";
+            //File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);//
+            //getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+            File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);//
 
-        //File image = new File(storageDir, imageFileName+".jpg");
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        System.out.println(mCurrentPhotoPath);
+            File image = File.createTempFile(
+                    imageFileName,  /* prefix */
+                    ".jpg",         /* suffix */
+                    storageDir      /* directory */
+            );
+
+            //File image = new File(storageDir, imageFileName+".jpg");
+            // Save a file: path for use with ACTION_VIEW intents
+            mCurrentPhotoPath = image.getAbsolutePath();
+            System.out.println(mCurrentPhotoPath);
+
         return image;
     }
 
@@ -335,7 +362,6 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         mImageView.setImageBitmap(bitmap);
     }
 
-    @SuppressWarnings("deprecation")
     private Bitmap getCompressedImage(String path, int targetW, int targetH){
 
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
@@ -394,7 +420,6 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         return bitmap;
     }
 
-    @Deprecated
     public void pickGalleryImage() {
         Intent intent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -410,7 +435,6 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         startActivityForResult(intent, REQUEST_IMAGE_CAPTURE_CODE);
     }
 
-    @Deprecated
     private void pickExternalStorageImage() {
         if (ActivityCompat.checkSelfPermission(
                 getActivity(),
@@ -443,8 +467,9 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         }
     }
 
+
     /**
-     * See pickGalleryImage()*/
+     * See pickGalleryImage()
     @Deprecated
     private void dispatchLoadPhotoIntent() {
         //Intent searchImageIntent = new Intent(MediaStore.INTENT_ACTION_MEDIA_SEARCH);
@@ -472,13 +497,15 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
             }
         }
     }
-
+     */
 
     /**
      * This is called by the update button upon satisfactory editing in this fragment
      * */
     public void updateComplete(ImagesModel newImages, ImagesModel oldImages){
-        if(editCallBack!=null)
+        if(editCallBack==null){
+            editCallBack = (OnImageEditedModelListener) this.getActivity();
+        }
             editCallBack.onImageModelEdited(newImages,oldImages);
 
     }
@@ -496,14 +523,14 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         int w = Configuration.captureImgMaxWidth;
 
         switch(requestCode) {
-            case ImageHandlingDialogFragment.REQUEST_IMAGE_CAPTURE_CODE:
+            case REQUEST_IMAGE_CAPTURE_CODE:
                 if(resultCode == RESULT_OK){
 
                     InputStream inputStream = null;
                     try {
                         inputStream = getActivity().getContentResolver().openInputStream(imageReturnedIntent.getData());
 
-                        Bitmap bitmap = getCompressedImage(inputStream,w,h);
+                        Bitmap bitmap = PhotoProcUtil.getCompressedImage(inputStream,w,h);
                         String encodedImageString = PhotoProcUtil.toEncodedStringBytes(bitmap);
                         UUID id = UUID.randomUUID();
                         if (dbHelper.addImage(id.toString(), null, encodedImageString) ) {
@@ -520,11 +547,13 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
 
                 }
                 break;
-            case ImageHandlingDialogFragment.REQUEST_TAKE_PHOTO_CODE:
+            case REQUEST_TAKE_PHOTO_CODE:
                 if(resultCode == RESULT_OK){
                     try {
-                        //Uri selectedImage = imageReturnedIntent.getData();
-                        Bitmap bitmap = getCompressedImage(mCurrentPhotoPath, h, w);
+                        Uri selectedImage = imageReturnedIntent.getData();
+                        String path = selectedImage==null?null:selectedImage.getPath();
+                        //String mCurrentPhotoPath = dispatchPhotoFile==null?null:dispatchPhotoFile.getAbsolutePath();
+                        Bitmap bitmap = PhotoProcUtil.getCompressedImage(mCurrentPhotoPath, h, w);
 
                         String encodedImageString = PhotoProcUtil.toEncodedStringBytes(bitmap);
                         UUID id = UUID.randomUUID();
@@ -580,15 +609,20 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         System.out.println("!!!!!!!!!!!!     onRequestPermissionsResult called");
         switch(requestCode) {
-            case ImageHandlingDialogFragment.REQUEST_IMAGE_CAPTURE_CODE:
+            case REQUEST_IMAGE_CAPTURE_CODE:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     pickExternalStorageImage();
+                }
+                break;
+            case REQUEST_TAKE_PHOTO_CODE:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED ){
+                    dispatchTakePictureIntent();
                 }
                 break;
         }
     }
 
-    @Override
+    /*@Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
@@ -596,7 +630,26 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         // Save the current imagemodel selection in case we need to recreate the fragment
         outState.putSerializable(ARG_SELECTED_MODEL_IMAGE, currentImagesModel);
 
+    }*/
+
+    ////Handle orientation changes etc
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(outState!=null) {
+            ImagesModel newImagesModel = binding.getImagesModel();
+            outState.putSerializable(ARG_SELECTED_MODEL_IMAGE, newImagesModel);
+        }
     }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState!=null) {
+            this.currentImagesModel = (ImagesModel) savedInstanceState.getSerializable(ARG_SELECTED_MODEL_IMAGE);
+        }
+    }
+
 
     @Override
     public void onImageDeleted(final String imageId) {
