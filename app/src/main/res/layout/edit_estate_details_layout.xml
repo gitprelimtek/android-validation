@@ -166,7 +166,14 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/description"
                                 android:text="@={estate.description}"
-                                android:maxEms="12"/>
+                                android:maxEms="12"
+
+                                android:inputType="textMultiLine"
+                                android:lines="5"
+                                android:minLines="2"
+                                android:scrollHorizontally="false"
+                                android:scrollbars="vertical"
+                                />
 
                         </TableRow>
                     </TableLayout>
