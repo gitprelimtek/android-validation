@@ -19,15 +19,9 @@ import com.prelimtek.android.customcomponents.R;
 
 public class TelephoneCountryCodeDialog extends AlertDialog {
 
-
-
-    //private OnTelephoneCountryCodeSetListener onTelephoneCountryCodeSetListener = null;
-
     public TelephoneCountryCodeDialog(Context context, final OnTelephoneCountryCodeSetListener onTelephoneCountryCodeSetListener, String prefixCountryCode, String suffixPhoneNumber) {
 
         super(context);
-
-        //this.onTelephoneCountryCodeSetListener = onTelephoneCountryCodeSetListener;
 
         final Context themeContext = getContext();
         final LayoutInflater inflater = LayoutInflater.from(themeContext);
@@ -145,7 +139,8 @@ public class TelephoneCountryCodeDialog extends AlertDialog {
         String countryInitials = countryCodeArr[1];//TODO use this to retrieve flag
         String phoneText = editText.getText().toString();
 
-        textView.setText(String.join(" ",countryCode,phoneText));
+        //textView.setText(String.join(" ",countryCode,phoneText));
+        textView.setText(countryCode+" "+phoneText);
     }
 
     public void addCountryCodePreference(String val){
