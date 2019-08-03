@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -558,7 +559,7 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
 
 
-    private static class DBHelper extends SQLiteOpenHelper {
+    private static class DBHelper extends SQLiteOpenHelper implements Serializable {
 
         DBHelper(Context context){
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
