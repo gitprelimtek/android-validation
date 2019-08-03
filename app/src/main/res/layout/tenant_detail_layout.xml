@@ -6,6 +6,7 @@
     <data>
         <import type="java.lang.String"/>
         <import type="io.mtini.model.TenantModel"/>
+        <import type="com.prelimtek.android.customcomponents.view.TelephoneActionAdapter"/>
         <variable name="tenant" type="TenantModel" />
     </data>
 
@@ -165,7 +166,9 @@
 
                             <TextView android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@{tenant.contacts}" />
+                                android:text="@{tenant.contacts}"
+                                android:onClick="@{(v) -> TelephoneActionAdapter.onClickTelephoneAction(v,tenant.contacts)}"
+                                />
 
                         </TableRow>
 

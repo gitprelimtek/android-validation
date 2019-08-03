@@ -6,6 +6,7 @@
     <data>
         <import type="java.lang.String"/>
         <import type="io.mtini.model.EstateModel"/>
+        <import type="com.prelimtek.android.customcomponents.view.TelephoneActionAdapter"/>
         <variable name="estate" type="EstateModel" />
     </data>
 
@@ -120,13 +121,17 @@
 
                         <TableRow android:padding="@dimen/table_row_padding">
 
-                            <TextView android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Contacts:" />
 
 
-                            <TextView android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:baselineAligned="false"
+                                android:onClick="@{(v) -> TelephoneActionAdapter.onClickTelephoneAction(v,estate.contacts)}"
                                 android:text="@{estate.contacts}" />
 
 
