@@ -157,9 +157,10 @@ public class EstateDetailsActivity extends AppCompatActivity
             public void onClick(View v) {
                 FragmentManager fm = getFragmentManager();
                 ImageHandlingDialogFragment imagesDialogFragment = new ImageHandlingDialogFragment();
-                imagesDialogFragment.setDBHelper(dbHelper.getLocalDao());
+                //imagesDialogFragment.setDBHelper(dbHelper.getLocalDao());
                 Bundle args = new Bundle();
                 args.putSerializable(ImageHandlingDialogFragment.ARG_SELECTED_MODEL_IMAGE, fragmentImagesModel);
+                args.putSerializable(ImageHandlingDialogFragment.ARG_DB_HELPER,dbHelper.getLocalDao());
                 imagesDialogFragment.setArguments(args);
                 //editEstateDialogFragment.show(fm, "fragment_edit_estate_images");
                 imagesDialogFragment.setCancelable(false);

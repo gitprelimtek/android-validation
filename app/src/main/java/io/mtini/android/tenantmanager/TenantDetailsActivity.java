@@ -1,27 +1,14 @@
 package io.mtini.android.tenantmanager;
 
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import java.sql.SQLException;
-import java.util.List;
-
-import io.mtini.android.adaptor.TenantListBindingAdapter;
-import io.mtini.android.tenantmanager.databinding.ActivityDetailsEstateBinding;
 import io.mtini.android.tenantmanager.databinding.ActivityDetailsTenantBinding;
 import io.mtini.model.AppDAO;
 import io.mtini.model.AppDAOInterface;
-import io.mtini.model.EstateModel;
 import io.mtini.model.TenantModel;
 
 public class TenantDetailsActivity extends AppCompatActivity {
