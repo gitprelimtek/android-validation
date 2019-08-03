@@ -16,11 +16,11 @@ android {
 
     flavorDimensions "version"
     productFlavors{
-        standalone{
-            minSdkVersion 15
+        full{
+            minSdkVersion 25
             dimension "version"
-            applicationIdSuffix ".standalone"
-            versionNameSuffix "-standalone"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
         }
     }
 

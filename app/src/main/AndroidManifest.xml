@@ -3,10 +3,6 @@
     package="io.mtini.android.tenantmanager"
     >
 
-    <!-- standalone
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    -->
 
     <uses-feature android:name="android.hardware.camera" android:required="true" />
     <uses-feature
@@ -17,6 +13,10 @@
         android:required="false" />
 
     <uses-feature android:name="android.hardware.location.gps" />
+
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -88,7 +88,7 @@
 
         <!-- Security -->
         <!-- facebook integration App ID: 600318390400582 -->
-        <!-- standalone
+
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
 
@@ -107,7 +107,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        -->
+
 
 
         <!-- Preferences -->
