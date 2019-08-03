@@ -32,18 +32,32 @@ public class PaymentHandlingDialogFragment extends DialogFragment {
     public final static String ARG_PROCESS_TENANT_PAYMENT = "processTenantPayment";
     //int mCurrentPosition = -1;
     TenantModel currentTenant = null;
+    TenantModel oldTenant = null;
+    ProcessRentPaymentLayoutBinding binding;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+
+            currentTenant = (TenantModel)savedInstanceState.getSerializable(ARG_PROCESS_TENANT_PAYMENT);
+            oldTenant = (TenantModel)getArguments().getSerializable(ARG_PROCESS_TENANT_PAYMENT);
+
+        }else if(currentTenant==null && getArguments() != null) {
+
+            oldTenant = (TenantModel)getArguments().getSerializable(ARG_PROCESS_TENANT_PAYMENT);
+            currentTenant =  oldTenant.createClone();
+
+        }
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
 
-        if (savedInstanceState != null) {
-            currentTenant = (TenantModel)savedInstanceState.getSerializable(ARG_PROCESS_TENANT_PAYMENT);
-        }else if(getArguments()!=null) {
-            currentTenant = (TenantModel)getArguments().getSerializable(ARG_PROCESS_TENANT_PAYMENT);
-        }
-
-        ProcessRentPaymentLayoutBinding binding  = DataBindingUtil.inflate(
+        binding  = DataBindingUtil.inflate(
                 inflater, R.layout.process_rent_payment_layout, container, false);
         View view = binding.getRoot();
         TenantModel clonedTenant = cloneAndResetStatus(currentTenant);
@@ -55,7 +69,7 @@ public class PaymentHandlingDialogFragment extends DialogFragment {
                 new View.OnClickListener(){
                     @Override
                     public void onClick(final View v) {
-                        final TenantModel oldTenant = currentTenant;
+
                         ProcessRentPaymentLayoutBinding binding  = DataBindingUtil.findBinding(v);
 
                         if(!validate(binding)){
@@ -158,16 +172,34 @@ public class PaymentHandlingDialogFragment extends DialogFragment {
     }
 
     public void updateTenantView(TenantModel tenant ) {
-        currentTenant = tenant;
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         ViewGroup container = (ViewGroup) getView();//getView().getRootView();
 
-        TenantDetailLayoutBinding  binding  = DataBindingUtil.inflate(
+        TenantDetailLayoutBinding  tenantbinding  = DataBindingUtil.inflate(
                 inflater, R.layout.tenant_detail_layout, container, false);
 
-        binding.setTenant(currentTenant);
+        tenantbinding.setTenant(tenant);
 
+    }
+
+    ////Handle orientation changes etc
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(outState!=null) {
+            TenantModel newTenant = binding.getTenant();
+            outState.putSerializable(ARG_PROCESS_TENANT_PAYMENT, newTenant);
+        }
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState!=null) {
+            this.currentTenant = (TenantModel) savedInstanceState.getSerializable(ARG_PROCESS_TENANT_PAYMENT);
+            binding.setTenant(currentTenant);
+        }
     }
 
     public void updateComplete(TenantModel newTenant, TenantModel oldTenant){

@@ -7,6 +7,7 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,29 +30,36 @@ public class EditEstateDetailsDialogFragment extends DialogFragment {
     public final static String ARG_EDIT_ESTATE = "editSelectedEstate";
 
     EstateModel currentEstate = null;
+    EstateModel oldEstate = null;
+    EditEstateDetailsLayoutBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (savedInstanceState != null) {
 
+            currentEstate = (EstateModel)savedInstanceState.getSerializable(ARG_EDIT_ESTATE);
+            oldEstate = (EstateModel)getArguments().getSerializable(ARG_EDIT_ESTATE);
+
+        }else if(currentEstate==null && getArguments() != null) {
+
+            oldEstate = (EstateModel)getArguments().getSerializable(ARG_EDIT_ESTATE);
+            currentEstate =  oldEstate.createClone();
+
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
 
-        if (savedInstanceState != null) {
-            currentEstate = (EstateModel)savedInstanceState.getSerializable(ARG_EDIT_ESTATE);
-        }else if(getArguments() != null) {
-            currentEstate = (EstateModel)getArguments().getSerializable(ARG_EDIT_ESTATE);
-        }
-
-        final EditEstateDetailsLayoutBinding binding = DataBindingUtil.inflate(
+         binding = DataBindingUtil.inflate(
                 inflater, R.layout.edit_estate_details_layout , container, false);
         View view = binding.getRoot();
 
-        binding.setEstate((EstateModel)currentEstate.createClone());
+        //EstateModel cloned = (EstateModel) currentEstate.createClone();
+        binding.setEstate(currentEstate);
 
         //Setup update button to finally persist changes
         final View updateBtn = view.findViewById(R.id.update_estate_button );
@@ -61,7 +69,7 @@ public class EditEstateDetailsDialogFragment extends DialogFragment {
                     @Override
                     public void onClick(final View v) {
 
-                        final EstateModel oldEstate = currentEstate;
+                        //final EstateModel oldEstate = currentEstate;
                         //EditEstateDetailsLayoutBinding binding  = DataBindingUtil.findBinding(v);
                         final EstateModel newEstate = binding.getEstate();
                         //TODO verify before calling this updateComplete?
@@ -78,25 +86,23 @@ public class EditEstateDetailsDialogFragment extends DialogFragment {
                                     // User clicked OK button
                                     //TODO figure out why the initial cancel does not hide alertdialog
                                     try {
-                                            Dialog progress = DialogUtils.startProgressDialog(getActivity());
 
-                                            try {
-                                                updateComplete(newEstate, oldEstate);
-                                            } catch (Throwable e) {
-                                                Log.e(TAG, e.getMessage(), e);
-                                                progress.dismiss();
-                                                DialogUtils.startErrorDialog(getActivity(), "An error occurred. '" + e.getLocalizedMessage() + "'");
-                                            return;
-                                            }
-
+                                        Dialog progress = DialogUtils.startProgressDialog(getActivity());
+                                        try {
+                                            updateComplete(newEstate, oldEstate);
+                                        } catch (Throwable e) {
+                                            Log.e(TAG, e.getMessage(), e);
                                             progress.dismiss();
-                                            dismiss();
-                                            dialog.cancel();
+                                            DialogUtils.startErrorDialog(getActivity(), "An error occurred. '" + e.getLocalizedMessage() + "'");
+                                            return;
+                                        }
 
+                                        progress.dismiss();
+                                        dismiss();
+                                        dialog.cancel();
                                     } catch (Throwable e) {
                                         Log.e(TAG, e.getMessage(), e);
                                     }
-
                                 }
                             });
 
@@ -169,6 +175,24 @@ public class EditEstateDetailsDialogFragment extends DialogFragment {
         } else if (currentEstate != null) {
             // Set article based on saved builder state defined during onCreateView
             updateEstateView(currentEstate);
+        }
+    }
+
+    ////Handle orientation changes etc
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(outState!=null) {
+            EstateModel newEstate = binding.getEstate();
+            outState.putSerializable(ARG_EDIT_ESTATE, newEstate);
+        }
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState!=null) {
+            this.currentEstate = (EstateModel) savedInstanceState.getSerializable(ARG_EDIT_ESTATE);
         }
     }
 
