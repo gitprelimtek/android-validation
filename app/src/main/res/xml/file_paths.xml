@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
     <external-path name="my_images" path="Android/data/io.mtini.android.tenantmanager/files/Pictures" />
     <external-files-path
         name="shared_images"
         path="Android/data/io.mtini.android.tenantmanager/shared/files/Pictures" />
+    -->
+    <!--These changes are due to release types causing conflicts. '.' allows executable to manage its own path.-->
+    <external-path name="my_images" path="." />
+    <external-files-path
+        name="shared_images"
+        path="." />
 </paths>
