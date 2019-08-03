@@ -113,6 +113,12 @@
                                 android:layout_height="wrap_content"
                                 android:text="@={tenant.notes}"
 
+                                android:inputType="textMultiLine"
+                                android:lines="5"
+                                android:minLines="2"
+                                android:scrollHorizontally="false"
+                                android:scrollbars="vertical"
+
                                 app:validationRule="@{@string/string_gt_3_lt_20}"
                                 app:required="@{false}"
                                 app:errorMessage="@{@string/error_string_gt_3_lt_20}"
@@ -182,8 +188,7 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                >
+                                android:orientation="vertical">
                                 <TextView android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Adjust Balance:"
