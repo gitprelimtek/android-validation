@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.mtini.android.tenantmanager">
+    package="io.mtini.android.tenantmanager"
+    >
 
+    <!-- standalone
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    -->
 
-    <!--<uses-permission android:name="android.permission.CAMERA" />-->
     <uses-feature android:name="android.hardware.camera" android:required="true" />
     <uses-feature
         android:name="android.hardware.camera.any"
@@ -14,11 +16,22 @@
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.location.gps" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+   <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.WRITE_PROFILE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" android:minSdkVersion="23" />
+    <uses-permission android:name="android.permission.ACTION_PROCESS_TEXT"/>
 
     <application
         android:allowBackup="true"
@@ -26,7 +39,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/eat_logo_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
 
         <activity
             android:name=".MainActivity"
@@ -71,8 +85,10 @@
                 android:value="io.mtini.android.tenantmanager.FragmentedEstateDetailsActivity" />
         </activity>
 
+
         <!-- Security -->
         <!-- facebook integration App ID: 600318390400582 -->
+        <!-- standalone
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
 
@@ -91,6 +107,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        -->
 
 
         <!-- Preferences -->
@@ -101,12 +118,19 @@
         <!-- Services -->
         <service android:name="io.mtini.android.service.DataRefreshService"
             android:exported="false"
-            android:enabled="true"/>
+            android:enabled="false"/>
 
         <service android:name="io.mtini.android.service.SecurityService"
             android:exported="false"
-            android:enabled="true"/>
+            android:enabled="false"/>
 
+        <service android:name="io.mtini.android.service.TelephonyService"
+            android:label="MyConnectionservice String value"
+            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE">
+            <intent-filter>
+                <action android:name="android.telecom.ConnectionService" />
+            </intent-filter>
+        </service>
 
     <provider
         android:name="android.support.v4.content.FileProvider"
