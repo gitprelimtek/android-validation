@@ -118,15 +118,17 @@
         <!-- Services -->
         <service android:name="io.mtini.android.service.DataRefreshService"
             android:exported="false"
-            android:enabled="false"/>
+            android:enabled="true"/>
 
         <service android:name="io.mtini.android.service.SecurityService"
             android:exported="false"
-            android:enabled="false"/>
+            android:enabled="true"/>
 
         <service android:name="io.mtini.android.service.TelephonyService"
             android:label="MyConnectionservice String value"
-            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE">
+            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
+            android:exported="false"
+            android:enabled="false">
             <intent-filter>
                 <action android:name="android.telecom.ConnectionService" />
             </intent-filter>
