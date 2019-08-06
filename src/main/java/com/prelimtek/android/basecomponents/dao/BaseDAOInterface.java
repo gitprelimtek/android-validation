@@ -2,7 +2,9 @@ package com.prelimtek.android.basecomponents.dao;
 
 import android.content.Context;
 
-public interface BaseDAOInterface {
+import java.io.Serializable;
+
+public interface BaseDAOInterface extends Serializable {
 
     public BaseDAOInterface open(Context context)throws Exception;
 

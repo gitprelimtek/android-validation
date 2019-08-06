@@ -65,7 +65,7 @@
             android:summary=""
             android:entries="@array/date_format_example"
             android:entryValues="@array/date_format"
-            android:defaultValue="@array/date_format"
+            android:defaultValue="yyyy/MM/dd"
             />
 
         <EditTextPreference android:key="base_amt"
@@ -85,7 +85,6 @@
     <PreferenceCategory
         android:key="help_category"
         android:title="Help">
-
 
         <Preference
             android:key="feedback"
