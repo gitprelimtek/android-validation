@@ -1,1 +1,1 @@
-# android-image-components (Release_1.0.0)
+# android-image-components (Release_1.1.0-SNAPSHOT)
