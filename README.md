@@ -1,1 +1,1 @@
-# Estate tenant manager project (Release_0.0.1-SNAPSHOT)
+# Estate tenant manager project (Release_1.0.0-full)
