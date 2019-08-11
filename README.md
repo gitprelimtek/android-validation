@@ -1,4 +1,4 @@
-# android-crypto
+# android-crypto (Release 1.0.0)
 This project contains encryption utils used for assymetric cryptography. This project is used in two key areas:
 
 1. Blockchain (sawtooth): Sawtooth utility provides Public key infrastructure (PKI) which is the critical component of blockchain architecture.
