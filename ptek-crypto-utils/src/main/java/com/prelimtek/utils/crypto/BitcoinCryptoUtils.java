@@ -53,7 +53,8 @@ public class BitcoinCryptoUtils {
 
 		return ret;
 	}
-	
+
+
 	public static ECKey encryptPrivateKey(@Nonnull ECKey privateKey, @Nonnull CharSequence passPhrase){
 		
 		KeyParameter aeskey1 = new KeyParameter(passPhrase.toString().getBytes());
@@ -63,11 +64,11 @@ public class BitcoinCryptoUtils {
 		
 		return pk2;
 	}
-	
-	public static ECKey recoverPrimaryKey(@Nonnull byte[]initializationData, 
-			@Nonnull byte[] encryptedPrimaryKey,  
-			@Nonnull byte[] publicKeyBytes,
-			@Nullable CharSequence passphrase){
+
+	public static ECKey recoverPrimaryKey(@Nonnull byte[]initializationData,
+										  @Nonnull byte[] encryptedPrimaryKey,
+										  @Nullable byte[] publicKeyBytes,
+										  @Nullable CharSequence passphrase){
 
 		KeyCrypter crypter = new KeyCrypterScrypt();
 
@@ -84,16 +85,28 @@ public class BitcoinCryptoUtils {
 	}
 
 
+	@Deprecated
 	public static ECKey recoverPrimaryKey(@Nonnull byte[] privateKeyBytes,
-										  @Nonnull byte[] publicKeyBytes){
+										  @Nullable byte[] publicKeyBytes) {
+		return recoverPrimaryKey(privateKeyBytes);
+	}
+
+	public static ECKey recoverPrimaryKey(@Nonnull byte[] privateKeyBytes){
 
 		ECKey recoveredkey = ECKey.fromPrivate(privateKeyBytes);
 
 		return recoveredkey;
 	}
 
+	@Deprecated
 	public static ECKey recoverPrimaryKeyFromASN1(@Nonnull byte[] asn1,
-										  @Nonnull byte[] publicKeyBytes,
+												  @Nullable byte[] publicKeyBytes,
+												  @Nullable CharSequence passphrase) {
+		return recoverPrimaryKeyFromASN1(asn1,passphrase);
+	}
+
+
+	public static ECKey recoverPrimaryKeyFromASN1(@Nonnull byte[] asn1,
 										  @Nullable CharSequence passphrase){
 
 		ECKey recoveredkey = ECKey.fromASN1(asn1);
@@ -106,8 +119,17 @@ public class BitcoinCryptoUtils {
 		return recoveredkey;
 	}
 
+
+	@Deprecated
 	public static ECKey changePrivateKeyEncryption(@Nonnull byte[] privateKeyBytes,
-										  @Nonnull byte[] publicKeyBytes,
+												   @Nullable byte[] publicKeyBytes,
+												   @Nullable CharSequence originalPassphrase,
+												   @Nullable CharSequence newPassphrase ) throws BitcointCryptoUtilsException {
+		return changePrivateKeyEncryption(privateKeyBytes,originalPassphrase,newPassphrase);
+	}
+
+	public static ECKey changePrivateKeyEncryption(@Nonnull byte[] privateKeyBytes,
+
 										  @Nullable CharSequence originalPassphrase,
 												   @Nullable CharSequence newPassphrase ) throws BitcointCryptoUtilsException {
 

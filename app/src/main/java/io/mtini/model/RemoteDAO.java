@@ -1,6 +1,7 @@
 package io.mtini.model;
 
 import android.content.Context;
+
 import android.util.ArrayMap;
 import android.util.Log;
 
@@ -9,6 +10,7 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
 
+import org.bitcoinj.core.ECKey;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +18,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,12 +33,14 @@ import io.mtini.android.http.GenericRemoteRESTTask;
 import io.mtini.android.http.RemoteRESTTask;
 
 import com.prelimtek.android.basecomponents.dao.BaseDAOInterface;
+import com.prelimtek.utils.blockchain.SawtoothUtils;
 import com.prelimtek.utils.crypto.Wallet;
 import com.prelimtek.android.picha.dao.MediaDAOInterface;
 
 import io.mtini.proto.EATRequestResponseProtos;
 import io.mtini.proto.EstateAccountProtos;
 import io.mtini.proto.MtiniWalletProtos;
+import sawtooth.sdk.protobuf.BatchList;
 
 //TODO exception handling for logging and reporting - make it bubble up to UI. Call a service?
 public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOInterface {
@@ -76,6 +81,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         context = null;
     }
 
+
     private String retrieveCustomerId() throws RemoteDAOException{
 
         //SharedPreferences pref = context.getApplicationContext().getSharedPreferences(Configuration.SERVER_SIDE_PREFERENCES_TAG, Context.MODE_PRIVATE);
@@ -85,6 +91,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         if(customerId==null)throw new RemoteDAOException("Customer id cannot be null");
         return customerId;
     }
+
+
+
 
     public String retrieveServerSigner(SecurityModel sModel) throws RemoteDAOException{
 
@@ -157,18 +166,35 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
 
     public boolean deleteEstate(EstateModel property) throws RemoteDAOException {
 
+        BatchList batches = null;
         EstateAccountProtos.LedgerEntries entries = null;
         try {
+
+
+                Wallet wallet = getMyAuthedWallet();
+                ECKey privateKey = ECKey.fromPrivate(wallet.getPrivateKeyBytes());
+                byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+                String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
+
             entries = toEntries(property).setOperation(EstateAccountProtos.Operation.DELETE_ESTATE).build();
 
+            batches = SawtoothUtils.createBatchList(privateKey, entries.toByteString());
 
-            RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.POST)
+            EATRequestResponseProtos.EATRequestResponse.Request request =  EATRequestResponseProtos.EATRequestResponse.Request
+                    .newBuilder()
+                    .setData(batches.toByteString())
+                    .setEntries(entries)
+                    .build();
+
+            GenericRemoteRESTTask task = GenericRemoteRESTTask.Builder.newBuilder(GenericRemoteRESTTask.TYPE.POST)
                     .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                     .setHost(host)
-                    .setPath("/api/v1/taesm")
+                    .setPath("/api/v1/eatproxy")
                     .setCustomerId(retrieveCustomerId())
                     .setComponent("estate")
                     .setComponentAction("delete_estate")
+                    .addQuery("dataAddress",dataAddress)
+
                     //TODO implement http status listener incase of bad connectivity etc
                     .setRemoteDAOListener(new
                                                   RemoteDAOListener() {
@@ -184,7 +210,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                                                       }
                                                   })
                     .build();
-            task.execute(entries);
+            task.execute(request);
 
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -219,6 +245,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
+                Log.e(TAG, e.getMessage(), e);
+                throw new RemoteDAOException("Local security error.");
         }
 
         return false;
@@ -229,16 +258,30 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
 
         EstateAccountProtos.LedgerEntries entries = null;
         try {
+
+            Wallet wallet = getMyAuthedWallet();
+            ECKey privateKey = ECKey.fromPrivate(wallet.getPrivateKeyBytes());
+            byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+            String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
+
             entries = toEntries(newProperty).setOperation(EstateAccountProtos.Operation.EDIT_ESTATE).build();
 
+            BatchList batches = SawtoothUtils.createBatchList(privateKey, entries.toByteString());
 
-        RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.POST)
+            EATRequestResponseProtos.EATRequestResponse.Request request =  EATRequestResponseProtos.EATRequestResponse.Request
+                    .newBuilder()
+                    .setData(batches.toByteString())
+                    .setEntries(entries)
+                    .build();
+
+            GenericRemoteRESTTask task = GenericRemoteRESTTask.Builder.newBuilder(GenericRemoteRESTTask.TYPE.POST)
                 .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                 .setHost(host)
-                .setPath("/api/v1/taesm")
+                .setPath("/api/v1/eatproxy")
                 .setCustomerId(retrieveCustomerId())
                 .setComponent("estate")
                 .setComponentAction("edit_estate")
+                .addQuery("dataAddress",dataAddress)
                 //TODO implement http status listener incase of bad connectivity etc
                 .setRemoteDAOListener(new
                                               RemoteDAOListener() {
@@ -254,7 +297,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                                                   }
                                               })
                 .build();
-        task.execute(entries);
+        task.execute(request);
 
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -289,6 +332,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("Local security error.");
         }
 
         return null;
@@ -299,21 +345,35 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         EstateAccountProtos.LedgerEntries entries = null;
 
         try {
+
+            Wallet wallet = getMyAuthedWallet();
+            ECKey privateKey = ECKey.fromPrivate(wallet.getPrivateKeyBytes());
+            byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+            String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
+
             entries = toEntries(newProperty).setOperation(EstateAccountProtos.Operation.ADD_ESTATE).build();
 
+            BatchList batches = SawtoothUtils.createBatchList(privateKey, entries.toByteString());
 
 
-        RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.POST)
+            EATRequestResponseProtos.EATRequestResponse.Request request =  EATRequestResponseProtos.EATRequestResponse.Request
+                    .newBuilder()
+                    .setData(batches.toByteString())
+                    .setEntries(entries)
+                    .build();
+
+            GenericRemoteRESTTask task = GenericRemoteRESTTask.Builder.newBuilder(GenericRemoteRESTTask.TYPE.POST)
                 .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                 .setHost(host)
-                .setPath("/api/v1/taesm")
+                .setPath("/api/v1/eatproxy")
                 .setCustomerId(retrieveCustomerId())
                 .setComponent("estate")
                 .setComponentAction("add_estate")
+                .addQuery("dataAddress",dataAddress)
                 //TODO implement http status listener incase of bad connectivity etc
                 .build();
 
-        task.execute(entries);
+        task.execute(request);
         //EstateModel ret = null;
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -349,6 +409,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("Local security error.");
         }
 
         return null;
@@ -359,12 +422,19 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
 
         try {
 
-        RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.GET)
+
+            Wallet wallet = getMyAuthedWallet();
+            byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+            String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
+
+
+            RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.GET)
                 .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                 .setHost(host)
-                .setPath("/api/v1/taesm")
+                .setPath("/api/v1/eatproxy")
                 .setCustomerId(retrieveCustomerId())
                 .setComponent("estate")
+                    .addQuery("dataAddress",dataAddress)
                 //TODO implement http status listener incase of bad connectivity etc
                 .build();
         task.execute();
@@ -393,6 +463,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException  e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("Local security error.");
         }
         return ret;
     }
@@ -402,16 +475,30 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         try {
 
 
+            Wallet wallet = getMyAuthedWallet();
+            ECKey privateKey = ECKey.fromPrivate(wallet.getPrivateKeyBytes());
+            byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+            String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
+
             entries = toEntries(tenant).setOperation(EstateAccountProtos.Operation.DELETE_TENANT).build();
 
+            BatchList batches = SawtoothUtils.createBatchList(privateKey, entries.toByteString());
 
-            RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.POST)
+
+            EATRequestResponseProtos.EATRequestResponse.Request request =  EATRequestResponseProtos.EATRequestResponse.Request
+                    .newBuilder()
+                    .setData(batches.toByteString())
+                    .setEntries(entries)
+                    .build();
+
+            GenericRemoteRESTTask task = GenericRemoteRESTTask.Builder.newBuilder(GenericRemoteRESTTask.TYPE.POST)
                     .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                     .setHost(host)
-                    .setPath("/api/v1/taesm")
+                    .setPath("/api/v1/eatproxy")
                     .setCustomerId(retrieveCustomerId())
                     .setComponent("tenant")
                     .setComponentAction("delete_tenant")
+                    .addQuery("dataAddress",dataAddress)
                     .setRemoteDAOListener(new
                                                   RemoteDAOListener() {
                                                       @Override
@@ -427,7 +514,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                     })
                     .build();
 
-            task.execute(entries);
+            task.execute(request);
 
 
 
@@ -465,6 +552,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException | NoSuchAlgorithmException  e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("Local security error.");
         }
 
         return false;
@@ -476,17 +566,30 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
 
         try {
 
+            Wallet wallet = getMyAuthedWallet();
+            ECKey privateKey = ECKey.fromPrivate(wallet.getPrivateKeyBytes());
+            byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+            String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
+
             entries = toEntries(newTenant).setOperation(EstateAccountProtos.Operation.ADD_TENANT).build();
 
+            BatchList batches = SawtoothUtils.createBatchList(privateKey, entries.toByteString());
 
 
-        RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.POST)
+            EATRequestResponseProtos.EATRequestResponse.Request request =  EATRequestResponseProtos.EATRequestResponse.Request
+                    .newBuilder()
+                    .setData(batches.toByteString())
+                    .setEntries(entries)
+                    .build();
+
+            GenericRemoteRESTTask task = GenericRemoteRESTTask.Builder.newBuilder(GenericRemoteRESTTask.TYPE.POST)
                 .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                 .setHost(host)
-                .setPath("/api/v1/taesm")
+                .setPath("/api/v1/eatproxy")
                 .setCustomerId(retrieveCustomerId())
                 .setComponent("tenant")
                 .setComponentAction("add_tenant")
+                .addQuery("dataAddress",dataAddress)
                 .setRemoteDAOListener(new
                                               RemoteDAOListener() {
                                                   @Override
@@ -502,7 +605,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                 })
                 .build();
 
-        task.execute(entries);
+        task.execute(request);
 
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -538,6 +641,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("Local security error.");
         }
 
         return null;
@@ -547,17 +653,29 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         EstateAccountProtos.LedgerEntries entries = null;
         try {
 
+            Wallet wallet = getMyAuthedWallet();
+            ECKey privateKey = ECKey.fromPrivate(wallet.getPrivateKeyBytes());
+            byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+            String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
 
             entries = toEntries(newtenant).setOperation(EstateAccountProtos.Operation.EDIT_TENANT).build();
 
+            BatchList batches = SawtoothUtils.createBatchList(privateKey, entries.toByteString());
 
-            RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.POST)
+            EATRequestResponseProtos.EATRequestResponse.Request request =  EATRequestResponseProtos.EATRequestResponse.Request
+                    .newBuilder()
+                    .setData(batches.toByteString())
+                    .setEntries(entries)
+                    .build();
+
+            GenericRemoteRESTTask task = GenericRemoteRESTTask.Builder.newBuilder(GenericRemoteRESTTask.TYPE.POST)
                 .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                 .setHost(host)
-                .setPath("/api/v1/taesm")
+                .setPath("/api/v1/eatproxy")
                 .setCustomerId(retrieveCustomerId())
                 .setComponent("tenant")
                 .setComponentAction("edit_tenant")
+                    .addQuery("dataAddress",dataAddress)
                     .setRemoteDAOListener(new
                                                   RemoteDAOListener() {
                                                       @Override
@@ -573,7 +691,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                                                   })
                 .build();
 
-            task.execute(entries);
+            task.execute(request);
 
 
 
@@ -611,6 +729,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("Local security error.");
         }
 
         return null;
@@ -622,12 +743,18 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
 
         try {
 
-        RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.GET)
+            Wallet wallet = getMyAuthedWallet();
+            byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+            String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
+
+
+            RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.GET)
                 .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                 .setHost(host)
-                .setPath("/api/v1/taesm")
+                .setPath("/api/v1/eatproxy")
                 .setCustomerId(retrieveCustomerId())
                 .setComponent("tenant")
+                    .addQuery("dataAddress",dataAddress)
                 //TODO implement http status listener incase of bad connectivity etc
                 .build();
         task.execute();
@@ -660,6 +787,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException  e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("Local security error.");
         }
         return ret;
     }
@@ -752,7 +882,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.GET)
                 .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                 .setHost(host)
-                .setPath("/api/v1/taesm")
+                .setPath("/api/v1/eatproxy")
                 .setCustomerId(retrieveCustomerId())
                 .setComponent("tenant")
                 //TODO implement http status listener incase of bad connectivity etc
@@ -804,12 +934,27 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         List<TenantModel> tenants = new ArrayList<TenantModel>();
 
         try {
+
+            Wallet wallet = getMyAuthedWallet();
+            ECKey privateKey = ECKey.fromPrivate(wallet.getPrivateKeyBytes());
+            privateKey.getPubKey();
+            String publicKeyHex1 = privateKey.getPublicKeyAsHex();
+            String publicKeyHex = wallet.getPublicKeyHex();
+            byte[] publicKey = wallet.getPublicKeyUTF8Bytes();
+            if(publicKeyHex1.equalsIgnoreCase(publicKeyHex)){
+                System.out.println("Hooray");
+            }else{
+                System.out.println("Crap");
+            }
+            String dataAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKey);
+
             RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.GET)
                     .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
                     .setHost(host)
-                    .setPath("/api/v1/taesm")
+                    .setPath("/api/v1/eatproxy")
                     .setCustomerId(retrieveCustomerId())
                     .setComponent("state")
+                    .addQuery("dataAddress",dataAddress)
                     .setRemoteDAOListener(new
                                                   RemoteDAOListener() {
                                                       @Override
@@ -859,6 +1004,9 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         }catch (AbstractDAOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RemoteDAOException("APIkey error");
+        }catch (UnsupportedEncodingException e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("Local security error");
         }
 
         ArrayMap<String,List<?>> ret =  new ArrayMap<String,List<?>>();
