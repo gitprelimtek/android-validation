@@ -4,18 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-<<<<<<< HEAD
-import android.databinding.InverseMethod;
-import android.preference.EditTextPreference;
-import android.preference.PreferenceManager;
-=======
 import android.databinding.BindingAdapter;
 import android.databinding.InverseMethod;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
->>>>>>> f7a64f29d770e2e51c6db727dca27a56fd38daff
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -153,32 +147,6 @@ public class Configuration {
         return "";
     }
 
-<<<<<<< HEAD
-    public String getVersionText(){
-
-        String ret =  "Version Name: "+versionName+" ; Version Code: "+versionCode;
-
-        return ret;
-    }
-
-
-    @InverseMethod("versionPrefText")
-    public static String versionString(EditTextPreference textPref){
-       Context context =  textPref.getContext();
-       int code = 0;//getVersionCode(context);
-       String name = " ";//getVersionName(context);
-       String ret =  "Version Name: "+name+" ; Version Code: "+code;
-       textPref.setText(ret);
-       return ret;
-    }
-
-    public static EditTextPreference versionPrefText(EditTextPreference textPref, String s){
-
-        return textPref;
-    }
-
-
-=======
 
     public static String getVersionText(Context context) {
 
@@ -190,7 +158,6 @@ public class Configuration {
         return "";
     }
 
->>>>>>> f7a64f29d770e2e51c6db727dca27a56fd38daff
     public String remoteHostUrl;
     public String customerId;
     public String apikey;
