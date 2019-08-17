@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="java.lang.String"/>
+        <!--<import type="java.lang.String"/> -->
         <import type="io.mtini.model.EstateModel"/>
         <import type="com.prelimtek.android.customcomponents.view.TelephoneActionAdapter"/>
         <variable name="estate" type="EstateModel" />
@@ -34,6 +34,8 @@
             android:id="@+id/textEstateDetails"
             />
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +43,8 @@
             android:gravity="center"
             android:background="@android:color/white"
             android:id="@+id/estateDetailsLinearLayout"
-            android:layout_below="@+id/textEstateDetails">
+            android:layout_below="@+id/textEstateDetails"
+            android:layout_above="@+id/footer">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -227,6 +230,13 @@
 
         </LinearLayout>
 
+        <com.prelimtek.android.customcomponents.view.CustomAppVersionTextRelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="right"
+            />
 
     </RelativeLayout>
 </layout>

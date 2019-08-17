@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="java.lang.String"/>
+        <!--<import type="java.lang.String"/> -->
         <import type="com.prelimtek.android.validation.adapter.TelephoneBindingAdapter"/>
         <import type="io.mtini.android.view.TextViewValueConverter"/>
         <import type="io.mtini.model.TenantModel"/>
@@ -37,7 +37,6 @@
             android:id="@+id/textShowTenantDetails"
             />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +44,8 @@
             android:gravity="center"
             android:background="@android:color/white"
             android:id="@+id/tenantShowDetailsLinearLayout"
-            android:layout_below="@+id/textShowTenantDetails">
+            android:layout_below="@+id/textShowTenantDetails"
+            android:layout_above="@+id/footer">
 
 
             <ImageView
@@ -252,6 +252,14 @@
             </ScrollView>
 
         </LinearLayout>
+
+        <com.prelimtek.android.customcomponents.view.CustomAppVersionTextRelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="right"
+            />
 
     </RelativeLayout>
 

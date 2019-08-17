@@ -6,7 +6,7 @@
     >
 
     <data>
-        <import type="java.lang.String"/>
+        <!--<import type="java.lang.String"/> -->
         <import type="io.mtini.android.view.TextViewValueConverter"/>
         <import type="io.mtini.model.TenantModel"/>
         <import type="com.prelimtek.android.validation.adapter.DatePickerBindingAdapter"/>

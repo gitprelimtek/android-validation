@@ -7,10 +7,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.prelimtek.android.customcomponents.view.CustomAppVersionTextRelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="right"
+        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addBtnLinearLayout"
+        android:layout_below="@+id/header"
         android:orientation="horizontal">
 
         <com.prelimtek.android.customcomponents.view.CustomImageButton

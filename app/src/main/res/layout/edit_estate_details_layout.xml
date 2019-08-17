@@ -6,7 +6,7 @@
     <data>
         <import type="com.prelimtek.android.validation.adapter.TelephoneBindingAdapter"/>
         <import type="io.mtini.android.view.TextViewValueConverter"/>
-        <import type="java.lang.String"/>
+        <!--<import type="java.lang.String"/> -->
         <import type="io.mtini.model.EstateModel"/>
         <variable name="estate" type="EstateModel" />
     </data>
@@ -38,7 +38,8 @@
             android:gravity="center"
             android:background="@android:color/white"
             android:id="@+id/estateEditDetailsLinearLayout"
-            android:layout_below="@+id/textEDitEstateDetails">
+            android:layout_below="@+id/textEDitEstateDetails"
+            android:layout_above="@+id/footer">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -216,6 +217,14 @@
             </ScrollView>
 
         </LinearLayout>
+
+        <com.prelimtek.android.customcomponents.view.CustomAppVersionTextRelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="right"
+            />
 
     </RelativeLayout>
 
