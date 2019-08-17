@@ -1,8 +1,7 @@
 package com.prelimtek.utils.crypto;
 
-//import android.os.Build;
+import com.google.protobuf.ByteString;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -86,8 +85,7 @@ public class Wallet <T> implements Serializable {
 			else
 				newKey = BitcoinCryptoUtils
 						.recoverPrimaryKey(
-						getPrivateKeyBytes(),
-						getPublicKeyBytes());
+						getPrivateKeyBytes());
 
 
 			if(!newKey.hasPrivKey() || newKey.isEncrypted()){
@@ -148,7 +146,7 @@ public class Wallet <T> implements Serializable {
 	public boolean encrypPrivateKeyHex(CharSequence passPhrase)throws WalletException{
 
 		if(!encrypted){
-			ECKey key = BitcoinCryptoUtils.recoverPrimaryKey(getPrivateKeyBytes(),getPublicKeyBytes());
+			ECKey key = BitcoinCryptoUtils.recoverPrimaryKey(getPrivateKeyBytes());
 			key = BitcoinCryptoUtils.encryptPrivateKey(key, passPhrase);
 			EncryptedData encryptedData = key.getEncryptedData();
 			privateKeyHex = Hex.toHexString(encryptedData.encryptedBytes);//getPrivateKeyAsHex();
@@ -171,8 +169,7 @@ public class Wallet <T> implements Serializable {
 							passPhrase);
 		else
 			ecKey = BitcoinCryptoUtils.recoverPrimaryKey(
-					getPrivateKeyBytes(),
-					getPublicKeyBytes());
+					getPrivateKeyBytes());
 		if(ecKey!=null && ecKey.hasPrivKey()){
 			privateKeyHex = ecKey.getPrivateKeyAsHex();
 			initializationVectorHex = null;
@@ -184,6 +181,19 @@ public class Wallet <T> implements Serializable {
 
 	}
 
+	public ByteString getPublicKeyUTF8ByteString() {
+		ByteString publicKeyByteString = ByteString.copyFromUtf8(publicKeyHex);
+		return publicKeyByteString;
+	}
+
+	public byte[] getPublicKeyUTF8Bytes() {
+		return getPublicKeyUTF8ByteString().toByteArray();
+	}
+
+	/***
+	 * This method retturn a Hex decoded publicKey hex string.
+	 * This is not the same as getPublicKeyUTF8Bytes which does not Hex decode the string.
+	 * */
 	public byte[] getPublicKeyBytes() {
 		return Hex.decode(publicKeyHex);
 	}

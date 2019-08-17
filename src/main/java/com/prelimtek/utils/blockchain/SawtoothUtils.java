@@ -65,6 +65,20 @@ public class SawtoothUtils {
 
 		ECKey privateKey = ECKey.fromPrivate(Hex.decode(jwt.getId()));
 
+		return createBatchList(privateKey,input);
+	}
+
+	public static BatchList createBatchList(Claims jwt, List<Transaction> transactionList) throws NoSuchAlgorithmException, IOException {
+
+		ECKey privateKey = ECKey.fromPrivate(Hex.decode(jwt.getId()));
+
+		return createBatchList(privateKey,transactionList);
+	}
+
+	public static BatchList createBatchList(ECKey privateKey,ByteString input) throws UnsupportedEncodingException, NoSuchAlgorithmException  {
+
+		//ECKey privateKey = ECKey.fromPrivate(Hex.decode(jwt.getId()));
+
 		String publicKey = privateKey.getPublicKeyAsHex();////Signing.getPublicKey(privateKey);
 
 		ByteString publicKeyByteString = ByteString.copyFromUtf8(publicKey);
@@ -82,9 +96,9 @@ public class SawtoothUtils {
 		return trxnBatchList;
 	}
 
-	public static BatchList createBatchList(Claims jwt, List<Transaction> transactionList) throws NoSuchAlgorithmException, IOException {
+	public static BatchList createBatchList(ECKey privateKey, List<Transaction> transactionList) throws NoSuchAlgorithmException, IOException {
 
-		ECKey privateKey = ECKey.fromPrivate(Hex.decode(jwt.getId()));
+		//ECKey privateKey = ECKey.fromPrivate(Hex.decode(jwt.getId()));
 
 		String publicKey = privateKey.getPublicKeyAsHex();////Signing.getPublicKey(privateKey);
 
