@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements LoginDialogFragme
         Intent intent = null;
         switch (id) {
             case R.id.version:
-                DialogUtils.startInfoDialog(this,"App Version",Configuration.configuredPreferences(this).getVersionText());
+                DialogUtils.startInfoDialog(this,"App Version",Configuration.getVersionText(this));
             case R.id.search:
                 showError("Search has not been implemented. Coming soon!");
                 return true;
