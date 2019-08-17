@@ -4,9 +4,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+<<<<<<< HEAD
 import android.databinding.InverseMethod;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceManager;
+=======
+import android.databinding.BindingAdapter;
+import android.databinding.InverseMethod;
+import android.preference.EditTextPreference;
+import android.preference.PreferenceManager;
+import android.view.MenuItem;
+import android.view.View;
+>>>>>>> f7a64f29d770e2e51c6db727dca27a56fd38daff
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -21,17 +30,8 @@ public class Configuration {
 
     }
 
-
-    ///JWT Config
-    /**
-     * Server expects this key. Can be a private key.
-     * */
-    //public static String shared_key = "kaniu";
-
-
     /** 24 hours */
     public static int expiration_24_hours = 24;
-    ///Android Preferences config
 
     /**
      * Will be used to as a user configuredPreferences key to track session user data.
@@ -42,15 +42,9 @@ public class Configuration {
 
     public static String preferences_jwt_key = "JWT_PREF_KEY";
 
-    ///Server client config
-    //public static String remotehost = "http://10.0.2.2:8080/";
-    //public static String remotehost  = "http://10.69.180.132:8080/";
-    //public static String remotehost  = "http://192.168.43.66:8080/";
-
     /**
      * This is used in conjuction with user configuredPreferences remote server
      * */
-    //public static String remoteport = "8080";
 
     public static final String apiKey_Name = "x-mtini-apikey";
 
@@ -67,7 +61,6 @@ public class Configuration {
     //public static final int  DISK_CACHE_SIZE = 1024 * 1024 * 10; // 10MB
 
     //IMAGE CONFIGURATIONS
-
 
     public static int captureImgMaxHeight = 300;
 
@@ -130,7 +123,7 @@ public class Configuration {
         //conf.phoneNumber = pref.getString("", null);
 
         Boolean sslEnabled = defaultPrefs.getBoolean("remoteServerTLSEnabled",false);
-        String remoteServerPort = defaultPrefs.getString("remoteServerPort","8080");
+        String remoteServerPort = defaultPrefs.getString("remoteServerPort",null);
         String remoteServer = defaultPrefs.getString("remoteServer",null);
 
         if(sslEnabled){
@@ -160,6 +153,7 @@ public class Configuration {
         return "";
     }
 
+<<<<<<< HEAD
     public String getVersionText(){
 
         String ret =  "Version Name: "+versionName+" ; Version Code: "+versionCode;
@@ -184,6 +178,19 @@ public class Configuration {
     }
 
 
+=======
+
+    public static String getVersionText(Context context) {
+
+        PackageManager pm = context.getPackageManager();
+        try {
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            return  ""+pi.versionName+":"+pi.versionCode;
+        } catch (PackageManager.NameNotFoundException ex) {}
+        return "";
+    }
+
+>>>>>>> f7a64f29d770e2e51c6db727dca27a56fd38daff
     public String remoteHostUrl;
     public String customerId;
     public String apikey;
