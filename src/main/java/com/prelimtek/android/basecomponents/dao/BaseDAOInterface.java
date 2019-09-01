@@ -13,4 +13,6 @@ public interface BaseDAOInterface extends Serializable {
     public void setContext(Context context);
 
     public void close();
+
+
 }
