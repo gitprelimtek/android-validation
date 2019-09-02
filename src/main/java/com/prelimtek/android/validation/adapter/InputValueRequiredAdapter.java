@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
+
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -17,8 +18,6 @@ import java.util.regex.Pattern;
 
 import com.prelimtek.android.basecomponents.ResourcesUtils;
 import com.prelimtek.android.validation.R;
-
-
 
 public class InputValueRequiredAdapter {
 
@@ -260,36 +259,6 @@ public class InputValueRequiredAdapter {
     @InverseBindingAdapter(attribute = "onFocusChangePatternValidation", event = "onFocusChangePatternValidationAttrChanged")
     public static CharSequence getRequiredChangedTextView(TextView textView) {
         return textView.getText();
-    }
-
-
-    @BindingAdapter(value={"onFocusValueRequired", "errorLabel","errorMessage"},requireAll=false)
-    public static void setFocusListener(final View view, final Object value, final TextView label,  final String errorMessage){
-
-
-        if(value==null || value.toString().trim().isEmpty()){
-
-            String errorMsg = ErrorHandler.clarify(label,errorMessage);
-            //view.setError(errorMessage);
-            ErrorHandler.setError(label,errorMsg);
-        }
-
-        view.setOnFocusChangeListener(
-                new View.OnFocusChangeListener() {
-                    @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-
-                        if(!hasFocus) {
-                            ErrorHandler.clearError(label);
-                            if(v==null || v.toString().trim().isEmpty()){
-                                String errorMsg = ErrorHandler.clarify(label,errorMessage);
-                                ErrorHandler.setError(label,errorMsg);
-                            }
-                        }
-                    }
-                }
-        );
-
     }
 
 
