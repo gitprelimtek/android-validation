@@ -21,4 +21,6 @@
 
     <dimen name="pagetop_image_layout_height">30dp</dimen>
     <dimen name="pagetop_image_layout_width">150dp</dimen>
+
+    <dimen name="versionTextSize">8dp</dimen>
 </resources>
