@@ -6,7 +6,8 @@ public interface TextDAOInterface {
 
     public boolean addNotes(String modelId, String noteText);
 
-    public NotesModel[] getNotes(String modelId, Long afterThisDate, int pageSize);
+    public NotesModel[] getNotes(String modelId, Long afterThisDate, int rowCount, int pageOffset);
 
-    public List<NotesModel> getNotes(String modelId, Long afterThisDate, Long beforeThisDate, int pageSize);
+    public List<NotesModel> getNotes(String modelId, Long beforeThisDate, Long afterThisDate,  int rowCount, int pageOffset);
+
 }
