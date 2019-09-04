@@ -1,11 +1,7 @@
 package com.prelimtek.android.customcomponents;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,10 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +34,7 @@ public class NotesListDisplayFragment extends Fragment {
     public final static String MODEL_ID_KEY = "modelIdKey";
     //public final static String IMAGE_IS_EDITABLE_BOOL_KEY = "editable";
 
+    public int viewedItems = 0;
 
     @NonNull
     private TextDAOInterface dbHelper;
@@ -78,10 +73,10 @@ public class NotesListDisplayFragment extends Fragment {
 
         assert modelId!=null;
 
-        Date afterDate = decrementDate(new Date(),10);
-        NotesModel[] notesList = dbHelper.getNotes(modelId,afterDate.getTime(),NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE);
-        //if(notesList!=null ){
+        final Date afterDate = decrementDate(new Date(),10);
 
+        List<NotesModel> notesList = dbHelper.getNotes(modelId, null, afterDate.getTime(),NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE,0 );
+        viewedItems = notesList==null?0:notesList.size();
 
             //Now bind the list of Images using an adapter
 
@@ -90,64 +85,85 @@ public class NotesListDisplayFragment extends Fragment {
 
             NotesTextRecyclerViewAdapter dataAdapter = new NotesTextRecyclerViewAdapter(
                     currentContext,
-                    Arrays.asList(notesList),
+                    notesList,
                     R.layout.notes_list_layout,
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
 
-                            String imageid = (String)v.getTag();
-
-                            Snackbar.make(v, "Selected image for Details", Snackbar.LENGTH_LONG)
+                            Snackbar.make(v, "Selected note for Details is still under construction.", Snackbar.LENGTH_LONG)
                                     .setAction("Action", null).show();
 
                         }
                     }
             );
             recyclerView.setAdapter(dataAdapter);
-            recyclerView.addOnScrollListener(
-                    new PageScrollListener(layoutManager){
+            recyclerView.setOnFlingListener(new PageFlingListerner(layoutManager) {
 
-                        boolean isLoading = false;
-                        @Override
-                        public void loadNextPage(int position) {
+                boolean isLoading = false;
+                @Override
+                public void loadNextPage() {
 
-                            showProgress(isLoading = true);
+                    int offset = viewedItems==0?0:viewedItems;
 
-                            try {
-                                NotesModel note = dataAdapter.getItem(position);
-                                List<NotesModel> notesList = dbHelper.getNotes(modelId, note.getDate(), null, NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE);
-                                dataAdapter.setRowItems(notesList);
-                                //dataAdapter.notifyDataSetChanged();//TODO use different notifyItemRangeChanged, itemRageInserted etc
-                                dataAdapter.notifyItemChanged(position);
-                            }catch(RuntimeException e){
-                                e.printStackTrace();
-                            }finally {
+                    queryDS(NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE,offset);
 
-                                showProgress(isLoading = false);
-                            }
-                        }
+                    showFirstPage();
+                }
 
-                        @Override
-                        public boolean isLoading() {
-                            return isLoading;
-                        }
+                @Override
+                public void loadPreviousPage() {
 
-                        @Override
-                        public void showProgress(boolean show) {
-                            ProgressBar progress = (ProgressBar)view.findViewById(R.id.load_notes_progress) ;
-                            if(show)
-                                progress.setVisibility(ProgressBar.VISIBLE);
-                            else
-                                progress.setVisibility(ProgressBar.GONE);
-                        }
+                    int offset = viewedItems-2*NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE;
+                    offset = offset < 0 ? 0 : offset;
+
+                    queryDS(NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE,offset);
+
+                    showLastPage();
+
+                }
+
+                private void queryDS(int rowcount, int offset){
+
+                    if(isLoading) return;
+
+                    showProgress(isLoading = true);
+
+                    try {
+
+                        List<NotesModel> notesList = dbHelper.getNotes(modelId, null, afterDate.getTime(), rowcount,offset );
+
+                        if(notesList==null || notesList.isEmpty())return;
+
+                        dataAdapter.setRowItems(notesList);
+                        dataAdapter.notifyDataSetChanged();//TODO use different notifyItemRangeChanged, itemRageInserted etc
+                        //dataAdapter.notifyItemChanged(position);
+                        //dataAdapter.notify();;
+                        //dataAdapter.notifyAll();
+                    }catch(RuntimeException e){
+                        e.printStackTrace();
+                    }finally {
+                        viewedItems = offset+(notesList==null?0:notesList.size());
+                        showProgress(isLoading = false);
                     }
-            );
+                }
+
+                @Override
+                public boolean isLoading() {
+                    return isLoading;
+                }
+
+                @Override
+                public void showProgress(boolean show) {
+                    ProgressBar progress = (ProgressBar)view.findViewById(R.id.load_notes_progress) ;
+                    if(show)
+                        progress.setVisibility(ProgressBar.VISIBLE);
+                    else
+                        progress.setVisibility(ProgressBar.GONE);
+                }
+            });
             recyclerView.setLayoutManager(layoutManager);
-            //recyclerView.setLayoutManager(new LinearLayoutManager(currentContext,LinearLayout.HORIZONTAL,false));
 
-
-        //}
     }
 
     @Override
@@ -170,12 +186,6 @@ public class NotesListDisplayFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
-        // When in two-pane layout, set the listview to highlight the selected list item
-        // (We do this during onStart because at the point the listview is available.)
-        //if (getFragmentManager().findFragmentById(R.id.fragment_tenant_list ) != null) {
-        //    getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        //}
     }
 
     @Override
@@ -205,45 +215,52 @@ public class NotesListDisplayFragment extends Fragment {
         return cal.getTime();
     }
 
-
-    abstract class PageScrollListener extends RecyclerView.OnScrollListener{
+    abstract class PageFlingListerner extends RecyclerView.OnFlingListener{
 
         LinearLayoutManager layoutManager = null;
-        public PageScrollListener(LinearLayoutManager layoutManager) {
+        public PageFlingListerner(LinearLayoutManager layoutManager) {
             this.layoutManager = layoutManager;
         }
 
         @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-        }
+        public boolean onFling(int velocityX, int velocityY) {
 
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-
-            int count = layoutManager.getChildCount();
             int first = layoutManager.findFirstVisibleItemPosition();
             int last = layoutManager.findLastVisibleItemPosition();
+            int count = layoutManager.getInitialPrefetchItemCount();
 
-            //NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE
-            if( last == count ){
-                //scroll right
-                //load notes before last note date
-                loadNextPage(last);
-
+            if(velocityX>10000 || velocityY>10000 ){
+                if(first==last && last==count ) {
+                    loadNextPage();
+                    return true;
+                }
+            }else if(velocityX < -10000 || velocityY< -10000){
+                if(first==0 && last == 0 && count > 0){
+                    loadPreviousPage();
+                    return true;
+                }
             }
 
-            /*else if (first == 0){
-                //scroll left
-
-            }*/
-
+            return false;
         }
 
-        abstract public void loadNextPage(int position);
+        public void showFirstPage(){
+            int count = layoutManager.getInitialPrefetchItemCount();
+            if(count>0)
+                layoutManager.scrollToPosition(0);
+        }
+
+        public void showLastPage(){
+            int count = layoutManager.getInitialPrefetchItemCount();
+            if(count>0)
+                layoutManager.scrollToPosition(count-1);
+        }
+
+        abstract public void loadNextPage();
+        abstract public void loadPreviousPage();
         abstract public boolean isLoading();
         abstract public void showProgress(boolean show);
+
     }
 
 

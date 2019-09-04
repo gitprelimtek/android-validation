@@ -16,8 +16,8 @@ import java.util.List;
 
 public class NotesTextRecyclerViewAdapter extends RecyclerView.Adapter<NotesTextRecyclerViewAdapter.ViewHolder> {
 
-    public static final int PAGE_BUFFER_SIZE = 2;
-    public static final int PAGE_VISIBLE_SIZE = 1;
+    public static final int PAGE_BUFFER_SIZE = 3;
+    public static final int PAGE_VISIBLE_SIZE = 2;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView noteDateTextView;
@@ -92,6 +92,10 @@ public class NotesTextRecyclerViewAdapter extends RecyclerView.Adapter<NotesText
 
     public void setRowItems(List<NotesModel> rowItems) {
         this.rowItems = rowItems;
+    }
+
+    public void appendRowItems(List<NotesModel> rowItems) {
+        this.rowItems.addAll(rowItems);
     }
 
     @NonNull
