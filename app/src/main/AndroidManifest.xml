@@ -14,24 +14,20 @@
 
     <uses-feature android:name="android.hardware.location.gps" />
 
-
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-   <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!--
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.WRITE_PROFILE"/>
-
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.SEND_SMS" android:minSdkVersion="23" />
-    <uses-permission android:name="android.permission.ACTION_PROCESS_TEXT"/>
+    -->
 
     <application
         android:allowBackup="true"
@@ -67,16 +63,6 @@
                 android:value="io.mtini.android.tenantmanager.EstateDetailsActivity" />
         </activity>
 
-        <!--
-        <activity android:name=".TenantDetailsActivity"
-            android:label="@string/tenant_details"
-            android:parentActivityName=".EstateDetailsActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="io.mtini.android.tenantmanager.TenantDetailsActivity" />
-        </activity>
-        -->
-
         <activity android:name=".FragmentedEstateDetailsActivity"
             android:label="@string/estate_tenant_activity"
             android:parentActivityName=".EstateActivity">
@@ -108,8 +94,6 @@
             </intent-filter>
         </activity>
 
-
-
         <!-- Preferences -->
         <activity android:name=".UserSettingsActivity"
             android:label="User Settings"
@@ -123,16 +107,6 @@
         <service android:name="io.mtini.android.service.SecurityService"
             android:exported="false"
             android:enabled="true"/>
-
-        <service android:name="io.mtini.android.service.TelephonyService"
-            android:label="MyConnectionservice String value"
-            android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
-            android:exported="false"
-            android:enabled="false">
-            <intent-filter>
-                <action android:name="android.telecom.ConnectionService" />
-            </intent-filter>
-        </service>
 
     <provider
         android:name="android.support.v4.content.FileProvider"
