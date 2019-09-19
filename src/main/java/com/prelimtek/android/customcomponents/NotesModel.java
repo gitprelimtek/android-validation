@@ -6,6 +6,7 @@ import android.databinding.Bindable;
 import com.prelimtek.android.customcomponents.BR;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class NotesModel extends BaseObservable implements Serializable{
 
@@ -48,4 +49,30 @@ public class NotesModel extends BaseObservable implements Serializable{
     public String getNoteText() {
         return noteText;
     }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash( date, modelId, noteText);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NotesModel)) return false;
+        NotesModel that = (NotesModel) o;
+        return
+                Objects.equals(hashCode(), that.hashCode());
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder builder = new StringBuilder();
+        builder = builder.append("date").append(date).append("\n").
+                append("modelId").append(modelId).append("\n").
+                append("noteText").append(noteText).append("\n");
+
+        return builder.toString();
+    }
+
 }
