@@ -23,7 +23,7 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("io.mtini.android.tenantmanager", appContext.getPackageName());
+        assertEquals("io.mtini.android.tenantmanager.full", appContext.getPackageName());
     }
 
     @Test
