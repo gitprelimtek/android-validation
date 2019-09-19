@@ -395,6 +395,46 @@ public class AppDAO implements AppDAOInterface {
                 }
         );
 
+
+        getRemoteDao().getAllRecentNotes(
+                new RemoteDAOListener() {
+                    @Override
+                    public void onRequestComplete(EATRequestResponseProtos.EATRequestResponse.Response response) {
+                        LocalDAO localDao = null;
+                        try{
+                            localDao = getLocalDao().open();
+
+                            if( response==null) throw new RemoteDAO.RemoteDAOException("Null response");
+
+                            EstateAccountProtos.LedgerEntries entries = response.getEntries();
+
+                            if(entries!=null){
+
+                                for(EstateAccountProtos.LedgerEntries.NotesModel notesModel : entries.getNotesList()) {
+
+                                    NotesModel notes =  RemoteDAO.toLocalModel(notesModel);
+                                    localDao.addNotes(notes);
+                                }
+
+                            }
+
+                        }catch(Exception err){
+                            onError(err);
+                        }finally {
+                            if(localDao!=null)localDao.close();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                        //do something throw e;
+                        Log.e(TAG,e.getMessage());
+                        //showErrorDialog(e.getMessage());//this is throwing error
+                    }
+                }
+        );
+
     }
     //TEST DATA
     public void createData(){
@@ -431,11 +471,11 @@ public class AppDAO implements AppDAOInterface {
     }
 
     @Override
-    public boolean addNotes(String modelId, String noteText) {
+    public boolean addNotes(NotesModel notes) throws Exception{
 
         boolean ret=false;
-        if(remoteDao.addNotes(  modelId,  noteText)){
-            ret =  localDao.addNotes(  modelId,  noteText);
+        if(remoteDao.addNotes(  notes)){
+            ret =  localDao.addNotes(  notes);
         }
         return ret;
     }

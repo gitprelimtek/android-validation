@@ -239,7 +239,11 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
         if(rowId==-1)return null;//failed
 
-        addNotes(newProperty.id,newProperty.description);
+        try {
+            addNotes(new NotesModel(System.currentTimeMillis(),newProperty.id,newProperty.description));
+        } catch (Exception e) {
+            Log.w(TAG,e.getMessage(),e);
+        }
 
         return newProperty;
     }
@@ -279,7 +283,11 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
         if(rowId==-1)return null;//failed
 
-        addNotes(newtenant.id,newtenant.notes);
+        try {
+            addNotes(new NotesModel(System.currentTimeMillis(),newtenant.id,newtenant.getNotes()));
+        } catch (Exception e) {
+            Log.w(TAG,e.getMessage(),e);
+        }
         //newtenant.setId(rowId);
 
         return newtenant;
@@ -324,7 +332,11 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
         if(rowsaffected!=1)return null;
 
-        addNotes(property.id,property.description);
+        try {
+            addNotes(new NotesModel(System.currentTimeMillis(),property.id,property.description));
+        } catch (Exception e) {
+            Log.w(TAG,e.getMessage(),e);
+        }
 
         return property;
     }
@@ -370,7 +382,11 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
         if(rowId==-1)return null;//failed
 
-        addNotes(newtenant.id,newtenant.notes);
+        try {
+            addNotes(new NotesModel(System.currentTimeMillis(),newtenant.id,newtenant.getNotes()));
+        } catch (Exception e) {
+            Log.w(TAG,e.getMessage(),e);
+        }
 
         return newtenant;
     }
@@ -496,18 +512,20 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
 
     @Override
-    public boolean addNotes(String modelId, String noteText) {
+    public boolean addNotes(NotesModel notes) throws Exception {
 
-        if(null==modelId || modelId.isEmpty()  || null==noteText || noteText.isEmpty() ) return false;
+        if(notes==null || null==notes.getModelId()  || notes.getModelId().isEmpty()  || null==notes.getNoteText() || notes.getNoteText().isEmpty() )
+            throw new Exception("ModelId or noteText is emtpy.");
 
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
         ContentValues content = new ContentValues();
 
-        content.put(NotesTblDescription.NOTE_DATE.label, System.currentTimeMillis());
-        content.put(NotesTblDescription.MODEL_ID.label, modelId);
-        content.put(NotesTblDescription.NOTE_TEXT.label, noteText);
+        content.put(NotesTblDescription.NOTE_DATE.label, notes.getDate());
+        content.put(NotesTblDescription.MODEL_ID.label, notes.getModelId());
+        content.put(NotesTblDescription.NOTE_TEXT.label, notes.getNoteText());
 
-        long rowId = database.insert(NOTES_TABLE, null, content);
+        //long rowId = database.insert(NOTES_TABLE, null, content);
+        long rowId = database.insertWithOnConflict(NOTES_TABLE, null, content,SQLiteDatabase.CONFLICT_IGNORE);
         //database.close();
         if(rowId<0)return false;
         //return imageId;
@@ -667,11 +685,20 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
             ImageTblDescription.MODEL_ID.label + " "+ImageTblDescription.MODEL_ID.type+","+
             ImageTblDescription.IMAGE.label + " "+ImageTblDescription.IMAGE.type+");" ;
 
+    /**
+     * NOTE: Using UNIQUE and CONFLICT REPLACE keywords is important for notes because of the add note function
+     * in add and update of estate and tenants in both local and remote implementations.
+     * */
     private static final String NOTES_TABLE_CREATE = "CREATE TABLE IF NOT EXISTS "
             + NOTES_TABLE + " (" +
             NotesTblDescription.NOTE_DATE.label + " "+NotesTblDescription.NOTE_DATE.type+" ," +
             NotesTblDescription.MODEL_ID.label + " "+NotesTblDescription.MODEL_ID.type+","+
-            NotesTblDescription.NOTE_TEXT.label + " "+NotesTblDescription.NOTE_TEXT.type+");" ;
+            NotesTblDescription.NOTE_TEXT.label + " "+NotesTblDescription.NOTE_TEXT.type+"," +
+            "UNIQUE (" +
+                NotesTblDescription.NOTE_DATE.label + ", "+
+                NotesTblDescription.MODEL_ID.label  + ", "+
+                NotesTblDescription.NOTE_TEXT.label +
+            ") ON CONFLICT REPLACE );" ;
 
 
     private static class DBHelper extends SQLiteOpenHelper implements Serializable {

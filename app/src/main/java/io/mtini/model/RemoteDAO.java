@@ -33,6 +33,8 @@ import io.mtini.android.http.GenericRemoteRESTTask;
 import io.mtini.android.http.RemoteRESTTask;
 
 import com.prelimtek.android.basecomponents.dao.BaseDAOInterface;
+import com.prelimtek.android.customcomponents.NotesModel;
+import com.prelimtek.android.customcomponents.TextDAOInterface;
 import com.prelimtek.utils.blockchain.SawtoothUtils;
 import com.prelimtek.utils.crypto.Wallet;
 import com.prelimtek.android.picha.dao.MediaDAOInterface;
@@ -43,7 +45,7 @@ import io.mtini.proto.MtiniWalletProtos;
 import sawtooth.sdk.protobuf.BatchList;
 
 //TODO exception handling for logging and reporting - make it bubble up to UI. Call a service?
-public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOInterface {
+public class RemoteDAO extends AbstractDAO implements TextDAOInterface, MediaDAOInterface,BaseDAOInterface {
 
     private static String TAG = Class.class.getSimpleName();
 
@@ -210,7 +212,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                                                       }
                                                   })
                     .build();
-            task.execute(request);
+                task.execute(request);
 
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -218,8 +220,14 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
             JSONArray jsonArray = new JSONObject(response.getJsonResponse()).getJSONArray("elastic");
             if(jsonArray.length()>0) {
                 JSONObject json = jsonArray.getJSONObject(0);
-                if (json.getString("result").equalsIgnoreCase("updated"))
+                if (json.getString("result").equalsIgnoreCase("updated")) {
+                    try {
+                        addNotes(new NotesModel(System.currentTimeMillis(),property.id,property.getDescription()));
+                    } catch (Exception e) {
+                        Log.w(TAG,e.getMessage(),e);
+                    }
                     return true;
+                }
             }
         } catch (InterruptedException e) {
             Log.e(TAG,e.getMessage());
@@ -297,7 +305,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                                                   }
                                               })
                 .build();
-        task.execute(request);
+            task.execute(request);
 
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -305,8 +313,16 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
             JSONArray jsonArray = new JSONObject(response.getJsonResponse()).getJSONArray("elastic");
             if(jsonArray.length()>0) {
                 JSONObject json = jsonArray.getJSONObject(0);
-                if (json.getString("result").equalsIgnoreCase("updated"))
+                if (json.getString("result").equalsIgnoreCase("updated")) {
+
+                    try {
+                        addNotes(new NotesModel(System.currentTimeMillis(),newProperty.id,newProperty.getDescription()));
+                    } catch (Exception e) {
+                        Log.w(TAG,e.getMessage(),e);
+                    }
+
                     return newProperty;
+                }
             }
         } catch (InterruptedException e) {
             Log.e(TAG,e.getMessage());
@@ -370,10 +386,10 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                 .setComponent("estate")
                 .setComponentAction("add_estate")
                 .addQuery("dataAddress",dataAddress)
-                //TODO implement http status listener incase of bad connectivity etc
+                //TODO implement http status listener in case of bad connectivity etc
                 .build();
 
-        task.execute(request);
+            task.execute(request);
         //EstateModel ret = null;
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -382,8 +398,14 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
             if(jsonArray.length()>0) {
                 JSONObject json = jsonArray.getJSONObject(0);
                 String jsonResult = json.getString("result");
-                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created"))
+                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created")) {
+                    try {
+                        addNotes(new NotesModel(System.currentTimeMillis(),newProperty.id,newProperty.getDescription()));
+                    } catch (Exception e) {
+                        Log.w(TAG,e.getMessage(),e);
+                    }
                     return newProperty;
+                }
             }
         } catch (InterruptedException e) {
             Log.e(TAG,e.getMessage());
@@ -437,7 +459,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                     .addQuery("dataAddress",dataAddress)
                 //TODO implement http status listener incase of bad connectivity etc
                 .build();
-        task.execute();
+            task.execute();
 
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -514,7 +536,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                     })
                     .build();
 
-            task.execute(request);
+                task.execute(request);
 
 
 
@@ -525,8 +547,16 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                 JSONObject json = jsonArray.getJSONObject(0);
 
                 String jsonResult = json.getString("result");
-                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created"))
+                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created")) {
+
+                    try {
+                        addNotes(new NotesModel(System.currentTimeMillis(),property.id,property.getDescription()));
+                    } catch (Exception e) {
+                        Log.w(TAG,e.getMessage(),e);
+                    }
+
                     return true;
+                }
             }
         } catch (InterruptedException e) {
             Log.e(TAG,e.getMessage());
@@ -605,7 +635,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                 })
                 .build();
 
-        task.execute(request);
+            task.execute(request);
 
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -614,8 +644,14 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
             if(jsonArray.length()>0) {
                 JSONObject json = jsonArray.getJSONObject(0);
                 String jsonResult = json.getString("result");
-                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created"))
+                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created")) {
+                    try {
+                        addNotes(new NotesModel(System.currentTimeMillis(),newTenant.id,newTenant.getNotes()));
+                    } catch (Exception e) {
+                        Log.w(TAG,e.getMessage(),e);
+                    }
                     return newTenant;
+                }
             }
         } catch (InterruptedException e) {
             Log.e(TAG,e.getMessage());
@@ -702,8 +738,14 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                 JSONObject json = jsonArray.getJSONObject(0);
 
                 String jsonResult = json.getString("result");
-                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created"))
+                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created")) {
+                    try {
+                        addNotes(new NotesModel(System.currentTimeMillis(),newtenant.id,newtenant.getNotes()));
+                    } catch (Exception e) {
+                        Log.w(TAG,e.getMessage(),e);
+                    }
                     return newtenant;
+                }
             }
         } catch (InterruptedException e) {
             Log.e(TAG,e.getMessage());
@@ -734,6 +776,8 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
             throw new RemoteDAOException("Local security error.");
         }
 
+
+
         return null;
     }
 
@@ -757,7 +801,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
                     .addQuery("dataAddress",dataAddress)
                 //TODO implement http status listener incase of bad connectivity etc
                 .build();
-        task.execute();
+            task.execute();
 
 
             EATRequestResponseProtos.EATRequestResponse.Response response = task.get(10,TimeUnit.SECONDS);
@@ -795,7 +839,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
     }
 
 
-    private EstateModel toLocalModel(EstateAccountProtos.LedgerEntries.EstateModel estate) throws InvalidProtocolBufferException {
+    public static EstateModel toLocalModel(EstateAccountProtos.LedgerEntries.EstateModel estate) throws InvalidProtocolBufferException {
         EstateModel ret = null;
 
         String estateData = JsonFormat.printer().print(estate);
@@ -806,7 +850,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
     }
 
 
-    private TenantModel toLocalModel(EstateAccountProtos.LedgerEntries.EstateModel.TenantModel tenant) throws InvalidProtocolBufferException {
+    public static TenantModel toLocalModel(EstateAccountProtos.LedgerEntries.EstateModel.TenantModel tenant) throws InvalidProtocolBufferException {
         TenantModel ret = null;
 
         String tenantData = JsonFormat.printer().print(tenant);
@@ -816,7 +860,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         return ret;
     }
 
-    private Wallet toLocalModel(MtiniWalletProtos.MtiniWallet wallet) throws InvalidProtocolBufferException {
+    public static Wallet toLocalModel(MtiniWalletProtos.MtiniWallet wallet) throws InvalidProtocolBufferException {
         Wallet ret = null;
 
         String walletData = JsonFormat.printer().print(wallet);
@@ -826,7 +870,17 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         return ret;
     }
 
-    private MtiniWalletProtos.MtiniWallet toProtoModel(Wallet wallet) throws InvalidProtocolBufferException {
+    public static NotesModel toLocalModel(EstateAccountProtos.LedgerEntries.NotesModel notesModel) throws InvalidProtocolBufferException {
+        NotesModel ret = null;
+
+        String notesData = JsonFormat.printer().print(notesModel);
+        Gson gson = new Gson();
+        ret = gson.fromJson(notesData,NotesModel.class);
+
+        return ret;
+    }
+
+    public static MtiniWalletProtos.MtiniWallet toProtoModel(Wallet wallet) throws InvalidProtocolBufferException {
         Gson gson = new Gson();
         String objJson = gson.toJson(wallet);
         System.out.println("GSON => " + objJson);
@@ -837,7 +891,18 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         return builder.build();
     }
 
-    private EstateAccountProtos.LedgerEntries.Builder toEntries(EstateModel o) throws InvalidProtocolBufferException, CloneNotSupportedException {
+    public static EstateAccountProtos.LedgerEntries.NotesModel toEntries(NotesModel notesModel) throws InvalidProtocolBufferException {
+        Gson gson = new Gson();
+        String objJson = gson.toJson(notesModel);
+        //System.out.println("GSON => " + objJson);
+
+        EstateAccountProtos.LedgerEntries.NotesModel.Builder builder = EstateAccountProtos.LedgerEntries.NotesModel.newBuilder();
+        JsonFormat.parser().merge(objJson, builder);
+
+        return builder.build();
+    }
+
+    public static EstateAccountProtos.LedgerEntries.Builder toEntries(EstateModel o) throws InvalidProtocolBufferException, CloneNotSupportedException {
         EstateModel o2 = o.clone();
         String encodedId = o.getId();
         o2.setId(encodedId);
@@ -855,7 +920,7 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
         return entries;
     }
 
-    private EstateAccountProtos.LedgerEntries.Builder toEntries(TenantModel o) throws CloneNotSupportedException, InvalidProtocolBufferException {
+    public static EstateAccountProtos.LedgerEntries.Builder toEntries(TenantModel o) throws CloneNotSupportedException, InvalidProtocolBufferException {
         TenantModel o2 = o.clone();
         String encodedId = o.getId();
         o2.setId(encodedId);
@@ -1509,6 +1574,113 @@ public class RemoteDAO extends AbstractDAO implements MediaDAOInterface,BaseDAOI
             ret=s.replaceAll(" ", "").toLowerCase();
         }
         return ret;
+    }
+
+    @Override
+    public boolean addNotes(NotesModel notes) throws RemoteDAOException{
+
+        try {
+
+            EstateAccountProtos.LedgerEntries.NotesModel notesProto  = toEntries(notes);
+
+            EstateAccountProtos.LedgerEntries entries = EstateAccountProtos.LedgerEntries.newBuilder()
+                    .addNotes(notesProto)
+                    .setOperation(EstateAccountProtos.Operation.ADD_NOTE)
+                    .build();
+            EATRequestResponseProtos.EATRequestResponse.Request request =  EATRequestResponseProtos.EATRequestResponse.Request.newBuilder().setEntries(entries).build();
+
+            GenericRemoteRESTTask task = GenericRemoteRESTTask.Builder.newBuilder(GenericRemoteRESTTask.TYPE.POST)
+                    .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
+                    .setHost(host)
+                    .setPath("/api/v1/taesm")
+                    .setCustomerId(retrieveCustomerId())
+                    .setComponent("notes")
+                    .setComponentAction("add_note")
+                    .setRemoteDAOListener(new
+                                                  RemoteDAOListener() {
+                                                      @Override
+                                                      public void onRequestComplete(EATRequestResponseProtos.EATRequestResponse.Response response) {
+
+                                                      }
+
+                                                      @Override
+                                                      public void onError(Throwable e) {
+                                                          Log.e(TAG,e.getMessage(),e);
+                                                          //DialogUtils.startErrorDialog(context,e.getMessage());
+                                                      }
+                                                  })
+                    //TODO implement http status listener incase of bad connectivity etc
+                    .build();
+
+            task.execute(request);
+
+
+            EATRequestResponseProtos.EATRequestResponse.Response response = task.get(20,TimeUnit.SECONDS);
+            if( response==null) throw new RemoteDAOException("Null response");
+            JSONArray jsonArray = new JSONObject(response.getJsonResponse()).getJSONArray("elastic");
+            if(jsonArray.length()>0) {
+                JSONObject json = jsonArray.getJSONObject(0);
+                String jsonResult = json.getString("result");
+                if (jsonResult.equalsIgnoreCase("updated") || jsonResult.equalsIgnoreCase("created"))
+                    return true;
+
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG,e.getMessage());
+            throw new RemoteDAOException("Network interruption error.");
+        } catch (ExecutionException e) {
+            Log.e(TAG,e.getMessage());
+            throw new RemoteDAOException("Remote execution error.");
+        } catch (TimeoutException e) {
+            Log.e(TAG,e.getMessage());
+            throw new RemoteDAOException("Network timeout error.");
+        } catch (RemoteDAOException e) {
+            Log.e(TAG,e.getMessage());
+            throw new RemoteDAOException("Network security error.");
+        } catch (JSONException e) {
+            Log.e(TAG,e.getMessage());
+            throw new RemoteDAOException("Local data format error.");
+        }catch (AbstractDAOException e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("APIkey error");
+        } catch (InvalidProtocolBufferException e) {
+            Log.e(TAG,e.getMessage());
+            throw new RemoteDAOException("Local data format error.");
+        }
+        return false;
+    }
+
+    @Override
+    public NotesModel[] getNotes(String modelId, Long afterThisDate, int rowCount, int pageOffset) {
+        return new NotesModel[0];
+    }
+
+    @Override
+    public List<NotesModel> getNotes(String modelId, Long beforeThisDate, Long afterThisDate, int rowCount, int pageOffset) {
+        return null;
+    }
+
+    public void getAllRecentNotes(RemoteDAOListener listener) throws RemoteDAOException {
+
+        try {
+            RemoteRESTTask task = RemoteRESTTask.Builder.newBuilder(RemoteRESTTask.TYPE.GET)
+                    .setHeader("x-mtini-apikey", this.retrieveAPIKeyFromPrefs())
+                    .setHost(host)
+                    .setPath("/api/v1/taesm")
+                    .setCustomerId(retrieveCustomerId())
+                    .setComponent("notes")
+                    .setRemoteDAOListener(listener)
+                    .build();
+            task.execute();
+
+        } catch (RemoteDAOException e) {
+            Log.e(TAG,e.getMessage());
+            throw new RemoteDAOException("Network security error. "+e.getMessage());
+        }catch (AbstractDAOException e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RemoteDAOException("APIkey error");
+        }
+
     }
 
 
