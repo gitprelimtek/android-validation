@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface TextDAOInterface {
 
-    public boolean addNotes(String modelId, String noteText);
+    public boolean addNotes(NotesModel notes) throws Exception;
 
     public NotesModel[] getNotes(String modelId, Long afterThisDate, int rowCount, int pageOffset);
 
