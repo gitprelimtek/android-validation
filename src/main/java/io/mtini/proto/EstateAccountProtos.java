@@ -3,24 +3,22 @@
 
 package io.mtini.proto;
 
-import com.google.protobuf.AbstractMessageLite;
-
 public final class EstateAccountProtos {
   private EstateAccountProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+          com.google.protobuf.ExtensionRegistryLite registry) {
   }
 
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
+          com.google.protobuf.ExtensionRegistry registry) {
     registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+            (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code io.mtini.proto.EstateType}
    */
   public enum EstateType
-      implements com.google.protobuf.ProtocolMessageEnum {
+          implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>notype = 0;</code>
      */
@@ -68,8 +66,8 @@ public final class EstateAccountProtos {
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
-        throw new IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
+        throw new java.lang.IllegalArgumentException(
+                "Can't get the number of an unknown enum value.");
       }
       return value;
     }
@@ -77,7 +75,7 @@ public final class EstateAccountProtos {
     /**
      * @deprecated Use {@link #forNumber(int)} instead.
      */
-    @Deprecated
+    @java.lang.Deprecated
     public static EstateType valueOf(int value) {
       return forNumber(value);
     }
@@ -94,37 +92,37 @@ public final class EstateAccountProtos {
     }
 
     public static com.google.protobuf.Internal.EnumLiteMap<EstateType>
-        internalGetValueMap() {
+    internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        EstateType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<EstateType>() {
-            public EstateType findValueByNumber(int number) {
-              return EstateType.forNumber(number);
-            }
-          };
+            EstateType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<EstateType>() {
+              public EstateType findValueByNumber(int number) {
+                return EstateType.forNumber(number);
+              }
+            };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+    getDescriptorForType() {
       return getDescriptor();
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return EstateAccountProtos.getDescriptor().getEnumTypes().get(0);
+    getDescriptor() {
+      return io.mtini.proto.EstateAccountProtos.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final EstateType[] VALUES = values();
 
     public static EstateType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+                "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -145,7 +143,7 @@ public final class EstateAccountProtos {
    * Protobuf enum {@code io.mtini.proto.TenantStatus}
    */
   public enum TenantStatus
-      implements com.google.protobuf.ProtocolMessageEnum {
+          implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>nostatus = 0;</code>
      */
@@ -209,8 +207,8 @@ public final class EstateAccountProtos {
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
-        throw new IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
+        throw new java.lang.IllegalArgumentException(
+                "Can't get the number of an unknown enum value.");
       }
       return value;
     }
@@ -218,7 +216,7 @@ public final class EstateAccountProtos {
     /**
      * @deprecated Use {@link #forNumber(int)} instead.
      */
-    @Deprecated
+    @java.lang.Deprecated
     public static TenantStatus valueOf(int value) {
       return forNumber(value);
     }
@@ -237,37 +235,37 @@ public final class EstateAccountProtos {
     }
 
     public static com.google.protobuf.Internal.EnumLiteMap<TenantStatus>
-        internalGetValueMap() {
+    internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        TenantStatus> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<TenantStatus>() {
-            public TenantStatus findValueByNumber(int number) {
-              return TenantStatus.forNumber(number);
-            }
-          };
+            TenantStatus> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<TenantStatus>() {
+              public TenantStatus findValueByNumber(int number) {
+                return TenantStatus.forNumber(number);
+              }
+            };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+    getDescriptorForType() {
       return getDescriptor();
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return EstateAccountProtos.getDescriptor().getEnumTypes().get(1);
+    getDescriptor() {
+      return io.mtini.proto.EstateAccountProtos.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final TenantStatus[] VALUES = values();
 
     public static TenantStatus valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+                "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -288,7 +286,7 @@ public final class EstateAccountProtos {
    * Protobuf enum {@code io.mtini.proto.PaymentSchedule}
    */
   public enum PaymentSchedule
-      implements com.google.protobuf.ProtocolMessageEnum {
+          implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>noschedule = 0;</code>
      */
@@ -328,8 +326,8 @@ public final class EstateAccountProtos {
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
-        throw new IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
+        throw new java.lang.IllegalArgumentException(
+                "Can't get the number of an unknown enum value.");
       }
       return value;
     }
@@ -337,7 +335,7 @@ public final class EstateAccountProtos {
     /**
      * @deprecated Use {@link #forNumber(int)} instead.
      */
-    @Deprecated
+    @java.lang.Deprecated
     public static PaymentSchedule valueOf(int value) {
       return forNumber(value);
     }
@@ -353,37 +351,37 @@ public final class EstateAccountProtos {
     }
 
     public static com.google.protobuf.Internal.EnumLiteMap<PaymentSchedule>
-        internalGetValueMap() {
+    internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        PaymentSchedule> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<PaymentSchedule>() {
-            public PaymentSchedule findValueByNumber(int number) {
-              return PaymentSchedule.forNumber(number);
-            }
-          };
+            PaymentSchedule> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<PaymentSchedule>() {
+              public PaymentSchedule findValueByNumber(int number) {
+                return PaymentSchedule.forNumber(number);
+              }
+            };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+    getDescriptorForType() {
       return getDescriptor();
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return EstateAccountProtos.getDescriptor().getEnumTypes().get(2);
+    getDescriptor() {
+      return io.mtini.proto.EstateAccountProtos.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final PaymentSchedule[] VALUES = values();
 
     public static PaymentSchedule valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+                "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -404,7 +402,7 @@ public final class EstateAccountProtos {
    * Protobuf enum {@code io.mtini.proto.Operation}
    */
   public enum Operation
-      implements com.google.protobuf.ProtocolMessageEnum {
+          implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>NOTSET = 0;</code>
      */
@@ -441,6 +439,10 @@ public final class EstateAccountProtos {
      * <code>DELETE_IMAGE = 8;</code>
      */
     DELETE_IMAGE(8),
+    /**
+     * <code>ADD_NOTE = 9;</code>
+     */
+    ADD_NOTE(9),
     UNRECOGNIZED(-1),
     ;
 
@@ -480,12 +482,16 @@ public final class EstateAccountProtos {
      * <code>DELETE_IMAGE = 8;</code>
      */
     public static final int DELETE_IMAGE_VALUE = 8;
+    /**
+     * <code>ADD_NOTE = 9;</code>
+     */
+    public static final int ADD_NOTE_VALUE = 9;
 
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
-        throw new IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
+        throw new java.lang.IllegalArgumentException(
+                "Can't get the number of an unknown enum value.");
       }
       return value;
     }
@@ -493,7 +499,7 @@ public final class EstateAccountProtos {
     /**
      * @deprecated Use {@link #forNumber(int)} instead.
      */
-    @Deprecated
+    @java.lang.Deprecated
     public static Operation valueOf(int value) {
       return forNumber(value);
     }
@@ -509,42 +515,43 @@ public final class EstateAccountProtos {
         case 6: return DELETE_TENANT;
         case 7: return ADD_IMAGE;
         case 8: return DELETE_IMAGE;
+        case 9: return ADD_NOTE;
         default: return null;
       }
     }
 
     public static com.google.protobuf.Internal.EnumLiteMap<Operation>
-        internalGetValueMap() {
+    internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        Operation> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<Operation>() {
-            public Operation findValueByNumber(int number) {
-              return Operation.forNumber(number);
-            }
-          };
+            Operation> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Operation>() {
+              public Operation findValueByNumber(int number) {
+                return Operation.forNumber(number);
+              }
+            };
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+    getDescriptorForType() {
       return getDescriptor();
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return EstateAccountProtos.getDescriptor().getEnumTypes().get(3);
+    getDescriptor() {
+      return io.mtini.proto.EstateAccountProtos.getDescriptor().getEnumTypes().get(3);
     }
 
     private static final Operation[] VALUES = values();
 
     public static Operation valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+                "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -562,8 +569,8 @@ public final class EstateAccountProtos {
   }
 
   public interface LedgerEntriesOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries)
-      com.google.protobuf.MessageOrBuilder {
+          // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries)
+          com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.io.mtini.proto.Operation operation = 1;</code>
@@ -572,17 +579,17 @@ public final class EstateAccountProtos {
     /**
      * <code>.io.mtini.proto.Operation operation = 1;</code>
      */
-    Operation getOperation();
+    io.mtini.proto.EstateAccountProtos.Operation getOperation();
 
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
-    java.util.List<LedgerEntries.EstateModel>
-        getEstateDataList();
+    java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel>
+    getEstateDataList();
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
-    LedgerEntries.EstateModel getEstateData(int index);
+    io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel getEstateData(int index);
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
@@ -590,23 +597,23 @@ public final class EstateAccountProtos {
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
-    java.util.List<? extends LedgerEntries.EstateModelOrBuilder>
-        getEstateDataOrBuilderList();
+    java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder>
+    getEstateDataOrBuilderList();
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
-    LedgerEntries.EstateModelOrBuilder getEstateDataOrBuilder(
+    io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder getEstateDataOrBuilder(
             int index);
 
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
-    java.util.List<LedgerEntries.ImageModel>
-        getImagesList();
+    java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel>
+    getImagesList();
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
-    LedgerEntries.ImageModel getImages(int index);
+    io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel getImages(int index);
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
@@ -614,22 +621,46 @@ public final class EstateAccountProtos {
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
-    java.util.List<? extends LedgerEntries.ImageModelOrBuilder>
-        getImagesOrBuilderList();
+    java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder>
+    getImagesOrBuilderList();
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
-    LedgerEntries.ImageModelOrBuilder getImagesOrBuilder(
+    io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder getImagesOrBuilder(
+            int index);
+
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel>
+    getNotesList();
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel getNotes(int index);
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    int getNotesCount();
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder>
+    getNotesOrBuilderList();
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder getNotesOrBuilder(
             int index);
   }
   /**
    * Protobuf type {@code io.mtini.proto.LedgerEntries}
    */
   public  static final class LedgerEntries extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries)
-      LedgerEntriesOrBuilder {
-  private static final long serialVersionUID = 0L;
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries)
+          LedgerEntriesOrBuilder {
+    private static final long serialVersionUID = 0L;
     // Use LedgerEntries.newBuilder() to construct.
     private LedgerEntries(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
@@ -638,24 +669,25 @@ public final class EstateAccountProtos {
       operation_ = 0;
       estateData_ = java.util.Collections.emptyList();
       images_ = java.util.Collections.emptyList();
+      notes_ = java.util.Collections.emptyList();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
     }
     private LedgerEntries(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       if (extensionRegistry == null) {
-        throw new NullPointerException();
+        throw new java.lang.NullPointerException();
       }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
+              com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -672,25 +704,34 @@ public final class EstateAccountProtos {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                estateData_ = new java.util.ArrayList<EstateModel>();
+                estateData_ = new java.util.ArrayList<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel>();
                 mutable_bitField0_ |= 0x00000002;
               }
               estateData_.add(
-                  input.readMessage(EstateModel.parser(), extensionRegistry));
+                      input.readMessage(io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.parser(), extensionRegistry));
               break;
             }
             case 26: {
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                images_ = new java.util.ArrayList<ImageModel>();
+                images_ = new java.util.ArrayList<io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel>();
                 mutable_bitField0_ |= 0x00000004;
               }
               images_.add(
-                  input.readMessage(ImageModel.parser(), extensionRegistry));
+                      input.readMessage(io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.parser(), extensionRegistry));
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                notes_ = new java.util.ArrayList<io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              notes_.add(
+                      input.readMessage(io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.parser(), extensionRegistry));
               break;
             }
             default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
+              if (!parseUnknownFieldProto3(
+                      input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -701,7 +742,7 @@ public final class EstateAccountProtos {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+                e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           estateData_ = java.util.Collections.unmodifiableList(estateData_);
@@ -709,26 +750,29 @@ public final class EstateAccountProtos {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           images_ = java.util.Collections.unmodifiableList(images_);
         }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          notes_ = java.util.Collections.unmodifiableList(notes_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_descriptor;
+    getDescriptor() {
+      return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_descriptor;
     }
 
-    @Override
-    protected FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              LedgerEntries.class, Builder.class);
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internalGetFieldAccessorTable() {
+      return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                      io.mtini.proto.EstateAccountProtos.LedgerEntries.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.Builder.class);
     }
 
     public interface EstateModelOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries.EstateModel)
-        com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries.EstateModel)
+            com.google.protobuf.MessageOrBuilder {
 
       /**
        * <code>bytes id = 1;</code>
@@ -738,42 +782,42 @@ public final class EstateAccountProtos {
       /**
        * <code>string name = 2;</code>
        */
-      String getName();
+      java.lang.String getName();
       /**
        * <code>string name = 2;</code>
        */
       com.google.protobuf.ByteString
-          getNameBytes();
+      getNameBytes();
 
       /**
        * <code>string address = 3;</code>
        */
-      String getAddress();
+      java.lang.String getAddress();
       /**
        * <code>string address = 3;</code>
        */
       com.google.protobuf.ByteString
-          getAddressBytes();
+      getAddressBytes();
 
       /**
        * <code>string description = 4;</code>
        */
-      String getDescription();
+      java.lang.String getDescription();
       /**
        * <code>string description = 4;</code>
        */
       com.google.protobuf.ByteString
-          getDescriptionBytes();
+      getDescriptionBytes();
 
       /**
        * <code>string contacts = 5;</code>
        */
-      String getContacts();
+      java.lang.String getContacts();
       /**
        * <code>string contacts = 5;</code>
        */
       com.google.protobuf.ByteString
-          getContactsBytes();
+      getContactsBytes();
 
       /**
        * <code>.io.mtini.proto.EstateType type = 6;</code>
@@ -782,17 +826,17 @@ public final class EstateAccountProtos {
       /**
        * <code>.io.mtini.proto.EstateType type = 6;</code>
        */
-      EstateType getType();
+      io.mtini.proto.EstateAccountProtos.EstateType getType();
 
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
-      java.util.List<EstateModel.TenantModel>
-          getTenantDataList();
+      java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel>
+      getTenantDataList();
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
-      EstateModel.TenantModel getTenantData(int index);
+      io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel getTenantData(int index);
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
@@ -800,22 +844,22 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
-      java.util.List<? extends EstateModel.TenantModelOrBuilder>
-          getTenantDataOrBuilderList();
+      java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder>
+      getTenantDataOrBuilderList();
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
-      EstateModel.TenantModelOrBuilder getTenantDataOrBuilder(
+      io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder getTenantDataOrBuilder(
               int index);
     }
     /**
      * Protobuf type {@code io.mtini.proto.LedgerEntries.EstateModel}
      */
     public  static final class EstateModel extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries.EstateModel)
-        EstateModelOrBuilder {
-    private static final long serialVersionUID = 0L;
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries.EstateModel)
+            EstateModelOrBuilder {
+      private static final long serialVersionUID = 0L;
       // Use EstateModel.newBuilder() to construct.
       private EstateModel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
@@ -830,22 +874,22 @@ public final class EstateAccountProtos {
         tenantData_ = java.util.Collections.emptyList();
       }
 
-      @Override
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
       }
       private EstateModel(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         this();
         if (extensionRegistry == null) {
-          throw new NullPointerException();
+          throw new java.lang.NullPointerException();
         }
         int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
+                com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
           boolean done = false;
           while (!done) {
@@ -860,25 +904,25 @@ public final class EstateAccountProtos {
                 break;
               }
               case 18: {
-                String s = input.readStringRequireUtf8();
+                java.lang.String s = input.readStringRequireUtf8();
 
                 name_ = s;
                 break;
               }
               case 26: {
-                String s = input.readStringRequireUtf8();
+                java.lang.String s = input.readStringRequireUtf8();
 
                 address_ = s;
                 break;
               }
               case 34: {
-                String s = input.readStringRequireUtf8();
+                java.lang.String s = input.readStringRequireUtf8();
 
                 description_ = s;
                 break;
               }
               case 42: {
-                String s = input.readStringRequireUtf8();
+                java.lang.String s = input.readStringRequireUtf8();
 
                 contacts_ = s;
                 break;
@@ -891,16 +935,16 @@ public final class EstateAccountProtos {
               }
               case 58: {
                 if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-                  tenantData_ = new java.util.ArrayList<TenantModel>();
+                  tenantData_ = new java.util.ArrayList<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel>();
                   mutable_bitField0_ |= 0x00000040;
                 }
                 tenantData_.add(
-                    input.readMessage(TenantModel.parser(), extensionRegistry));
+                        input.readMessage(io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.parser(), extensionRegistry));
                 break;
               }
               default: {
-                if (!parseUnknownField(
-                    input, unknownFields, extensionRegistry, tag)) {
+                if (!parseUnknownFieldProto3(
+                        input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
                 break;
@@ -911,7 +955,7 @@ public final class EstateAccountProtos {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
           throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
+                  e).setUnfinishedMessage(this);
         } finally {
           if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
             tenantData_ = java.util.Collections.unmodifiableList(tenantData_);
@@ -921,21 +965,21 @@ public final class EstateAccountProtos {
         }
       }
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor;
+      getDescriptor() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor;
       }
 
-      @Override
-      protected FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                EstateModel.class, Builder.class);
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder.class);
       }
 
       public interface TenantModelOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries.EstateModel.TenantModel)
-          com.google.protobuf.MessageOrBuilder {
+              // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries.EstateModel.TenantModel)
+              com.google.protobuf.MessageOrBuilder {
 
         /**
          * <code>bytes id = 1;</code>
@@ -950,32 +994,32 @@ public final class EstateAccountProtos {
         /**
          * <code>string name = 3;</code>
          */
-        String getName();
+        java.lang.String getName();
         /**
          * <code>string name = 3;</code>
          */
         com.google.protobuf.ByteString
-            getNameBytes();
+        getNameBytes();
 
         /**
          * <code>string buildingNumber = 4;</code>
          */
-        String getBuildingNumber();
+        java.lang.String getBuildingNumber();
         /**
          * <code>string buildingNumber = 4;</code>
          */
         com.google.protobuf.ByteString
-            getBuildingNumberBytes();
+        getBuildingNumberBytes();
 
         /**
          * <code>string contacts = 5;</code>
          */
-        String getContacts();
+        java.lang.String getContacts();
         /**
          * <code>string contacts = 5;</code>
          */
         com.google.protobuf.ByteString
-            getContactsBytes();
+        getContactsBytes();
 
         /**
          * <code>double rentDue = 6;</code>
@@ -989,7 +1033,7 @@ public final class EstateAccountProtos {
         /**
          * <code>.io.mtini.proto.TenantStatus status = 7;</code>
          */
-        TenantStatus getStatus();
+        io.mtini.proto.EstateAccountProtos.TenantStatus getStatus();
 
         /**
          * <code>double rent = 8;</code>
@@ -1004,22 +1048,22 @@ public final class EstateAccountProtos {
         /**
          * <code>string notes = 10;</code>
          */
-        String getNotes();
+        java.lang.String getNotes();
         /**
          * <code>string notes = 10;</code>
          */
         com.google.protobuf.ByteString
-            getNotesBytes();
+        getNotesBytes();
 
         /**
          * <code>string currency = 11;</code>
          */
-        String getCurrency();
+        java.lang.String getCurrency();
         /**
          * <code>string currency = 11;</code>
          */
         com.google.protobuf.ByteString
-            getCurrencyBytes();
+        getCurrencyBytes();
 
         /**
          * <code>int64 paidDate = 12;</code>
@@ -1033,7 +1077,7 @@ public final class EstateAccountProtos {
         /**
          * <code>.io.mtini.proto.PaymentSchedule paySchedule = 13;</code>
          */
-        PaymentSchedule getPaySchedule();
+        io.mtini.proto.EstateAccountProtos.PaymentSchedule getPaySchedule();
 
         /**
          * <code>int64 dueDate = 14;</code>
@@ -1044,10 +1088,10 @@ public final class EstateAccountProtos {
        * Protobuf type {@code io.mtini.proto.LedgerEntries.EstateModel.TenantModel}
        */
       public  static final class TenantModel extends
-          com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries.EstateModel.TenantModel)
-          TenantModelOrBuilder {
-      private static final long serialVersionUID = 0L;
+              com.google.protobuf.GeneratedMessageV3 implements
+              // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries.EstateModel.TenantModel)
+              TenantModelOrBuilder {
+        private static final long serialVersionUID = 0L;
         // Use TenantModel.newBuilder() to construct.
         private TenantModel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
           super(builder);
@@ -1069,22 +1113,22 @@ public final class EstateAccountProtos {
           dueDate_ = 0L;
         }
 
-        @Override
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
         }
         private TenantModel(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
           this();
           if (extensionRegistry == null) {
-            throw new NullPointerException();
+            throw new java.lang.NullPointerException();
           }
           int mutable_bitField0_ = 0;
           com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-              com.google.protobuf.UnknownFieldSet.newBuilder();
+                  com.google.protobuf.UnknownFieldSet.newBuilder();
           try {
             boolean done = false;
             while (!done) {
@@ -1104,19 +1148,19 @@ public final class EstateAccountProtos {
                   break;
                 }
                 case 26: {
-                  String s = input.readStringRequireUtf8();
+                  java.lang.String s = input.readStringRequireUtf8();
 
                   name_ = s;
                   break;
                 }
                 case 34: {
-                  String s = input.readStringRequireUtf8();
+                  java.lang.String s = input.readStringRequireUtf8();
 
                   buildingNumber_ = s;
                   break;
                 }
                 case 42: {
-                  String s = input.readStringRequireUtf8();
+                  java.lang.String s = input.readStringRequireUtf8();
 
                   contacts_ = s;
                   break;
@@ -1143,13 +1187,13 @@ public final class EstateAccountProtos {
                   break;
                 }
                 case 82: {
-                  String s = input.readStringRequireUtf8();
+                  java.lang.String s = input.readStringRequireUtf8();
 
                   notes_ = s;
                   break;
                 }
                 case 90: {
-                  String s = input.readStringRequireUtf8();
+                  java.lang.String s = input.readStringRequireUtf8();
 
                   currency_ = s;
                   break;
@@ -1171,8 +1215,8 @@ public final class EstateAccountProtos {
                   break;
                 }
                 default: {
-                  if (!parseUnknownField(
-                      input, unknownFields, extensionRegistry, tag)) {
+                  if (!parseUnknownFieldProto3(
+                          input, unknownFields, extensionRegistry, tag)) {
                     done = true;
                   }
                   break;
@@ -1183,23 +1227,23 @@ public final class EstateAccountProtos {
             throw e.setUnfinishedMessage(this);
           } catch (java.io.IOException e) {
             throw new com.google.protobuf.InvalidProtocolBufferException(
-                e).setUnfinishedMessage(this);
+                    e).setUnfinishedMessage(this);
           } finally {
             this.unknownFields = unknownFields.build();
             makeExtensionsImmutable();
           }
         }
         public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor;
+        getDescriptor() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor;
         }
 
-        @Override
-        protected FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  TenantModel.class, Builder.class);
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_fieldAccessorTable
+                  .ensureFieldAccessorsInitialized(
+                          io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder.class);
         }
 
         public static final int ID_FIELD_NUMBER = 1;
@@ -1221,18 +1265,18 @@ public final class EstateAccountProtos {
         }
 
         public static final int NAME_FIELD_NUMBER = 3;
-        private volatile Object name_;
+        private volatile java.lang.Object name_;
         /**
          * <code>string name = 3;</code>
          */
-        public String getName() {
-          Object ref = name_;
-          if (ref instanceof String) {
-            return (String) ref;
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
           } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+            com.google.protobuf.ByteString bs =
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             name_ = s;
             return s;
           }
@@ -1241,12 +1285,12 @@ public final class EstateAccountProtos {
          * <code>string name = 3;</code>
          */
         public com.google.protobuf.ByteString
-            getNameBytes() {
-          Object ref = name_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+        getNameBytes() {
+          java.lang.Object ref = name_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             name_ = b;
             return b;
           } else {
@@ -1255,18 +1299,18 @@ public final class EstateAccountProtos {
         }
 
         public static final int BUILDINGNUMBER_FIELD_NUMBER = 4;
-        private volatile Object buildingNumber_;
+        private volatile java.lang.Object buildingNumber_;
         /**
          * <code>string buildingNumber = 4;</code>
          */
-        public String getBuildingNumber() {
-          Object ref = buildingNumber_;
-          if (ref instanceof String) {
-            return (String) ref;
+        public java.lang.String getBuildingNumber() {
+          java.lang.Object ref = buildingNumber_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
           } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+            com.google.protobuf.ByteString bs =
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             buildingNumber_ = s;
             return s;
           }
@@ -1275,12 +1319,12 @@ public final class EstateAccountProtos {
          * <code>string buildingNumber = 4;</code>
          */
         public com.google.protobuf.ByteString
-            getBuildingNumberBytes() {
-          Object ref = buildingNumber_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+        getBuildingNumberBytes() {
+          java.lang.Object ref = buildingNumber_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             buildingNumber_ = b;
             return b;
           } else {
@@ -1289,18 +1333,18 @@ public final class EstateAccountProtos {
         }
 
         public static final int CONTACTS_FIELD_NUMBER = 5;
-        private volatile Object contacts_;
+        private volatile java.lang.Object contacts_;
         /**
          * <code>string contacts = 5;</code>
          */
-        public String getContacts() {
-          Object ref = contacts_;
-          if (ref instanceof String) {
-            return (String) ref;
+        public java.lang.String getContacts() {
+          java.lang.Object ref = contacts_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
           } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+            com.google.protobuf.ByteString bs =
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             contacts_ = s;
             return s;
           }
@@ -1309,12 +1353,12 @@ public final class EstateAccountProtos {
          * <code>string contacts = 5;</code>
          */
         public com.google.protobuf.ByteString
-            getContactsBytes() {
-          Object ref = contacts_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+        getContactsBytes() {
+          java.lang.Object ref = contacts_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             contacts_ = b;
             return b;
           } else {
@@ -1342,10 +1386,10 @@ public final class EstateAccountProtos {
         /**
          * <code>.io.mtini.proto.TenantStatus status = 7;</code>
          */
-        public TenantStatus getStatus() {
+        public io.mtini.proto.EstateAccountProtos.TenantStatus getStatus() {
           @SuppressWarnings("deprecation")
-          TenantStatus result = TenantStatus.valueOf(status_);
-          return result == null ? TenantStatus.UNRECOGNIZED : result;
+          io.mtini.proto.EstateAccountProtos.TenantStatus result = io.mtini.proto.EstateAccountProtos.TenantStatus.valueOf(status_);
+          return result == null ? io.mtini.proto.EstateAccountProtos.TenantStatus.UNRECOGNIZED : result;
         }
 
         public static final int RENT_FIELD_NUMBER = 8;
@@ -1367,18 +1411,18 @@ public final class EstateAccountProtos {
         }
 
         public static final int NOTES_FIELD_NUMBER = 10;
-        private volatile Object notes_;
+        private volatile java.lang.Object notes_;
         /**
          * <code>string notes = 10;</code>
          */
-        public String getNotes() {
-          Object ref = notes_;
-          if (ref instanceof String) {
-            return (String) ref;
+        public java.lang.String getNotes() {
+          java.lang.Object ref = notes_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
           } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+            com.google.protobuf.ByteString bs =
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             notes_ = s;
             return s;
           }
@@ -1387,12 +1431,12 @@ public final class EstateAccountProtos {
          * <code>string notes = 10;</code>
          */
         public com.google.protobuf.ByteString
-            getNotesBytes() {
-          Object ref = notes_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+        getNotesBytes() {
+          java.lang.Object ref = notes_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             notes_ = b;
             return b;
           } else {
@@ -1401,18 +1445,18 @@ public final class EstateAccountProtos {
         }
 
         public static final int CURRENCY_FIELD_NUMBER = 11;
-        private volatile Object currency_;
+        private volatile java.lang.Object currency_;
         /**
          * <code>string currency = 11;</code>
          */
-        public String getCurrency() {
-          Object ref = currency_;
-          if (ref instanceof String) {
-            return (String) ref;
+        public java.lang.String getCurrency() {
+          java.lang.Object ref = currency_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
           } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+            com.google.protobuf.ByteString bs =
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             currency_ = s;
             return s;
           }
@@ -1421,12 +1465,12 @@ public final class EstateAccountProtos {
          * <code>string currency = 11;</code>
          */
         public com.google.protobuf.ByteString
-            getCurrencyBytes() {
-          Object ref = currency_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+        getCurrencyBytes() {
+          java.lang.Object ref = currency_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             currency_ = b;
             return b;
           } else {
@@ -1454,10 +1498,10 @@ public final class EstateAccountProtos {
         /**
          * <code>.io.mtini.proto.PaymentSchedule paySchedule = 13;</code>
          */
-        public PaymentSchedule getPaySchedule() {
+        public io.mtini.proto.EstateAccountProtos.PaymentSchedule getPaySchedule() {
           @SuppressWarnings("deprecation")
-          PaymentSchedule result = PaymentSchedule.valueOf(paySchedule_);
-          return result == null ? PaymentSchedule.UNRECOGNIZED : result;
+          io.mtini.proto.EstateAccountProtos.PaymentSchedule result = io.mtini.proto.EstateAccountProtos.PaymentSchedule.valueOf(paySchedule_);
+          return result == null ? io.mtini.proto.EstateAccountProtos.PaymentSchedule.UNRECOGNIZED : result;
         }
 
         public static final int DUEDATE_FIELD_NUMBER = 14;
@@ -1470,7 +1514,7 @@ public final class EstateAccountProtos {
         }
 
         private byte memoizedIsInitialized = -1;
-        @Override
+        @java.lang.Override
         public final boolean isInitialized() {
           byte isInitialized = memoizedIsInitialized;
           if (isInitialized == 1) return true;
@@ -1480,9 +1524,9 @@ public final class EstateAccountProtos {
           return true;
         }
 
-        @Override
+        @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output)
-                            throws java.io.IOException {
+                throws java.io.IOException {
           if (!id_.isEmpty()) {
             output.writeBytes(1, id_);
           }
@@ -1501,7 +1545,7 @@ public final class EstateAccountProtos {
           if (rentDue_ != 0D) {
             output.writeDouble(6, rentDue_);
           }
-          if (status_ != TenantStatus.nostatus.getNumber()) {
+          if (status_ != io.mtini.proto.EstateAccountProtos.TenantStatus.nostatus.getNumber()) {
             output.writeEnum(7, status_);
           }
           if (rent_ != 0D) {
@@ -1519,7 +1563,7 @@ public final class EstateAccountProtos {
           if (paidDate_ != 0L) {
             output.writeInt64(12, paidDate_);
           }
-          if (paySchedule_ != PaymentSchedule.noschedule.getNumber()) {
+          if (paySchedule_ != io.mtini.proto.EstateAccountProtos.PaymentSchedule.noschedule.getNumber()) {
             output.writeEnum(13, paySchedule_);
           }
           if (dueDate_ != 0L) {
@@ -1528,7 +1572,7 @@ public final class EstateAccountProtos {
           unknownFields.writeTo(output);
         }
 
-        @Override
+        @java.lang.Override
         public int getSerializedSize() {
           int size = memoizedSize;
           if (size != -1) return size;
@@ -1536,11 +1580,11 @@ public final class EstateAccountProtos {
           size = 0;
           if (!id_.isEmpty()) {
             size += com.google.protobuf.CodedOutputStream
-              .computeBytesSize(1, id_);
+                    .computeBytesSize(1, id_);
           }
           if (!estateId_.isEmpty()) {
             size += com.google.protobuf.CodedOutputStream
-              .computeBytesSize(2, estateId_);
+                    .computeBytesSize(2, estateId_);
           }
           if (!getNameBytes().isEmpty()) {
             size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
@@ -1553,19 +1597,19 @@ public final class EstateAccountProtos {
           }
           if (rentDue_ != 0D) {
             size += com.google.protobuf.CodedOutputStream
-              .computeDoubleSize(6, rentDue_);
+                    .computeDoubleSize(6, rentDue_);
           }
-          if (status_ != TenantStatus.nostatus.getNumber()) {
+          if (status_ != io.mtini.proto.EstateAccountProtos.TenantStatus.nostatus.getNumber()) {
             size += com.google.protobuf.CodedOutputStream
-              .computeEnumSize(7, status_);
+                    .computeEnumSize(7, status_);
           }
           if (rent_ != 0D) {
             size += com.google.protobuf.CodedOutputStream
-              .computeDoubleSize(8, rent_);
+                    .computeDoubleSize(8, rent_);
           }
           if (balance_ != 0D) {
             size += com.google.protobuf.CodedOutputStream
-              .computeDoubleSize(9, balance_);
+                    .computeDoubleSize(9, balance_);
           }
           if (!getNotesBytes().isEmpty()) {
             size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, notes_);
@@ -1575,69 +1619,69 @@ public final class EstateAccountProtos {
           }
           if (paidDate_ != 0L) {
             size += com.google.protobuf.CodedOutputStream
-              .computeInt64Size(12, paidDate_);
+                    .computeInt64Size(12, paidDate_);
           }
-          if (paySchedule_ != PaymentSchedule.noschedule.getNumber()) {
+          if (paySchedule_ != io.mtini.proto.EstateAccountProtos.PaymentSchedule.noschedule.getNumber()) {
             size += com.google.protobuf.CodedOutputStream
-              .computeEnumSize(13, paySchedule_);
+                    .computeEnumSize(13, paySchedule_);
           }
           if (dueDate_ != 0L) {
             size += com.google.protobuf.CodedOutputStream
-              .computeInt64Size(14, dueDate_);
+                    .computeInt64Size(14, dueDate_);
           }
           size += unknownFields.getSerializedSize();
           memoizedSize = size;
           return size;
         }
 
-        @Override
-        public boolean equals(final Object obj) {
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
           if (obj == this) {
-           return true;
+            return true;
           }
-          if (!(obj instanceof TenantModel)) {
+          if (!(obj instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel)) {
             return super.equals(obj);
           }
-          TenantModel other = (TenantModel) obj;
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel other = (io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel) obj;
 
           boolean result = true;
           result = result && getId()
-              .equals(other.getId());
+                  .equals(other.getId());
           result = result && getEstateId()
-              .equals(other.getEstateId());
+                  .equals(other.getEstateId());
           result = result && getName()
-              .equals(other.getName());
+                  .equals(other.getName());
           result = result && getBuildingNumber()
-              .equals(other.getBuildingNumber());
+                  .equals(other.getBuildingNumber());
           result = result && getContacts()
-              .equals(other.getContacts());
+                  .equals(other.getContacts());
           result = result && (
-              Double.doubleToLongBits(getRentDue())
-              == Double.doubleToLongBits(
-                  other.getRentDue()));
+                  java.lang.Double.doubleToLongBits(getRentDue())
+                          == java.lang.Double.doubleToLongBits(
+                          other.getRentDue()));
           result = result && status_ == other.status_;
           result = result && (
-              Double.doubleToLongBits(getRent())
-              == Double.doubleToLongBits(
-                  other.getRent()));
+                  java.lang.Double.doubleToLongBits(getRent())
+                          == java.lang.Double.doubleToLongBits(
+                          other.getRent()));
           result = result && (
-              Double.doubleToLongBits(getBalance())
-              == Double.doubleToLongBits(
-                  other.getBalance()));
+                  java.lang.Double.doubleToLongBits(getBalance())
+                          == java.lang.Double.doubleToLongBits(
+                          other.getBalance()));
           result = result && getNotes()
-              .equals(other.getNotes());
+                  .equals(other.getNotes());
           result = result && getCurrency()
-              .equals(other.getCurrency());
+                  .equals(other.getCurrency());
           result = result && (getPaidDate()
-              == other.getPaidDate());
+                  == other.getPaidDate());
           result = result && paySchedule_ == other.paySchedule_;
           result = result && (getDueDate()
-              == other.getDueDate());
+                  == other.getDueDate());
           result = result && unknownFields.equals(other.unknownFields);
           return result;
         }
 
-        @Override
+        @java.lang.Override
         public int hashCode() {
           if (memoizedHashCode != 0) {
             return memoizedHashCode;
@@ -1656,119 +1700,119 @@ public final class EstateAccountProtos {
           hash = (53 * hash) + getContacts().hashCode();
           hash = (37 * hash) + RENTDUE_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-              Double.doubleToLongBits(getRentDue()));
+                  java.lang.Double.doubleToLongBits(getRentDue()));
           hash = (37 * hash) + STATUS_FIELD_NUMBER;
           hash = (53 * hash) + status_;
           hash = (37 * hash) + RENT_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-              Double.doubleToLongBits(getRent()));
+                  java.lang.Double.doubleToLongBits(getRent()));
           hash = (37 * hash) + BALANCE_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-              Double.doubleToLongBits(getBalance()));
+                  java.lang.Double.doubleToLongBits(getBalance()));
           hash = (37 * hash) + NOTES_FIELD_NUMBER;
           hash = (53 * hash) + getNotes().hashCode();
           hash = (37 * hash) + CURRENCY_FIELD_NUMBER;
           hash = (53 * hash) + getCurrency().hashCode();
           hash = (37 * hash) + PAIDDATE_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-              getPaidDate());
+                  getPaidDate());
           hash = (37 * hash) + PAYSCHEDULE_FIELD_NUMBER;
           hash = (53 * hash) + paySchedule_;
           hash = (37 * hash) + DUEDATE_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-              getDueDate());
+                  getDueDate());
           hash = (29 * hash) + unknownFields.hashCode();
           memoizedHashCode = hash;
           return hash;
         }
 
-        public static TenantModel parseFrom(
-            java.nio.ByteBuffer data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data.array());
-        }
-        public static TenantModel parseFrom(
-            java.nio.ByteBuffer data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data.array(), extensionRegistry);
-        }
-        public static TenantModel parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static TenantModel parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static TenantModel parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static TenantModel parseFrom(
-            byte[] data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static TenantModel parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input);
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
         }
-        public static TenantModel parseFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input, extensionRegistry);
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static TenantModel parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
-              .parseDelimitedWithIOException(PARSER, input);
+                  .parseWithIOException(PARSER, input);
         }
-        public static TenantModel parseDelimitedFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
-              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+                  .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static TenantModel parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input);
+                  .parseDelimitedWithIOException(PARSER, input);
         }
-        public static TenantModel parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input, extensionRegistry);
+                  .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+                  .parseWithIOException(PARSER, input);
+        }
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+                  .parseWithIOException(PARSER, input, extensionRegistry);
         }
 
-        @Override
+        @java.lang.Override
         public Builder newBuilderForType() { return newBuilder(); }
         public static Builder newBuilder() {
           return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(TenantModel prototype) {
+        public static Builder newBuilder(io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel prototype) {
           return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
-        @Override
+        @java.lang.Override
         public Builder toBuilder() {
           return this == DEFAULT_INSTANCE
-              ? new Builder() : new Builder().mergeFrom(this);
+                  ? new Builder() : new Builder().mergeFrom(this);
         }
 
-        @Override
+        @java.lang.Override
         protected Builder newBuilderForType(
-            BuilderParent parent) {
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           Builder builder = new Builder(parent);
           return builder;
         }
@@ -1776,20 +1820,20 @@ public final class EstateAccountProtos {
          * Protobuf type {@code io.mtini.proto.LedgerEntries.EstateModel.TenantModel}
          */
         public static final class Builder extends
-            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries.EstateModel.TenantModel)
-            TenantModelOrBuilder {
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries.EstateModel.TenantModel)
+                io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
-              getDescriptor() {
-            return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor;
+          getDescriptor() {
+            return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor;
           }
 
-          @Override
-          protected FieldAccessorTable
-              internalGetFieldAccessorTable() {
-            return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_fieldAccessorTable
-                .ensureFieldAccessorsInitialized(
-                    TenantModel.class, Builder.class);
+          @java.lang.Override
+          protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+            return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder.class);
           }
 
           // Construct using io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.newBuilder()
@@ -1798,7 +1842,7 @@ public final class EstateAccountProtos {
           }
 
           private Builder(
-              BuilderParent parent) {
+                  com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
             super(parent);
             maybeForceBuilderInitialization();
           }
@@ -1807,7 +1851,7 @@ public final class EstateAccountProtos {
                     .alwaysUseFieldBuilders) {
             }
           }
-          @Override
+          @java.lang.Override
           public Builder clear() {
             super.clear();
             id_ = com.google.protobuf.ByteString.EMPTY;
@@ -1841,29 +1885,29 @@ public final class EstateAccountProtos {
             return this;
           }
 
-          @Override
+          @java.lang.Override
           public com.google.protobuf.Descriptors.Descriptor
-              getDescriptorForType() {
-            return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor;
+          getDescriptorForType() {
+            return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor;
           }
 
-          @Override
-          public TenantModel getDefaultInstanceForType() {
-            return TenantModel.getDefaultInstance();
+          @java.lang.Override
+          public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel getDefaultInstanceForType() {
+            return io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.getDefaultInstance();
           }
 
-          @Override
-          public TenantModel build() {
-            TenantModel result = buildPartial();
+          @java.lang.Override
+          public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel build() {
+            io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel result = buildPartial();
             if (!result.isInitialized()) {
-              throw Builder.newUninitializedMessageException(result);
+              throw newUninitializedMessageException(result);
             }
             return result;
           }
 
-          @Override
-          public TenantModel buildPartial() {
-            TenantModel result = new TenantModel(this);
+          @java.lang.Override
+          public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel buildPartial() {
+            io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel result = new io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel(this);
             result.id_ = id_;
             result.estateId_ = estateId_;
             result.name_ = name_;
@@ -1882,50 +1926,50 @@ public final class EstateAccountProtos {
             return result;
           }
 
-          @Override
+          @java.lang.Override
           public Builder clone() {
             return (Builder) super.clone();
           }
-          @Override
+          @java.lang.Override
           public Builder setField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              Object value) {
+                  com.google.protobuf.Descriptors.FieldDescriptor field,
+                  java.lang.Object value) {
             return (Builder) super.setField(field, value);
           }
-          @Override
+          @java.lang.Override
           public Builder clearField(
-              com.google.protobuf.Descriptors.FieldDescriptor field) {
+                  com.google.protobuf.Descriptors.FieldDescriptor field) {
             return (Builder) super.clearField(field);
           }
-          @Override
+          @java.lang.Override
           public Builder clearOneof(
-              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                  com.google.protobuf.Descriptors.OneofDescriptor oneof) {
             return (Builder) super.clearOneof(oneof);
           }
-          @Override
+          @java.lang.Override
           public Builder setRepeatedField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              int index, Object value) {
+                  com.google.protobuf.Descriptors.FieldDescriptor field,
+                  int index, java.lang.Object value) {
             return (Builder) super.setRepeatedField(field, index, value);
           }
-          @Override
+          @java.lang.Override
           public Builder addRepeatedField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              Object value) {
+                  com.google.protobuf.Descriptors.FieldDescriptor field,
+                  java.lang.Object value) {
             return (Builder) super.addRepeatedField(field, value);
           }
-          @Override
+          @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof TenantModel) {
-              return mergeFrom((TenantModel)other);
+            if (other instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel) {
+              return mergeFrom((io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(TenantModel other) {
-            if (other == TenantModel.getDefaultInstance()) return this;
+          public Builder mergeFrom(io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel other) {
+            if (other == io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.getDefaultInstance()) return this;
             if (other.getId() != com.google.protobuf.ByteString.EMPTY) {
               setId(other.getId());
             }
@@ -1978,21 +2022,21 @@ public final class EstateAccountProtos {
             return this;
           }
 
-          @Override
+          @java.lang.Override
           public final boolean isInitialized() {
             return true;
           }
 
-          @Override
+          @java.lang.Override
           public Builder mergeFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-            TenantModel parsedMessage = null;
+                  com.google.protobuf.CodedInputStream input,
+                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                  throws java.io.IOException {
+            io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (TenantModel) e.getUnfinishedMessage();
+              parsedMessage = (io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel) e.getUnfinishedMessage();
               throw e.unwrapIOException();
             } finally {
               if (parsedMessage != null) {
@@ -2014,9 +2058,9 @@ public final class EstateAccountProtos {
            */
           public Builder setId(com.google.protobuf.ByteString value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  
+              throw new NullPointerException();
+            }
+
             id_ = value;
             onChanged();
             return this;
@@ -2025,7 +2069,7 @@ public final class EstateAccountProtos {
            * <code>bytes id = 1;</code>
            */
           public Builder clearId() {
-            
+
             id_ = getDefaultInstance().getId();
             onChanged();
             return this;
@@ -2043,9 +2087,9 @@ public final class EstateAccountProtos {
            */
           public Builder setEstateId(com.google.protobuf.ByteString value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  
+              throw new NullPointerException();
+            }
+
             estateId_ = value;
             onChanged();
             return this;
@@ -2054,38 +2098,38 @@ public final class EstateAccountProtos {
            * <code>bytes estateId = 2;</code>
            */
           public Builder clearEstateId() {
-            
+
             estateId_ = getDefaultInstance().getEstateId();
             onChanged();
             return this;
           }
 
-          private Object name_ = "";
+          private java.lang.Object name_ = "";
           /**
            * <code>string name = 3;</code>
            */
-          public String getName() {
-            Object ref = name_;
-            if (!(ref instanceof String)) {
+          public java.lang.String getName() {
+            java.lang.Object ref = name_;
+            if (!(ref instanceof java.lang.String)) {
               com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              String s = bs.toStringUtf8();
+                      (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
               name_ = s;
               return s;
             } else {
-              return (String) ref;
+              return (java.lang.String) ref;
             }
           }
           /**
            * <code>string name = 3;</code>
            */
           public com.google.protobuf.ByteString
-              getNameBytes() {
-            Object ref = name_;
+          getNameBytes() {
+            java.lang.Object ref = name_;
             if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (String) ref);
+              com.google.protobuf.ByteString b =
+                      com.google.protobuf.ByteString.copyFromUtf8(
+                              (java.lang.String) ref);
               name_ = b;
               return b;
             } else {
@@ -2096,11 +2140,11 @@ public final class EstateAccountProtos {
            * <code>string name = 3;</code>
            */
           public Builder setName(
-              String value) {
+                  java.lang.String value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  
+              throw new NullPointerException();
+            }
+
             name_ = value;
             onChanged();
             return this;
@@ -2109,7 +2153,7 @@ public final class EstateAccountProtos {
            * <code>string name = 3;</code>
            */
           public Builder clearName() {
-            
+
             name_ = getDefaultInstance().getName();
             onChanged();
             return this;
@@ -2118,43 +2162,43 @@ public final class EstateAccountProtos {
            * <code>string name = 3;</code>
            */
           public Builder setNameBytes(
-              com.google.protobuf.ByteString value) {
+                  com.google.protobuf.ByteString value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-            
+              throw new NullPointerException();
+            }
+            checkByteStringIsUtf8(value);
+
             name_ = value;
             onChanged();
             return this;
           }
 
-          private Object buildingNumber_ = "";
+          private java.lang.Object buildingNumber_ = "";
           /**
            * <code>string buildingNumber = 4;</code>
            */
-          public String getBuildingNumber() {
-            Object ref = buildingNumber_;
-            if (!(ref instanceof String)) {
+          public java.lang.String getBuildingNumber() {
+            java.lang.Object ref = buildingNumber_;
+            if (!(ref instanceof java.lang.String)) {
               com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              String s = bs.toStringUtf8();
+                      (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
               buildingNumber_ = s;
               return s;
             } else {
-              return (String) ref;
+              return (java.lang.String) ref;
             }
           }
           /**
            * <code>string buildingNumber = 4;</code>
            */
           public com.google.protobuf.ByteString
-              getBuildingNumberBytes() {
-            Object ref = buildingNumber_;
+          getBuildingNumberBytes() {
+            java.lang.Object ref = buildingNumber_;
             if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (String) ref);
+              com.google.protobuf.ByteString b =
+                      com.google.protobuf.ByteString.copyFromUtf8(
+                              (java.lang.String) ref);
               buildingNumber_ = b;
               return b;
             } else {
@@ -2165,11 +2209,11 @@ public final class EstateAccountProtos {
            * <code>string buildingNumber = 4;</code>
            */
           public Builder setBuildingNumber(
-              String value) {
+                  java.lang.String value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  
+              throw new NullPointerException();
+            }
+
             buildingNumber_ = value;
             onChanged();
             return this;
@@ -2178,7 +2222,7 @@ public final class EstateAccountProtos {
            * <code>string buildingNumber = 4;</code>
            */
           public Builder clearBuildingNumber() {
-            
+
             buildingNumber_ = getDefaultInstance().getBuildingNumber();
             onChanged();
             return this;
@@ -2187,43 +2231,43 @@ public final class EstateAccountProtos {
            * <code>string buildingNumber = 4;</code>
            */
           public Builder setBuildingNumberBytes(
-              com.google.protobuf.ByteString value) {
+                  com.google.protobuf.ByteString value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-            
+              throw new NullPointerException();
+            }
+            checkByteStringIsUtf8(value);
+
             buildingNumber_ = value;
             onChanged();
             return this;
           }
 
-          private Object contacts_ = "";
+          private java.lang.Object contacts_ = "";
           /**
            * <code>string contacts = 5;</code>
            */
-          public String getContacts() {
-            Object ref = contacts_;
-            if (!(ref instanceof String)) {
+          public java.lang.String getContacts() {
+            java.lang.Object ref = contacts_;
+            if (!(ref instanceof java.lang.String)) {
               com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              String s = bs.toStringUtf8();
+                      (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
               contacts_ = s;
               return s;
             } else {
-              return (String) ref;
+              return (java.lang.String) ref;
             }
           }
           /**
            * <code>string contacts = 5;</code>
            */
           public com.google.protobuf.ByteString
-              getContactsBytes() {
-            Object ref = contacts_;
+          getContactsBytes() {
+            java.lang.Object ref = contacts_;
             if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (String) ref);
+              com.google.protobuf.ByteString b =
+                      com.google.protobuf.ByteString.copyFromUtf8(
+                              (java.lang.String) ref);
               contacts_ = b;
               return b;
             } else {
@@ -2234,11 +2278,11 @@ public final class EstateAccountProtos {
            * <code>string contacts = 5;</code>
            */
           public Builder setContacts(
-              String value) {
+                  java.lang.String value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  
+              throw new NullPointerException();
+            }
+
             contacts_ = value;
             onChanged();
             return this;
@@ -2247,7 +2291,7 @@ public final class EstateAccountProtos {
            * <code>string contacts = 5;</code>
            */
           public Builder clearContacts() {
-            
+
             contacts_ = getDefaultInstance().getContacts();
             onChanged();
             return this;
@@ -2256,12 +2300,12 @@ public final class EstateAccountProtos {
            * <code>string contacts = 5;</code>
            */
           public Builder setContactsBytes(
-              com.google.protobuf.ByteString value) {
+                  com.google.protobuf.ByteString value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-            
+              throw new NullPointerException();
+            }
+            checkByteStringIsUtf8(value);
+
             contacts_ = value;
             onChanged();
             return this;
@@ -2278,7 +2322,7 @@ public final class EstateAccountProtos {
            * <code>double rentDue = 6;</code>
            */
           public Builder setRentDue(double value) {
-            
+
             rentDue_ = value;
             onChanged();
             return this;
@@ -2287,7 +2331,7 @@ public final class EstateAccountProtos {
            * <code>double rentDue = 6;</code>
            */
           public Builder clearRentDue() {
-            
+
             rentDue_ = 0D;
             onChanged();
             return this;
@@ -2311,19 +2355,19 @@ public final class EstateAccountProtos {
           /**
            * <code>.io.mtini.proto.TenantStatus status = 7;</code>
            */
-          public TenantStatus getStatus() {
+          public io.mtini.proto.EstateAccountProtos.TenantStatus getStatus() {
             @SuppressWarnings("deprecation")
-            TenantStatus result = TenantStatus.valueOf(status_);
-            return result == null ? TenantStatus.UNRECOGNIZED : result;
+            io.mtini.proto.EstateAccountProtos.TenantStatus result = io.mtini.proto.EstateAccountProtos.TenantStatus.valueOf(status_);
+            return result == null ? io.mtini.proto.EstateAccountProtos.TenantStatus.UNRECOGNIZED : result;
           }
           /**
            * <code>.io.mtini.proto.TenantStatus status = 7;</code>
            */
-          public Builder setStatus(TenantStatus value) {
+          public Builder setStatus(io.mtini.proto.EstateAccountProtos.TenantStatus value) {
             if (value == null) {
               throw new NullPointerException();
             }
-            
+
             status_ = value.getNumber();
             onChanged();
             return this;
@@ -2332,7 +2376,7 @@ public final class EstateAccountProtos {
            * <code>.io.mtini.proto.TenantStatus status = 7;</code>
            */
           public Builder clearStatus() {
-            
+
             status_ = 0;
             onChanged();
             return this;
@@ -2349,7 +2393,7 @@ public final class EstateAccountProtos {
            * <code>double rent = 8;</code>
            */
           public Builder setRent(double value) {
-            
+
             rent_ = value;
             onChanged();
             return this;
@@ -2358,7 +2402,7 @@ public final class EstateAccountProtos {
            * <code>double rent = 8;</code>
            */
           public Builder clearRent() {
-            
+
             rent_ = 0D;
             onChanged();
             return this;
@@ -2375,7 +2419,7 @@ public final class EstateAccountProtos {
            * <code>double balance = 9;</code>
            */
           public Builder setBalance(double value) {
-            
+
             balance_ = value;
             onChanged();
             return this;
@@ -2384,38 +2428,38 @@ public final class EstateAccountProtos {
            * <code>double balance = 9;</code>
            */
           public Builder clearBalance() {
-            
+
             balance_ = 0D;
             onChanged();
             return this;
           }
 
-          private Object notes_ = "";
+          private java.lang.Object notes_ = "";
           /**
            * <code>string notes = 10;</code>
            */
-          public String getNotes() {
-            Object ref = notes_;
-            if (!(ref instanceof String)) {
+          public java.lang.String getNotes() {
+            java.lang.Object ref = notes_;
+            if (!(ref instanceof java.lang.String)) {
               com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              String s = bs.toStringUtf8();
+                      (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
               notes_ = s;
               return s;
             } else {
-              return (String) ref;
+              return (java.lang.String) ref;
             }
           }
           /**
            * <code>string notes = 10;</code>
            */
           public com.google.protobuf.ByteString
-              getNotesBytes() {
-            Object ref = notes_;
+          getNotesBytes() {
+            java.lang.Object ref = notes_;
             if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (String) ref);
+              com.google.protobuf.ByteString b =
+                      com.google.protobuf.ByteString.copyFromUtf8(
+                              (java.lang.String) ref);
               notes_ = b;
               return b;
             } else {
@@ -2426,11 +2470,11 @@ public final class EstateAccountProtos {
            * <code>string notes = 10;</code>
            */
           public Builder setNotes(
-              String value) {
+                  java.lang.String value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  
+              throw new NullPointerException();
+            }
+
             notes_ = value;
             onChanged();
             return this;
@@ -2439,7 +2483,7 @@ public final class EstateAccountProtos {
            * <code>string notes = 10;</code>
            */
           public Builder clearNotes() {
-            
+
             notes_ = getDefaultInstance().getNotes();
             onChanged();
             return this;
@@ -2448,43 +2492,43 @@ public final class EstateAccountProtos {
            * <code>string notes = 10;</code>
            */
           public Builder setNotesBytes(
-              com.google.protobuf.ByteString value) {
+                  com.google.protobuf.ByteString value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-            
+              throw new NullPointerException();
+            }
+            checkByteStringIsUtf8(value);
+
             notes_ = value;
             onChanged();
             return this;
           }
 
-          private Object currency_ = "";
+          private java.lang.Object currency_ = "";
           /**
            * <code>string currency = 11;</code>
            */
-          public String getCurrency() {
-            Object ref = currency_;
-            if (!(ref instanceof String)) {
+          public java.lang.String getCurrency() {
+            java.lang.Object ref = currency_;
+            if (!(ref instanceof java.lang.String)) {
               com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              String s = bs.toStringUtf8();
+                      (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
               currency_ = s;
               return s;
             } else {
-              return (String) ref;
+              return (java.lang.String) ref;
             }
           }
           /**
            * <code>string currency = 11;</code>
            */
           public com.google.protobuf.ByteString
-              getCurrencyBytes() {
-            Object ref = currency_;
+          getCurrencyBytes() {
+            java.lang.Object ref = currency_;
             if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (String) ref);
+              com.google.protobuf.ByteString b =
+                      com.google.protobuf.ByteString.copyFromUtf8(
+                              (java.lang.String) ref);
               currency_ = b;
               return b;
             } else {
@@ -2495,11 +2539,11 @@ public final class EstateAccountProtos {
            * <code>string currency = 11;</code>
            */
           public Builder setCurrency(
-              String value) {
+                  java.lang.String value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  
+              throw new NullPointerException();
+            }
+
             currency_ = value;
             onChanged();
             return this;
@@ -2508,7 +2552,7 @@ public final class EstateAccountProtos {
            * <code>string currency = 11;</code>
            */
           public Builder clearCurrency() {
-            
+
             currency_ = getDefaultInstance().getCurrency();
             onChanged();
             return this;
@@ -2517,12 +2561,12 @@ public final class EstateAccountProtos {
            * <code>string currency = 11;</code>
            */
           public Builder setCurrencyBytes(
-              com.google.protobuf.ByteString value) {
+                  com.google.protobuf.ByteString value) {
             if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-            
+              throw new NullPointerException();
+            }
+            checkByteStringIsUtf8(value);
+
             currency_ = value;
             onChanged();
             return this;
@@ -2539,7 +2583,7 @@ public final class EstateAccountProtos {
            * <code>int64 paidDate = 12;</code>
            */
           public Builder setPaidDate(long value) {
-            
+
             paidDate_ = value;
             onChanged();
             return this;
@@ -2548,7 +2592,7 @@ public final class EstateAccountProtos {
            * <code>int64 paidDate = 12;</code>
            */
           public Builder clearPaidDate() {
-            
+
             paidDate_ = 0L;
             onChanged();
             return this;
@@ -2572,19 +2616,19 @@ public final class EstateAccountProtos {
           /**
            * <code>.io.mtini.proto.PaymentSchedule paySchedule = 13;</code>
            */
-          public PaymentSchedule getPaySchedule() {
+          public io.mtini.proto.EstateAccountProtos.PaymentSchedule getPaySchedule() {
             @SuppressWarnings("deprecation")
-            PaymentSchedule result = PaymentSchedule.valueOf(paySchedule_);
-            return result == null ? PaymentSchedule.UNRECOGNIZED : result;
+            io.mtini.proto.EstateAccountProtos.PaymentSchedule result = io.mtini.proto.EstateAccountProtos.PaymentSchedule.valueOf(paySchedule_);
+            return result == null ? io.mtini.proto.EstateAccountProtos.PaymentSchedule.UNRECOGNIZED : result;
           }
           /**
            * <code>.io.mtini.proto.PaymentSchedule paySchedule = 13;</code>
            */
-          public Builder setPaySchedule(PaymentSchedule value) {
+          public Builder setPaySchedule(io.mtini.proto.EstateAccountProtos.PaymentSchedule value) {
             if (value == null) {
               throw new NullPointerException();
             }
-            
+
             paySchedule_ = value.getNumber();
             onChanged();
             return this;
@@ -2593,7 +2637,7 @@ public final class EstateAccountProtos {
            * <code>.io.mtini.proto.PaymentSchedule paySchedule = 13;</code>
            */
           public Builder clearPaySchedule() {
-            
+
             paySchedule_ = 0;
             onChanged();
             return this;
@@ -2610,7 +2654,7 @@ public final class EstateAccountProtos {
            * <code>int64 dueDate = 14;</code>
            */
           public Builder setDueDate(long value) {
-            
+
             dueDate_ = value;
             onChanged();
             return this;
@@ -2619,20 +2663,20 @@ public final class EstateAccountProtos {
            * <code>int64 dueDate = 14;</code>
            */
           public Builder clearDueDate() {
-            
+
             dueDate_ = 0L;
             onChanged();
             return this;
           }
-          @Override
+          @java.lang.Override
           public final Builder setUnknownFields(
-              final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.setUnknownFields(unknownFields);
+                  final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.setUnknownFieldsProto3(unknownFields);
           }
 
-          @Override
+          @java.lang.Override
           public final Builder mergeUnknownFields(
-              final com.google.protobuf.UnknownFieldSet unknownFields) {
+                  final com.google.protobuf.UnknownFieldSet unknownFields) {
             return super.mergeUnknownFields(unknownFields);
           }
 
@@ -2641,22 +2685,22 @@ public final class EstateAccountProtos {
         }
 
         // @@protoc_insertion_point(class_scope:io.mtini.proto.LedgerEntries.EstateModel.TenantModel)
-        private static final TenantModel DEFAULT_INSTANCE;
+        private static final io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel DEFAULT_INSTANCE;
         static {
-          DEFAULT_INSTANCE = new TenantModel();
+          DEFAULT_INSTANCE = new io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel();
         }
 
-        public static TenantModel getDefaultInstance() {
+        public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel getDefaultInstance() {
           return DEFAULT_INSTANCE;
         }
 
         private static final com.google.protobuf.Parser<TenantModel>
-            PARSER = new com.google.protobuf.AbstractParser<TenantModel>() {
-          @Override
+                PARSER = new com.google.protobuf.AbstractParser<TenantModel>() {
+          @java.lang.Override
           public TenantModel parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+                  com.google.protobuf.CodedInputStream input,
+                  com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                  throws com.google.protobuf.InvalidProtocolBufferException {
             return new TenantModel(input, extensionRegistry);
           }
         };
@@ -2665,13 +2709,13 @@ public final class EstateAccountProtos {
           return PARSER;
         }
 
-        @Override
+        @java.lang.Override
         public com.google.protobuf.Parser<TenantModel> getParserForType() {
           return PARSER;
         }
 
-        @Override
-        public TenantModel getDefaultInstanceForType() {
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel getDefaultInstanceForType() {
           return DEFAULT_INSTANCE;
         }
 
@@ -2688,18 +2732,18 @@ public final class EstateAccountProtos {
       }
 
       public static final int NAME_FIELD_NUMBER = 2;
-      private volatile Object name_;
+      private volatile java.lang.Object name_;
       /**
        * <code>string name = 2;</code>
        */
-      public String getName() {
-        Object ref = name_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
           name_ = s;
           return s;
         }
@@ -2708,12 +2752,12 @@ public final class EstateAccountProtos {
        * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getNameBytes() {
-        Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+      getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
           name_ = b;
           return b;
         } else {
@@ -2722,18 +2766,18 @@ public final class EstateAccountProtos {
       }
 
       public static final int ADDRESS_FIELD_NUMBER = 3;
-      private volatile Object address_;
+      private volatile java.lang.Object address_;
       /**
        * <code>string address = 3;</code>
        */
-      public String getAddress() {
-        Object ref = address_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getAddress() {
+        java.lang.Object ref = address_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
           address_ = s;
           return s;
         }
@@ -2742,12 +2786,12 @@ public final class EstateAccountProtos {
        * <code>string address = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getAddressBytes() {
-        Object ref = address_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+      getAddressBytes() {
+        java.lang.Object ref = address_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
           address_ = b;
           return b;
         } else {
@@ -2756,18 +2800,18 @@ public final class EstateAccountProtos {
       }
 
       public static final int DESCRIPTION_FIELD_NUMBER = 4;
-      private volatile Object description_;
+      private volatile java.lang.Object description_;
       /**
        * <code>string description = 4;</code>
        */
-      public String getDescription() {
-        Object ref = description_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
           description_ = s;
           return s;
         }
@@ -2776,12 +2820,12 @@ public final class EstateAccountProtos {
        * <code>string description = 4;</code>
        */
       public com.google.protobuf.ByteString
-          getDescriptionBytes() {
-        Object ref = description_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+      getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
           description_ = b;
           return b;
         } else {
@@ -2790,18 +2834,18 @@ public final class EstateAccountProtos {
       }
 
       public static final int CONTACTS_FIELD_NUMBER = 5;
-      private volatile Object contacts_;
+      private volatile java.lang.Object contacts_;
       /**
        * <code>string contacts = 5;</code>
        */
-      public String getContacts() {
-        Object ref = contacts_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getContacts() {
+        java.lang.Object ref = contacts_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
           contacts_ = s;
           return s;
         }
@@ -2810,12 +2854,12 @@ public final class EstateAccountProtos {
        * <code>string contacts = 5;</code>
        */
       public com.google.protobuf.ByteString
-          getContactsBytes() {
-        Object ref = contacts_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+      getContactsBytes() {
+        java.lang.Object ref = contacts_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
           contacts_ = b;
           return b;
         } else {
@@ -2834,25 +2878,25 @@ public final class EstateAccountProtos {
       /**
        * <code>.io.mtini.proto.EstateType type = 6;</code>
        */
-      public EstateType getType() {
+      public io.mtini.proto.EstateAccountProtos.EstateType getType() {
         @SuppressWarnings("deprecation")
-        EstateType result = EstateType.valueOf(type_);
-        return result == null ? EstateType.UNRECOGNIZED : result;
+        io.mtini.proto.EstateAccountProtos.EstateType result = io.mtini.proto.EstateAccountProtos.EstateType.valueOf(type_);
+        return result == null ? io.mtini.proto.EstateAccountProtos.EstateType.UNRECOGNIZED : result;
       }
 
       public static final int TENANTDATA_FIELD_NUMBER = 7;
-      private java.util.List<TenantModel> tenantData_;
+      private java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel> tenantData_;
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
-      public java.util.List<TenantModel> getTenantDataList() {
+      public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel> getTenantDataList() {
         return tenantData_;
       }
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
-      public java.util.List<? extends TenantModelOrBuilder>
-          getTenantDataOrBuilderList() {
+      public java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder>
+      getTenantDataOrBuilderList() {
         return tenantData_;
       }
       /**
@@ -2864,19 +2908,19 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
-      public TenantModel getTenantData(int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel getTenantData(int index) {
         return tenantData_.get(index);
       }
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
        */
-      public TenantModelOrBuilder getTenantDataOrBuilder(
-          int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder getTenantDataOrBuilder(
+              int index) {
         return tenantData_.get(index);
       }
 
       private byte memoizedIsInitialized = -1;
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized == 1) return true;
@@ -2886,9 +2930,9 @@ public final class EstateAccountProtos {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
+              throws java.io.IOException {
         if (!id_.isEmpty()) {
           output.writeBytes(1, id_);
         }
@@ -2904,7 +2948,7 @@ public final class EstateAccountProtos {
         if (!getContactsBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 5, contacts_);
         }
-        if (type_ != EstateType.notype.getNumber()) {
+        if (type_ != io.mtini.proto.EstateAccountProtos.EstateType.notype.getNumber()) {
           output.writeEnum(6, type_);
         }
         for (int i = 0; i < tenantData_.size(); i++) {
@@ -2913,7 +2957,7 @@ public final class EstateAccountProtos {
         unknownFields.writeTo(output);
       }
 
-      @Override
+      @java.lang.Override
       public int getSerializedSize() {
         int size = memoizedSize;
         if (size != -1) return size;
@@ -2921,7 +2965,7 @@ public final class EstateAccountProtos {
         size = 0;
         if (!id_.isEmpty()) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, id_);
+                  .computeBytesSize(1, id_);
         }
         if (!getNameBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -2935,48 +2979,48 @@ public final class EstateAccountProtos {
         if (!getContactsBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, contacts_);
         }
-        if (type_ != EstateType.notype.getNumber()) {
+        if (type_ != io.mtini.proto.EstateAccountProtos.EstateType.notype.getNumber()) {
           size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(6, type_);
+                  .computeEnumSize(6, type_);
         }
         for (int i = 0; i < tenantData_.size(); i++) {
           size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(7, tenantData_.get(i));
+                  .computeMessageSize(7, tenantData_.get(i));
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
         return size;
       }
 
-      @Override
-      public boolean equals(final Object obj) {
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
-         return true;
+          return true;
         }
-        if (!(obj instanceof EstateModel)) {
+        if (!(obj instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel)) {
           return super.equals(obj);
         }
-        EstateModel other = (EstateModel) obj;
+        io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel other = (io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel) obj;
 
         boolean result = true;
         result = result && getId()
-            .equals(other.getId());
+                .equals(other.getId());
         result = result && getName()
-            .equals(other.getName());
+                .equals(other.getName());
         result = result && getAddress()
-            .equals(other.getAddress());
+                .equals(other.getAddress());
         result = result && getDescription()
-            .equals(other.getDescription());
+                .equals(other.getDescription());
         result = result && getContacts()
-            .equals(other.getContacts());
+                .equals(other.getContacts());
         result = result && type_ == other.type_;
         result = result && getTenantDataList()
-            .equals(other.getTenantDataList());
+                .equals(other.getTenantDataList());
         result = result && unknownFields.equals(other.unknownFields);
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public int hashCode() {
         if (memoizedHashCode != 0) {
           return memoizedHashCode;
@@ -3004,93 +3048,93 @@ public final class EstateAccountProtos {
         return hash;
       }
 
-      public static EstateModel parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data.array());
-      }
-      public static EstateModel parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data.array(), extensionRegistry);
-      }
-      public static EstateModel parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(
+              java.nio.ByteBuffer data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static EstateModel parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(
+              java.nio.ByteBuffer data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static EstateModel parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(
+              com.google.protobuf.ByteString data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static EstateModel parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(
+              com.google.protobuf.ByteString data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static EstateModel parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(byte[] data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
       }
-      public static EstateModel parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(
+              byte[] data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static EstateModel parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(java.io.InputStream input)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
+                .parseWithIOException(PARSER, input);
       }
-      public static EstateModel parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+                .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static EstateModel parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseDelimitedFrom(java.io.InputStream input)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+                .parseDelimitedWithIOException(PARSER, input);
       }
-      public static EstateModel parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseDelimitedFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+                .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(
+              com.google.protobuf.CodedInputStream input)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parseFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      @Override
+      @java.lang.Override
       public Builder newBuilderForType() { return newBuilder(); }
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(EstateModel prototype) {
+      public static Builder newBuilder(io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
-      @Override
+      @java.lang.Override
       public Builder toBuilder() {
         return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
+                ? new Builder() : new Builder().mergeFrom(this);
       }
 
-      @Override
+      @java.lang.Override
       protected Builder newBuilderForType(
-          BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -3098,20 +3142,20 @@ public final class EstateAccountProtos {
        * Protobuf type {@code io.mtini.proto.LedgerEntries.EstateModel}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries.EstateModel)
-          EstateModelOrBuilder {
+              com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+              // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries.EstateModel)
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor;
+        getDescriptor() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor;
         }
 
-        @Override
-        protected FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  EstateModel.class, Builder.class);
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_fieldAccessorTable
+                  .ensureFieldAccessorsInitialized(
+                          io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder.class);
         }
 
         // Construct using io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.newBuilder()
@@ -3120,7 +3164,7 @@ public final class EstateAccountProtos {
         }
 
         private Builder(
-            BuilderParent parent) {
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
@@ -3130,7 +3174,7 @@ public final class EstateAccountProtos {
             getTenantDataFieldBuilder();
           }
         }
-        @Override
+        @java.lang.Override
         public Builder clear() {
           super.clear();
           id_ = com.google.protobuf.ByteString.EMPTY;
@@ -3154,29 +3198,29 @@ public final class EstateAccountProtos {
           return this;
         }
 
-        @Override
+        @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor;
+        getDescriptorForType() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor;
         }
 
-        @Override
-        public EstateModel getDefaultInstanceForType() {
-          return EstateModel.getDefaultInstance();
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel getDefaultInstanceForType() {
+          return io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.getDefaultInstance();
         }
 
-        @Override
-        public EstateModel build() {
-          EstateModel result = buildPartial();
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel build() {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel result = buildPartial();
           if (!result.isInitialized()) {
-            throw Builder.newUninitializedMessageException(result);
+            throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        @Override
-        public EstateModel buildPartial() {
-          EstateModel result = new EstateModel(this);
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel buildPartial() {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel result = new io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           result.id_ = id_;
@@ -3199,50 +3243,50 @@ public final class EstateAccountProtos {
           return result;
         }
 
-        @Override
+        @java.lang.Override
         public Builder clone() {
           return (Builder) super.clone();
         }
-        @Override
+        @java.lang.Override
         public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
           return (Builder) super.setField(field, value);
         }
-        @Override
+        @java.lang.Override
         public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
+                com.google.protobuf.Descriptors.FieldDescriptor field) {
           return (Builder) super.clearField(field);
         }
-        @Override
+        @java.lang.Override
         public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                com.google.protobuf.Descriptors.OneofDescriptor oneof) {
           return (Builder) super.clearOneof(oneof);
         }
-        @Override
+        @java.lang.Override
         public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                int index, java.lang.Object value) {
           return (Builder) super.setRepeatedField(field, index, value);
         }
-        @Override
+        @java.lang.Override
         public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
           return (Builder) super.addRepeatedField(field, value);
         }
-        @Override
+        @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof EstateModel) {
-            return mergeFrom((EstateModel)other);
+          if (other instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel) {
+            return mergeFrom((io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(EstateModel other) {
-          if (other == EstateModel.getDefaultInstance()) return this;
+        public Builder mergeFrom(io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel other) {
+          if (other == io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.getDefaultInstance()) return this;
           if (other.getId() != com.google.protobuf.ByteString.EMPTY) {
             setId(other.getId());
           }
@@ -3283,9 +3327,9 @@ public final class EstateAccountProtos {
                 tenantDataBuilder_ = null;
                 tenantData_ = other.tenantData_;
                 bitField0_ = (bitField0_ & ~0x00000040);
-                tenantDataBuilder_ = 
-                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                     getTenantDataFieldBuilder() : null;
+                tenantDataBuilder_ =
+                        com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                                getTenantDataFieldBuilder() : null;
               } else {
                 tenantDataBuilder_.addAllMessages(other.tenantData_);
               }
@@ -3296,21 +3340,21 @@ public final class EstateAccountProtos {
           return this;
         }
 
-        @Override
+        @java.lang.Override
         public final boolean isInitialized() {
           return true;
         }
 
-        @Override
+        @java.lang.Override
         public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          EstateModel parsedMessage = null;
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (EstateModel) e.getUnfinishedMessage();
+            parsedMessage = (io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -3333,9 +3377,9 @@ public final class EstateAccountProtos {
          */
         public Builder setId(com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  
+            throw new NullPointerException();
+          }
+
           id_ = value;
           onChanged();
           return this;
@@ -3344,38 +3388,38 @@ public final class EstateAccountProtos {
          * <code>bytes id = 1;</code>
          */
         public Builder clearId() {
-          
+
           id_ = getDefaultInstance().getId();
           onChanged();
           return this;
         }
 
-        private Object name_ = "";
+        private java.lang.Object name_ = "";
         /**
          * <code>string name = 2;</code>
          */
-        public String getName() {
-          Object ref = name_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             name_ = s;
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
          * <code>string name = 2;</code>
          */
         public com.google.protobuf.ByteString
-            getNameBytes() {
-          Object ref = name_;
+        getNameBytes() {
+          java.lang.Object ref = name_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             name_ = b;
             return b;
           } else {
@@ -3386,11 +3430,11 @@ public final class EstateAccountProtos {
          * <code>string name = 2;</code>
          */
         public Builder setName(
-            String value) {
+                java.lang.String value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  
+            throw new NullPointerException();
+          }
+
           name_ = value;
           onChanged();
           return this;
@@ -3399,7 +3443,7 @@ public final class EstateAccountProtos {
          * <code>string name = 2;</code>
          */
         public Builder clearName() {
-          
+
           name_ = getDefaultInstance().getName();
           onChanged();
           return this;
@@ -3408,43 +3452,43 @@ public final class EstateAccountProtos {
          * <code>string name = 2;</code>
          */
         public Builder setNameBytes(
-            com.google.protobuf.ByteString value) {
+                com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-          
+            throw new NullPointerException();
+          }
+          checkByteStringIsUtf8(value);
+
           name_ = value;
           onChanged();
           return this;
         }
 
-        private Object address_ = "";
+        private java.lang.Object address_ = "";
         /**
          * <code>string address = 3;</code>
          */
-        public String getAddress() {
-          Object ref = address_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getAddress() {
+          java.lang.Object ref = address_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             address_ = s;
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
          * <code>string address = 3;</code>
          */
         public com.google.protobuf.ByteString
-            getAddressBytes() {
-          Object ref = address_;
+        getAddressBytes() {
+          java.lang.Object ref = address_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             address_ = b;
             return b;
           } else {
@@ -3455,11 +3499,11 @@ public final class EstateAccountProtos {
          * <code>string address = 3;</code>
          */
         public Builder setAddress(
-            String value) {
+                java.lang.String value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  
+            throw new NullPointerException();
+          }
+
           address_ = value;
           onChanged();
           return this;
@@ -3468,7 +3512,7 @@ public final class EstateAccountProtos {
          * <code>string address = 3;</code>
          */
         public Builder clearAddress() {
-          
+
           address_ = getDefaultInstance().getAddress();
           onChanged();
           return this;
@@ -3477,43 +3521,43 @@ public final class EstateAccountProtos {
          * <code>string address = 3;</code>
          */
         public Builder setAddressBytes(
-            com.google.protobuf.ByteString value) {
+                com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-          
+            throw new NullPointerException();
+          }
+          checkByteStringIsUtf8(value);
+
           address_ = value;
           onChanged();
           return this;
         }
 
-        private Object description_ = "";
+        private java.lang.Object description_ = "";
         /**
          * <code>string description = 4;</code>
          */
-        public String getDescription() {
-          Object ref = description_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getDescription() {
+          java.lang.Object ref = description_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             description_ = s;
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
          * <code>string description = 4;</code>
          */
         public com.google.protobuf.ByteString
-            getDescriptionBytes() {
-          Object ref = description_;
+        getDescriptionBytes() {
+          java.lang.Object ref = description_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             description_ = b;
             return b;
           } else {
@@ -3524,11 +3568,11 @@ public final class EstateAccountProtos {
          * <code>string description = 4;</code>
          */
         public Builder setDescription(
-            String value) {
+                java.lang.String value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  
+            throw new NullPointerException();
+          }
+
           description_ = value;
           onChanged();
           return this;
@@ -3537,7 +3581,7 @@ public final class EstateAccountProtos {
          * <code>string description = 4;</code>
          */
         public Builder clearDescription() {
-          
+
           description_ = getDefaultInstance().getDescription();
           onChanged();
           return this;
@@ -3546,43 +3590,43 @@ public final class EstateAccountProtos {
          * <code>string description = 4;</code>
          */
         public Builder setDescriptionBytes(
-            com.google.protobuf.ByteString value) {
+                com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-          
+            throw new NullPointerException();
+          }
+          checkByteStringIsUtf8(value);
+
           description_ = value;
           onChanged();
           return this;
         }
 
-        private Object contacts_ = "";
+        private java.lang.Object contacts_ = "";
         /**
          * <code>string contacts = 5;</code>
          */
-        public String getContacts() {
-          Object ref = contacts_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getContacts() {
+          java.lang.Object ref = contacts_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             contacts_ = s;
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
          * <code>string contacts = 5;</code>
          */
         public com.google.protobuf.ByteString
-            getContactsBytes() {
-          Object ref = contacts_;
+        getContactsBytes() {
+          java.lang.Object ref = contacts_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             contacts_ = b;
             return b;
           } else {
@@ -3593,11 +3637,11 @@ public final class EstateAccountProtos {
          * <code>string contacts = 5;</code>
          */
         public Builder setContacts(
-            String value) {
+                java.lang.String value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  
+            throw new NullPointerException();
+          }
+
           contacts_ = value;
           onChanged();
           return this;
@@ -3606,7 +3650,7 @@ public final class EstateAccountProtos {
          * <code>string contacts = 5;</code>
          */
         public Builder clearContacts() {
-          
+
           contacts_ = getDefaultInstance().getContacts();
           onChanged();
           return this;
@@ -3615,12 +3659,12 @@ public final class EstateAccountProtos {
          * <code>string contacts = 5;</code>
          */
         public Builder setContactsBytes(
-            com.google.protobuf.ByteString value) {
+                com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-          
+            throw new NullPointerException();
+          }
+          checkByteStringIsUtf8(value);
+
           contacts_ = value;
           onChanged();
           return this;
@@ -3644,19 +3688,19 @@ public final class EstateAccountProtos {
         /**
          * <code>.io.mtini.proto.EstateType type = 6;</code>
          */
-        public EstateType getType() {
+        public io.mtini.proto.EstateAccountProtos.EstateType getType() {
           @SuppressWarnings("deprecation")
-          EstateType result = EstateType.valueOf(type_);
-          return result == null ? EstateType.UNRECOGNIZED : result;
+          io.mtini.proto.EstateAccountProtos.EstateType result = io.mtini.proto.EstateAccountProtos.EstateType.valueOf(type_);
+          return result == null ? io.mtini.proto.EstateAccountProtos.EstateType.UNRECOGNIZED : result;
         }
         /**
          * <code>.io.mtini.proto.EstateType type = 6;</code>
          */
-        public Builder setType(EstateType value) {
+        public Builder setType(io.mtini.proto.EstateAccountProtos.EstateType value) {
           if (value == null) {
             throw new NullPointerException();
           }
-          
+
           type_ = value.getNumber();
           onChanged();
           return this;
@@ -3665,28 +3709,28 @@ public final class EstateAccountProtos {
          * <code>.io.mtini.proto.EstateType type = 6;</code>
          */
         public Builder clearType() {
-          
+
           type_ = 0;
           onChanged();
           return this;
         }
 
-        private java.util.List<TenantModel> tenantData_ =
-          java.util.Collections.emptyList();
+        private java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel> tenantData_ =
+                java.util.Collections.emptyList();
         private void ensureTenantDataIsMutable() {
           if (!((bitField0_ & 0x00000040) == 0x00000040)) {
-            tenantData_ = new java.util.ArrayList<TenantModel>(tenantData_);
+            tenantData_ = new java.util.ArrayList<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel>(tenantData_);
             bitField0_ |= 0x00000040;
-           }
+          }
         }
 
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            TenantModel, TenantModel.Builder, TenantModelOrBuilder> tenantDataBuilder_;
+                io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder> tenantDataBuilder_;
 
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public java.util.List<TenantModel> getTenantDataList() {
+        public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel> getTenantDataList() {
           if (tenantDataBuilder_ == null) {
             return java.util.Collections.unmodifiableList(tenantData_);
           } else {
@@ -3706,7 +3750,7 @@ public final class EstateAccountProtos {
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public TenantModel getTenantData(int index) {
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel getTenantData(int index) {
           if (tenantDataBuilder_ == null) {
             return tenantData_.get(index);
           } else {
@@ -3717,7 +3761,7 @@ public final class EstateAccountProtos {
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
         public Builder setTenantData(
-            int index, TenantModel value) {
+                int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel value) {
           if (tenantDataBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -3734,7 +3778,7 @@ public final class EstateAccountProtos {
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
         public Builder setTenantData(
-            int index, TenantModel.Builder builderForValue) {
+                int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder builderForValue) {
           if (tenantDataBuilder_ == null) {
             ensureTenantDataIsMutable();
             tenantData_.set(index, builderForValue.build());
@@ -3747,7 +3791,7 @@ public final class EstateAccountProtos {
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public Builder addTenantData(TenantModel value) {
+        public Builder addTenantData(io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel value) {
           if (tenantDataBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -3764,7 +3808,7 @@ public final class EstateAccountProtos {
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
         public Builder addTenantData(
-            int index, TenantModel value) {
+                int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel value) {
           if (tenantDataBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -3781,7 +3825,7 @@ public final class EstateAccountProtos {
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
         public Builder addTenantData(
-            TenantModel.Builder builderForValue) {
+                io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder builderForValue) {
           if (tenantDataBuilder_ == null) {
             ensureTenantDataIsMutable();
             tenantData_.add(builderForValue.build());
@@ -3795,7 +3839,7 @@ public final class EstateAccountProtos {
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
         public Builder addTenantData(
-            int index, TenantModel.Builder builderForValue) {
+                int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder builderForValue) {
           if (tenantDataBuilder_ == null) {
             ensureTenantDataIsMutable();
             tenantData_.add(index, builderForValue.build());
@@ -3809,11 +3853,11 @@ public final class EstateAccountProtos {
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
         public Builder addAllTenantData(
-            Iterable<? extends TenantModel> values) {
+                java.lang.Iterable<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel> values) {
           if (tenantDataBuilder_ == null) {
             ensureTenantDataIsMutable();
             com.google.protobuf.AbstractMessageLite.Builder.addAll(
-                values, tenantData_);
+                    values, tenantData_);
             onChanged();
           } else {
             tenantDataBuilder_.addAllMessages(values);
@@ -3849,15 +3893,15 @@ public final class EstateAccountProtos {
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public TenantModel.Builder getTenantDataBuilder(
-            int index) {
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder getTenantDataBuilder(
+                int index) {
           return getTenantDataFieldBuilder().getBuilder(index);
         }
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public TenantModelOrBuilder getTenantDataOrBuilder(
-            int index) {
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder getTenantDataOrBuilder(
+                int index) {
           if (tenantDataBuilder_ == null) {
             return tenantData_.get(index);  } else {
             return tenantDataBuilder_.getMessageOrBuilder(index);
@@ -3866,8 +3910,8 @@ public final class EstateAccountProtos {
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public java.util.List<? extends TenantModelOrBuilder>
-             getTenantDataOrBuilderList() {
+        public java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder>
+        getTenantDataOrBuilderList() {
           if (tenantDataBuilder_ != null) {
             return tenantDataBuilder_.getMessageOrBuilderList();
           } else {
@@ -3877,31 +3921,31 @@ public final class EstateAccountProtos {
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public TenantModel.Builder addTenantDataBuilder() {
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder addTenantDataBuilder() {
           return getTenantDataFieldBuilder().addBuilder(
-              TenantModel.getDefaultInstance());
+                  io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.getDefaultInstance());
         }
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public TenantModel.Builder addTenantDataBuilder(
-            int index) {
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder addTenantDataBuilder(
+                int index) {
           return getTenantDataFieldBuilder().addBuilder(
-              index, TenantModel.getDefaultInstance());
+                  index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.getDefaultInstance());
         }
         /**
          * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel.TenantModel tenantData = 7;</code>
          */
-        public java.util.List<TenantModel.Builder>
-             getTenantDataBuilderList() {
+        public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder>
+        getTenantDataBuilderList() {
           return getTenantDataFieldBuilder().getBuilderList();
         }
         private com.google.protobuf.RepeatedFieldBuilderV3<
-            TenantModel, TenantModel.Builder, TenantModelOrBuilder>
-            getTenantDataFieldBuilder() {
+                io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder>
+        getTenantDataFieldBuilder() {
           if (tenantDataBuilder_ == null) {
             tenantDataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                TenantModel, TenantModel.Builder, TenantModelOrBuilder>(
+                    io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.TenantModelOrBuilder>(
                     tenantData_,
                     ((bitField0_ & 0x00000040) == 0x00000040),
                     getParentForChildren(),
@@ -3910,15 +3954,15 @@ public final class EstateAccountProtos {
           }
           return tenantDataBuilder_;
         }
-        @Override
+        @java.lang.Override
         public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFields(unknownFields);
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
         }
 
-        @Override
+        @java.lang.Override
         public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
           return super.mergeUnknownFields(unknownFields);
         }
 
@@ -3927,22 +3971,22 @@ public final class EstateAccountProtos {
       }
 
       // @@protoc_insertion_point(class_scope:io.mtini.proto.LedgerEntries.EstateModel)
-      private static final EstateModel DEFAULT_INSTANCE;
+      private static final io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new EstateModel();
+        DEFAULT_INSTANCE = new io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel();
       }
 
-      public static EstateModel getDefaultInstance() {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
       private static final com.google.protobuf.Parser<EstateModel>
-          PARSER = new com.google.protobuf.AbstractParser<EstateModel>() {
-        @Override
+              PARSER = new com.google.protobuf.AbstractParser<EstateModel>() {
+        @java.lang.Override
         public EstateModel parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
           return new EstateModel(input, extensionRegistry);
         }
       };
@@ -3951,21 +3995,21 @@ public final class EstateAccountProtos {
         return PARSER;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Parser<EstateModel> getParserForType() {
         return PARSER;
       }
 
-      @Override
-      public EstateModel getDefaultInstanceForType() {
+      @java.lang.Override
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public interface ImageModelOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries.ImageModel)
-        com.google.protobuf.MessageOrBuilder {
+            // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries.ImageModel)
+            com.google.protobuf.MessageOrBuilder {
 
       /**
        * <code>bytes id = 1;</code>
@@ -3980,21 +4024,21 @@ public final class EstateAccountProtos {
       /**
        * <code>string encodedBitmap = 3;</code>
        */
-      String getEncodedBitmap();
+      java.lang.String getEncodedBitmap();
       /**
        * <code>string encodedBitmap = 3;</code>
        */
       com.google.protobuf.ByteString
-          getEncodedBitmapBytes();
+      getEncodedBitmapBytes();
     }
     /**
      * Protobuf type {@code io.mtini.proto.LedgerEntries.ImageModel}
      */
     public  static final class ImageModel extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries.ImageModel)
-        ImageModelOrBuilder {
-    private static final long serialVersionUID = 0L;
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries.ImageModel)
+            ImageModelOrBuilder {
+      private static final long serialVersionUID = 0L;
       // Use ImageModel.newBuilder() to construct.
       private ImageModel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
@@ -4005,22 +4049,22 @@ public final class EstateAccountProtos {
         encodedBitmap_ = "";
       }
 
-      @Override
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
       }
       private ImageModel(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         this();
         if (extensionRegistry == null) {
-          throw new NullPointerException();
+          throw new java.lang.NullPointerException();
         }
         int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
+                com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
           boolean done = false;
           while (!done) {
@@ -4040,14 +4084,14 @@ public final class EstateAccountProtos {
                 break;
               }
               case 26: {
-                String s = input.readStringRequireUtf8();
+                java.lang.String s = input.readStringRequireUtf8();
 
                 encodedBitmap_ = s;
                 break;
               }
               default: {
-                if (!parseUnknownField(
-                    input, unknownFields, extensionRegistry, tag)) {
+                if (!parseUnknownFieldProto3(
+                        input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
                 break;
@@ -4058,23 +4102,23 @@ public final class EstateAccountProtos {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
           throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
+                  e).setUnfinishedMessage(this);
         } finally {
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
       }
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor;
+      getDescriptor() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor;
       }
 
-      @Override
-      protected FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                ImageModel.class, Builder.class);
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder.class);
       }
 
       public static final int ID_FIELD_NUMBER = 1;
@@ -4096,18 +4140,18 @@ public final class EstateAccountProtos {
       }
 
       public static final int ENCODEDBITMAP_FIELD_NUMBER = 3;
-      private volatile Object encodedBitmap_;
+      private volatile java.lang.Object encodedBitmap_;
       /**
        * <code>string encodedBitmap = 3;</code>
        */
-      public String getEncodedBitmap() {
-        Object ref = encodedBitmap_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getEncodedBitmap() {
+        java.lang.Object ref = encodedBitmap_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
           encodedBitmap_ = s;
           return s;
         }
@@ -4116,12 +4160,12 @@ public final class EstateAccountProtos {
        * <code>string encodedBitmap = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getEncodedBitmapBytes() {
-        Object ref = encodedBitmap_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+      getEncodedBitmapBytes() {
+        java.lang.Object ref = encodedBitmap_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
           encodedBitmap_ = b;
           return b;
         } else {
@@ -4130,7 +4174,7 @@ public final class EstateAccountProtos {
       }
 
       private byte memoizedIsInitialized = -1;
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized == 1) return true;
@@ -4140,9 +4184,9 @@ public final class EstateAccountProtos {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
+              throws java.io.IOException {
         if (!id_.isEmpty()) {
           output.writeBytes(1, id_);
         }
@@ -4155,7 +4199,7 @@ public final class EstateAccountProtos {
         unknownFields.writeTo(output);
       }
 
-      @Override
+      @java.lang.Override
       public int getSerializedSize() {
         int size = memoizedSize;
         if (size != -1) return size;
@@ -4163,11 +4207,11 @@ public final class EstateAccountProtos {
         size = 0;
         if (!id_.isEmpty()) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, id_);
+                  .computeBytesSize(1, id_);
         }
         if (!modelId_.isEmpty()) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, modelId_);
+                  .computeBytesSize(2, modelId_);
         }
         if (!getEncodedBitmapBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, encodedBitmap_);
@@ -4177,28 +4221,28 @@ public final class EstateAccountProtos {
         return size;
       }
 
-      @Override
-      public boolean equals(final Object obj) {
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
-         return true;
+          return true;
         }
-        if (!(obj instanceof ImageModel)) {
+        if (!(obj instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel)) {
           return super.equals(obj);
         }
-        ImageModel other = (ImageModel) obj;
+        io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel other = (io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel) obj;
 
         boolean result = true;
         result = result && getId()
-            .equals(other.getId());
+                .equals(other.getId());
         result = result && getModelId()
-            .equals(other.getModelId());
+                .equals(other.getModelId());
         result = result && getEncodedBitmap()
-            .equals(other.getEncodedBitmap());
+                .equals(other.getEncodedBitmap());
         result = result && unknownFields.equals(other.unknownFields);
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public int hashCode() {
         if (memoizedHashCode != 0) {
           return memoizedHashCode;
@@ -4216,93 +4260,93 @@ public final class EstateAccountProtos {
         return hash;
       }
 
-      public static ImageModel parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data.array());
-      }
-      public static ImageModel parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data.array(), extensionRegistry);
-      }
-      public static ImageModel parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(
+              java.nio.ByteBuffer data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static ImageModel parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(
+              java.nio.ByteBuffer data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static ImageModel parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(
+              com.google.protobuf.ByteString data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static ImageModel parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(
+              com.google.protobuf.ByteString data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static ImageModel parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(byte[] data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
       }
-      public static ImageModel parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(
+              byte[] data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static ImageModel parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(java.io.InputStream input)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
+                .parseWithIOException(PARSER, input);
       }
-      public static ImageModel parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+                .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static ImageModel parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseDelimitedFrom(java.io.InputStream input)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
+                .parseDelimitedWithIOException(PARSER, input);
       }
-      public static ImageModel parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseDelimitedFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
+                .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(
+              com.google.protobuf.CodedInputStream input)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parseFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      @Override
+      @java.lang.Override
       public Builder newBuilderForType() { return newBuilder(); }
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(ImageModel prototype) {
+      public static Builder newBuilder(io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
-      @Override
+      @java.lang.Override
       public Builder toBuilder() {
         return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
+                ? new Builder() : new Builder().mergeFrom(this);
       }
 
-      @Override
+      @java.lang.Override
       protected Builder newBuilderForType(
-          BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -4310,20 +4354,20 @@ public final class EstateAccountProtos {
        * Protobuf type {@code io.mtini.proto.LedgerEntries.ImageModel}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries.ImageModel)
-          ImageModelOrBuilder {
+              com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+              // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries.ImageModel)
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor;
+        getDescriptor() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor;
         }
 
-        @Override
-        protected FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  ImageModel.class, Builder.class);
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_fieldAccessorTable
+                  .ensureFieldAccessorsInitialized(
+                          io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder.class);
         }
 
         // Construct using io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.newBuilder()
@@ -4332,7 +4376,7 @@ public final class EstateAccountProtos {
         }
 
         private Builder(
-            BuilderParent parent) {
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
@@ -4341,7 +4385,7 @@ public final class EstateAccountProtos {
                   .alwaysUseFieldBuilders) {
           }
         }
-        @Override
+        @java.lang.Override
         public Builder clear() {
           super.clear();
           id_ = com.google.protobuf.ByteString.EMPTY;
@@ -4353,29 +4397,29 @@ public final class EstateAccountProtos {
           return this;
         }
 
-        @Override
+        @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor;
+        getDescriptorForType() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor;
         }
 
-        @Override
-        public ImageModel getDefaultInstanceForType() {
-          return ImageModel.getDefaultInstance();
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel getDefaultInstanceForType() {
+          return io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.getDefaultInstance();
         }
 
-        @Override
-        public ImageModel build() {
-          ImageModel result = buildPartial();
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel build() {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel result = buildPartial();
           if (!result.isInitialized()) {
-            throw Builder.newUninitializedMessageException(result);
+            throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        @Override
-        public ImageModel buildPartial() {
-          ImageModel result = new ImageModel(this);
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel buildPartial() {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel result = new io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel(this);
           result.id_ = id_;
           result.modelId_ = modelId_;
           result.encodedBitmap_ = encodedBitmap_;
@@ -4383,50 +4427,50 @@ public final class EstateAccountProtos {
           return result;
         }
 
-        @Override
+        @java.lang.Override
         public Builder clone() {
           return (Builder) super.clone();
         }
-        @Override
+        @java.lang.Override
         public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
           return (Builder) super.setField(field, value);
         }
-        @Override
+        @java.lang.Override
         public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
+                com.google.protobuf.Descriptors.FieldDescriptor field) {
           return (Builder) super.clearField(field);
         }
-        @Override
+        @java.lang.Override
         public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                com.google.protobuf.Descriptors.OneofDescriptor oneof) {
           return (Builder) super.clearOneof(oneof);
         }
-        @Override
+        @java.lang.Override
         public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                int index, java.lang.Object value) {
           return (Builder) super.setRepeatedField(field, index, value);
         }
-        @Override
+        @java.lang.Override
         public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            Object value) {
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
           return (Builder) super.addRepeatedField(field, value);
         }
-        @Override
+        @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof ImageModel) {
-            return mergeFrom((ImageModel)other);
+          if (other instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel) {
+            return mergeFrom((io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(ImageModel other) {
-          if (other == ImageModel.getDefaultInstance()) return this;
+        public Builder mergeFrom(io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel other) {
+          if (other == io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.getDefaultInstance()) return this;
           if (other.getId() != com.google.protobuf.ByteString.EMPTY) {
             setId(other.getId());
           }
@@ -4442,21 +4486,21 @@ public final class EstateAccountProtos {
           return this;
         }
 
-        @Override
+        @java.lang.Override
         public final boolean isInitialized() {
           return true;
         }
 
-        @Override
+        @java.lang.Override
         public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          ImageModel parsedMessage = null;
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (ImageModel) e.getUnfinishedMessage();
+            parsedMessage = (io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -4478,9 +4522,9 @@ public final class EstateAccountProtos {
          */
         public Builder setId(com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  
+            throw new NullPointerException();
+          }
+
           id_ = value;
           onChanged();
           return this;
@@ -4489,7 +4533,7 @@ public final class EstateAccountProtos {
          * <code>bytes id = 1;</code>
          */
         public Builder clearId() {
-          
+
           id_ = getDefaultInstance().getId();
           onChanged();
           return this;
@@ -4507,9 +4551,9 @@ public final class EstateAccountProtos {
          */
         public Builder setModelId(com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  
+            throw new NullPointerException();
+          }
+
           modelId_ = value;
           onChanged();
           return this;
@@ -4518,38 +4562,38 @@ public final class EstateAccountProtos {
          * <code>bytes modelId = 2;</code>
          */
         public Builder clearModelId() {
-          
+
           modelId_ = getDefaultInstance().getModelId();
           onChanged();
           return this;
         }
 
-        private Object encodedBitmap_ = "";
+        private java.lang.Object encodedBitmap_ = "";
         /**
          * <code>string encodedBitmap = 3;</code>
          */
-        public String getEncodedBitmap() {
-          Object ref = encodedBitmap_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getEncodedBitmap() {
+          java.lang.Object ref = encodedBitmap_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
             encodedBitmap_ = s;
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
          * <code>string encodedBitmap = 3;</code>
          */
         public com.google.protobuf.ByteString
-            getEncodedBitmapBytes() {
-          Object ref = encodedBitmap_;
+        getEncodedBitmapBytes() {
+          java.lang.Object ref = encodedBitmap_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
             encodedBitmap_ = b;
             return b;
           } else {
@@ -4560,11 +4604,11 @@ public final class EstateAccountProtos {
          * <code>string encodedBitmap = 3;</code>
          */
         public Builder setEncodedBitmap(
-            String value) {
+                java.lang.String value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  
+            throw new NullPointerException();
+          }
+
           encodedBitmap_ = value;
           onChanged();
           return this;
@@ -4573,7 +4617,7 @@ public final class EstateAccountProtos {
          * <code>string encodedBitmap = 3;</code>
          */
         public Builder clearEncodedBitmap() {
-          
+
           encodedBitmap_ = getDefaultInstance().getEncodedBitmap();
           onChanged();
           return this;
@@ -4582,25 +4626,25 @@ public final class EstateAccountProtos {
          * <code>string encodedBitmap = 3;</code>
          */
         public Builder setEncodedBitmapBytes(
-            com.google.protobuf.ByteString value) {
+                com.google.protobuf.ByteString value) {
           if (value == null) {
-    throw new NullPointerException();
-  }
-  AbstractMessageLite.checkByteStringIsUtf8(value);
-          
+            throw new NullPointerException();
+          }
+          checkByteStringIsUtf8(value);
+
           encodedBitmap_ = value;
           onChanged();
           return this;
         }
-        @Override
+        @java.lang.Override
         public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFields(unknownFields);
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
         }
 
-        @Override
+        @java.lang.Override
         public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
           return super.mergeUnknownFields(unknownFields);
         }
 
@@ -4609,22 +4653,22 @@ public final class EstateAccountProtos {
       }
 
       // @@protoc_insertion_point(class_scope:io.mtini.proto.LedgerEntries.ImageModel)
-      private static final ImageModel DEFAULT_INSTANCE;
+      private static final io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new ImageModel();
+        DEFAULT_INSTANCE = new io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel();
       }
 
-      public static ImageModel getDefaultInstance() {
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
       private static final com.google.protobuf.Parser<ImageModel>
-          PARSER = new com.google.protobuf.AbstractParser<ImageModel>() {
-        @Override
+              PARSER = new com.google.protobuf.AbstractParser<ImageModel>() {
+        @java.lang.Override
         public ImageModel parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
           return new ImageModel(input, extensionRegistry);
         }
       };
@@ -4633,13 +4677,693 @@ public final class EstateAccountProtos {
         return PARSER;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Parser<ImageModel> getParserForType() {
         return PARSER;
       }
 
-      @Override
-      public ImageModel getDefaultInstanceForType() {
+      @java.lang.Override
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface NotesModelOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:io.mtini.proto.LedgerEntries.NotesModel)
+            com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>int64 date = 1;</code>
+       */
+      long getDate();
+
+      /**
+       * <code>bytes modelId = 2;</code>
+       */
+      com.google.protobuf.ByteString getModelId();
+
+      /**
+       * <code>string noteText = 3;</code>
+       */
+      java.lang.String getNoteText();
+      /**
+       * <code>string noteText = 3;</code>
+       */
+      com.google.protobuf.ByteString
+      getNoteTextBytes();
+    }
+    /**
+     * Protobuf type {@code io.mtini.proto.LedgerEntries.NotesModel}
+     */
+    public  static final class NotesModel extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:io.mtini.proto.LedgerEntries.NotesModel)
+            NotesModelOrBuilder {
+      private static final long serialVersionUID = 0L;
+      // Use NotesModel.newBuilder() to construct.
+      private NotesModel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private NotesModel() {
+        date_ = 0L;
+        modelId_ = com.google.protobuf.ByteString.EMPTY;
+        noteText_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private NotesModel(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+
+                date_ = input.readInt64();
+                break;
+              }
+              case 18: {
+
+                modelId_ = input.readBytes();
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                noteText_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownFieldProto3(
+                        input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+                  e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_NotesModel_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_NotesModel_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder.class);
+      }
+
+      public static final int DATE_FIELD_NUMBER = 1;
+      private long date_;
+      /**
+       * <code>int64 date = 1;</code>
+       */
+      public long getDate() {
+        return date_;
+      }
+
+      public static final int MODELID_FIELD_NUMBER = 2;
+      private com.google.protobuf.ByteString modelId_;
+      /**
+       * <code>bytes modelId = 2;</code>
+       */
+      public com.google.protobuf.ByteString getModelId() {
+        return modelId_;
+      }
+
+      public static final int NOTETEXT_FIELD_NUMBER = 3;
+      private volatile java.lang.Object noteText_;
+      /**
+       * <code>string noteText = 3;</code>
+       */
+      public java.lang.String getNoteText() {
+        java.lang.Object ref = noteText_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          noteText_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string noteText = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+      getNoteTextBytes() {
+        java.lang.Object ref = noteText_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b =
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                          (java.lang.String) ref);
+          noteText_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+              throws java.io.IOException {
+        if (date_ != 0L) {
+          output.writeInt64(1, date_);
+        }
+        if (!modelId_.isEmpty()) {
+          output.writeBytes(2, modelId_);
+        }
+        if (!getNoteTextBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, noteText_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (date_ != 0L) {
+          size += com.google.protobuf.CodedOutputStream
+                  .computeInt64Size(1, date_);
+        }
+        if (!modelId_.isEmpty()) {
+          size += com.google.protobuf.CodedOutputStream
+                  .computeBytesSize(2, modelId_);
+        }
+        if (!getNoteTextBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, noteText_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+          return true;
+        }
+        if (!(obj instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel)) {
+          return super.equals(obj);
+        }
+        io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel other = (io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel) obj;
+
+        boolean result = true;
+        result = result && (getDate()
+                == other.getDate());
+        result = result && getModelId()
+                .equals(other.getModelId());
+        result = result && getNoteText()
+                .equals(other.getNoteText());
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + DATE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+                getDate());
+        hash = (37 * hash) + MODELID_FIELD_NUMBER;
+        hash = (53 * hash) + getModelId().hashCode();
+        hash = (37 * hash) + NOTETEXT_FIELD_NUMBER;
+        hash = (53 * hash) + getNoteText().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(
+              java.nio.ByteBuffer data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(
+              java.nio.ByteBuffer data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(
+              com.google.protobuf.ByteString data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(
+              com.google.protobuf.ByteString data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(byte[] data)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(
+              byte[] data,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(java.io.InputStream input)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseDelimitedFrom(java.io.InputStream input)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseDelimitedFrom(
+              java.io.InputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(
+              com.google.protobuf.CodedInputStream input)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input);
+      }
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parseFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+                ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code io.mtini.proto.LedgerEntries.NotesModel}
+       */
+      public static final class Builder extends
+              com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+              // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries.NotesModel)
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_NotesModel_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_NotesModel_fieldAccessorTable
+                  .ensureFieldAccessorsInitialized(
+                          io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder.class);
+        }
+
+        // Construct using io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          date_ = 0L;
+
+          modelId_ = com.google.protobuf.ByteString.EMPTY;
+
+          noteText_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+          return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_NotesModel_descriptor;
+        }
+
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel getDefaultInstanceForType() {
+          return io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel build() {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel buildPartial() {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel result = new io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel(this);
+          result.date_ = date_;
+          result.modelId_ = modelId_;
+          result.noteText_ = noteText_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+                com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+                com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                int index, java.lang.Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel) {
+            return mergeFrom((io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel other) {
+          if (other == io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.getDefaultInstance()) return this;
+          if (other.getDate() != 0L) {
+            setDate(other.getDate());
+          }
+          if (other.getModelId() != com.google.protobuf.ByteString.EMPTY) {
+            setModelId(other.getModelId());
+          }
+          if (!other.getNoteText().isEmpty()) {
+            noteText_ = other.noteText_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+          io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private long date_ ;
+        /**
+         * <code>int64 date = 1;</code>
+         */
+        public long getDate() {
+          return date_;
+        }
+        /**
+         * <code>int64 date = 1;</code>
+         */
+        public Builder setDate(long value) {
+
+          date_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int64 date = 1;</code>
+         */
+        public Builder clearDate() {
+
+          date_ = 0L;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.ByteString modelId_ = com.google.protobuf.ByteString.EMPTY;
+        /**
+         * <code>bytes modelId = 2;</code>
+         */
+        public com.google.protobuf.ByteString getModelId() {
+          return modelId_;
+        }
+        /**
+         * <code>bytes modelId = 2;</code>
+         */
+        public Builder setModelId(com.google.protobuf.ByteString value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+
+          modelId_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>bytes modelId = 2;</code>
+         */
+        public Builder clearModelId() {
+
+          modelId_ = getDefaultInstance().getModelId();
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object noteText_ = "";
+        /**
+         * <code>string noteText = 3;</code>
+         */
+        public java.lang.String getNoteText() {
+          java.lang.Object ref = noteText_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                    (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            noteText_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string noteText = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+        getNoteTextBytes() {
+          java.lang.Object ref = noteText_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b =
+                    com.google.protobuf.ByteString.copyFromUtf8(
+                            (java.lang.String) ref);
+            noteText_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string noteText = 3;</code>
+         */
+        public Builder setNoteText(
+                java.lang.String value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+
+          noteText_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string noteText = 3;</code>
+         */
+        public Builder clearNoteText() {
+
+          noteText_ = getDefaultInstance().getNoteText();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string noteText = 3;</code>
+         */
+        public Builder setNoteTextBytes(
+                com.google.protobuf.ByteString value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          checkByteStringIsUtf8(value);
+
+          noteText_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFieldsProto3(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:io.mtini.proto.LedgerEntries.NotesModel)
+      }
+
+      // @@protoc_insertion_point(class_scope:io.mtini.proto.LedgerEntries.NotesModel)
+      private static final io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel();
+      }
+
+      public static io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<NotesModel>
+              PARSER = new com.google.protobuf.AbstractParser<NotesModel>() {
+        @java.lang.Override
+        public NotesModel parsePartialFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+          return new NotesModel(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<NotesModel> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<NotesModel> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -4657,25 +5381,25 @@ public final class EstateAccountProtos {
     /**
      * <code>.io.mtini.proto.Operation operation = 1;</code>
      */
-    public Operation getOperation() {
+    public io.mtini.proto.EstateAccountProtos.Operation getOperation() {
       @SuppressWarnings("deprecation")
-      Operation result = Operation.valueOf(operation_);
-      return result == null ? Operation.UNRECOGNIZED : result;
+      io.mtini.proto.EstateAccountProtos.Operation result = io.mtini.proto.EstateAccountProtos.Operation.valueOf(operation_);
+      return result == null ? io.mtini.proto.EstateAccountProtos.Operation.UNRECOGNIZED : result;
     }
 
     public static final int ESTATEDATA_FIELD_NUMBER = 2;
-    private java.util.List<EstateModel> estateData_;
+    private java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel> estateData_;
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
-    public java.util.List<EstateModel> getEstateDataList() {
+    public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel> getEstateDataList() {
       return estateData_;
     }
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
-    public java.util.List<? extends EstateModelOrBuilder>
-        getEstateDataOrBuilderList() {
+    public java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder>
+    getEstateDataOrBuilderList() {
       return estateData_;
     }
     /**
@@ -4687,30 +5411,30 @@ public final class EstateAccountProtos {
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
-    public EstateModel getEstateData(int index) {
+    public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel getEstateData(int index) {
       return estateData_.get(index);
     }
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
      */
-    public EstateModelOrBuilder getEstateDataOrBuilder(
-        int index) {
+    public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder getEstateDataOrBuilder(
+            int index) {
       return estateData_.get(index);
     }
 
     public static final int IMAGES_FIELD_NUMBER = 3;
-    private java.util.List<ImageModel> images_;
+    private java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel> images_;
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
-    public java.util.List<ImageModel> getImagesList() {
+    public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel> getImagesList() {
       return images_;
     }
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
-    public java.util.List<? extends ImageModelOrBuilder>
-        getImagesOrBuilderList() {
+    public java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder>
+    getImagesOrBuilderList() {
       return images_;
     }
     /**
@@ -4722,19 +5446,54 @@ public final class EstateAccountProtos {
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
-    public ImageModel getImages(int index) {
+    public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel getImages(int index) {
       return images_.get(index);
     }
     /**
      * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
      */
-    public ImageModelOrBuilder getImagesOrBuilder(
-        int index) {
+    public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder getImagesOrBuilder(
+            int index) {
       return images_.get(index);
     }
 
+    public static final int NOTES_FIELD_NUMBER = 4;
+    private java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel> notes_;
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel> getNotesList() {
+      return notes_;
+    }
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    public java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder>
+    getNotesOrBuilderList() {
+      return notes_;
+    }
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    public int getNotesCount() {
+      return notes_.size();
+    }
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel getNotes(int index) {
+      return notes_.get(index);
+    }
+    /**
+     * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+     */
+    public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder getNotesOrBuilder(
+            int index) {
+      return notes_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
-    @Override
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -4744,10 +5503,10 @@ public final class EstateAccountProtos {
       return true;
     }
 
-    @Override
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (operation_ != Operation.NOTSET.getNumber()) {
+            throws java.io.IOException {
+      if (operation_ != io.mtini.proto.EstateAccountProtos.Operation.NOTSET.getNumber()) {
         output.writeEnum(1, operation_);
       }
       for (int i = 0; i < estateData_.size(); i++) {
@@ -4756,53 +5515,62 @@ public final class EstateAccountProtos {
       for (int i = 0; i < images_.size(); i++) {
         output.writeMessage(3, images_.get(i));
       }
+      for (int i = 0; i < notes_.size(); i++) {
+        output.writeMessage(4, notes_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
-    @Override
+    @java.lang.Override
     public int getSerializedSize() {
       int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (operation_ != Operation.NOTSET.getNumber()) {
+      if (operation_ != io.mtini.proto.EstateAccountProtos.Operation.NOTSET.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, operation_);
+                .computeEnumSize(1, operation_);
       }
       for (int i = 0; i < estateData_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, estateData_.get(i));
+                .computeMessageSize(2, estateData_.get(i));
       }
       for (int i = 0; i < images_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, images_.get(i));
+                .computeMessageSize(3, images_.get(i));
+      }
+      for (int i = 0; i < notes_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+                .computeMessageSize(4, notes_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof LedgerEntries)) {
+      if (!(obj instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries)) {
         return super.equals(obj);
       }
-      LedgerEntries other = (LedgerEntries) obj;
+      io.mtini.proto.EstateAccountProtos.LedgerEntries other = (io.mtini.proto.EstateAccountProtos.LedgerEntries) obj;
 
       boolean result = true;
       result = result && operation_ == other.operation_;
       result = result && getEstateDataList()
-          .equals(other.getEstateDataList());
+              .equals(other.getEstateDataList());
       result = result && getImagesList()
-          .equals(other.getImagesList());
+              .equals(other.getImagesList());
+      result = result && getNotesList()
+              .equals(other.getNotesList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -4819,98 +5587,102 @@ public final class EstateAccountProtos {
         hash = (37 * hash) + IMAGES_FIELD_NUMBER;
         hash = (53 * hash) + getImagesList().hashCode();
       }
+      if (getNotesCount() > 0) {
+        hash = (37 * hash) + NOTES_FIELD_NUMBER;
+        hash = (53 * hash) + getNotesList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static LedgerEntries parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data.array());
-    }
-    public static LedgerEntries parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data.array(), extensionRegistry);
-    }
-    public static LedgerEntries parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LedgerEntries parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LedgerEntries parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LedgerEntries parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LedgerEntries parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
-    public static LedgerEntries parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LedgerEntries parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+              .parseWithIOException(PARSER, input);
     }
-    public static LedgerEntries parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static LedgerEntries parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+              .parseDelimitedWithIOException(PARSER, input);
     }
-    public static LedgerEntries parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+    }
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    @Override
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(LedgerEntries prototype) {
+    public static Builder newBuilder(io.mtini.proto.EstateAccountProtos.LedgerEntries prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-    @Override
+    @java.lang.Override
     public Builder toBuilder() {
       return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+              ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -4918,20 +5690,20 @@ public final class EstateAccountProtos {
      * Protobuf type {@code io.mtini.proto.LedgerEntries}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries)
-        LedgerEntriesOrBuilder {
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:io.mtini.proto.LedgerEntries)
+            io.mtini.proto.EstateAccountProtos.LedgerEntriesOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_descriptor;
+      getDescriptor() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_descriptor;
       }
 
-      @Override
-      protected FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                LedgerEntries.class, Builder.class);
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        io.mtini.proto.EstateAccountProtos.LedgerEntries.class, io.mtini.proto.EstateAccountProtos.LedgerEntries.Builder.class);
       }
 
       // Construct using io.mtini.proto.EstateAccountProtos.LedgerEntries.newBuilder()
@@ -4940,7 +5712,7 @@ public final class EstateAccountProtos {
       }
 
       private Builder(
-          BuilderParent parent) {
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4949,9 +5721,10 @@ public final class EstateAccountProtos {
                 .alwaysUseFieldBuilders) {
           getEstateDataFieldBuilder();
           getImagesFieldBuilder();
+          getNotesFieldBuilder();
         }
       }
-      @Override
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         operation_ = 0;
@@ -4968,32 +5741,38 @@ public final class EstateAccountProtos {
         } else {
           imagesBuilder_.clear();
         }
+        if (notesBuilder_ == null) {
+          notes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          notesBuilder_.clear();
+        }
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_descriptor;
+      getDescriptorForType() {
+        return io.mtini.proto.EstateAccountProtos.internal_static_io_mtini_proto_LedgerEntries_descriptor;
       }
 
-      @Override
-      public LedgerEntries getDefaultInstanceForType() {
-        return LedgerEntries.getDefaultInstance();
+      @java.lang.Override
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries getDefaultInstanceForType() {
+        return io.mtini.proto.EstateAccountProtos.LedgerEntries.getDefaultInstance();
       }
 
-      @Override
-      public LedgerEntries build() {
-        LedgerEntries result = buildPartial();
+      @java.lang.Override
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries build() {
+        io.mtini.proto.EstateAccountProtos.LedgerEntries result = buildPartial();
         if (!result.isInitialized()) {
-          throw Builder.newUninitializedMessageException(result);
+          throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      @Override
-      public LedgerEntries buildPartial() {
-        LedgerEntries result = new LedgerEntries(this);
+      @java.lang.Override
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries buildPartial() {
+        io.mtini.proto.EstateAccountProtos.LedgerEntries result = new io.mtini.proto.EstateAccountProtos.LedgerEntries(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.operation_ = operation_;
@@ -5015,55 +5794,64 @@ public final class EstateAccountProtos {
         } else {
           result.images_ = imagesBuilder_.build();
         }
+        if (notesBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            notes_ = java.util.Collections.unmodifiableList(notes_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.notes_ = notes_;
+        } else {
+          result.notes_ = notesBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public Builder clone() {
         return (Builder) super.clone();
       }
-      @Override
+      @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-      @Override
+      @java.lang.Override
       public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-      @Override
+      @java.lang.Override
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-      @Override
+      @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof LedgerEntries) {
-          return mergeFrom((LedgerEntries)other);
+        if (other instanceof io.mtini.proto.EstateAccountProtos.LedgerEntries) {
+          return mergeFrom((io.mtini.proto.EstateAccountProtos.LedgerEntries)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(LedgerEntries other) {
-        if (other == LedgerEntries.getDefaultInstance()) return this;
+      public Builder mergeFrom(io.mtini.proto.EstateAccountProtos.LedgerEntries other) {
+        if (other == io.mtini.proto.EstateAccountProtos.LedgerEntries.getDefaultInstance()) return this;
         if (other.operation_ != 0) {
           setOperationValue(other.getOperationValue());
         }
@@ -5085,9 +5873,9 @@ public final class EstateAccountProtos {
               estateDataBuilder_ = null;
               estateData_ = other.estateData_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              estateDataBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getEstateDataFieldBuilder() : null;
+              estateDataBuilder_ =
+                      com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                              getEstateDataFieldBuilder() : null;
             } else {
               estateDataBuilder_.addAllMessages(other.estateData_);
             }
@@ -5111,11 +5899,37 @@ public final class EstateAccountProtos {
               imagesBuilder_ = null;
               images_ = other.images_;
               bitField0_ = (bitField0_ & ~0x00000004);
-              imagesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getImagesFieldBuilder() : null;
+              imagesBuilder_ =
+                      com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                              getImagesFieldBuilder() : null;
             } else {
               imagesBuilder_.addAllMessages(other.images_);
+            }
+          }
+        }
+        if (notesBuilder_ == null) {
+          if (!other.notes_.isEmpty()) {
+            if (notes_.isEmpty()) {
+              notes_ = other.notes_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureNotesIsMutable();
+              notes_.addAll(other.notes_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.notes_.isEmpty()) {
+            if (notesBuilder_.isEmpty()) {
+              notesBuilder_.dispose();
+              notesBuilder_ = null;
+              notes_ = other.notes_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              notesBuilder_ =
+                      com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                              getNotesFieldBuilder() : null;
+            } else {
+              notesBuilder_.addAllMessages(other.notes_);
             }
           }
         }
@@ -5124,21 +5938,21 @@ public final class EstateAccountProtos {
         return this;
       }
 
-      @Override
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
-      @Override
+      @java.lang.Override
       public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        LedgerEntries parsedMessage = null;
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+        io.mtini.proto.EstateAccountProtos.LedgerEntries parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (LedgerEntries) e.getUnfinishedMessage();
+          parsedMessage = (io.mtini.proto.EstateAccountProtos.LedgerEntries) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5167,19 +5981,19 @@ public final class EstateAccountProtos {
       /**
        * <code>.io.mtini.proto.Operation operation = 1;</code>
        */
-      public Operation getOperation() {
+      public io.mtini.proto.EstateAccountProtos.Operation getOperation() {
         @SuppressWarnings("deprecation")
-        Operation result = Operation.valueOf(operation_);
-        return result == null ? Operation.UNRECOGNIZED : result;
+        io.mtini.proto.EstateAccountProtos.Operation result = io.mtini.proto.EstateAccountProtos.Operation.valueOf(operation_);
+        return result == null ? io.mtini.proto.EstateAccountProtos.Operation.UNRECOGNIZED : result;
       }
       /**
        * <code>.io.mtini.proto.Operation operation = 1;</code>
        */
-      public Builder setOperation(Operation value) {
+      public Builder setOperation(io.mtini.proto.EstateAccountProtos.Operation value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         operation_ = value.getNumber();
         onChanged();
         return this;
@@ -5188,28 +6002,28 @@ public final class EstateAccountProtos {
        * <code>.io.mtini.proto.Operation operation = 1;</code>
        */
       public Builder clearOperation() {
-        
+
         operation_ = 0;
         onChanged();
         return this;
       }
 
-      private java.util.List<EstateModel> estateData_ =
-        java.util.Collections.emptyList();
+      private java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel> estateData_ =
+              java.util.Collections.emptyList();
       private void ensureEstateDataIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          estateData_ = new java.util.ArrayList<EstateModel>(estateData_);
+          estateData_ = new java.util.ArrayList<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel>(estateData_);
           bitField0_ |= 0x00000002;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          EstateModel, EstateModel.Builder, EstateModelOrBuilder> estateDataBuilder_;
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder> estateDataBuilder_;
 
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public java.util.List<EstateModel> getEstateDataList() {
+      public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel> getEstateDataList() {
         if (estateDataBuilder_ == null) {
           return java.util.Collections.unmodifiableList(estateData_);
         } else {
@@ -5229,7 +6043,7 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public EstateModel getEstateData(int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel getEstateData(int index) {
         if (estateDataBuilder_ == null) {
           return estateData_.get(index);
         } else {
@@ -5240,7 +6054,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
       public Builder setEstateData(
-          int index, EstateModel value) {
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel value) {
         if (estateDataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5257,7 +6071,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
       public Builder setEstateData(
-          int index, EstateModel.Builder builderForValue) {
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder builderForValue) {
         if (estateDataBuilder_ == null) {
           ensureEstateDataIsMutable();
           estateData_.set(index, builderForValue.build());
@@ -5270,7 +6084,7 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public Builder addEstateData(EstateModel value) {
+      public Builder addEstateData(io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel value) {
         if (estateDataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5287,7 +6101,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
       public Builder addEstateData(
-          int index, EstateModel value) {
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel value) {
         if (estateDataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5304,7 +6118,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
       public Builder addEstateData(
-          EstateModel.Builder builderForValue) {
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder builderForValue) {
         if (estateDataBuilder_ == null) {
           ensureEstateDataIsMutable();
           estateData_.add(builderForValue.build());
@@ -5318,7 +6132,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
       public Builder addEstateData(
-          int index, EstateModel.Builder builderForValue) {
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder builderForValue) {
         if (estateDataBuilder_ == null) {
           ensureEstateDataIsMutable();
           estateData_.add(index, builderForValue.build());
@@ -5332,11 +6146,11 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
       public Builder addAllEstateData(
-          Iterable<? extends EstateModel> values) {
+              java.lang.Iterable<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel> values) {
         if (estateDataBuilder_ == null) {
           ensureEstateDataIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, estateData_);
+                  values, estateData_);
           onChanged();
         } else {
           estateDataBuilder_.addAllMessages(values);
@@ -5372,15 +6186,15 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public EstateModel.Builder getEstateDataBuilder(
-          int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder getEstateDataBuilder(
+              int index) {
         return getEstateDataFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public EstateModelOrBuilder getEstateDataOrBuilder(
-          int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder getEstateDataOrBuilder(
+              int index) {
         if (estateDataBuilder_ == null) {
           return estateData_.get(index);  } else {
           return estateDataBuilder_.getMessageOrBuilder(index);
@@ -5389,8 +6203,8 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public java.util.List<? extends EstateModelOrBuilder>
-           getEstateDataOrBuilderList() {
+      public java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder>
+      getEstateDataOrBuilderList() {
         if (estateDataBuilder_ != null) {
           return estateDataBuilder_.getMessageOrBuilderList();
         } else {
@@ -5400,31 +6214,31 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public EstateModel.Builder addEstateDataBuilder() {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder addEstateDataBuilder() {
         return getEstateDataFieldBuilder().addBuilder(
-            EstateModel.getDefaultInstance());
+                io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.getDefaultInstance());
       }
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public EstateModel.Builder addEstateDataBuilder(
-          int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder addEstateDataBuilder(
+              int index) {
         return getEstateDataFieldBuilder().addBuilder(
-            index, EstateModel.getDefaultInstance());
+                index, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.getDefaultInstance());
       }
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.EstateModel estateData = 2;</code>
        */
-      public java.util.List<EstateModel.Builder>
-           getEstateDataBuilderList() {
+      public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder>
+      getEstateDataBuilderList() {
         return getEstateDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          EstateModel, EstateModel.Builder, EstateModelOrBuilder>
-          getEstateDataFieldBuilder() {
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder>
+      getEstateDataFieldBuilder() {
         if (estateDataBuilder_ == null) {
           estateDataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              EstateModel, EstateModel.Builder, EstateModelOrBuilder>(
+                  io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.EstateModelOrBuilder>(
                   estateData_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -5434,22 +6248,22 @@ public final class EstateAccountProtos {
         return estateDataBuilder_;
       }
 
-      private java.util.List<ImageModel> images_ =
-        java.util.Collections.emptyList();
+      private java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel> images_ =
+              java.util.Collections.emptyList();
       private void ensureImagesIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          images_ = new java.util.ArrayList<ImageModel>(images_);
+          images_ = new java.util.ArrayList<io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel>(images_);
           bitField0_ |= 0x00000004;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          ImageModel, ImageModel.Builder, ImageModelOrBuilder> imagesBuilder_;
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder> imagesBuilder_;
 
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public java.util.List<ImageModel> getImagesList() {
+      public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel> getImagesList() {
         if (imagesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(images_);
         } else {
@@ -5469,7 +6283,7 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public ImageModel getImages(int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel getImages(int index) {
         if (imagesBuilder_ == null) {
           return images_.get(index);
         } else {
@@ -5480,7 +6294,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
       public Builder setImages(
-          int index, ImageModel value) {
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel value) {
         if (imagesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5497,7 +6311,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
       public Builder setImages(
-          int index, ImageModel.Builder builderForValue) {
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder builderForValue) {
         if (imagesBuilder_ == null) {
           ensureImagesIsMutable();
           images_.set(index, builderForValue.build());
@@ -5510,7 +6324,7 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public Builder addImages(ImageModel value) {
+      public Builder addImages(io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel value) {
         if (imagesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5527,7 +6341,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
       public Builder addImages(
-          int index, ImageModel value) {
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel value) {
         if (imagesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5544,7 +6358,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
       public Builder addImages(
-          ImageModel.Builder builderForValue) {
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder builderForValue) {
         if (imagesBuilder_ == null) {
           ensureImagesIsMutable();
           images_.add(builderForValue.build());
@@ -5558,7 +6372,7 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
       public Builder addImages(
-          int index, ImageModel.Builder builderForValue) {
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder builderForValue) {
         if (imagesBuilder_ == null) {
           ensureImagesIsMutable();
           images_.add(index, builderForValue.build());
@@ -5572,11 +6386,11 @@ public final class EstateAccountProtos {
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
       public Builder addAllImages(
-          Iterable<? extends ImageModel> values) {
+              java.lang.Iterable<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel> values) {
         if (imagesBuilder_ == null) {
           ensureImagesIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, images_);
+                  values, images_);
           onChanged();
         } else {
           imagesBuilder_.addAllMessages(values);
@@ -5612,15 +6426,15 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public ImageModel.Builder getImagesBuilder(
-          int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder getImagesBuilder(
+              int index) {
         return getImagesFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public ImageModelOrBuilder getImagesOrBuilder(
-          int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder getImagesOrBuilder(
+              int index) {
         if (imagesBuilder_ == null) {
           return images_.get(index);  } else {
           return imagesBuilder_.getMessageOrBuilder(index);
@@ -5629,8 +6443,8 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public java.util.List<? extends ImageModelOrBuilder>
-           getImagesOrBuilderList() {
+      public java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder>
+      getImagesOrBuilderList() {
         if (imagesBuilder_ != null) {
           return imagesBuilder_.getMessageOrBuilderList();
         } else {
@@ -5640,31 +6454,31 @@ public final class EstateAccountProtos {
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public ImageModel.Builder addImagesBuilder() {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder addImagesBuilder() {
         return getImagesFieldBuilder().addBuilder(
-            ImageModel.getDefaultInstance());
+                io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.getDefaultInstance());
       }
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public ImageModel.Builder addImagesBuilder(
-          int index) {
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder addImagesBuilder(
+              int index) {
         return getImagesFieldBuilder().addBuilder(
-            index, ImageModel.getDefaultInstance());
+                index, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.getDefaultInstance());
       }
       /**
        * <code>repeated .io.mtini.proto.LedgerEntries.ImageModel images = 3;</code>
        */
-      public java.util.List<ImageModel.Builder>
-           getImagesBuilderList() {
+      public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder>
+      getImagesBuilderList() {
         return getImagesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          ImageModel, ImageModel.Builder, ImageModelOrBuilder>
-          getImagesFieldBuilder() {
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder>
+      getImagesFieldBuilder() {
         if (imagesBuilder_ == null) {
           imagesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              ImageModel, ImageModel.Builder, ImageModelOrBuilder>(
+                  io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.ImageModelOrBuilder>(
                   images_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
@@ -5673,15 +6487,255 @@ public final class EstateAccountProtos {
         }
         return imagesBuilder_;
       }
-      @Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+
+      private java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel> notes_ =
+              java.util.Collections.emptyList();
+      private void ensureNotesIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          notes_ = new java.util.ArrayList<io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel>(notes_);
+          bitField0_ |= 0x00000008;
+        }
       }
 
-      @Override
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder> notesBuilder_;
+
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel> getNotesList() {
+        if (notesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(notes_);
+        } else {
+          return notesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public int getNotesCount() {
+        if (notesBuilder_ == null) {
+          return notes_.size();
+        } else {
+          return notesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel getNotes(int index) {
+        if (notesBuilder_ == null) {
+          return notes_.get(index);
+        } else {
+          return notesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder setNotes(
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel value) {
+        if (notesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNotesIsMutable();
+          notes_.set(index, value);
+          onChanged();
+        } else {
+          notesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder setNotes(
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder builderForValue) {
+        if (notesBuilder_ == null) {
+          ensureNotesIsMutable();
+          notes_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          notesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder addNotes(io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel value) {
+        if (notesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNotesIsMutable();
+          notes_.add(value);
+          onChanged();
+        } else {
+          notesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder addNotes(
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel value) {
+        if (notesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureNotesIsMutable();
+          notes_.add(index, value);
+          onChanged();
+        } else {
+          notesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder addNotes(
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder builderForValue) {
+        if (notesBuilder_ == null) {
+          ensureNotesIsMutable();
+          notes_.add(builderForValue.build());
+          onChanged();
+        } else {
+          notesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder addNotes(
+              int index, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder builderForValue) {
+        if (notesBuilder_ == null) {
+          ensureNotesIsMutable();
+          notes_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          notesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder addAllNotes(
+              java.lang.Iterable<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel> values) {
+        if (notesBuilder_ == null) {
+          ensureNotesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                  values, notes_);
+          onChanged();
+        } else {
+          notesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder clearNotes() {
+        if (notesBuilder_ == null) {
+          notes_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          notesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public Builder removeNotes(int index) {
+        if (notesBuilder_ == null) {
+          ensureNotesIsMutable();
+          notes_.remove(index);
+          onChanged();
+        } else {
+          notesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder getNotesBuilder(
+              int index) {
+        return getNotesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder getNotesOrBuilder(
+              int index) {
+        if (notesBuilder_ == null) {
+          return notes_.get(index);  } else {
+          return notesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public java.util.List<? extends io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder>
+      getNotesOrBuilderList() {
+        if (notesBuilder_ != null) {
+          return notesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(notes_);
+        }
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder addNotesBuilder() {
+        return getNotesFieldBuilder().addBuilder(
+                io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder addNotesBuilder(
+              int index) {
+        return getNotesFieldBuilder().addBuilder(
+                index, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .io.mtini.proto.LedgerEntries.NotesModel notes = 4;</code>
+       */
+      public java.util.List<io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder>
+      getNotesBuilderList() {
+        return getNotesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+              io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder>
+      getNotesFieldBuilder() {
+        if (notesBuilder_ == null) {
+          notesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                  io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModel.Builder, io.mtini.proto.EstateAccountProtos.LedgerEntries.NotesModelOrBuilder>(
+                  notes_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          notes_ = null;
+        }
+        return notesBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
       public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.mergeUnknownFields(unknownFields);
       }
 
@@ -5690,22 +6744,22 @@ public final class EstateAccountProtos {
     }
 
     // @@protoc_insertion_point(class_scope:io.mtini.proto.LedgerEntries)
-    private static final LedgerEntries DEFAULT_INSTANCE;
+    private static final io.mtini.proto.EstateAccountProtos.LedgerEntries DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new LedgerEntries();
+      DEFAULT_INSTANCE = new io.mtini.proto.EstateAccountProtos.LedgerEntries();
     }
 
-    public static LedgerEntries getDefaultInstance() {
+    public static io.mtini.proto.EstateAccountProtos.LedgerEntries getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
     private static final com.google.protobuf.Parser<LedgerEntries>
-        PARSER = new com.google.protobuf.AbstractParser<LedgerEntries>() {
-      @Override
+            PARSER = new com.google.protobuf.AbstractParser<LedgerEntries>() {
+      @java.lang.Override
       public LedgerEntries parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
         return new LedgerEntries(input, extensionRegistry);
       }
     };
@@ -5714,117 +6768,131 @@ public final class EstateAccountProtos {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<LedgerEntries> getParserForType() {
       return PARSER;
     }
 
-    @Override
-    public LedgerEntries getDefaultInstanceForType() {
+    @java.lang.Override
+    public io.mtini.proto.EstateAccountProtos.LedgerEntries getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_io_mtini_proto_LedgerEntries_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_io_mtini_proto_LedgerEntries_fieldAccessorTable;
+          internal_static_io_mtini_proto_LedgerEntries_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_io_mtini_proto_LedgerEntries_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_io_mtini_proto_LedgerEntries_EstateModel_fieldAccessorTable;
+          internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_io_mtini_proto_LedgerEntries_EstateModel_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_fieldAccessorTable;
+          internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_io_mtini_proto_LedgerEntries_ImageModel_fieldAccessorTable;
+          internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_io_mtini_proto_LedgerEntries_ImageModel_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+          internal_static_io_mtini_proto_LedgerEntries_NotesModel_descriptor;
+  private static final
+  com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internal_static_io_mtini_proto_LedgerEntries_NotesModel_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  getDescriptor() {
     return descriptor;
   }
   private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+          descriptor;
   static {
-    String[] descriptorData = {
-      "\n!io/mtini/proto/EstateLedger.proto\022\016io." +
-      "mtini.proto\"\215\006\n\rLedgerEntries\022,\n\toperati" +
-      "on\030\001 \001(\0162\031.io.mtini.proto.Operation\022=\n\ne" +
-      "stateData\030\002 \003(\0132).io.mtini.proto.LedgerE" +
-      "ntries.EstateModel\0228\n\006images\030\003 \003(\0132(.io." +
-      "mtini.proto.LedgerEntries.ImageModel\032\222\004\n" +
-      "\013EstateModel\022\n\n\002id\030\001 \001(\014\022\014\n\004name\030\002 \001(\t\022\017" +
-      "\n\007address\030\003 \001(\t\022\023\n\013description\030\004 \001(\t\022\020\n\010" +
-      "contacts\030\005 \001(\t\022(\n\004type\030\006 \001(\0162\032.io.mtini." +
-      "proto.EstateType\022I\n\ntenantData\030\007 \003(\01325.i" +
-      "o.mtini.proto.LedgerEntries.EstateModel." +
-      "TenantModel\032\273\002\n\013TenantModel\022\n\n\002id\030\001 \001(\014\022" +
-      "\020\n\010estateId\030\002 \001(\014\022\014\n\004name\030\003 \001(\t\022\026\n\016build" +
-      "ingNumber\030\004 \001(\t\022\020\n\010contacts\030\005 \001(\t\022\017\n\007ren" +
-      "tDue\030\006 \001(\001\022,\n\006status\030\007 \001(\0162\034.io.mtini.pr" +
-      "oto.TenantStatus\022\014\n\004rent\030\010 \001(\001\022\017\n\007balanc" +
-      "e\030\t \001(\001\022\r\n\005notes\030\n \001(\t\022\020\n\010currency\030\013 \001(\t" +
-      "\022\020\n\010paidDate\030\014 \001(\003\0224\n\013paySchedule\030\r \001(\0162" +
-      "\037.io.mtini.proto.PaymentSchedule\022\017\n\007dueD" +
-      "ate\030\016 \001(\003\032@\n\nImageModel\022\n\n\002id\030\001 \001(\014\022\017\n\007m" +
-      "odelId\030\002 \001(\014\022\025\n\rencodedBitmap\030\003 \001(\t*M\n\nE" +
-      "stateType\022\n\n\006notype\020\000\022\r\n\tapartment\020\001\022\t\n\005" +
-      "house\020\002\022\016\n\ncommercial\020\003\022\t\n\005condo\020\004*e\n\014Te" +
-      "nantStatus\022\014\n\010nostatus\020\000\022\010\n\004late\020\001\022\013\n\007ba" +
-      "lance\020\002\022\013\n\007evicted\020\003\022\016\n\nnew_tenant\020\004\022\t\n\005" +
-      "moved\020\005\022\010\n\004paid\020\006*H\n\017PaymentSchedule\022\016\n\n" +
-      "noschedule\020\000\022\013\n\007monthly\020\001\022\014\n\010biweekly\020\002\022" +
-      "\n\n\006weekly\020\003*\240\001\n\tOperation\022\n\n\006NOTSET\020\000\022\016\n" +
-      "\nADD_ESTATE\020\001\022\017\n\013EDIT_ESTATE\020\002\022\016\n\nADD_TE" +
-      "NANT\020\003\022\017\n\013EDIT_TENANT\020\004\022\021\n\rDELETE_ESTATE" +
-      "\020\005\022\021\n\rDELETE_TENANT\020\006\022\r\n\tADD_IMAGE\020\007\022\020\n\014" +
-      "DELETE_IMAGE\020\010B\025B\023EstateAccountProtosb\006p" +
-      "roto3"
+    java.lang.String[] descriptorData = {
+            "\n!io/mtini/proto/EstateLedger.proto\022\016io." +
+                    "mtini.proto\"\205\007\n\rLedgerEntries\022,\n\toperati" +
+                    "on\030\001 \001(\0162\031.io.mtini.proto.Operation\022=\n\ne" +
+                    "stateData\030\002 \003(\0132).io.mtini.proto.LedgerE" +
+                    "ntries.EstateModel\0228\n\006images\030\003 \003(\0132(.io." +
+                    "mtini.proto.LedgerEntries.ImageModel\0227\n\005" +
+                    "notes\030\004 \003(\0132(.io.mtini.proto.LedgerEntri" +
+                    "es.NotesModel\032\222\004\n\013EstateModel\022\n\n\002id\030\001 \001(" +
+                    "\014\022\014\n\004name\030\002 \001(\t\022\017\n\007address\030\003 \001(\t\022\023\n\013desc" +
+                    "ription\030\004 \001(\t\022\020\n\010contacts\030\005 \001(\t\022(\n\004type\030" +
+                    "\006 \001(\0162\032.io.mtini.proto.EstateType\022I\n\nten" +
+                    "antData\030\007 \003(\01325.io.mtini.proto.LedgerEnt" +
+                    "ries.EstateModel.TenantModel\032\273\002\n\013TenantM" +
+                    "odel\022\n\n\002id\030\001 \001(\014\022\020\n\010estateId\030\002 \001(\014\022\014\n\004na" +
+                    "me\030\003 \001(\t\022\026\n\016buildingNumber\030\004 \001(\t\022\020\n\010cont" +
+                    "acts\030\005 \001(\t\022\017\n\007rentDue\030\006 \001(\001\022,\n\006status\030\007 " +
+                    "\001(\0162\034.io.mtini.proto.TenantStatus\022\014\n\004ren" +
+                    "t\030\010 \001(\001\022\017\n\007balance\030\t \001(\001\022\r\n\005notes\030\n \001(\t\022" +
+                    "\020\n\010currency\030\013 \001(\t\022\020\n\010paidDate\030\014 \001(\003\0224\n\013p" +
+                    "aySchedule\030\r \001(\0162\037.io.mtini.proto.Paymen" +
+                    "tSchedule\022\017\n\007dueDate\030\016 \001(\003\032@\n\nImageModel" +
+                    "\022\n\n\002id\030\001 \001(\014\022\017\n\007modelId\030\002 \001(\014\022\025\n\rencoded" +
+                    "Bitmap\030\003 \001(\t\032=\n\nNotesModel\022\014\n\004date\030\001 \001(\003" +
+                    "\022\017\n\007modelId\030\002 \001(\014\022\020\n\010noteText\030\003 \001(\t*M\n\nE" +
+                    "stateType\022\n\n\006notype\020\000\022\r\n\tapartment\020\001\022\t\n\005" +
+                    "house\020\002\022\016\n\ncommercial\020\003\022\t\n\005condo\020\004*e\n\014Te" +
+                    "nantStatus\022\014\n\010nostatus\020\000\022\010\n\004late\020\001\022\013\n\007ba" +
+                    "lance\020\002\022\013\n\007evicted\020\003\022\016\n\nnew_tenant\020\004\022\t\n\005" +
+                    "moved\020\005\022\010\n\004paid\020\006*H\n\017PaymentSchedule\022\016\n\n" +
+                    "noschedule\020\000\022\013\n\007monthly\020\001\022\014\n\010biweekly\020\002\022" +
+                    "\n\n\006weekly\020\003*\256\001\n\tOperation\022\n\n\006NOTSET\020\000\022\016\n" +
+                    "\nADD_ESTATE\020\001\022\017\n\013EDIT_ESTATE\020\002\022\016\n\nADD_TE" +
+                    "NANT\020\003\022\017\n\013EDIT_TENANT\020\004\022\021\n\rDELETE_ESTATE" +
+                    "\020\005\022\021\n\rDELETE_TENANT\020\006\022\r\n\tADD_IMAGE\020\007\022\020\n\014" +
+                    "DELETE_IMAGE\020\010\022\014\n\010ADD_NOTE\020\tB\025B\023EstateAc" +
+                    "countProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
+            new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+              public com.google.protobuf.ExtensionRegistry assignDescriptors(
+                      com.google.protobuf.Descriptors.FileDescriptor root) {
+                descriptor = root;
+                return null;
+              }
+            };
     com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+            .internalBuildGeneratedFileFrom(descriptorData,
+                    new com.google.protobuf.Descriptors.FileDescriptor[] {
+                    }, assigner);
     internal_static_io_mtini_proto_LedgerEntries_descriptor =
-      getDescriptor().getMessageTypes().get(0);
+            getDescriptor().getMessageTypes().get(0);
     internal_static_io_mtini_proto_LedgerEntries_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_io_mtini_proto_LedgerEntries_descriptor,
-        new String[] { "Operation", "EstateData", "Images", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_io_mtini_proto_LedgerEntries_descriptor,
+            new java.lang.String[] { "Operation", "EstateData", "Images", "Notes", });
     internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor =
-      internal_static_io_mtini_proto_LedgerEntries_descriptor.getNestedTypes().get(0);
+            internal_static_io_mtini_proto_LedgerEntries_descriptor.getNestedTypes().get(0);
     internal_static_io_mtini_proto_LedgerEntries_EstateModel_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor,
-        new String[] { "Id", "Name", "Address", "Description", "Contacts", "Type", "TenantData", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor,
+            new java.lang.String[] { "Id", "Name", "Address", "Description", "Contacts", "Type", "TenantData", });
     internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor =
-      internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor.getNestedTypes().get(0);
+            internal_static_io_mtini_proto_LedgerEntries_EstateModel_descriptor.getNestedTypes().get(0);
     internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor,
-        new String[] { "Id", "EstateId", "Name", "BuildingNumber", "Contacts", "RentDue", "Status", "Rent", "Balance", "Notes", "Currency", "PaidDate", "PaySchedule", "DueDate", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_io_mtini_proto_LedgerEntries_EstateModel_TenantModel_descriptor,
+            new java.lang.String[] { "Id", "EstateId", "Name", "BuildingNumber", "Contacts", "RentDue", "Status", "Rent", "Balance", "Notes", "Currency", "PaidDate", "PaySchedule", "DueDate", });
     internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor =
-      internal_static_io_mtini_proto_LedgerEntries_descriptor.getNestedTypes().get(1);
+            internal_static_io_mtini_proto_LedgerEntries_descriptor.getNestedTypes().get(1);
     internal_static_io_mtini_proto_LedgerEntries_ImageModel_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor,
-        new String[] { "Id", "ModelId", "EncodedBitmap", });
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_io_mtini_proto_LedgerEntries_ImageModel_descriptor,
+            new java.lang.String[] { "Id", "ModelId", "EncodedBitmap", });
+    internal_static_io_mtini_proto_LedgerEntries_NotesModel_descriptor =
+            internal_static_io_mtini_proto_LedgerEntries_descriptor.getNestedTypes().get(2);
+    internal_static_io_mtini_proto_LedgerEntries_NotesModel_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_io_mtini_proto_LedgerEntries_NotesModel_descriptor,
+            new java.lang.String[] { "Date", "ModelId", "NoteText", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
