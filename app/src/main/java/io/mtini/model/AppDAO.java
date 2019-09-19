@@ -20,6 +20,7 @@ import java.util.UUID;
 
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 
+import com.prelimtek.android.customcomponents.NotesModel;
 import com.prelimtek.utils.crypto.Wallet;
 import io.mtini.proto.EATRequestResponseProtos;
 import io.mtini.proto.EstateAccountProtos;
@@ -140,10 +141,12 @@ public class AppDAO implements AppDAOInterface {
             showErrorDialog(e.getMessage());
         }
 
-        if(null!=ret)
-            return localDao.addEstate(newProperty);
+        if(null!=ret) {
+            ret = localDao.addEstate(newProperty);
+        }
         else
             return null;
+        return ret;
     }
 
     @Override
@@ -223,10 +226,13 @@ public class AppDAO implements AppDAOInterface {
             showErrorDialog(e.getMessage());
         }
 
-        if(null!= ret)
-            return localDao.updateEstate(estate);
+        if(null!= ret) {
+            ret = localDao.updateEstate(estate);
+        }
         else
             return null;
+
+        return ret;
 
     }
 
@@ -257,7 +263,6 @@ public class AppDAO implements AppDAOInterface {
     @Deprecated
     @Override
     public void updateWallet(String address, String oldAddress, SecurityModel securityModel, Wallet wallet, String action) throws RemoteDAO.RemoteDAOException {
-
 
             remoteDao.updateWallet(address,oldAddress,securityModel,wallet,action);
 
@@ -335,7 +340,7 @@ public class AppDAO implements AppDAOInterface {
         data = getRemoteDao().getAccountState();
 
 
-        List<EstateModel> estates = (List<EstateModel>)data.get("estates");
+        List<EstateModel> estates = (List<EstateModel>) data.get("estates");
         List<TenantModel> tenants = (List<TenantModel>)data.get("tenants");
 
         for(EstateModel estate : estates){
@@ -423,5 +428,25 @@ public class AppDAO implements AppDAOInterface {
     private void showErrorDialog(String message){
         //DialogUtils.startErrorDialogRunnable((Activity) context,message);
         DialogUtils.startErrorDialog( context,message);
+    }
+
+    @Override
+    public boolean addNotes(String modelId, String noteText) {
+
+        boolean ret=false;
+        if(remoteDao.addNotes(  modelId,  noteText)){
+            ret =  localDao.addNotes(  modelId,  noteText);
+        }
+        return ret;
+    }
+
+    @Override
+    public NotesModel[] getNotes(String modelId, Long datesAfter, int pageStart, int pageOffset) {
+        return localDao.getNotes(modelId,datesAfter, pageStart, pageOffset);
+    }
+
+    @Override
+    public List<NotesModel> getNotes(String modelId, Long dateAfter, Long dateBefore, int pageStart, int pageOffset) {
+        return localDao.getNotes(modelId,  dateAfter,  dateBefore, pageStart, pageOffset);
     }
 }

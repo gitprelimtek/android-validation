@@ -79,8 +79,14 @@ message ImageModel{
 	string encodedBitmap = 3;
 }
 
+message NotesModel{
+    int64 date = 1;
+	bytes modelId = 2;
+	string noteText = 3;
+}
+
  Operation operation = 1 ;
  repeated EstateModel estateData = 2;
  repeated ImageModel images = 3;
- 
+ repeated NotesModel notes = 4;
  }

@@ -238,5 +238,13 @@
             android:gravity="right"
             />
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusedByDefault="true"
+            android:id="@+id/notes_list_framelayout">
+
+        </FrameLayout>
+
     </RelativeLayout>
 </layout>

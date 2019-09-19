@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.view.ViewGroup;
 
 import io.mtini.android.tenantmanager.R;
 import io.mtini.android.tenantmanager.dialog.EditTenantDetailsDialogFragment;
+
+import com.prelimtek.android.customcomponents.TextListProcUtils;
 import com.prelimtek.android.picha.view.ImageHandlingDialogFragment;
 import io.mtini.android.tenantmanager.dialog.PaymentHandlingDialogFragment;
 import com.prelimtek.android.picha.view.PhotoProcUtil;
@@ -138,6 +139,7 @@ public class TenantDetailsFragment extends Fragment {
         super.onResume();
 
         PhotoProcUtil.showOrRefreshImageListFragment(currentImagesModel,getFragmentManager(),dbHelper,false);
+        TextListProcUtils.showOrRefreshNotesListFragment(currentImagesModel.getModelId(),R.id.notes_list_framelayout,getFragmentManager(),dbHelper,false);
 
     }
 

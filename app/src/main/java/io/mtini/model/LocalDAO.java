@@ -14,10 +14,13 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.prelimtek.android.basecomponents.Configuration;
 
+import com.prelimtek.android.customcomponents.NotesModel;
 import com.prelimtek.utils.crypto.Wallet;
 
 public class LocalDAO extends AbstractDAO implements AppDAOInterface{
@@ -29,6 +32,7 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
     public static String TENANT_TABLE = "Tenant";
     public static String SECURITY_TABLE = "Security";
     public static String IMAGE_TABLE = "Images";
+    public static String NOTES_TABLE = "Notes";
 
     DBHelper mDbHelper;
 
@@ -235,6 +239,8 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
         if(rowId==-1)return null;//failed
 
+        addNotes(newProperty.id,newProperty.description);
+
         return newProperty;
     }
 
@@ -273,6 +279,7 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
         if(rowId==-1)return null;//failed
 
+        addNotes(newtenant.id,newtenant.notes);
         //newtenant.setId(rowId);
 
         return newtenant;
@@ -317,6 +324,8 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
         if(rowsaffected!=1)return null;
 
+        addNotes(property.id,property.description);
+
         return property;
     }
 
@@ -360,6 +369,8 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
         //database.close();
 
         if(rowId==-1)return null;//failed
+
+        addNotes(newtenant.id,newtenant.notes);
 
         return newtenant;
     }
@@ -483,6 +494,105 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
         return true;
     }
 
+
+    @Override
+    public boolean addNotes(String modelId, String noteText) {
+
+        if(null==modelId || modelId.isEmpty()  || null==noteText || noteText.isEmpty() ) return false;
+
+        SQLiteDatabase database = mDbHelper.getWritableDatabase();
+        ContentValues content = new ContentValues();
+
+        content.put(NotesTblDescription.NOTE_DATE.label, System.currentTimeMillis());
+        content.put(NotesTblDescription.MODEL_ID.label, modelId);
+        content.put(NotesTblDescription.NOTE_TEXT.label, noteText);
+
+        long rowId = database.insert(NOTES_TABLE, null, content);
+        //database.close();
+        if(rowId<0)return false;
+        //return imageId;
+        return true;
+    }
+
+    @Override
+    public NotesModel[] getNotes(String modelId, Long afterThisDate, int rowCount, int pageOffset) {
+
+        List<NotesModel> ret = getNotes( modelId, null,afterThisDate, rowCount, pageOffset);
+        return ret!=null?ret.toArray(new NotesModel[ret.size()]):null;
+        /*SQLiteDatabase database = mDbHelper.getReadableDatabase();
+
+        Cursor cursor = database.rawQuery("SELECT * "
+                +" FROM "+NOTES_TABLE
+                +" WHERE "+NotesTblDescription.MODEL_ID.label+" = ? "
+                +" AND "+NotesTblDescription.NOTE_DATE.label+" > ? "
+                +" ORDER BY "+NotesTblDescription.NOTE_DATE.label+" DESC "
+                +" LIMIT ? ",
+                new String[]{modelId, dateIsBefore.toString(),pageSize+""});
+
+        int count = cursor.getCount();
+        NotesModel[] ret = new NotesModel[count];
+        int i = 0;
+        String rNotetext = null;
+        String rModelId = null;
+        Long rDate = null;
+        if(count >= 1){
+            while(cursor.moveToNext()) {
+
+                rNotetext = cursor.getString(cursor.getColumnIndex(NotesTblDescription.NOTE_TEXT.label));
+                rModelId = cursor.getString(cursor.getColumnIndex(NotesTblDescription.MODEL_ID.label));
+                rDate = cursor.getLong(cursor.getColumnIndex(NotesTblDescription.NOTE_DATE.label));
+
+                ret[i++]=new NotesModel( rDate,rModelId, rNotetext);
+            }
+        }
+        cursor.close();
+        //database.close();
+        return ret;*/
+    }
+
+
+    @Override
+    public List<NotesModel> getNotes(String modelId, Long beforeThisDate, Long afterThisDate, int rowCount, int pageOffset) {
+
+        SQLiteDatabase database = mDbHelper.getReadableDatabase();
+
+        beforeThisDate = beforeThisDate==null?beforeThisDate=System.currentTimeMillis():beforeThisDate;
+
+        afterThisDate = afterThisDate==null?new Date(2323223232L).getTime():afterThisDate;//1970
+
+        //after > before
+        assert beforeThisDate > afterThisDate;
+
+        Cursor cursor = database.rawQuery("SELECT * "
+                        +" FROM "+NOTES_TABLE
+                        +" WHERE "+NotesTblDescription.MODEL_ID.label+" = ? "
+                        +" AND "+NotesTblDescription.NOTE_DATE.label+" < ? "
+                        +" AND "+NotesTblDescription.NOTE_DATE.label+" > ? "
+                        +" ORDER BY "+NotesTblDescription.NOTE_DATE.label+" DESC "
+                        +" LIMIT ?  OFFSET ?  ",
+                new String[]{modelId, beforeThisDate.toString(),afterThisDate.toString(), rowCount +"",pageOffset+""});
+
+        int count = cursor.getCount();
+        List<NotesModel> ret = new LinkedList<NotesModel>();
+        String rNotetext = null;
+        String rModelId = null;
+        Long rDate = null;
+
+        if(count >= 1){
+            while(cursor.moveToNext()) {
+
+                rNotetext = cursor.getString(cursor.getColumnIndex(NotesTblDescription.NOTE_TEXT.label));
+                rModelId = cursor.getString(cursor.getColumnIndex(NotesTblDescription.MODEL_ID.label));
+                rDate = cursor.getLong(cursor.getColumnIndex(NotesTblDescription.NOTE_DATE.label));
+                ret.add(new NotesModel( rDate,rModelId, rNotetext));
+
+            }
+        }
+        cursor.close();
+
+        return ret;
+    }
+
     /**
      * Returns address
      * Do not create address because local Wallet
@@ -557,6 +667,11 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
             ImageTblDescription.MODEL_ID.label + " "+ImageTblDescription.MODEL_ID.type+","+
             ImageTblDescription.IMAGE.label + " "+ImageTblDescription.IMAGE.type+");" ;
 
+    private static final String NOTES_TABLE_CREATE = "CREATE TABLE IF NOT EXISTS "
+            + NOTES_TABLE + " (" +
+            NotesTblDescription.NOTE_DATE.label + " "+NotesTblDescription.NOTE_DATE.type+" ," +
+            NotesTblDescription.MODEL_ID.label + " "+NotesTblDescription.MODEL_ID.type+","+
+            NotesTblDescription.NOTE_TEXT.label + " "+NotesTblDescription.NOTE_TEXT.type+");" ;
 
 
     private static class DBHelper extends SQLiteOpenHelper implements Serializable {
@@ -579,6 +694,9 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
 
             Log.w(TAG, TENANT_TABLE_CREATE);
             db.execSQL(TENANT_TABLE_CREATE);
+
+            Log.w(TAG, NOTES_TABLE_CREATE);
+            db.execSQL(NOTES_TABLE_CREATE);
         }
 
         @Override
@@ -587,6 +705,7 @@ public class LocalDAO extends AbstractDAO implements AppDAOInterface{
             db.execSQL("DROP TABLE IF EXISTS "+TENANT_TABLE);
             db.execSQL("DROP TABLE IF EXISTS "+ESTATE_TABLE);
             db.execSQL("DROP TABLE IF EXISTS "+IMAGE_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS "+NOTES_TABLE);
             onCreate(db);
         }
 

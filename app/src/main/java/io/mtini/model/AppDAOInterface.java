@@ -3,11 +3,24 @@ package io.mtini.model;
 import java.util.List;
 
 import com.prelimtek.android.basecomponents.dao.BaseDAOInterface;
+import com.prelimtek.android.customcomponents.TextDAOInterface;
 import com.prelimtek.utils.crypto.Wallet;
 import com.prelimtek.utils.crypto.dao.CryptoDAOInterface;
 import com.prelimtek.android.picha.dao.MediaDAOInterface;
 
-public interface AppDAOInterface extends CryptoDAOInterface<SecurityModel,Wallet>,MediaDAOInterface,BaseDAOInterface {
+public interface AppDAOInterface extends CryptoDAOInterface<SecurityModel,Wallet>,MediaDAOInterface,BaseDAOInterface, TextDAOInterface {
+
+    enum NotesTblDescription{
+        MODEL_ID("modelId","TEXT"),
+        NOTE_DATE("date","DATE"),
+        NOTE_TEXT("notes","TEXT");
+        String label;
+        String type;
+        NotesTblDescription(String label, String type){
+            this.label = label;
+            this.type = type;
+        }
+    }
 
     enum ImageTblDescription{
 
@@ -108,10 +121,5 @@ public interface AppDAOInterface extends CryptoDAOInterface<SecurityModel,Wallet
     public  TenantModel updateTenant(TenantModel tenant,EstateModel property);
 
     public  TenantModel updateTenant(TenantModel tenant);
-
-
-
-
-
 
 }

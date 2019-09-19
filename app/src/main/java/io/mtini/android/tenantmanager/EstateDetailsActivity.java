@@ -27,6 +27,8 @@ import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 import io.mtini.android.tenantmanager.dialog.EditEstateDetailsDialogFragment;
 import com.prelimtek.android.picha.view.ImageHandlingDialogFragment;
 import com.prelimtek.android.picha.view.PhotoProcUtil;
+
+import com.prelimtek.android.customcomponents.TextListProcUtils;
 import io.mtini.android.view.TextViewValueConverter;
 import io.mtini.model.AppDAO;
 import io.mtini.model.EstateModel;
@@ -204,6 +206,7 @@ public class EstateDetailsActivity extends AppCompatActivity
         ImagesModel imagesModel = (ImagesModel) getIntent().getSerializableExtra(INTENT_IMAGES_MODEL_KEY);
 
         PhotoProcUtil.showOrRefreshImageListFragment(imagesModel,getFragmentManager(),dbHelper,false);
+        TextListProcUtils.showOrRefreshNotesListFragment(imagesModel.getModelId(),R.id.notes_list_framelayout,getFragmentManager(),dbHelper,false);
     }
 
     @Override
@@ -273,14 +276,6 @@ public class EstateDetailsActivity extends AppCompatActivity
 
 
     private void updateDB(EstateModel estate){
-       /*
-       AppDAOInterface dbHelper = new AppDAO(this);
-        try {
-            dbHelper.open();
-        } catch (Exception e) {
-            Log.e(TAG,e.getLocalizedMessage());
-        }
-        */
 
          if(dbHelper.getEstateById(estate.getId())!=null)
             dbHelper.updateEstate(estate);
@@ -363,4 +358,6 @@ public class EstateDetailsActivity extends AppCompatActivity
 
         dbHelper.close();
     }
+
+    public static void showOrRefreshNotesListFragment(){}
 }
