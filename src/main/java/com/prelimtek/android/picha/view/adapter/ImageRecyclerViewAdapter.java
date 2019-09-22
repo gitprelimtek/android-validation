@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.prelimtek.android.customcomponents.NotesModel;
 import com.prelimtek.android.picha.R;
 import com.prelimtek.android.picha.dao.MediaDAOInterface;
 import com.prelimtek.android.picha.view.PhotoProcUtil;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class ImageRecyclerViewAdapter extends RecyclerView.Adapter<ImageRecyclerViewAdapter.ViewHolder> {
 
-
+    public static final int PAGE_BUFFER_SIZE = 3;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
@@ -35,6 +36,18 @@ public class ImageRecyclerViewAdapter extends RecyclerView.Adapter<ImageRecycler
             itemView.setOnClickListener(onClickListener);
             itemView.setFocusable(true);
             //itemView.setTag(imageView.getTag());
+        }
+
+        public void bind(String imageId, Bitmap bitmap) {
+            PhotoProcUtil.setPic(imageView,bitmap);
+            imageView.setTag(imageId);
+            itemView.setTag(imageId);
+        }
+
+        public void clear() {
+            imageView.setTag(null);
+            itemView.setTag(null);
+            imageView.setImageBitmap(null);
         }
     }
 
@@ -62,6 +75,10 @@ public class ImageRecyclerViewAdapter extends RecyclerView.Adapter<ImageRecycler
         }*/
     }
 
+    public void setRowItems(List<String> imageNamesList) {
+        this.rowItems = imageNamesList;
+    }
+
     @Override
     public int getItemCount() {
         return rowItems.size();
@@ -85,12 +102,10 @@ public class ImageRecyclerViewAdapter extends RecyclerView.Adapter<ImageRecycler
 
         if(encodedBitmap!=null) {
             Bitmap bitmap = PhotoProcUtil.toBitMap(encodedBitmap);
-            PhotoProcUtil.setPic(holder.imageView,bitmap);
-            holder.imageView.setTag(imageId);
-            holder.itemView.setTag(imageId);
+            holder.bind(imageId,bitmap);
+        }else{
+            holder.clear();
         }
-
-        //holder.name.setText(rowItem);
 
     }
 
