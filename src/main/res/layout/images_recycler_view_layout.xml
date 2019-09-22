@@ -16,6 +16,13 @@
         />
     </RelativeLayout>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:id="@+id/load_image_progress"/>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
