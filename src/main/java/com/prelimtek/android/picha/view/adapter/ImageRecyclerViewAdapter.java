@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.prelimtek.android.customcomponents.NotesModel;
 import com.prelimtek.android.picha.R;
 import com.prelimtek.android.picha.dao.MediaDAOInterface;
 import com.prelimtek.android.picha.view.PhotoProcUtil;
