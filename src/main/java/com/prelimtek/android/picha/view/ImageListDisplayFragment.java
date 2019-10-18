@@ -17,12 +17,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.prelimtek.android.picha.ImagesModel;
 import com.prelimtek.android.picha.view.listener.OnImageDeletedListener;
 import com.prelimtek.android.picha.R;
 import com.prelimtek.android.picha.dao.MediaDAOInterface;
 import com.prelimtek.android.picha.view.adapter.ImageRecyclerViewAdapter;
+
+import java.util.List;
 
 /**
  * This class is used for displaying image lists and adding some listener functionality:
@@ -44,6 +47,7 @@ public class ImageListDisplayFragment extends Fragment {
 
     public final static String IMAGE_LIST_OBJECT_KEY = "imagesModel";
     public final static String IMAGE_IS_EDITABLE_BOOL_KEY = "editable";
+    public int viewedItems = 0;
 
     OnImageDeletedListener mCallback;
 
@@ -55,6 +59,7 @@ public class ImageListDisplayFragment extends Fragment {
     public void setDBHelper(MediaDAOInterface localDao) {
         dbHelper = localDao;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,34 +96,14 @@ public class ImageListDisplayFragment extends Fragment {
         if(imagesModel.getImageNames()!=null && !imagesModel.getImageNames().isEmpty()){
 
             int imgCount = imagesModel.getImageNames().size();
+            final List<String> imageNamesList = imgCount>ImageRecyclerViewAdapter.PAGE_BUFFER_SIZE?imagesModel.getImageNames().subList(0,ImageRecyclerViewAdapter.PAGE_BUFFER_SIZE) :imagesModel.getImageNames();
 
             //Now bind the list of Images using an adapter
-
-            /*
-            ListView listView = (ListView) view.findViewById(R.id.image_list_listview);
-            ImageListViewAdapter dataAdapter = new ImageListViewAdapter(
-                    currentContext,imagesModel.getImageNames(),R.layout.list_image_layout,
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String imageid = (String)v.getTag();
-
-                            Snackbar.make(v, "Selected image for Details", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-
-
-                            setImageAsCurrent(v.getRootView(),imageid);
-
-
-                        }
-                    });
-
-            listView.setAdapter(dataAdapter);*/
-
+            LinearLayoutManager layoutManager = new LinearLayoutManager(currentContext,RecyclerView.HORIZONTAL,false);
             RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.imageslist_recyclerview) ;
             ImageRecyclerViewAdapter dataAdapter = new ImageRecyclerViewAdapter(
                     currentContext,
-                    imagesModel.getImageNames(),
+                    imageNamesList,
                     R.layout.list_image_layout,
                     new View.OnClickListener() {
                         @Override
@@ -138,8 +123,79 @@ public class ImageListDisplayFragment extends Fragment {
                     dbHelper
             );
             //dataAdapter.setDBHelper(dbHelper);
-            recyclerView.setLayoutManager(new LinearLayoutManager(currentContext,LinearLayout.HORIZONTAL,false));
             recyclerView.setAdapter(dataAdapter);
+            recyclerView.setOnFlingListener(new PageFlingListerner(layoutManager) {
+
+                boolean isLoading = false;
+                @Override
+                public void loadNextPage() {
+
+                    int offset = viewedItems==0?0:viewedItems;
+
+
+                    queryDS(ImageRecyclerViewAdapter.PAGE_BUFFER_SIZE,offset);
+
+                    showFirstPage();
+                }
+
+                @Override
+                public void loadPreviousPage() {
+
+                    int offset = viewedItems-2*ImageRecyclerViewAdapter.PAGE_BUFFER_SIZE;
+                    offset = offset < 0 ? 0 : offset;
+
+                    queryDS(ImageRecyclerViewAdapter.PAGE_BUFFER_SIZE,offset);
+
+                    showLastPage();
+
+                }
+
+                private void queryDS(int rowcount, int offset){
+
+                    if(isLoading) return;
+
+                    showProgress(isLoading = true);
+
+                    try {
+
+                        int size = imagesModel.getImageNames().size();
+                        if(offset >= size) return;
+
+                        offset = offset<0?0:offset;
+                        int start = offset >= size ? size-1: offset;
+                        int end = offset+rowcount >= size ? size: offset+rowcount;
+
+                        List<String> imageNamesList = imagesModel.getImageNames().subList(start,end);
+
+                        if(imageNamesList==null || imageNamesList.isEmpty())return;
+
+                        dataAdapter.setRowItems(imageNamesList);
+                        dataAdapter.notifyDataSetChanged();
+
+                    }catch(RuntimeException e){
+                        e.printStackTrace();
+                    }finally {
+                        viewedItems = offset+(imageNamesList==null?0:imageNamesList.size());
+                        showProgress(isLoading = false);
+                    }
+                }
+
+                @Override
+                public boolean isLoading() {
+                    return isLoading;
+                }
+
+                @Override
+                public void showProgress(boolean show) {
+                    ProgressBar progress = (ProgressBar)view.findViewById(R.id.load_image_progress) ;
+                    if(show)
+                        progress.setVisibility(ProgressBar.VISIBLE);
+                    else
+                        progress.setVisibility(ProgressBar.GONE);
+                }
+            });
+            recyclerView.setLayoutManager(layoutManager);
+
 
         }
     }
@@ -241,7 +297,7 @@ public class ImageListDisplayFragment extends Fragment {
 
         // When in two-pane layout, set the listview to highlight the selected list item
         // (We do this during onStart because at the point the listview is available.)
-        //if (getFragmentManager().findFragmentById(R.id.fragment_tenant_list ) != null) {
+        //if (getFragmentManager().findFragmentById(R.id.fragmented_notes_list ) != null) {
         //    getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         //}
     }
@@ -263,6 +319,55 @@ public class ImageListDisplayFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         //removing this to resolve Illegal state exception due to commit transaction in activity
         //super.onSaveInstanceState(outState);
+
+    }
+
+
+    abstract class PageFlingListerner extends RecyclerView.OnFlingListener{
+
+        LinearLayoutManager layoutManager = null;
+        public PageFlingListerner(LinearLayoutManager layoutManager) {
+            this.layoutManager = layoutManager;
+        }
+
+        @Override
+        public boolean onFling(int velocityX, int velocityY) {
+
+            int first = layoutManager.findFirstVisibleItemPosition();
+            int last = layoutManager.findLastVisibleItemPosition();
+            int count = layoutManager.getInitialPrefetchItemCount();
+
+            if(velocityX>10000 || velocityY>10000 ){
+                if(last==count ) {
+                    loadNextPage();
+                    return true;
+                }
+            }else if(velocityX < -10000 || velocityY< -10000){
+                if(first==0 ){
+                    loadPreviousPage();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void showFirstPage(){
+            int count = layoutManager.getInitialPrefetchItemCount();
+            if(count>0)
+                layoutManager.scrollToPosition(0);
+        }
+
+        public void showLastPage(){
+            int count = layoutManager.getInitialPrefetchItemCount();
+            if(count>0)
+                layoutManager.scrollToPosition(count-1);
+        }
+
+        abstract public void loadNextPage();
+        abstract public void loadPreviousPage();
+        abstract public boolean isLoading();
+        abstract public void showProgress(boolean show);
 
     }
 }
