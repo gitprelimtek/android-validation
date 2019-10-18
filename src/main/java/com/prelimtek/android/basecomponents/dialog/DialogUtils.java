@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.os.Looper;
+import android.view.View;
 import android.widget.ProgressBar;
 
 import com.prelimtek.android.customcomponents.R;
@@ -69,4 +71,39 @@ public class DialogUtils {
         return errorDialog;
     }
 
+    public static AlertDialog startInfoDialog(Context context, CharSequence title, String message){
+        if(Looper.myLooper()==null)Looper.prepare();
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        //TODO add icon dialogBuilder.setIcon()
+        dialogBuilder.setMessage(message);
+        if(title!=null)
+            dialogBuilder.setTitle(title);
+        dialogBuilder.setPositiveButton(R.string.ok,new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+
+        AlertDialog errorDialog = dialogBuilder.create();
+        errorDialog.setCanceledOnTouchOutside(true);
+        errorDialog.show();
+        return errorDialog;
+    }
+
+    /**
+     * This is an SDK agnostic way to get a view's (dialog or fragment) parent activity.
+     * */
+    public static Activity getActivity(View view) {
+        Context context = view.getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity)context;
+            }
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+
+        return (Activity)context;
+    }
 }
