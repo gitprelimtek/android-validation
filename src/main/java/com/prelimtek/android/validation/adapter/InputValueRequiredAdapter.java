@@ -9,15 +9,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
+
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.prelimtek.android.basecomponents.ResourcesUtils;
 import com.prelimtek.android.validation.R;
-
-
 
 public class InputValueRequiredAdapter {
 
@@ -262,36 +262,6 @@ public class InputValueRequiredAdapter {
     }
 
 
-    @BindingAdapter(value={"onFocusValueRequired", "errorLabel","errorMessage"},requireAll=false)
-    public static void setFocusListener(final View view, final Object value, final TextView label,  final String errorMessage){
-
-
-        if(value==null || value.toString().trim().isEmpty()){
-
-            String errorMsg = ErrorHandler.clarify(label,errorMessage);
-            //view.setError(errorMessage);
-            ErrorHandler.setError(label,errorMsg);
-        }
-
-        view.setOnFocusChangeListener(
-                new View.OnFocusChangeListener() {
-                    @Override
-                    public void onFocusChange(View v, boolean hasFocus) {
-
-                        if(!hasFocus) {
-                            ErrorHandler.clearError(label);
-                            if(v==null || v.toString().trim().isEmpty()){
-                                String errorMsg = ErrorHandler.clarify(label,errorMessage);
-                                ErrorHandler.setError(label,errorMsg);
-                            }
-                        }
-                    }
-                }
-        );
-
-    }
-
-
 
     @BindingAdapter(value={"focusChangeValidation","errorMessage"},requireAll=false)
     public static void setFocusListener(final TextView view, final BaseObservable observable, final String errorMessage){
@@ -447,7 +417,8 @@ public class InputValueRequiredAdapter {
 
         public static void setError(TextView view, String message){
             if(view==null)return;
-            view.setTextColor(view.getResources().getColor(R.color.Red_700));
+            //view.setTextColor(view.getResources().getColor(R.color.Red_700));
+            view.setTextColor(ResourcesUtils.getColor(view,R.color.Red_700));
             view.setError(message);
 
         }
