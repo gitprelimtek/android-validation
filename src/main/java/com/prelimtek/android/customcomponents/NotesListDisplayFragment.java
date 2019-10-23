@@ -72,7 +72,6 @@ public class NotesListDisplayFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.notes_recycler_view_layout, container, false);
 
@@ -81,8 +80,6 @@ public class NotesListDisplayFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
-        super.onViewCreated(view, savedInstanceState);
 
         final Context currentContext = this.getActivity();
 
@@ -93,7 +90,7 @@ public class NotesListDisplayFragment extends Fragment {
 
         final Date afterDate = decrementDate(new Date(), 10);
 
-        List<NotesModel> notesList = modelId == null ? null : dbHelper.getNotes(modelId, null, afterDate.getTime(), NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE, 0);
+        List<NotesModel> notesList = modelId == null || dbHelper==null ? null : dbHelper.getNotes(modelId, null, afterDate.getTime(), NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE, 0);
         viewedItems = notesList == null ? 0 : notesList.size();
 
         //Now bind the list of Images using an adapter
@@ -119,7 +116,7 @@ public class NotesListDisplayFragment extends Fragment {
         );
 
         recyclerView.setAdapter(dataAdapter);
-        recyclerView.setOnFlingListener(new PageFlingListerner(layoutManager) {
+        recyclerView.setOnFlingListener(new RecyclerPaginationFlingListerner(layoutManager) {
 
             boolean isLoading = false;
 
@@ -239,53 +236,4 @@ public class NotesListDisplayFragment extends Fragment {
         return cal.getTime();
     }
 
-
-
-    abstract class PageFlingListerner extends RecyclerView.OnFlingListener{
-
-        LinearLayoutManager layoutManager = null;
-        public PageFlingListerner(LinearLayoutManager layoutManager) {
-            this.layoutManager = layoutManager;
-        }
-
-        @Override
-        public boolean onFling(int velocityX, int velocityY) {
-
-            int first = layoutManager.findFirstVisibleItemPosition();
-            int last = layoutManager.findLastVisibleItemPosition();
-            int count = layoutManager.getInitialPrefetchItemCount();
-
-            if(velocityX>10000 || velocityY>10000 ){
-                if(first==last && last==count ) {
-                    loadNextPage();
-                    return true;
-                }
-            }else if(velocityX < -10000 || velocityY< -10000){
-                if(first==0 && last == 0 && count > 0){
-                    loadPreviousPage();
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public void showFirstPage(){
-            int count = layoutManager.getInitialPrefetchItemCount();
-            if(count>0)
-                layoutManager.scrollToPosition(0);
-        }
-
-        public void showLastPage(){
-            int count = layoutManager.getInitialPrefetchItemCount();
-            if(count>0)
-                layoutManager.scrollToPosition(count-1);
-        }
-
-        abstract public void loadNextPage();
-        abstract public void loadPreviousPage();
-        abstract public boolean isLoading();
-        abstract public void showProgress(boolean show);
-
-    }
 }
