@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -38,6 +39,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import com.prelimtek.android.basecomponents.Configuration;
+import com.prelimtek.android.basecomponents.ResourcesUtils;
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 import com.prelimtek.android.picha.ImagesModel;
 import com.prelimtek.android.picha.view.listener.OnImageDeletedListener;
@@ -285,7 +287,7 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
                 // Continue only if the File was successfully created
                 if (photoFile != null) {
                     Uri photoURI = FileProvider.getUriForFile(getActivity(),
-                            "io.mtini.android.fileprovider",
+                            getAuthorityProvider(),
                             photoFile);
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     this.startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO_CODE);
@@ -300,6 +302,14 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
                     REQUEST_TAKE_PHOTO_CODE
             );
         }
+    }
+
+    private String getAuthorityProvider() {
+
+        String res =  getResources().getString(R.string.authority_file_provider);
+        if(res ==null) return "io.mtini.android.fileprovider";
+
+        return res;
     }
 
     String mCurrentPhotoPath;
