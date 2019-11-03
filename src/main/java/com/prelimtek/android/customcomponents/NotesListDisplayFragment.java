@@ -50,6 +50,7 @@ public class NotesListDisplayFragment extends Fragment {
         public void onNoteClicked(NotesModel note);
     }
 
+
     public int viewedItems = 0;
 
     @NonNull
@@ -58,9 +59,11 @@ public class NotesListDisplayFragment extends Fragment {
     @Nullable
     private OnNoteSelectedListener noteSelectedLister;
 
+
     public void setDBHelper(TextDAOInterface localDao) {
         dbHelper = localDao;
     }
+
 
     public void setNoteSelectedListener(OnNoteSelectedListener selectedNoteListener) {
         this.noteSelectedLister = selectedNoteListener;
@@ -192,17 +195,6 @@ public class NotesListDisplayFragment extends Fragment {
         //this passes the activity and not the parent fragment
     }
 
-    /**
-     * This is setter is called by parent fragment which is child aware
-     * <p>
-     * public void setCallback(OnImageDeletedListener callback){
-     * //mCallback = callback;
-     * // This makes sure that the container activity has implemented
-     * // the callback interface. If not, it throws an exception.
-     * <p>
-     * }
-     */
-
 
     @Override
     public void onStart() {
@@ -213,7 +205,6 @@ public class NotesListDisplayFragment extends Fragment {
     public void onResume() {
         super.onResume();
     }
-
 
     @Override
     public void onDetach() {
@@ -237,3 +228,4 @@ public class NotesListDisplayFragment extends Fragment {
     }
 
 }
+

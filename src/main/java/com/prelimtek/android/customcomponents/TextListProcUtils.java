@@ -36,6 +36,7 @@ public class TextListProcUtils {
         notesListFragment.setDBHelper(dbHelper);
         notesListFragment.setNoteSelectedListener(noteSelectedListener);
         notesListFragment.setLayoutManagerDirection(layoutManagerDirection);
+
         Bundle imgBundle = new Bundle();
         imgBundle.putSerializable(NotesListDisplayFragment.MODEL_ID_KEY, modelId);
         notesListFragment.setArguments(imgBundle);
@@ -52,6 +53,5 @@ public class TextListProcUtils {
 
 
     }
-
 
 }

@@ -8,6 +8,7 @@ import com.prelimtek.android.customcomponents.BR;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 public class NotesModel extends BaseObservable implements Serializable,Cloneable{
 
     String id;
@@ -100,4 +101,5 @@ public class NotesModel extends BaseObservable implements Serializable,Cloneable
         }
         return null;
     }
+
 }

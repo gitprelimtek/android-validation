@@ -17,4 +17,5 @@ public interface TextDAOInterface {
     public boolean deleteNotes(NotesModel notes);
 
     public int getNotesCount(String id);
+
 }
