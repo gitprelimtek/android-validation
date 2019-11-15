@@ -1,0 +1,41 @@
+<resources>
+
+    <string name="error_message">Error</string>
+    <string name="error_value_required">Error. Value required.</string>
+    <string name="dialog_changes_message">You are about to commit changes. Continue?</string>
+    <string name="dialog_changes_title">Confirmation.</string>
+
+    <string name="verify_token">Verify Token</string>
+    <string name="create_wallet">Create wallet</string>
+    <string name="dialog_loading_message">Loading. Please wait.</string>
+    <string name="dialog_verify_token">Verify security token.</string>
+    <string name="dialog_verify_token_msg">Please enter the security token you received.</string>
+    <string name="dialog_create_wallet">Create a new wallet.</string>
+    <string name="dialog_create_wallet_msg">Use this interface to create a new wallet. \n A passphrase is optional. We recommend that you encrypt your wallet using a
+    passphrase which will ensure maximum security. However, it is important that you save your password in a keystore on your device or write it down
+        somewhere safe. If you loose your passphrase you will not be able to recover your data. </string>
+
+    <string name="facebook_app_id">600318390400582</string>
+    <string name="fb_login_protocol_scheme">fb600318390400582</string>
+
+    <string name="decrypt_wallet">Decrypt</string>
+    <string name="dialog_decrypt_wallet">Decrypt Wallet</string>
+    <string name="dialog_decrypt_wallet_msg">Use the wallet password you  set when creating/updating the wallet corresponding to email and or phone number submitted.</string>
+
+    <!-- Pattern validator and error messages -->
+    <string name="phone_match_pattern">^(\\+)[1-9]{1}([0-9][\s]*){9,16}$</string>
+    <string name="phone_with_countrycode_3group_match_pattern">^(\\+[1-9]{1}[0-9]{0,2})(\\ )(([0-9][\s]*){9,16})$</string>
+    <string name="email_match_pattern">^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$</string>
+    <string name="string_gt_3_lt_20">^[A-Z0-9._%+\-+/ /]{3,20}$</string>
+
+    <string name="required_error_message">Error. Value required.</string>
+    <string name="error_phone_match_pattern">Expected a phone number with country code i.e. (+141545551212)</string>
+    <string name="error_email_match_pattern">An email with proper form and without special characters except \'_\' , i.e. (some_body@some.com)</string>
+    <string name="error_string_gt_3_lt_20">Expected at least 3 characters but less than 20 without special characters except
+        \'-\' or \'_\'.</string>
+
+
+    <string name="email_tooltip">Email (somebody@somewhere.com)</string>
+    <string name="phone_number_tooltip">Click to enter telephone number with country code (+1 4155551212)</string>
+
+</resources>
