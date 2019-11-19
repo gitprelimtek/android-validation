@@ -3,8 +3,6 @@ package com.prelimtek.android.customcomponents;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-import com.prelimtek.android.customcomponents.BR;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -92,10 +90,10 @@ public class NotesModel extends BaseObservable implements Serializable,Cloneable
         this.id = id;
     }
 
-    public Object createClone() {
+    public NotesModel createClone() {
         try
         {
-            return this.clone();
+            return (NotesModel)this.clone();
         }catch(CloneNotSupportedException e){
             e.printStackTrace();
         }
