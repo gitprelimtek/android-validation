@@ -46,7 +46,7 @@ import com.prelimtek.android.picha.dao.MediaDAOInterface;
 
 public class PhotoProcUtil extends DialogUtils {
 
-    private static String TAG = Class.class.getSimpleName();
+    private static String TAG = PhotoProcUtil.class.getSimpleName();
 
     public static final int REQUEST_IMAGE_CAPTURE_CODE = 1001;
     public static final int REQUEST_TAKE_PHOTO_CODE = 2001;
@@ -282,7 +282,7 @@ public class PhotoProcUtil extends DialogUtils {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
         byte[] bitmapBytes =  stream.toByteArray();
-        byte[] compressedBytes = new CompressionCodec().compress(bitmapBytes);
+        byte[] compressedBytes =  CompressionCodec.compress(bitmapBytes);
         return Base64.encodeToString(compressedBytes,Base64.NO_WRAP);
     }
 
@@ -296,7 +296,7 @@ public class PhotoProcUtil extends DialogUtils {
 
         byte[] decompressedBytes = new byte[0];
         try {
-            decompressedBytes = new CompressionCodec().decompress(imageBytes);
+            decompressedBytes =  CompressionCodec.decompress(imageBytes);
         } catch (DataFormatException e) {
             Log.e(TAG,e.getMessage());
             e.printStackTrace();
@@ -343,7 +343,7 @@ public class PhotoProcUtil extends DialogUtils {
 
         private static int BUFFER_SIZE = 1024;
 
-        public byte[] compress(byte[] input){
+        public static byte[] compress(byte[] input){
 
             ByteArrayOutputStream o = new ByteArrayOutputStream();
             byte[] output = new byte[BUFFER_SIZE];
@@ -364,7 +364,7 @@ public class PhotoProcUtil extends DialogUtils {
             return o.toByteArray();
         }
 
-        public byte[] decompress(byte[] compressed) throws DataFormatException {
+        public static byte[] decompress(byte[] compressed) throws DataFormatException {
 
             ByteArrayOutputStream o = new ByteArrayOutputStream();
             byte[] output = new byte[BUFFER_SIZE];
