@@ -12,6 +12,8 @@ import android.util.Log;
 
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 
+import java.net.URL;
+
 public class TelephonyUtils {
 
     public static final String TAG = "TelephonyUtilsTAG";
@@ -19,6 +21,8 @@ public class TelephonyUtils {
     public static final int PHONE_CALL_REQ_CODE = 11111;
     public static final int TEXT_MESG_REQ_CODE = 11112;
     public static final int WHATSAPP_MESG_REQ_CODE = 11113;
+    public static final int EMAIL_MESG_WITHATTCHMENT_REQ_CODE = 11114;
+    public static final String EMAIL_MESG_WITHATTCHMENT_CHOOSER = "email/sms with attachment";
 
     @Deprecated
     public static void makePhoneCall1(Activity context, String phoneNumber){
@@ -133,6 +137,51 @@ public class TelephonyUtils {
             Log.e(TAG,"App not found .",e);
             DialogUtils.startErrorDialog(context,"Please install Whatsapp app and try again.");
         }
-        // }
+
     }
+
+    public static void composeEmailMessageWithAttachment(Activity context, String[] email, String cc, String subject,String body, Uri attachment){
+
+        try{
+
+            Intent emailIntent = new Intent(Intent.ACTION_SEND);
+            emailIntent.setType("text/plain");
+            emailIntent.putExtra(Intent.EXTRA_EMAIL,email);
+            emailIntent.putExtra(Intent.EXTRA_CC,cc);
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT,subject);
+            emailIntent.putExtra(Intent.EXTRA_TEXT,body);
+            emailIntent.putExtra(Intent.EXTRA_STREAM,attachment);
+
+            context.startActivityForResult(Intent.createChooser(emailIntent,EMAIL_MESG_WITHATTCHMENT_CHOOSER),EMAIL_MESG_WITHATTCHMENT_REQ_CODE );//a response is sent to onRequestPermissionsResult mthd
+        }catch(Exception e){
+            Log.e(TAG,"Compose email failed.",e);
+            DialogUtils.startErrorDialog(context,"Compose email failed.");
+        }
+
+    }
+
+
+    public static void composeSMSMessageWithAttachment(Activity context, String phoneNumber, String subject,String body, Uri attachment){
+
+        try{
+            Intent smsSendIntent = new Intent(Intent.ACTION_SEND);
+            smsSendIntent.setType("text/plain");
+            if(phoneNumber!=null)
+            smsSendIntent.putExtra(Intent.EXTRA_PHONE_NUMBER,phoneNumber);
+            if(subject!=null)
+            smsSendIntent.putExtra(Intent.EXTRA_SUBJECT,subject);
+            if(body!=null)
+            smsSendIntent.putExtra(Intent.EXTRA_TEXT,body);
+            if(attachment!=null)
+            smsSendIntent.putExtra(Intent.EXTRA_STREAM,attachment);
+
+            context.startActivityForResult(Intent.createChooser(smsSendIntent,EMAIL_MESG_WITHATTCHMENT_CHOOSER) ,EMAIL_MESG_WITHATTCHMENT_REQ_CODE);//a response is sent to onRequestPermissionsResult mthd
+        }catch(Exception e){
+            Log.e(TAG,"Compose email failed.",e);
+            DialogUtils.startErrorDialog(context,"Compose email failed.");
+        }
+
+    }
+
 }
+

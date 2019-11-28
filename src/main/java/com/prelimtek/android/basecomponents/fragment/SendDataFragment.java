@@ -1,63 +1,84 @@
-package com.prelimtek.android.customcomponents.view;
+package com.prelimtek.android.basecomponents.fragment;
 
-import android.app.DialogFragment;
-import android.content.Context;
+
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.prelimtek.android.basecomponents.BackupActivityInterface;
 import com.prelimtek.android.basecomponents.TelephonyUtils;
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 import com.prelimtek.android.customcomponents.R;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
-public class TelephoneActionDialogFragment extends DialogFragment {
+public class SendDataFragment extends Fragment {
 
+    public static final String TAG = SendDataFragment.class.getSimpleName();
 
-    public static final String TAG = "PhoneActnDialogFrgmtTAG";
-    public static final String ARG_TELEPHONE_NUMBER = "TelephoneNumberToCallOrMessage";
-
-
-    public TelephoneActionDialogFragment(){}
-
+    String dataFilePath;
+    public interface SendDataFragmentInterface{
+        void onDataSentSuccess();
+        void onDataSentError();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            dataFilePath= getArguments().getString(BackupActivityInterface.FILE_PATH_KEY);
+        }
     }
 
-    String telephoneNumberArg ;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.choose_send_method_layout, container, false);
+    }
 
-        super.onCreateView(inflater, container, savedInstanceState);
-
-        if (savedInstanceState != null) {
-            telephoneNumberArg = savedInstanceState.getString(ARG_TELEPHONE_NUMBER);
-        } else if (getArguments() != null) {
-            telephoneNumberArg = getArguments().getString(ARG_TELEPHONE_NUMBER);
-        }
+    /*@Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
 
+        View button =  view.findViewById(R.id.whatsapp_icon_btn );
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        View view = inflater.inflate(R.layout.phonenumber_action_dialog_layout, null);
-        return view;
+                //do something before completing
 
+                completeProcess();
+
+            }
+        });
+
+    }*/
+
+    public void completeProcess(){
+        System.out.println("Completing process......");
+        //getActivity().onNavigateUpFromChild(getActivity());
+        ((SendDataFragmentInterface)getActivity()).onDataSentSuccess();
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final String phoneNumber = telephoneNumberArg;
+        final String phoneNumber = null;
 
-    View whatsappMessageButton = view.findViewById(R.id.whatsapp_icon_btn);
+        final Uri dataUrl = Uri.parse(dataFilePath);
+
+        View whatsappMessageButton = view.findViewById(R.id.whatsapp_icon_btn);
         whatsappMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +93,7 @@ public class TelephoneActionDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                TelephonyUtils.composeSMSMessage(getActivity(),phoneNumber);
+                TelephonyUtils.composeSMSMessageWithAttachment(getActivity(),phoneNumber,null,null,dataUrl);
 
             }
         });
@@ -82,10 +103,13 @@ public class TelephoneActionDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v){
 
-                TelephonyUtils.makePhoneCall(getActivity(),phoneNumber);
+                //TelephonyUtils.makePhoneCall(getActivity(),phoneNumber);
+                TelephonyUtils.composeEmailMessageWithAttachment(getActivity(),null,null,null,null,dataUrl);
 
             }
         });
+
+
 
     }
 
@@ -131,8 +155,5 @@ public class TelephoneActionDialogFragment extends DialogFragment {
         }
 
     }
-
-
-
 
 }
