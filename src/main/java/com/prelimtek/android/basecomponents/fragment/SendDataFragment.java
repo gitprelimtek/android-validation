@@ -18,10 +18,6 @@ import com.prelimtek.android.basecomponents.TelephonyUtils;
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 import com.prelimtek.android.customcomponents.R;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 public class SendDataFragment extends Fragment {
 
@@ -72,6 +68,7 @@ public class SendDataFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
 
         final String phoneNumber = null;
@@ -103,7 +100,6 @@ public class SendDataFragment extends Fragment {
             @Override
             public void onClick(View v){
 
-                //TelephonyUtils.makePhoneCall(getActivity(),phoneNumber);
                 TelephonyUtils.composeEmailMessageWithAttachment(getActivity(),null,null,null,null,dataUrl);
 
             }
@@ -122,11 +118,9 @@ public class SendDataFragment extends Fragment {
                     Snackbar.make(this.getView(),"Permission CALL_PHONE granted. Please press call button again.", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     Log.i(TAG,"Permission CALL_PHONE granted. ");
-
                 }else{
                     DialogUtils.startErrorDialog(this.getActivity(),"Permission CALL_PHONE denied. contact administrator. ");
                     Log.w(TAG,"Permission CALL_PHONE denied. ");
-
                 }
                 break;
             case TelephonyUtils.TEXT_MESG_REQ_CODE:
@@ -137,7 +131,6 @@ public class SendDataFragment extends Fragment {
                 }else{
                     DialogUtils.startErrorDialog(this.getActivity(),"Permission SEND_SMS denied. contact administrator. ");
                     Log.w(TAG,"Permission SEND_SMS denied. ");
-
                 }
                 break;
             case TelephonyUtils.WHATSAPP_MESG_REQ_CODE:
@@ -148,10 +141,18 @@ public class SendDataFragment extends Fragment {
                 }else{
                     DialogUtils.startErrorDialog(this.getActivity(),"Permission SEND_SMS denied. contact administrator. "+grantResults[0]);
                     Log.w(TAG,"Permission SEND_SMS denied. "+grantResults[0]);
-
                 }
                 break;
-
+            case TelephonyUtils.EMAIL_MESG_WITHATTCHMENT_REQ_CODE:
+                if( grantResults[0] == PackageManager.PERMISSION_GRANTED ){
+                    Snackbar.make(this.getView(),"Permission ACTION_SEND with Attachment granted. Please press message button again.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    Log.i(TAG,"Permission ACTION_SEND with Attachment granted. ");
+                }else{
+                    DialogUtils.startErrorDialog(this.getActivity(),"Permission ACTION_SEND with Attachment denied. contact administrator. "+grantResults[0]);
+                    Log.w(TAG,"Permission ACTION_SEND with Attachment denied. "+grantResults[0]);
+                }
+                break;
         }
 
     }

@@ -19,64 +19,78 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.prelimtek.android.basecomponents.BackupActivityInterface;
-
 import com.prelimtek.android.customcomponents.R;
 
 import java.io.IOException;
 
+import static com.prelimtek.android.basecomponents.BackupActivityInterface.UPLOAD_FILE_PATH_KEY;
 
-public class EncrypDataMainFragment extends Fragment {
+public class DecryptDataFragment extends Fragment {
 
-    private static final String TAG = EncrypDataMainFragment.class.getSimpleName();
+    private static final String TAG = DecryptDataFragment.class.getSimpleName();
 
+    private Uri uploadFile;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
+            uploadFile = getArguments().getParcelable(UPLOAD_FILE_PATH_KEY);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.encryption_password_layout, container, false);
+        return inflater.inflate(R.layout.decrypt_data_layout, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+
         EditText pwdTextField = (EditText)view.findViewById(R.id.passphraseText);
         CharSequence pass = pwdTextField.getText();
 
-        Button button = (Button) view.findViewById(R.id.encryptDataBtn);
+        Button button = (Button) view.findViewById(R.id.decryptDataBtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 button.setError(null);
                 try {
-                    encryptCompressedTempFile(view,pass,getContext());
+                    decryptDecompressToTempFile(view,pass,getContext());
                 } catch (IOException e) {
                     Log.e(TAG,e.getLocalizedMessage(),e);
-                    button.setError("Backup failed due to "+e.getLocalizedMessage());
+                    pwdTextField.setError("Backup failed due to "+e.getLocalizedMessage());
+                    Snackbar.make(view,"Error trying to load decrypt file due to "+e.getMessage(),Snackbar.LENGTH_LONG);
+
                 }
 
 
             }
         });
+
+        if(uploadFile==null){
+            //report error
+            Log.e(TAG,"Upload file was not created something went wrong, try again");
+            pwdTextField.setError("Upload file was not created something went wrong, try again");
+            button.setError("Upload file was not created something went wrong, try again");
+            button.setEnabled(false);
+            Snackbar.make(view,"Upload file was not created something went wrong, try again",Snackbar.LENGTH_LONG);
+
+        }
     }
 
-    private void encryptCompressedTempFile(View view,CharSequence pass, Context context) throws IOException {
+    private void decryptDecompressToTempFile(View view,CharSequence pass, Context context) throws IOException {
 
-        Uri dataFile = ((BackupActivityInterface)getActivity()).compressAndEncrypteData(pass==null?"":pass.toString());
+        Uri dataFile = ((BackupActivityInterface)getActivity()).decryptAndDecompressData(pass==null?"":pass.toString(),uploadFile);
 
-        Snackbar.make(view,"Backup file created successfully",Snackbar.LENGTH_LONG);
+        Snackbar.make(view,"Backup file decrypted and decompressed successfully",Snackbar.LENGTH_SHORT);
         Bundle bundle = new Bundle();
-        bundle.putString(BackupActivityInterface.FILE_PATH_KEY,dataFile.toString());
+        bundle.putParcelable(UPLOAD_FILE_PATH_KEY,dataFile);
 
         NavController navController = getNavigationController();
-        navController.navigate(R.id.action_encryptFragment_to_sendDataFragment,bundle);
+        navController.navigate(R.id.action_decryptDataFragment_to_uploadDataFragment,bundle);
 
     }
 

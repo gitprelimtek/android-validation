@@ -1,14 +1,22 @@
 package com.prelimtek.android.basecomponents;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 
 import com.prelimtek.android.basecomponents.dao.DataBackupDAOIterface;
 import com.prelimtek.android.basecomponents.fragment.DataBackupDialogFragment;
+import com.prelimtek.android.customcomponents.R;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -44,6 +52,10 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class FileUtils {
+
+    public static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 1101;
+    public static final int REQUEST_READ_FILE_CODE = 1102;
+    public static final String FILE_READ_CHOOSER = "read file from internal or external source";
 
     public static class EncryptionCodec{
 
@@ -266,13 +278,29 @@ public class FileUtils {
 
     }
 
-
-
     public static File getTempFile(Context context, String url) throws IOException {
 
+        File directory = context.getExternalCacheDir();//context.getCacheDir();
         String fileName = Uri.parse(url).getLastPathSegment();
-        File file = File.createTempFile(fileName, null, context.getCacheDir());
+        File file = File.createTempFile(fileName, null, directory);
+
         return file;
+    }
+
+    public static Uri toUri(Activity activity, File file){
+        Uri uri = FileProvider.getUriForFile(activity,
+                getAuthorityProvider(activity),
+                file);
+        //Uri.parse(file.getAbsolutePath());
+        return uri;
+    }
+
+    public static String getAuthorityProvider(Context context) {
+
+        String res =  context.getResources().getString(R.string.authority_file_provider);
+        if(res ==null) return "io.mtini.android.fileprovider";
+
+        return res;
     }
 
     public static boolean isExternalStorageWritable() {
@@ -292,6 +320,52 @@ public class FileUtils {
             return true;
         }
         return false;
+    }
+
+    public static void requestFileRead(Fragment fragment){
+        if (ActivityCompat.checkSelfPermission(
+                fragment.getContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(
+                    Intent.ACTION_OPEN_DOCUMENT
+            );
+            //intent.setType( "image/*");
+            intent.setType("*/*");
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+            //intent.putExtra("return-data", true);
+
+            fragment.startActivityForResult(Intent.createChooser(intent,FILE_READ_CHOOSER) , REQUEST_READ_FILE_CODE);
+        } else {
+            ActivityCompat.requestPermissions(
+                    fragment.getActivity(),
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    READ_EXTERNAL_STORAGE_REQUEST_CODE
+            );
+        }
+    }
+
+    public static void requestFileRead(Activity activity){
+        if (ActivityCompat.checkSelfPermission(
+                activity,
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(
+                    Intent.ACTION_OPEN_DOCUMENT
+            );
+            //intent.setType( "image/*");
+            intent.setType("*/*");
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+            //intent.putExtra("return-data", true);
+
+            activity.startActivityForResult(Intent.createChooser(intent,FILE_READ_CHOOSER) , REQUEST_READ_FILE_CODE);
+        } else {
+            ActivityCompat.requestPermissions(
+                    activity,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    READ_EXTERNAL_STORAGE_REQUEST_CODE
+            );
+        }
     }
 
     /** Get the directory for the app's private pictures directory.

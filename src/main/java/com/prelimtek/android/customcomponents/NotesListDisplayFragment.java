@@ -89,11 +89,9 @@ public class NotesListDisplayFragment extends Fragment {
         //get data object passed by previous activity
         final String modelId = getArguments().getString(MODEL_ID_KEY);
 
-        // isEditable = getArguments().getBoolean(IMAGE_IS_EDITABLE_BOOL_KEY,false);
+        final Date afterDate = null;//decrementDate(new Date(), 10);
 
-        final Date afterDate = decrementDate(new Date(), 10);
-
-        List<NotesModel> notesList = modelId == null || dbHelper==null ? null : dbHelper.getNotes(modelId, null, afterDate.getTime(), NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE, 0);
+        List<NotesModel> notesList = modelId == null || dbHelper==null ? null : dbHelper.getNotes(modelId, null, afterDate==null?null:afterDate.getTime(), NotesTextRecyclerViewAdapter.PAGE_BUFFER_SIZE, 0);
         viewedItems = notesList == null ? 0 : notesList.size();
 
         //Now bind the list of Images using an adapter
@@ -153,7 +151,7 @@ public class NotesListDisplayFragment extends Fragment {
 
                 try {
 
-                    List<NotesModel> notesList = dbHelper.getNotes(modelId, null, afterDate.getTime(), rowcount, offset);
+                    List<NotesModel> notesList = dbHelper.getNotes(modelId, null, afterDate==null?null:afterDate.getTime(), rowcount, offset);
 
                     if (notesList == null || notesList.isEmpty()) return;
 

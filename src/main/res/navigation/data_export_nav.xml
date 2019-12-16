@@ -19,6 +19,16 @@
             android:id="@+id/action_bcmTypeFragment_to_sendDataFragment"
             app:destination="@id/send_data_fragment"
             app:enterAnim="@anim/side_out_right" />
+        <action
+            android:id="@+id/action_choose_backup_type_to_upload_data_fragment"
+            app:destination="@id/upload_data_fragment"
+            app:enterAnim="@anim/side_out_right"
+            app:exitAnim="@anim/side_out_left" />
+        <action
+            android:id="@+id/action_choose_backup_type_to_decrypt_data_fragment"
+            app:destination="@id/decrypt_data_fragment"
+            app:enterAnim="@anim/side_out_left"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
 
     <fragment
@@ -36,4 +46,23 @@
         android:name="com.prelimtek.android.basecomponents.fragment.SendDataFragment"
         android:label="send_data">
     </fragment>
+
+
+    <fragment
+        android:id="@+id/decrypt_data_fragment"
+        android:name="com.prelimtek.android.basecomponents.fragment.DecryptDataFragment"
+        android:label="decrypt_data">
+        <action
+            android:id="@+id/action_decryptDataFragment_to_uploadDataFragment"
+            app:destination="@id/upload_data_fragment"
+            app:enterAnim="@anim/fade_out"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/upload_data_fragment"
+        android:name="com.prelimtek.android.basecomponents.fragment.UploadDataFragment"
+        android:label="upload_data">
+    </fragment>
+
+
 </navigation>

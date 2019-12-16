@@ -6,7 +6,6 @@ import android.databinding.Bindable;
 import java.io.Serializable;
 import java.util.Objects;
 
-
 public class NotesModel extends BaseObservable implements Serializable,Cloneable{
 
     String id;

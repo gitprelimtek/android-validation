@@ -35,12 +35,11 @@ public class DataBackupDialogFragment  extends DialogFragment {
         super.onStart();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.backup_dialogfragment_layout, container);
+        View view = inflater.inflate(R.layout.backup_activity_layout, container);
 
 
         return view;

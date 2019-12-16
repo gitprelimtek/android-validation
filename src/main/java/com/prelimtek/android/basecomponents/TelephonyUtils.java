@@ -22,7 +22,7 @@ public class TelephonyUtils {
     public static final int TEXT_MESG_REQ_CODE = 11112;
     public static final int WHATSAPP_MESG_REQ_CODE = 11113;
     public static final int EMAIL_MESG_WITHATTCHMENT_REQ_CODE = 11114;
-    public static final String EMAIL_MESG_WITHATTCHMENT_CHOOSER = "email/sms with attachment";
+    public static final String EMAIL_MESG_WITHATTCHMENT_CHOOSER = "drive/email/sms with attachment";
 
     @Deprecated
     public static void makePhoneCall1(Activity context, String phoneNumber){
@@ -151,6 +151,7 @@ public class TelephonyUtils {
             emailIntent.putExtra(Intent.EXTRA_SUBJECT,subject);
             emailIntent.putExtra(Intent.EXTRA_TEXT,body);
             emailIntent.putExtra(Intent.EXTRA_STREAM,attachment);
+            emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
             context.startActivityForResult(Intent.createChooser(emailIntent,EMAIL_MESG_WITHATTCHMENT_CHOOSER),EMAIL_MESG_WITHATTCHMENT_REQ_CODE );//a response is sent to onRequestPermissionsResult mthd
         }catch(Exception e){
@@ -174,6 +175,7 @@ public class TelephonyUtils {
             smsSendIntent.putExtra(Intent.EXTRA_TEXT,body);
             if(attachment!=null)
             smsSendIntent.putExtra(Intent.EXTRA_STREAM,attachment);
+            smsSendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
             context.startActivityForResult(Intent.createChooser(smsSendIntent,EMAIL_MESG_WITHATTCHMENT_CHOOSER) ,EMAIL_MESG_WITHATTCHMENT_REQ_CODE);//a response is sent to onRequestPermissionsResult mthd
         }catch(Exception e){
