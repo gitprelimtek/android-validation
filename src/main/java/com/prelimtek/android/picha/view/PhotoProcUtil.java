@@ -39,6 +39,7 @@ import java.util.zip.Inflater;
 
 
 import com.prelimtek.android.basecomponents.Configuration;
+import com.prelimtek.android.basecomponents.FileUtils;
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
 import com.prelimtek.android.picha.ImagesModel;
 import com.prelimtek.android.picha.R;
@@ -277,12 +278,13 @@ public class PhotoProcUtil extends DialogUtils {
     /**
      * Compress and base 64 encode this bitmap to string.
      * */
+    @Deprecated
     public static String toEncodedStringBytes(Bitmap bitmap){
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
         byte[] bitmapBytes =  stream.toByteArray();
-        byte[] compressedBytes =  CompressionCodec.compress(bitmapBytes);
+        byte[] compressedBytes =  FileUtils.CompressionCodec.compress(bitmapBytes);
         return Base64.encodeToString(compressedBytes,Base64.NO_WRAP);
     }
 
@@ -290,13 +292,14 @@ public class PhotoProcUtil extends DialogUtils {
      * Assume this base64 encoded String of image is compressed. Decode to bytes and Decompress.
      * Then create Bitmap.
      * */
+    @Deprecated
     public static Bitmap toBitMap(String encodedStringBytes){
 
         byte[] imageBytes = Base64.decode(encodedStringBytes,Base64.NO_WRAP);
 
         byte[] decompressedBytes = new byte[0];
         try {
-            decompressedBytes =  CompressionCodec.decompress(imageBytes);
+            decompressedBytes =  FileUtils.CompressionCodec.decompress(imageBytes);
         } catch (DataFormatException e) {
             Log.e(TAG,e.getMessage());
             e.printStackTrace();
@@ -306,6 +309,42 @@ public class PhotoProcUtil extends DialogUtils {
         Bitmap bitmap =  BitmapFactory.decodeByteArray(decompressedBytes, 0, decompressedBytes.length);
 
         return bitmap;
+    }
+
+    public static class StringifyBitmapCodec{
+        /**
+         * Compress and base 64 encode this bitmap to string.
+         * */
+        public static String encode(Bitmap bitmap){
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+            byte[] bitmapBytes =  stream.toByteArray();
+            byte[] compressedBytes =  FileUtils.CompressionCodec.compress(bitmapBytes);
+            return Base64.encodeToString(compressedBytes,Base64.NO_WRAP);
+        }
+
+        /**
+         * Assume this base64 encoded String of image is compressed. Decode to bytes and Decompress.
+         * Then create Bitmap.
+         * */
+        public static Bitmap decode(String encodedStringBytes){
+
+            byte[] imageBytes = Base64.decode(encodedStringBytes,Base64.NO_WRAP);
+
+            byte[] decompressedBytes = new byte[0];
+            try {
+                decompressedBytes =  FileUtils.CompressionCodec.decompress(imageBytes);
+            } catch (DataFormatException e) {
+                Log.e(TAG,e.getMessage());
+                e.printStackTrace();
+                decompressedBytes = imageBytes;
+            }
+
+            Bitmap bitmap =  BitmapFactory.decodeByteArray(decompressedBytes, 0, decompressedBytes.length);
+
+            return bitmap;
+        }
     }
 
     public static void showOrRefreshImageListFragment(@NonNull ImagesModel currentImagesModel, @NonNull FragmentManager childTransactionManager , @NonNull MediaDAOInterface dbHelper, boolean editable){
@@ -339,7 +378,7 @@ public class PhotoProcUtil extends DialogUtils {
 
     }
 
-    public static class CompressionCodec{
+    /*public static class CompressionCodec{
 
         private static int BUFFER_SIZE = 1024;
 
@@ -381,7 +420,7 @@ public class PhotoProcUtil extends DialogUtils {
             return o.toByteArray();
         }
 
-    }
+    }*/
 
     public static Dialog startImageDialog(Context context, Bitmap bitmap, DialogInterface.OnClickListener listener){
 

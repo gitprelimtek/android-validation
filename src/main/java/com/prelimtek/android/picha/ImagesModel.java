@@ -75,9 +75,8 @@ public class ImagesModel extends BaseObservable implements Serializable, Cloneab
         if (this == o) return true;
         if (!(o instanceof ImagesModel)) return false;
         ImagesModel that = (ImagesModel) o;
-        return
-                Objects.equals(modelId, that.modelId) &&
-                Objects.equals(imageNames, that.imageNames);
+        return that.hashCode() == hashCode();
+
     }
 
     @Override

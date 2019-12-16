@@ -206,7 +206,7 @@ public class ImageListDisplayFragment extends Fragment {
         String encodedBitmap = dbHelper.getImageById(imageid);
 
         if(encodedBitmap!=null) {
-            Bitmap bitmap = PhotoProcUtil.toBitMap(encodedBitmap);
+            Bitmap bitmap = PhotoProcUtil.StringifyBitmapCodec.decode(encodedBitmap);
             if (isEditable) {
 
                 final Dialog dialog = PhotoProcUtil.startImageDialog(v.getContext(), bitmap, new DialogInterface.OnClickListener() {

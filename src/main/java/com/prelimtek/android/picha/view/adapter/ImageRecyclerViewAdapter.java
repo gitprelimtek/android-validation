@@ -100,7 +100,7 @@ public class ImageRecyclerViewAdapter extends RecyclerView.Adapter<ImageRecycler
         String encodedBitmap = db.getImageById(rowItem);
 
         if(encodedBitmap!=null) {
-            Bitmap bitmap = PhotoProcUtil.toBitMap(encodedBitmap);
+            Bitmap bitmap = PhotoProcUtil.StringifyBitmapCodec.decode(encodedBitmap);
             holder.bind(imageId,bitmap);
         }else{
             holder.clear();

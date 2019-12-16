@@ -532,7 +532,7 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
                         inputStream = getActivity().getContentResolver().openInputStream(imageReturnedIntent.getData());
 
                         Bitmap bitmap = PhotoProcUtil.getCompressedImage(inputStream,w,h);
-                        String encodedImageString = PhotoProcUtil.toEncodedStringBytes(bitmap);
+                        String encodedImageString = PhotoProcUtil.StringifyBitmapCodec.encode(bitmap);
                         UUID id = UUID.randomUUID();
                         if (dbHelper.addImage(id.toString(), null, encodedImageString) ) {
                             currentImagesModel.addImageName(id.toString());
@@ -556,7 +556,8 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
                         //String mCurrentPhotoPath = dispatchPhotoFile==null?null:dispatchPhotoFile.getAbsolutePath();
                         Bitmap bitmap = PhotoProcUtil.getCompressedImage(mCurrentPhotoPath, h, w);
 
-                        String encodedImageString = PhotoProcUtil.toEncodedStringBytes(bitmap);
+                        String encodedImageString = PhotoProcUtil.StringifyBitmapCodec.encode(bitmap);
+
                         UUID id = UUID.randomUUID();
                         if (dbHelper.addImage(id.toString(), null, encodedImageString)) {
                             currentImagesModel.addImageName(id.toString());
