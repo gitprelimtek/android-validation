@@ -9,6 +9,9 @@
     <dimen name="btn_height">30dp</dimen>
     <dimen name="btn_width">30dp</dimen>
 
+    <dimen name="large_btn_height">100dp</dimen>
+    <dimen name="large_btn_width">100dp</dimen>
+
     <dimen name="custom_btn_layout_height">50dp</dimen>
     <dimen name="custom_btn_layout_width">50dp</dimen>
     <dimen name="custom_btn_vertical_margin">30dp</dimen>

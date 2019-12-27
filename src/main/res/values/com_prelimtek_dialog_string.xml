@@ -14,6 +14,9 @@
     <string name="save_close">Save and Close</string>
     <string name="edit">Edit</string>
 
+    <string name="whatsapp_attach">Attach to Whatsapp</string>
+    <string name="other_method_attach">Chooose Other Method</string>
+
     <string name="versionLabel">Version:</string>
 
 </resources>

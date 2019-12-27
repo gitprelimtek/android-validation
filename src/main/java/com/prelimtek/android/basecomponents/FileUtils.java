@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -290,6 +291,14 @@ public class FileUtils {
     public static Uri toUri(Activity activity, File file){
         Uri uri = FileProvider.getUriForFile(activity,
                 getAuthorityProvider(activity),
+                file);
+        //Uri.parse(file.getAbsolutePath());
+        return uri;
+    }
+
+    public static Uri toUri(Service service, File file){
+        Uri uri = FileProvider.getUriForFile(service,
+                getAuthorityProvider(service),
                 file);
         //Uri.parse(file.getAbsolutePath());
         return uri;

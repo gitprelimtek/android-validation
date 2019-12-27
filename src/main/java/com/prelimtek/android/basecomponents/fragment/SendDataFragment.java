@@ -1,6 +1,5 @@
 package com.prelimtek.android.basecomponents.fragment;
 
-
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,11 +22,8 @@ public class SendDataFragment extends Fragment {
 
     public static final String TAG = SendDataFragment.class.getSimpleName();
 
-    String dataFilePath;
-    public interface SendDataFragmentInterface{
-        void onDataSentSuccess();
-        void onDataSentError();
-    }
+    private String dataFilePath;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,30 +36,6 @@ public class SendDataFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.choose_send_method_layout, container, false);
-    }
-
-    /*@Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-
-        View button =  view.findViewById(R.id.whatsapp_icon_btn );
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //do something before completing
-
-                completeProcess();
-
-            }
-        });
-
-    }*/
-
-    public void completeProcess(){
-        System.out.println("Completing process......");
-        //getActivity().onNavigateUpFromChild(getActivity());
-        ((SendDataFragmentInterface)getActivity()).onDataSentSuccess();
     }
 
     @Override
@@ -79,13 +51,13 @@ public class SendDataFragment extends Fragment {
         whatsappMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                /**Response is sent to activity's onActivityRequest*/
                 TelephonyUtils.composeWhatsappMessage(getActivity(),phoneNumber);
 
             }
         });
 
-        View textMessageButton = view.findViewById(R.id.text_msg_btn);
+        /*View textMessageButton = view.findViewById(R.id.text_msg_btn);
         textMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,20 +65,18 @@ public class SendDataFragment extends Fragment {
                 TelephonyUtils.composeSMSMessageWithAttachment(getActivity(),phoneNumber,null,null,dataUrl);
 
             }
-        });
+        });*/
 
-        View phoneCallButton = view.findViewById(R.id.make_phonecall_btn);
+        View phoneCallButton = view.findViewById(R.id.send_attachment_chooser_btn);
         phoneCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-
+                //String subject = "Data Backup";
+                /**Response is sent to activity's onActivityRequest*/
                 TelephonyUtils.composeEmailMessageWithAttachment(getActivity(),null,null,null,null,dataUrl);
 
             }
         });
-
-
-
     }
 
     @Override

@@ -6,13 +6,10 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
-
-import java.net.URL;
 
 public class TelephonyUtils {
 
@@ -24,6 +21,7 @@ public class TelephonyUtils {
     public static final int EMAIL_MESG_WITHATTCHMENT_REQ_CODE = 11114;
     public static final String EMAIL_MESG_WITHATTCHMENT_CHOOSER = "drive/email/sms with attachment";
 
+    /**Response is sent to activity's onActivityRequest*/
     @Deprecated
     public static void makePhoneCall1(Activity context, String phoneNumber){
         //if (Build.VERSION.SDK_INT > 22) {
@@ -46,7 +44,7 @@ public class TelephonyUtils {
         }
         //}
     }
-
+    /**Response is sent to activity's onActivityRequest*/
     @Deprecated
     public static void composeSMSMessage1(Activity context, String phoneNumber){
 
@@ -69,7 +67,7 @@ public class TelephonyUtils {
         //}
 
     }
-
+    /**Response is sent to activity's onActivityRequest*/
     @Deprecated
     public static void composeWhatsappMessage1(Activity context, String phoneNumber){
         //intent call
@@ -94,7 +92,7 @@ public class TelephonyUtils {
         // }
     }
 
-
+    /**Response is sent to activity's onActivityRequest*/
     public static void makePhoneCall(Activity context, String phoneNumber){
 
         try{
@@ -109,7 +107,7 @@ public class TelephonyUtils {
         //}
     }
 
-
+    /**Response is sent to activity's onActivityRequest*/
     public static void composeSMSMessage(Activity context, String phoneNumber){
 
         try{
@@ -124,7 +122,7 @@ public class TelephonyUtils {
 
     }
 
-
+    /**Response is sent to activity's onActivityRequest*/
     public static void composeWhatsappMessage(Activity context, String phoneNumber){
 
         try {
@@ -140,6 +138,7 @@ public class TelephonyUtils {
 
     }
 
+    /**Response is sent to activity's onActivityRequest*/
     public static void composeEmailMessageWithAttachment(Activity context, String[] email, String cc, String subject,String body, Uri attachment){
 
         try{
@@ -161,7 +160,7 @@ public class TelephonyUtils {
 
     }
 
-
+    /**Response is sent to activity's onActivityRequest*/
     public static void composeSMSMessageWithAttachment(Activity context, String phoneNumber, String subject,String body, Uri attachment){
 
         try{
