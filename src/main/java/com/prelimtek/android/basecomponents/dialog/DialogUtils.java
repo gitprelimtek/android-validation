@@ -92,6 +92,26 @@ public class DialogUtils {
         return errorDialog;
     }
 
+    public static AlertDialog startInfoDialog(Context context, CharSequence title, String message, DialogInterface.OnClickListener positiveListener){
+        if(Looper.myLooper()==null)Looper.prepare();
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        //TODO add icon dialogBuilder.setIcon()
+        dialogBuilder.setMessage(message);
+        if(title!=null)
+            dialogBuilder.setTitle(title);
+        dialogBuilder.setPositiveButton(R.string.ok,positiveListener);
+        dialogBuilder.setNegativeButton(R.string.cancel,new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog errorDialog = dialogBuilder.create();
+        errorDialog.setCanceledOnTouchOutside(true);
+        errorDialog.show();
+        return errorDialog;
+    }
+
     /**
      * This is an SDK agnostic way to get a view's (dialog or fragment) parent activity.
      * */

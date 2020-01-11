@@ -297,14 +297,16 @@ public class FileUtils {
     }
 
     public static Uri toUri(Service service, File file){
-        Uri uri = FileProvider.getUriForFile(service,
-                getAuthorityProvider(service),
+        Context context = service.getApplicationContext();
+        Uri uri = FileProvider.getUriForFile(context,
+                getAuthorityProvider(context),
                 file);
         //Uri.parse(file.getAbsolutePath());
         return uri;
     }
 
     public static String getAuthorityProvider(Context context) {
+        //@string/notetaker_content_authority"
 
         String res =  context.getResources().getString(R.string.authority_file_provider);
         if(res ==null) return "io.mtini.android.fileprovider";
