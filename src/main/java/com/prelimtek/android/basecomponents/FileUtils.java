@@ -11,9 +11,9 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.core.content.FileProvider;
 
 import com.prelimtek.android.basecomponents.dao.DataBackupDAOIterface;
 import com.prelimtek.android.basecomponents.fragment.DataBackupDialogFragment;

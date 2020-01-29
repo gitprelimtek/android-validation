@@ -4,13 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.databinding.BindingAdapter;
-import android.databinding.InverseMethod;
-import android.preference.EditTextPreference;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseMethod;
+
 import android.preference.PreferenceManager;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
