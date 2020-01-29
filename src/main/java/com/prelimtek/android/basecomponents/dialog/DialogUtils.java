@@ -93,6 +93,16 @@ public class DialogUtils {
     }
 
     public static AlertDialog startInfoDialog(Context context, CharSequence title, String message, DialogInterface.OnClickListener positiveListener){
+
+        return startInfoDialog(context,title,message,positiveListener, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+
+    public static AlertDialog startInfoDialog(Context context, CharSequence title, String message, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener){
         if(Looper.myLooper()==null)Looper.prepare();
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
@@ -101,13 +111,9 @@ public class DialogUtils {
         if(title!=null)
             dialogBuilder.setTitle(title);
         dialogBuilder.setPositiveButton(R.string.ok,positiveListener);
-        dialogBuilder.setNegativeButton(R.string.cancel,new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.dismiss();
-            }
-        });
+        dialogBuilder.setNegativeButton(R.string.cancel,negativeListener);
         AlertDialog errorDialog = dialogBuilder.create();
-        errorDialog.setCanceledOnTouchOutside(true);
+        errorDialog.setCanceledOnTouchOutside(false);
         errorDialog.show();
         return errorDialog;
     }
