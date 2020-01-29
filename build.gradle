@@ -4,7 +4,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //implementation 'com.google.protobuf:protobuf-java-util:3.2.0'
-    implementation 'com.google.protobuf:protobuf-java-util:3.6.1'
+    //implementation 'com.google.protobuf:protobuf-java-util:3.6.1'//remove due to firebase
+    //implementation 'com.google.protobuf:protobuf-lite:3.0.1'
+    implementation 'com.google.protobuf:protobuf-java-util:3.4.0'
 }
 
 
