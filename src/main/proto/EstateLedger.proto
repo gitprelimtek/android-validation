@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package io.mtini.proto;
+package io.mtini.proto.eat;
 
 option java_outer_classname="EstateAccountProtos";
 
