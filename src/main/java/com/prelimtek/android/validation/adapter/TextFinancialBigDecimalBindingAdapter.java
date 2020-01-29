@@ -2,9 +2,9 @@ package com.prelimtek.android.validation.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingAdapter;
-import android.databinding.InverseBindingListener;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
+import androidx.databinding.InverseBindingListener;
 
 import android.icu.text.DecimalFormat;
 import android.os.Handler;

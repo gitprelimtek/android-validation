@@ -1,9 +1,9 @@
 package com.prelimtek.android.validation.adapter;
 
 import android.app.DatePickerDialog;
-import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingAdapter;
-import android.databinding.InverseBindingListener;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
+import androidx.databinding.InverseBindingListener;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
