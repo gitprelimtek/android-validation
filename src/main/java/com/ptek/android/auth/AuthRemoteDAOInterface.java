@@ -1,9 +1,8 @@
 package com.ptek.android.auth;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.prelimtek.android.basecomponents.dao.RemoteDAOListener;
-import com.prelimtek.utils.crypto.Wallet;
 import com.prelimtek.utils.crypto.dao.CryptoDAOInterface;
 
 import java.io.IOException;

@@ -3,7 +3,7 @@ package com.ptek.android.auth.service;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 
 /**
  * This should be a long running service that listens for backend notifications/messages

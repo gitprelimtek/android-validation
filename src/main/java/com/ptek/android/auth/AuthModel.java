@@ -1,7 +1,7 @@
 package com.ptek.android.auth;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.prelimtek.android.basecomponents.Configuration;
 import com.prelimtek.utils.crypto.UserInterface;
