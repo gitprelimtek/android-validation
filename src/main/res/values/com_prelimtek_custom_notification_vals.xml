@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="com_ptek_notification_indicator_background_unread">#ffc53929</color>
+    <color name="com_ptek_notification_indicator">#ffc53929</color>
+
+    <color name="com_ptek_notification_indicator_bg_color_pressed">#ff7e27</color>
+    <color name="com_ptek_notification_indicator_bg_color_disabled">#c4c4d7</color>
+    <color name="com_ptek_notification_indicator_bg_color">#ff3d90</color>
+    <dimen name="com_ptek_notification_indicator_corner_radius">1dp</dimen>
+    <dimen name="com_ptek_notification_indicator_width">18dp</dimen>
+    <dimen name="com_ptek_notification_indicator_height">18dp</dimen>
+
+    <declare-styleable name="CustomNotificationIndicatorButton">
+        <attr name="hideIfEmpty" format="boolean" />
+        <attr name="noticeText" format="string" />
+    </declare-styleable>
+</resources>
