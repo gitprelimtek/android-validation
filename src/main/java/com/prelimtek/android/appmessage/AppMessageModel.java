@@ -1,4 +1,6 @@
-package com.prelimtek.android.basecomponents.dao;
+package com.prelimtek.android.appmessage;
+
+import android.graphics.Bitmap;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -17,28 +19,33 @@ public class AppMessageModel extends BaseObservable {
         deleted
     }
 
-    private String messageId;
-    private String title;
+    private Integer messageId;
+    private CharSequence title;
+    private CharSequence body;
     private byte[] data;
     private long receiptDate;
     private long actionDate;
     private MSG_STATUS status;
 
+
+
+    private Bitmap icon;
+
     @Bindable
-    public String getMessageId() {
+    public Integer getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(String messageId) {
+    public void setMessageId(int messageId) {
         this.messageId = messageId;
         notifyPropertyChanged(BR.messageId);
     }
     @Bindable
-    public String getTitle() {
+    public CharSequence getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(CharSequence title) {
         this.title = title;
         notifyPropertyChanged(BR.title);
     }
@@ -77,6 +84,25 @@ public class AppMessageModel extends BaseObservable {
     public void setStatus(MSG_STATUS status) {
         this.status = status;
         notifyPropertyChanged(BR.status);
+    }
+    @Bindable
+    public CharSequence getBody() {
+        return body;
+    }
+
+    public void setBody(CharSequence body) {
+        this.body = body;
+        notifyPropertyChanged(BR.body);
+    }
+
+    @Bindable
+    public Bitmap getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Bitmap icon) {
+        this.icon = icon;
+        notifyPropertyChanged(BR.icon);
     }
 
 

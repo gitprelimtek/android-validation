@@ -1,4 +1,4 @@
-package com.prelimtek.android.customcomponents.view;
+package com.prelimtek.android.appmessage;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -85,6 +85,7 @@ public class CustomNotificationIndicatorButton extends RelativeLayout {
             if (hideIfEmpty) {
                 this.layout.setVisibility(GONE);
             }
+
         }else{
             this.layout.setVisibility(VISIBLE);
         }
