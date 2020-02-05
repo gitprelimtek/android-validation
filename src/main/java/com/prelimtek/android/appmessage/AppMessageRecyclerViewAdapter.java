@@ -1,6 +1,7 @@
 package com.prelimtek.android.appmessage;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prelimtek.android.basecomponents.Configuration;
-import com.prelimtek.android.customcomponents.NotesModel;
 import com.prelimtek.android.customcomponents.R;
 
 import java.text.DateFormat;
@@ -46,7 +46,9 @@ public class AppMessageRecyclerViewAdapter extends RecyclerView.Adapter<AppMessa
             appMessageTitleTextView.setText(messageModel.getTitle());
             setDateValue(appMessageDateTextView,messageModel.getReceiptDate());
             appMessageTextView.setText(messageModel.getBody());
-            appMessageImageView.setImageBitmap(messageModel.getIcon());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                appMessageImageView.setImageIcon(messageModel.getIcon());
+            }
             layout.setTag(messageModel);
         }
 

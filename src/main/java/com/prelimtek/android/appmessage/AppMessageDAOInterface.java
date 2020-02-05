@@ -2,13 +2,18 @@ package com.prelimtek.android.appmessage;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 public interface AppMessageDAOInterface {
 
     List<AppMessageModel> retrieveAllAppMessages();
 
-    void dismissMessage(Integer id);
+    List<AppMessageModel> retrieveAppMessages(AppMessageModel.MSG_STATUS status);
 
-    void deleteMessage(Integer id);
+    boolean dismissMessage(Integer[] id);
 
+    boolean deleteMessage(Integer[] id);
+
+    boolean saveMessage(AppMessageModel message);
 
 }

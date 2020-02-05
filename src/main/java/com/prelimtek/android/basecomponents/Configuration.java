@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import androidx.databinding.BindingAdapter;
-import androidx.databinding.InverseMethod;
 
 import android.preference.PreferenceManager;
 

@@ -1,15 +1,11 @@
 package com.prelimtek.android.appmessage;
 
 
-import android.app.Activity;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import com.prelimtek.android.customcomponents.R;
 
 public class AppMessageUtil {
 
@@ -18,7 +14,6 @@ public class AppMessageUtil {
             @NonNull Context context,
             @NonNull FragmentManager childTransactionManager,
             @NonNull AppMessageDAOInterface dao){
-
 
         FragmentTransaction transaction = childTransactionManager.beginTransaction();
 
