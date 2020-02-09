@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.prelimtek.android.basecomponents.Configuration;
+import com.prelimtek.android.basecomponents.ResourcesUtils;
 import com.prelimtek.android.customcomponents.R;
 
 import java.text.DateFormat;
@@ -43,12 +44,24 @@ public class AppMessageRecyclerViewAdapter extends RecyclerView.Adapter<AppMessa
         }
 
         public void bindTo(AppMessageModel messageModel) {
+
             appMessageTitleTextView.setText(messageModel.getTitle());
-            setDateValue(appMessageDateTextView,messageModel.getReceiptDate());
+            setDateValue(appMessageDateTextView,messageModel.getActionDate());
             appMessageTextView.setText(messageModel.getBody());
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 appMessageImageView.setImageIcon(messageModel.getIcon());
             }
+
+            int titleColor =  appMessageTitleTextView.getCurrentTextColor();
+
+            if(messageModel.getStatus() == AppMessageModel.MSG_STATUS.new_message){
+                titleColor = ResourcesUtils.getColor(appMessageTitleTextView,R.color.Teal_700);
+            }else if(messageModel.getStatus() == AppMessageModel.MSG_STATUS.archived){
+                titleColor =  ResourcesUtils.getColor(appMessageTitleTextView,R.color.Red_700);
+            }
+
+            appMessageTitleTextView.setTextColor(titleColor);
+
             layout.setTag(messageModel);
         }
 

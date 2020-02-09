@@ -24,8 +24,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.prelimtek.android.customcomponents.R;
 import com.prelimtek.android.customcomponents.RecyclerItemTouchHelper;
 
-import java.util.List;
-
 public class AppMessageListDialogFragment extends DialogFragment {
 
     interface AppMessageDismissOrDeleteListener{
@@ -41,17 +39,17 @@ public class AppMessageListDialogFragment extends DialogFragment {
     private Context context;
     private static final String TAG = AppMessageListDialogFragment.class.getSimpleName();
 
-    private static int PAGE_BUFFER_SIZE = 4;
-
+    ///these values are used by page swipe mech.
+    private int PAGE_BUFFER_SIZE = 4;
     private int viewedItems = 0;
 
-    private AppMessageDismissOrDeleteListener callback;
+    //private AppMessageDismissOrDeleteListener callback;
     private AppMessageDAOInterface dbHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view  = inflater.inflate(R.layout.appmessage_item_list_recycler_layout,container,false);
+        View view  = inflater.inflate(R.layout.dialog_fragment_appmessage_item_list_layout,container,false);
 
         return view;
     }
@@ -71,7 +69,10 @@ public class AppMessageListDialogFragment extends DialogFragment {
 
         //set layout manager and listeners
         ObservableList<AppMessageModel> notesList = new ObservableArrayList<AppMessageModel>();
-        notesList.addAll(queryForNotifications());
+        notesList.addAll(dbHelper.retrieveAllAppMessages());
+        //TODO for future improvements use paging where pagesize and status is driven by UI values.
+        //final AppMessageModel.MSG_STATUS statusQuery = AppMessageModel.MSG_STATUS.new_message;
+        //notesList.addAll(dbHelper.retrieveAppMessages(statusQuery,100,0));
         viewedItems = notesList==null?0:notesList.size();
 
 
@@ -175,7 +176,8 @@ public class AppMessageListDialogFragment extends DialogFragment {
             public void onLeftActionActivated(RecyclerView.ViewHolder viewHolder) {
                 int pos = viewHolder.getAdapterPosition();
                 AppMessageModel noteTag =  (AppMessageModel)viewHolder.itemView.getTag();
-                callback.onMessageDismissed(noteTag);
+                //callback.onMessageDismissed(noteTag);
+                dbHelper.dismissMessage(noteTag.getModelId());
 
                 //noteEditedCallBack.onNoteEdited(tag);
                 //Do nothing
@@ -194,7 +196,8 @@ public class AppMessageListDialogFragment extends DialogFragment {
             public void onRightActionActivated(RecyclerView.ViewHolder viewHolder) {
                 int pos = viewHolder.getAdapterPosition();
                 AppMessageModel tag =  (AppMessageModel)viewHolder.itemView.getTag();
-                callback.onMessageDeleted(tag);
+                //callback.onMessageDeleted(tag);
+                dbHelper.deleteMessage(tag.getModelId());
             }
 
             @Override
@@ -220,13 +223,6 @@ public class AppMessageListDialogFragment extends DialogFragment {
 
 
     }
-
-    private List<AppMessageModel> queryForNotifications(){
-
-        return dbHelper.retrieveAllAppMessages();
-        //return Arrays.asList();
-    }
-
 
     @Override
     public void onAttachFragment(Fragment childFragment) {
