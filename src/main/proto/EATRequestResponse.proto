@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package io.mtini.proto;
 
-//import public "EstateLedger.proto";
 
 option java_outer_classname="EATRequestResponseProtos";
 

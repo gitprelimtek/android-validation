@@ -45,16 +45,20 @@ protobuf {
         // Download from repositories
         //artifact = 'com.google.protobuf:protoc:3.0.0-alpha-3'
         artifact = 'com.google.protobuf:protoc:3.10.0'
+        //artifact = 'com.google.protobuf:protoc:3.4.0'
     }
+
     generateProtoTasks {
         // all() returns the collection of all protoc tasks
         all().each { task ->
             // Here you can configure the task --added to support protobuf-lite
             task.builtins {
+                //remove java
                 java {
                     option "lite"
                 }
             }
+
         }
 
         // In addition to all(), you may get the task collection by various
