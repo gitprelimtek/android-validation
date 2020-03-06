@@ -15,9 +15,6 @@
     passphrase which will ensure maximum security. However, it is important that you save your password in a keystore on your device or write it down
         somewhere safe. If you loose your passphrase you will not be able to recover your data. </string>
 
-    <string name="facebook_app_id">600318390400582</string>
-    <string name="fb_login_protocol_scheme">fb600318390400582</string>
-
     <string name="decrypt_wallet">Decrypt</string>
     <string name="dialog_decrypt_wallet">Decrypt Wallet</string>
     <string name="dialog_decrypt_wallet_msg">Use the wallet password you  set when creating/updating the wallet corresponding to email and or phone number submitted.</string>
