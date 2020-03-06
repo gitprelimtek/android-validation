@@ -195,7 +195,7 @@ public class AppMessageModel extends BaseObservable {
             model.setData(_data);
             model.setIcon(_icon);
             model.setTitle(_title);
-            model.setStatus(AppMessageModel.MSG_STATUS.new_message);
+            //model.setStatus(AppMessageModel.MSG_STATUS.new_message);
             model.setStatus(MSG_STATUS.valueOf(_status!=null?_status.toLowerCase():"not_set"));
 
             return model;
