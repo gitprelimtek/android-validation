@@ -156,4 +156,8 @@ public class AppMessageRecyclerViewAdapter extends RecyclerView.Adapter<AppMessa
         return rowItems.get(position);
     }
 
+    protected void redraw(){
+        
+    }
+
 }

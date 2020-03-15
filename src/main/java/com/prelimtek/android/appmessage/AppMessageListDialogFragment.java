@@ -24,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.prelimtek.android.customcomponents.R;
 import com.prelimtek.android.customcomponents.RecyclerItemTouchHelper;
 
+/**Called by an activity */
 public class AppMessageListDialogFragment extends DialogFragment {
 
     interface AppMessageDismissOrDeleteListener{
@@ -177,7 +178,7 @@ public class AppMessageListDialogFragment extends DialogFragment {
                 int pos = viewHolder.getAdapterPosition();
                 AppMessageModel noteTag =  (AppMessageModel)viewHolder.itemView.getTag();
                 //callback.onMessageDismissed(noteTag);
-                dbHelper.dismissMessage(noteTag.getModelId());
+                dbHelper.changeMessageStatus(AppMessageModel.MSG_STATUS.archived,noteTag.getModelId());
 
                 //noteEditedCallBack.onNoteEdited(tag);
                 //Do nothing

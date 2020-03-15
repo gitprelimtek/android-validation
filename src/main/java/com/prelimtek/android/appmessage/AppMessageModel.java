@@ -15,6 +15,12 @@ import java.util.UUID;
  * */
 public class AppMessageModel extends BaseObservable {
 
+
+
+    public enum MSG_TYPE {
+        notification,message
+    }
+
     public enum MSG_STATUS {
         not_set,
         new_message,
@@ -32,7 +38,18 @@ public class AppMessageModel extends BaseObservable {
     private Long receiptDate;
     private Long actionDate;
     private MSG_STATUS status;
+    private MSG_TYPE type;
     private Icon icon;
+
+    @Bindable
+    public MSG_TYPE getType() {
+        return type;
+    }
+
+    public void setType(MSG_TYPE type) {
+        this.type = type;
+        notifyPropertyChanged(BR.type);
+    }
 
     @Bindable
     public Integer getMessageId() {
@@ -145,6 +162,7 @@ public class AppMessageModel extends BaseObservable {
         private Long _actionDate;
         private Icon _icon;
         private String _status;
+        private String _type;
 
         public Builder set_sender(CharSequence _sender) {
             this._sender = _sender;return this;
@@ -183,6 +201,10 @@ public class AppMessageModel extends BaseObservable {
             this._status = _status;return this;
         }
 
+        public void set_type(String _type) {
+            this._type = _type;
+        }
+
         public AppMessageModel build(){
 
             String modelId = UUID.randomUUID().toString();
@@ -197,9 +219,11 @@ public class AppMessageModel extends BaseObservable {
             model.setTitle(_title);
             //model.setStatus(AppMessageModel.MSG_STATUS.new_message);
             model.setStatus(MSG_STATUS.valueOf(_status!=null?_status.toLowerCase():"not_set"));
-
+            model.setType(MSG_TYPE.valueOf(_type!=null?_type.toLowerCase():"message"));
             return model;
         }
+
+
     }
 
 
