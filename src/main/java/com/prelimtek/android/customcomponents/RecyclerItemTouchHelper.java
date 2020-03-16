@@ -161,10 +161,28 @@ abstract public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCall
         currentItemViewHolder = viewHolder;
     }
 
+    private String leftButtonString="EDIT";
+    private String rightButtonString="DELETE";
+
+    public void setLeftButtonString(String s){
+        leftButtonString=s;
+    }
+
+    public void setRightButtonString(String s){
+        rightButtonString=s;
+    }
+
+    public String getLeftButtonString(){
+        return leftButtonString;
+    }
+
+    public String getRightButtonString(){
+        return rightButtonString;
+    }
 
     private void drawButtons(Canvas c, RecyclerView.ViewHolder viewHolder) {
-        float buttonWidthWithoutPadding = buttonWidth - 20;
-        float corners = 16;
+        float buttonWidthWithoutPadding = buttonWidth - c.getWidth()/4;//15;
+        float corners = 10;//16;
 
         View itemView = viewHolder.itemView;
         Paint p = new Paint();
@@ -172,12 +190,12 @@ abstract public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCall
         RectF leftButton = new RectF(itemView.getLeft(), itemView.getTop(), itemView.getLeft() + buttonWidthWithoutPadding, itemView.getBottom());
         p.setColor(Color.BLUE);
         c.drawRoundRect(leftButton, corners, corners, p);
-        drawText("EDIT", c, leftButton, p);
+        drawText(getLeftButtonString(), c, leftButton, p);
 
         RectF rightButton = new RectF(itemView.getRight() - buttonWidthWithoutPadding, itemView.getTop(), itemView.getRight(), itemView.getBottom());
         p.setColor(Color.RED);
         c.drawRoundRect(rightButton, corners, corners, p);
-        drawText("DELETE", c, rightButton, p);
+        drawText(getRightButtonString(), c, rightButton, p);
 
         buttonInstance = null;
         if (buttonShowedState == ButtonsState.LEFT_VISIBLE) {
@@ -189,7 +207,7 @@ abstract public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCall
     }
 
     private void drawText(String text, Canvas c, RectF button, Paint p) {
-        float textSize = 60;
+        float textSize = 20;
         p.setColor(Color.WHITE);
         p.setAntiAlias(true);
         p.setTextSize(textSize);

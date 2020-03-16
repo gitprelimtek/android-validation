@@ -154,6 +154,7 @@ public class AppMessageModel extends BaseObservable {
     public static class Builder{
 
         private Integer _messageId;
+        private CharSequence _modelId;
         private CharSequence _title;
         private CharSequence _body;
         private CharSequence _sender;
@@ -201,13 +202,17 @@ public class AppMessageModel extends BaseObservable {
             this._status = _status;return this;
         }
 
-        public void set_type(String _type) {
-            this._type = _type;
+        public Builder set_modelId(String _modelId){
+            this._modelId = _modelId; return this;
+        }
+
+        public Builder set_type(String _type) {
+            this._type = _type;return this;
         }
 
         public AppMessageModel build(){
 
-            String modelId = UUID.randomUUID().toString();
+            String modelId = _modelId!=null&&!_modelId.toString().isEmpty()?_modelId.toString():UUID.randomUUID().toString();
             AppMessageModel model = new AppMessageModel();
             model.setModelId(modelId);
             model.setBody(_body);
