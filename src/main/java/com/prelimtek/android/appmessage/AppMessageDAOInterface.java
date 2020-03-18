@@ -2,13 +2,11 @@ package com.prelimtek.android.appmessage;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 public interface AppMessageDAOInterface {
 
     List<AppMessageModel> retrieveAllAppMessages();
 
-    List<AppMessageModel> retrieveAppMessages(AppMessageModel.MSG_TYPE type,AppMessageModel.MSG_STATUS  status,int rowCount, int pageOffset);
+    List<AppMessageModel> retrieveAppMessages(AppMessageModel.MSG_TYPE type, AppMessageModel.MSG_STATUS[] status, int rowCount, int pageOffset);
 
     boolean changeMessageStatus(AppMessageModel.MSG_STATUS status, String... modelId);
 

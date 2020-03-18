@@ -1,6 +1,7 @@
 package com.prelimtek.android.appmessage;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,13 +54,20 @@ public class AppMessageRecyclerViewAdapter extends RecyclerView.Adapter<AppMessa
             }
 
             int titleColor =  appMessageTitleTextView.getCurrentTextColor();
+            int titleTypefaceStyle = appMessageTitleTextView.getTypeface().getStyle();//Typeface.NORMAL;
 
             if(messageModel.getStatus() == AppMessageModel.MSG_STATUS.new_message){
                 titleColor = ResourcesUtils.getColor(appMessageTitleTextView,R.color.Teal_700);
+                titleTypefaceStyle =  Typeface.BOLD;
             }else if(messageModel.getStatus() == AppMessageModel.MSG_STATUS.archived){
-                titleColor =  ResourcesUtils.getColor(appMessageTitleTextView,R.color.Red_700);
+                titleColor =  ResourcesUtils.getColor(appMessageTitleTextView,R.color.Blue_700);
+                titleTypefaceStyle =  Typeface.ITALIC;
+            }if(messageModel.getStatus() == AppMessageModel.MSG_STATUS.read_message){
+                //titleColor =  ResourcesUtils.getColor(appMessageTitleTextView,R.color.Blue_700);
+                titleTypefaceStyle  = Typeface.NORMAL;
             }
 
+            appMessageTitleTextView.setTypeface(null,titleTypefaceStyle);
             appMessageTitleTextView.setTextColor(titleColor);
 
             layout.setTag(messageModel);

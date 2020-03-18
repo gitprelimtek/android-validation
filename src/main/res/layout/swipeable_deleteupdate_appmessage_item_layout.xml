@@ -17,7 +17,6 @@
         android:gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black"
-        android:textStyle="bold"
         android:id="@+id/messageTitle" />
 
 
@@ -40,12 +39,18 @@
 
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/detailsPanel"
         android:visibility="gone">
+
 
         <TextView
             android:layout_width="match_parent"
@@ -63,6 +68,6 @@
 
 
     </LinearLayout>
-
+    </ScrollView>
 
 </LinearLayout>
