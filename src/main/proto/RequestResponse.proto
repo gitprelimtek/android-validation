@@ -1,24 +1,20 @@
 syntax = "proto3";
 
-package io.mtini.proto.eat;
+package io.mtini.proto;
 
-import public "proto/EstateLedger.proto";
 
-option java_outer_classname="EATRequestResponseProtos";
+option java_outer_classname="RequestResponseProtos";
 
-message EATRequestResponse{
+message RequestResponse{
 
     message Request{
         string jsonRequest = 1;
         bytes data = 2;
-        LedgerEntries entries = 3;
-
     }
     
     message Response{
         string jsonResponse = 1;
         bytes data = 2;
-        LedgerEntries entries = 3;
     }
     
     Request request  = 1;
