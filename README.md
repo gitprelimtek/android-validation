@@ -6,4 +6,5 @@ This project supports Formvalidation, text input validation and complex type val
 
 ### Dependencies
 
-[android-base-components]
+- [base-components](https://github.com/gitprelimtek/android-base-components)
+
