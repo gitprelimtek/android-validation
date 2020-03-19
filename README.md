@@ -8,6 +8,6 @@ It supports authentication by phone, email or facebook.
 
 ### Dependencies
 
-[android-base-components]
-[android-validation]
-[ptek-crypto-utils]
+- [base-components](https://github.com/gitprelimtek/android-base-components)
+- [validation](https://github.com/gitprelimtek/android-validation)
+- [crypto-utils](https://github.com/gitprelimtek/crypto-utils)
