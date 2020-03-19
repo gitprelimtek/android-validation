@@ -8,5 +8,6 @@ This project consists of ImageHandlingDialogFragment and ImageListDisplayFragmen
 
 ### Dependencies
 
-[android-base-components]
-[android-validation]
+- [base-components](https://github.com/gitprelimtek/android-base-components)
+- [validation](https://github.com/gitprelimtek/android-validation)
+
