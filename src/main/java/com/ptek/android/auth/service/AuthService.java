@@ -21,7 +21,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Date;
 
-import io.mtini.proto.EATRequestResponseProtos;
+import io.mtini.proto.RequestResponseProtos;
 
 public class AuthService extends IntentService {
 
@@ -129,9 +129,9 @@ public class AuthService extends IntentService {
      * which is a privatekey generator*/
     private void requestEmailTextToken(final AuthModel sModel) {
         RemoteDAOListener listener = new
-                RemoteDAOListener<EATRequestResponseProtos.EATRequestResponse.Response>() {
+                RemoteDAOListener<RequestResponseProtos.RequestResponse.Response>() {
                     @Override
-                    public void onRequestComplete(EATRequestResponseProtos.EATRequestResponse.Response response) {
+                    public void onRequestComplete(RequestResponseProtos.RequestResponse.Response response) {
                         try {
                             if(response==null || response.getJsonResponse()==null)
                                 throw new AuthRemoteDAOInterface.RemoteAuthException("An server side error occurred. Remote service not reachable.");
