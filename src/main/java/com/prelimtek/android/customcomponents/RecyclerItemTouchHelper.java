@@ -21,7 +21,7 @@ abstract public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCall
     protected boolean swipeBack;
 
     private ButtonsState buttonShowedState = ButtonsState.GONE;
-    private static final float buttonWidth = 300;
+    private float buttonWidth = 300;
     protected RecyclerView.ViewHolder currentItemViewHolder = null;
     private RectF buttonInstance = null;
 
@@ -70,7 +70,7 @@ abstract public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCall
 
                     if (buttonShowedState != ButtonsState.GONE) {
                         setTouchDownListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-                        setItemsClickable(recyclerView, false);
+                        //setItemsClickable(recyclerView, false);
                     }
                 }
                 return false;
@@ -111,7 +111,7 @@ abstract public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCall
                         }
                     });
                     setItemsClickable(recyclerView, true);
-                    swipeBack = false;
+                    //swipeBack = false;
 
                     if (buttonInstance != null && buttonInstance.contains(event.getX(), event.getY())) {
                             if (buttonShowedState == ButtonsState.LEFT_VISIBLE) {
@@ -181,8 +181,9 @@ abstract public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCall
     }
 
     private void drawButtons(Canvas c, RecyclerView.ViewHolder viewHolder) {
-        float buttonWidthWithoutPadding = buttonWidth - c.getWidth()/4;//15;
-        float corners = 10;//16;
+        buttonWidth = Math.min(300,c.getWidth()/3);
+        float buttonWidthWithoutPadding = buttonWidth ;//15;
+        float corners = 5;//16;
 
         View itemView = viewHolder.itemView;
         Paint p = new Paint();

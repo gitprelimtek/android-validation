@@ -16,5 +16,6 @@
         <attr name="noticeText" format="string" />
     </declare-styleable>
 
-    <string name="delete_dismiss_appmessage_tooltip">Swipe left to dismiss or swipe right to delete.</string>
+    <string name="delete_archive_appmessage_tooltip">Swipe right to archive or swipe left to delete.</string>
+    <string name="delete_appmessage_tooltip">Swipe left to delete.</string>
 </resources>
