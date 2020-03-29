@@ -17,10 +17,9 @@ import com.prelimtek.android.picha.view.PhotoProcUtil;
 
 import java.util.List;
 
-
 public class ImageRecyclerViewAdapter extends RecyclerView.Adapter<ImageRecyclerViewAdapter.ViewHolder> {
 
-    public static final int PAGE_BUFFER_SIZE = 3;
+    public static final int PAGE_BUFFER_SIZE = 15;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;

@@ -17,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -286,7 +287,7 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
                     Uri photoURI = FileProvider.getUriForFile(getActivity(),
                             PhotoProcUtil.getAuthorityProvider(getActivity()),
                             photoFile);
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                    //takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     this.startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO_CODE);
                     //System.out.println("IntentData = "+takePictureIntent.getData());
                 }
@@ -422,17 +423,18 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
     }
 
     public void pickGalleryImage() {
-        Intent intent = new Intent(Intent.ACTION_PICK,
-                MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        /*Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.INTERNAL_CONTENT_URI);*/
+        Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-        //TODO revisit these params
-        intent.putExtra("crop", "true");
+
+        /*intent.putExtra("crop", "true");
         intent.putExtra("scale", true);
         intent.putExtra("outputX", 256);
         intent.putExtra("outputY", 256);
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
-        intent.putExtra("return-data", true);
+        intent.putExtra("return-data", true);*/
         startActivityForResult(intent, REQUEST_IMAGE_CAPTURE_CODE);
     }
 
@@ -440,16 +442,11 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         if (ActivityCompat.checkSelfPermission(
                 getActivity(),
                 Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            Intent intent = new Intent(
-                    Intent.ACTION_PICK,
-                    MediaStore.Images.Media.INTERNAL_CONTENT_URI
-            );
+            /*Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+
             intent.setType( "image/*");
-            //intent.putExtra("crop", "true");
-            //intent.putExtra("scale", true);
-            //intent.putExtra("aspectX", 16);
-            //intent.putExtra("aspectY", 9);
-            //TODO revisit these params
+
             intent.putExtra("crop", "true");
             intent.putExtra("scale", true);
             intent.putExtra("outputX", 256);
@@ -458,7 +455,13 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
             intent.putExtra("aspectY", 1);
             intent.putExtra("return-data", true);
 
-            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE_CODE);
+            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE_CODE);*/
+
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Get Image From"), REQUEST_IMAGE_CAPTURE_CODE);
+
         } else {
             ActivityCompat.requestPermissions(
                     getActivity(),
@@ -527,17 +530,19 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
             case REQUEST_IMAGE_CAPTURE_CODE:
                 if(resultCode == RESULT_OK){
 
-                    InputStream inputStream = null;
                     try {
-                        inputStream = getActivity().getContentResolver().openInputStream(imageReturnedIntent.getData());
+                        InputStream inputStream = getActivity().getContentResolver().openInputStream(imageReturnedIntent.getData());
 
                         Bitmap bitmap = PhotoProcUtil.getCompressedImage(inputStream,w,h);
+
+                        //Bitmap bitmap = (Bitmap)imageReturnedIntent.getExtras().get("data");
+
                         String encodedImageString = PhotoProcUtil.StringifyBitmapCodec.encode(bitmap);
                         UUID id = UUID.randomUUID();
                         if (dbHelper.addImage(id.toString(), null, encodedImageString) ) {
                             currentImagesModel.addImageName(id.toString());
                         }
-                        inputStream.close();
+                        //inputStream.close();
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -551,10 +556,14 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
             case REQUEST_TAKE_PHOTO_CODE:
                 if(resultCode == RESULT_OK){
                     try {
+
+                        /*
                         Uri selectedImage = imageReturnedIntent.getData();
                         String path = selectedImage==null?null:selectedImage.getPath();
                         //String mCurrentPhotoPath = dispatchPhotoFile==null?null:dispatchPhotoFile.getAbsolutePath();
                         Bitmap bitmap = PhotoProcUtil.getCompressedImage(mCurrentPhotoPath, h, w);
+                        */
+                        Bitmap bitmap = (Bitmap)imageReturnedIntent.getExtras().get("data");
 
                         String encodedImageString = PhotoProcUtil.StringifyBitmapCodec.encode(bitmap);
 
@@ -613,12 +622,25 @@ public class ImageHandlingDialogFragment extends DialogFragment implements OnIma
         switch(requestCode) {
             case REQUEST_IMAGE_CAPTURE_CODE:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    pickExternalStorageImage();
+                    new Handler().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            pickExternalStorageImage();
+                        }
+                    });
                 }
                 break;
             case REQUEST_TAKE_PHOTO_CODE:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED ){
-                    dispatchTakePictureIntent();
+
+                    new Handler().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            dispatchTakePictureIntent();
+                        }
+                    });
+
+
                 }
                 break;
         }

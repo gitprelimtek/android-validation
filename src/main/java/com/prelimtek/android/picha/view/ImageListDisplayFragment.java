@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import com.google.android.material.snackbar.Snackbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
@@ -64,7 +63,6 @@ public class ImageListDisplayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater,container,savedInstanceState);
 
-        //View view =  inflater.inflate( R.layout.images_list_fragment_layout , container,false);
         View view =  inflater.inflate( R.layout.images_recycler_view_layout , container,false);
 
         return view;
@@ -110,12 +108,11 @@ public class ImageListDisplayFragment extends Fragment {
 
                             String imageid = (String)v.getTag();
 
-                            Snackbar.make(v, "Selected image for Details", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
+                            //Snackbar.make(v, "Selected image for Details", Snackbar.LENGTH_LONG)
+                            //        .setAction("Action", null).show();
 
 
                             setImageAsCurrent(v.getRootView(),imageid);
-
 
                         }
                     },
@@ -213,9 +210,6 @@ public class ImageListDisplayFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface parentDialog, int which) {
 
-
-
-
                         //TODO add confirmation dialog and change listener to swipe or double click
                         //TODO add tooltip with instruction on how to delete
 
@@ -268,7 +262,8 @@ public class ImageListDisplayFragment extends Fragment {
                 });
 
             } else {
-                PhotoProcUtil.startImageDialog(v.getContext(), bitmap);
+                Dialog dialog = PhotoProcUtil.startImageDialog(v.getContext(), bitmap,true);
+
             }
         }
     }
@@ -324,6 +319,8 @@ public class ImageListDisplayFragment extends Fragment {
 
     abstract class PageFlingListerner extends RecyclerView.OnFlingListener{
 
+        static final int velocity = 500;
+
         LinearLayoutManager layoutManager = null;
         public PageFlingListerner(LinearLayoutManager layoutManager) {
             this.layoutManager = layoutManager;
@@ -336,12 +333,12 @@ public class ImageListDisplayFragment extends Fragment {
             int last = layoutManager.findLastVisibleItemPosition();
             int count = layoutManager.getInitialPrefetchItemCount();
 
-            if(velocityX>10000 || velocityY>10000 ){
+            if(velocityX>velocity || velocityY>velocity ){
                 if(last==count ) {
                     loadNextPage();
                     return true;
                 }
-            }else if(velocityX < -10000 || velocityY< -10000){
+            }else if(velocityX < -velocity || velocityY< -velocity){
                 if(first==0 ){
                     loadPreviousPage();
                     return true;

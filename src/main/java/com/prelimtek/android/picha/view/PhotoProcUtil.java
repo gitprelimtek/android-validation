@@ -34,7 +34,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.zip.DataFormatException;
 
-
 import com.prelimtek.android.basecomponents.Configuration;
 import com.prelimtek.android.basecomponents.FileUtils;
 import com.prelimtek.android.basecomponents.dialog.DialogUtils;
@@ -274,6 +273,7 @@ public class PhotoProcUtil extends DialogUtils {
 
     /**
      * Compress and base 64 encode this bitmap to string.
+    * Deprected! use PhotoProcUtil.StringifyBitmapCodec.encode instead
      * */
     @Deprecated
     public static String toEncodedStringBytes(Bitmap bitmap){
@@ -288,6 +288,7 @@ public class PhotoProcUtil extends DialogUtils {
     /**
      * Assume this base64 encoded String of image is compressed. Decode to bytes and Decompress.
      * Then create Bitmap.
+     * Deprected! use PhotoProcUtil.StringifyBitmapCodec.decode instead
      * */
     @Deprecated
     public static Bitmap toBitMap(String encodedStringBytes){
@@ -375,50 +376,6 @@ public class PhotoProcUtil extends DialogUtils {
 
     }
 
-    /*public static class CompressionCodec{
-
-        private static int BUFFER_SIZE = 1024;
-
-        public static byte[] compress(byte[] input){
-
-            ByteArrayOutputStream o = new ByteArrayOutputStream();
-            byte[] output = new byte[BUFFER_SIZE];
-
-            Deflater compresser = new Deflater(Deflater.BEST_SPEED);
-            compresser.setInput(input,0,input.length);
-            compresser.finish();
-            while(!compresser.finished()){
-                int compressedDataLength = compresser.deflate(output);
-                if (compressedDataLength == 0) {
-                    break;
-                }
-                o.write(output, 0, compressedDataLength);
-            }
-
-            compresser.end();
-
-            return o.toByteArray();
-        }
-
-        public static byte[] decompress(byte[] compressed) throws DataFormatException {
-
-            ByteArrayOutputStream o = new ByteArrayOutputStream();
-            byte[] output = new byte[BUFFER_SIZE];
-
-            Inflater decompresser = new Inflater();
-            decompresser.setInput(compressed,0,compressed.length);
-            while(!decompresser.finished()) {
-                int decompressedDataLength = decompresser.inflate(output);
-                if (decompressedDataLength == 0) {
-                    break;
-                }
-                o.write(output, 0, decompressedDataLength);
-            }
-            return o.toByteArray();
-        }
-
-    }*/
-
     public static Dialog startImageDialog(Context context, Bitmap bitmap, DialogInterface.OnClickListener listener){
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
@@ -452,39 +409,37 @@ public class PhotoProcUtil extends DialogUtils {
     }
 
     public static Dialog startImageDialog(Context context, Bitmap bitmap){
+        return startImageDialog(context,bitmap,false);
+    }
 
-        Dialog dialog = new Dialog(context);
+    public static Dialog startImageDialog(Context context, Bitmap bitmap,boolean negativeDismissButton){
+
+        AlertDialog dialog=null;
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+
+        if(negativeDismissButton) {
+            dialogBuilder.setTitle(R.string.dialog_image_details);
+            dialogBuilder.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                }
+            });
+        }
+        dialog = dialogBuilder.create();
+
         ImageView imageView = new ImageView(context);
-        //imageView.setImageBitmap(bitmap);
         imageView.setMaxHeight(Configuration.imageDialogMaxHeight);
         imageView.setMaxWidth(Configuration.imageDialogMaxWidth);
         imageView.setMinimumHeight(bitmap.getHeight() );
         imageView.setMinimumWidth(bitmap.getWidth() );
         setPic(imageView,bitmap);
 
-/*        ///resize image
-        int photoW = bitmap.getWidth();
-        int photoH = bitmap.getHeight();
+        //RelativeLayout.LayoutParams params =
+        //        new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-        // Determine how much to scale down the image
-        //int scaleFactor = Math.max(imageView.getMaxWidth()/photoW, imageView.getMaxHeight()/photoH);
-        float scaleFactor = 1 ;
-        if (Build.VERSION.SDK_INT < 16) {
-            scaleFactor = Math.max((float)imageView.getWidth() / photoW, (float)imageView.getHeight() / photoH);
-        }else {
-            scaleFactor = Math.max((float)imageView.getMaxWidth() / photoW, (float)imageView.getMaxHeight() / photoH);
-        }
-
-        photoW = Math.round(photoW*scaleFactor);
-        photoH = Math.round(photoH*scaleFactor);
-        Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap,photoW,photoH,false);
-        imageView.setImageBitmap(resizedBitmap);
-*/
-
-        RelativeLayout.LayoutParams params =
-                new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
-
-        dialog.addContentView(imageView,params);
+        //dialog.addContentView(imageView,params);//meant for Dialog
+        dialog.setView(imageView);//meant for AlertDialog
         dialog.setCanceledOnTouchOutside(true);
         dialog.show();
 

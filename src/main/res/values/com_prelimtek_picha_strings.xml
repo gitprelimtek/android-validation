@@ -12,5 +12,8 @@
 
     <string name="save_close_btn_tooltip">Click save your changes and close this dialog.</string>
 
+    <dimen name="image_list_horizontal_margin">2dp</dimen>
+    <dimen name="image_list_vertical_margin">8dp</dimen>
 
+    <color name="image_list_background">#666666</color>
 </resources>

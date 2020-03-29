@@ -4,24 +4,27 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="@dimen/activity_horizontal_margin"
-    android:background="@android:color/white"
+    android:layout_margin="1dp"
+    android:background="@color/image_list_background"
     android:tooltipText="Click for details"
     >
 
     <ImageView
         android:layout_width="@dimen/scrollable_image_width"
         android:layout_height="@dimen/scrollable_image_height"
-        android:layout_margin="1dp"
+
+        android:layout_marginVertical="@dimen/image_list_vertical_margin"
+        android:layout_marginHorizontal="@dimen/image_list_horizontal_margin"
+
         android:maxWidth="@dimen/scrollable_image_width"
         android:maxHeight="@dimen/scrollable_image_height"
         android:id="@+id/itemImage" />
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black"
         android:id="@+id/imageName" />
-
+    -->
 </LinearLayout>
