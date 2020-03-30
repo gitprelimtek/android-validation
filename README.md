@@ -1,1 +1,12 @@
-# Estate tenant manager project (Release_1.1.0-full-SNAPSHOT)
+# mtini-eat-protos ( Release_2.0.0 )
+Depends on proto3
+
+Generic Mtini Protos
+EAT Protos
+NoteTaker Protos
+
+These classes are commandline generated:
+
+```
+protoc  --java_out=./java/ ./proto/*proto
+```
