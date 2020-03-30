@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package io.mtini.proto.eat;
+
+option java_outer_classname="EstateAccountProtos";
+
+enum EstateType {
+	notype = 0;
+	apartment = 1;
+	house = 2;
+	commercial = 3;
+	condo = 4;
+}
+
+enum TenantStatus {
+    nostatus = 0;
+	late = 1;
+	balance = 2;
+	evicted = 3;
+	new_tenant = 4;
+	moved = 5;
+    paid = 6;
+}
+
+enum PaymentSchedule {
+	 noschedule = 0;
+     monthly = 1;
+     biweekly = 2;
+     weekly = 3;
+}
+
+enum Operation {
+    NOTSET = 0;
+    ADD_ESTATE = 1;
+    EDIT_ESTATE = 2;
+    ADD_TENANT = 3;
+    EDIT_TENANT = 4;
+    DELETE_ESTATE = 5;
+    DELETE_TENANT = 6;
+    ADD_IMAGE = 7;
+    DELETE_IMAGE = 8;
+}
+
+message LedgerEntries {
+
+message EstateModel {
+  bytes id = 1;
+  string name = 2;
+  string address = 3;
+  string description = 4;
+  string contacts = 5;
+  EstateType type = 6; 
+
+
+  message TenantModel {
+    bytes id = 1;
+    bytes estateId = 2;
+    string name = 3;
+    string buildingNumber = 4;
+    string contacts = 5;
+  	double rentDue = 6;
+  	TenantStatus status = 7;
+  	double rent = 8;   
+  	double balance = 9;   
+  	string notes = 10;
+  	string currency = 11;
+  	int64 paidDate = 12;
+  	PaymentSchedule paySchedule = 13;
+  	int64 dueDate = 14;
+  	
+  }
+  
+  repeated TenantModel tenantData = 7;
+}
+
+message ImageModel{
+	bytes id = 1;
+	bytes modelId = 2;
+	string encodedBitmap = 3;
+}
+
+message NotesModel{
+    int64 date = 1;
+	bytes modelId = 2;
+	string noteText = 3;
+}
+
+ Operation operation = 1 ;
+ repeated EstateModel estateData = 2;
+ repeated ImageModel images = 3;
+ repeated NotesModel notes = 4;
+ }
