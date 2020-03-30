@@ -439,6 +439,18 @@ public final class EstateAccountProtos {
      * <code>DELETE_IMAGE = 8;</code>
      */
     DELETE_IMAGE(8),
+    /**
+     * <code>ADD_NOTE = 9;</code>
+     */
+    ADD_NOTE(9),
+    /**
+     * <code>EDIT_NOTE = 10;</code>
+     */
+    EDIT_NOTE(10),
+    /**
+     * <code>DELETE_NOTE = 11;</code>
+     */
+    DELETE_NOTE(11),
     UNRECOGNIZED(-1),
     ;
 
@@ -478,6 +490,18 @@ public final class EstateAccountProtos {
      * <code>DELETE_IMAGE = 8;</code>
      */
     public static final int DELETE_IMAGE_VALUE = 8;
+    /**
+     * <code>ADD_NOTE = 9;</code>
+     */
+    public static final int ADD_NOTE_VALUE = 9;
+    /**
+     * <code>EDIT_NOTE = 10;</code>
+     */
+    public static final int EDIT_NOTE_VALUE = 10;
+    /**
+     * <code>DELETE_NOTE = 11;</code>
+     */
+    public static final int DELETE_NOTE_VALUE = 11;
 
 
     public final int getNumber() {
@@ -507,6 +531,9 @@ public final class EstateAccountProtos {
         case 6: return DELETE_TENANT;
         case 7: return ADD_IMAGE;
         case 8: return DELETE_IMAGE;
+        case 9: return ADD_NOTE;
+        case 10: return EDIT_NOTE;
+        case 11: return DELETE_NOTE;
         default: return null;
       }
     }
@@ -6835,12 +6862,13 @@ public final class EstateAccountProtos {
       "\010nostatus\020\000\022\010\n\004late\020\001\022\013\n\007balance\020\002\022\013\n\007ev" +
       "icted\020\003\022\016\n\nnew_tenant\020\004\022\t\n\005moved\020\005\022\010\n\004pa" +
       "id\020\006*H\n\017PaymentSchedule\022\016\n\nnoschedule\020\000\022" +
-      "\013\n\007monthly\020\001\022\014\n\010biweekly\020\002\022\n\n\006weekly\020\003*\240" +
+      "\013\n\007monthly\020\001\022\014\n\010biweekly\020\002\022\n\n\006weekly\020\003*\316" +
       "\001\n\tOperation\022\n\n\006NOTSET\020\000\022\016\n\nADD_ESTATE\020\001" +
       "\022\017\n\013EDIT_ESTATE\020\002\022\016\n\nADD_TENANT\020\003\022\017\n\013EDI" +
       "T_TENANT\020\004\022\021\n\rDELETE_ESTATE\020\005\022\021\n\rDELETE_" +
       "TENANT\020\006\022\r\n\tADD_IMAGE\020\007\022\020\n\014DELETE_IMAGE\020" +
-      "\010B\025B\023EstateAccountProtosb\006proto3"
+      "\010\022\014\n\010ADD_NOTE\020\t\022\r\n\tEDIT_NOTE\020\n\022\017\n\013DELETE" +
+      "_NOTE\020\013B\025B\023EstateAccountProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
