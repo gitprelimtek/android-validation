@@ -39,6 +39,9 @@ enum Operation {
     DELETE_TENANT = 6;
     ADD_IMAGE = 7;
     DELETE_IMAGE = 8;
+    ADD_NOTE = 9;
+    EDIT_NOTE = 10;
+    DELETE_NOTE = 11;
 }
 
 message LedgerEntries {
