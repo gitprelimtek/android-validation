@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public interface CryptoDAOInterface  extends Serializable {
 
-     public interface LocalDAO <T1,T2>extends Serializable{
+     public interface LocalCryptoDAO <T1,T2>extends Serializable{
          String getPrivateKey(String id);
 
          String updatePrivateKey(String id, String privateKey);
@@ -17,7 +17,7 @@ public interface CryptoDAOInterface  extends Serializable {
 
      }
 
-     public interface RemoteDAO<T1,T2>extends Serializable{
+     public interface RemoteCryptoDAO<T1,T2>extends Serializable{
          T2 retrieveMyWallet(String address, T1 sModel,  String... jwt) throws Exception ;
 
          boolean updateWallet(String address, String oldAddress, T1 sModel, T2 wallet, String action,  String... jwt) throws Exception;
