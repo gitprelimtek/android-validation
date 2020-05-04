@@ -64,7 +64,7 @@ public class Configuration {
     public static int imageDialogMaxWidth = 1000;
 
     public enum SUPPORTED_AUTH_SERVICE{
-        none,facebook,mtini
+        none,facebook,mtini,firebase
     }
 
     private Configuration(){

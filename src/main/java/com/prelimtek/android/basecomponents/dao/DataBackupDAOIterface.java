@@ -4,7 +4,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public interface DataBackupDAOIterface {
+public interface DataBackupDAOIterface extends BaseDAOInterface{
+
+    public int uploadErrorCount = 0;
 
     ByteArrayInputStream getAllLocalDataToStream();
 
