@@ -18,6 +18,7 @@ public abstract class BaseDAOFactory <T> implements BaseDAOInterface {
      * */
     public static BaseDAOFactory instance(Context context) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 
+
             SharedPreferences prefs = context.getSharedPreferences(DATA_ACCESS_PREFERENCES,Context.MODE_PRIVATE);
             String className = prefs.getString(DATA_ACCESS_FACTORY_CLASSNAME,null);
 
@@ -29,7 +30,9 @@ public abstract class BaseDAOFactory <T> implements BaseDAOInterface {
                 return null;
             }
 
-            return ret.newInstance();
+        BaseDAOFactory instance = ret.newInstance();
+        instance.context=context;
+        return instance;
     }
 
     /**
@@ -37,7 +40,7 @@ public abstract class BaseDAOFactory <T> implements BaseDAOInterface {
      * */
     public static void registerInSharedPreference(Context context, Class<? extends BaseDAOFactory> _class) {
         SharedPreferences prefs = context.getSharedPreferences(DATA_ACCESS_PREFERENCES,Context.MODE_PRIVATE);
-        prefs.edit().putString(DATA_ACCESS_FACTORY_CLASSNAME,_class.getName());
+        prefs.edit().putString(DATA_ACCESS_FACTORY_CLASSNAME,_class.getName()).commit();
     }
 
     public abstract T  open(TYPE type) throws Exception;
