@@ -20,10 +20,12 @@ public final class RequestResponseProtos {
 
     /**
      * <code>.io.mtini.proto.RequestResponse.Request request = 1;</code>
+     * @return Whether the request field is set.
      */
     boolean hasRequest();
     /**
      * <code>.io.mtini.proto.RequestResponse.Request request = 1;</code>
+     * @return The request.
      */
     io.mtini.proto.RequestResponseProtos.RequestResponse.Request getRequest();
     /**
@@ -33,10 +35,12 @@ public final class RequestResponseProtos {
 
     /**
      * <code>.io.mtini.proto.RequestResponse.Response response = 2;</code>
+     * @return Whether the response field is set.
      */
     boolean hasResponse();
     /**
      * <code>.io.mtini.proto.RequestResponse.Response response = 2;</code>
+     * @return The response.
      */
     io.mtini.proto.RequestResponseProtos.RequestResponse.Response getResponse();
     /**
@@ -47,7 +51,7 @@ public final class RequestResponseProtos {
   /**
    * Protobuf type {@code io.mtini.proto.RequestResponse}
    */
-  public  static final class RequestResponse extends
+  public static final class RequestResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:io.mtini.proto.RequestResponse)
       RequestResponseOrBuilder {
@@ -57,6 +61,13 @@ public final class RequestResponseProtos {
       super(builder);
     }
     private RequestResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new RequestResponse();
     }
 
     @java.lang.Override
@@ -72,7 +83,6 @@ public final class RequestResponseProtos {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -110,7 +120,7 @@ public final class RequestResponseProtos {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -147,23 +157,41 @@ public final class RequestResponseProtos {
 
       /**
        * <code>string jsonRequest = 1;</code>
+       * @return The jsonRequest.
        */
       java.lang.String getJsonRequest();
       /**
        * <code>string jsonRequest = 1;</code>
+       * @return The bytes for jsonRequest.
        */
       com.google.protobuf.ByteString
           getJsonRequestBytes();
 
       /**
        * <code>bytes data = 2;</code>
+       * @return The data.
        */
       com.google.protobuf.ByteString getData();
+
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       * @return Whether the entries field is set.
+       */
+      boolean hasEntries();
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       * @return The entries.
+       */
+      com.google.protobuf.Any getEntries();
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       */
+      com.google.protobuf.AnyOrBuilder getEntriesOrBuilder();
     }
     /**
      * Protobuf type {@code io.mtini.proto.RequestResponse.Request}
      */
-    public  static final class Request extends
+    public static final class Request extends
         com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:io.mtini.proto.RequestResponse.Request)
         RequestOrBuilder {
@@ -175,6 +203,13 @@ public final class RequestResponseProtos {
       private Request() {
         jsonRequest_ = "";
         data_ = com.google.protobuf.ByteString.EMPTY;
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Request();
       }
 
       @java.lang.Override
@@ -190,7 +225,6 @@ public final class RequestResponseProtos {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -212,8 +246,21 @@ public final class RequestResponseProtos {
                 data_ = input.readBytes();
                 break;
               }
+              case 26: {
+                com.google.protobuf.Any.Builder subBuilder = null;
+                if (entries_ != null) {
+                  subBuilder = entries_.toBuilder();
+                }
+                entries_ = input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(entries_);
+                  entries_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -248,7 +295,9 @@ public final class RequestResponseProtos {
       private volatile java.lang.Object jsonRequest_;
       /**
        * <code>string jsonRequest = 1;</code>
+       * @return The jsonRequest.
        */
+      @java.lang.Override
       public java.lang.String getJsonRequest() {
         java.lang.Object ref = jsonRequest_;
         if (ref instanceof java.lang.String) {
@@ -263,7 +312,9 @@ public final class RequestResponseProtos {
       }
       /**
        * <code>string jsonRequest = 1;</code>
+       * @return The bytes for jsonRequest.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getJsonRequestBytes() {
         java.lang.Object ref = jsonRequest_;
@@ -282,9 +333,37 @@ public final class RequestResponseProtos {
       private com.google.protobuf.ByteString data_;
       /**
        * <code>bytes data = 2;</code>
+       * @return The data.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getData() {
         return data_;
+      }
+
+      public static final int ENTRIES_FIELD_NUMBER = 3;
+      private com.google.protobuf.Any entries_;
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       * @return Whether the entries field is set.
+       */
+      @java.lang.Override
+      public boolean hasEntries() {
+        return entries_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       * @return The entries.
+       */
+      @java.lang.Override
+      public com.google.protobuf.Any getEntries() {
+        return entries_ == null ? com.google.protobuf.Any.getDefaultInstance() : entries_;
+      }
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.AnyOrBuilder getEntriesOrBuilder() {
+        return getEntries();
       }
 
       private byte memoizedIsInitialized = -1;
@@ -307,6 +386,9 @@ public final class RequestResponseProtos {
         if (!data_.isEmpty()) {
           output.writeBytes(2, data_);
         }
+        if (entries_ != null) {
+          output.writeMessage(3, getEntries());
+        }
         unknownFields.writeTo(output);
       }
 
@@ -323,6 +405,10 @@ public final class RequestResponseProtos {
           size += com.google.protobuf.CodedOutputStream
             .computeBytesSize(2, data_);
         }
+        if (entries_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(3, getEntries());
+        }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
         return size;
@@ -338,13 +424,17 @@ public final class RequestResponseProtos {
         }
         io.mtini.proto.RequestResponseProtos.RequestResponse.Request other = (io.mtini.proto.RequestResponseProtos.RequestResponse.Request) obj;
 
-        boolean result = true;
-        result = result && getJsonRequest()
-            .equals(other.getJsonRequest());
-        result = result && getData()
-            .equals(other.getData());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getJsonRequest()
+            .equals(other.getJsonRequest())) return false;
+        if (!getData()
+            .equals(other.getData())) return false;
+        if (hasEntries() != other.hasEntries()) return false;
+        if (hasEntries()) {
+          if (!getEntries()
+              .equals(other.getEntries())) return false;
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -358,6 +448,10 @@ public final class RequestResponseProtos {
         hash = (53 * hash) + getJsonRequest().hashCode();
         hash = (37 * hash) + DATA_FIELD_NUMBER;
         hash = (53 * hash) + getData().hashCode();
+        if (hasEntries()) {
+          hash = (37 * hash) + ENTRIES_FIELD_NUMBER;
+          hash = (53 * hash) + getEntries().hashCode();
+        }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -495,6 +589,12 @@ public final class RequestResponseProtos {
 
           data_ = com.google.protobuf.ByteString.EMPTY;
 
+          if (entriesBuilder_ == null) {
+            entries_ = null;
+          } else {
+            entries_ = null;
+            entriesBuilder_ = null;
+          }
           return this;
         }
 
@@ -523,41 +623,46 @@ public final class RequestResponseProtos {
           io.mtini.proto.RequestResponseProtos.RequestResponse.Request result = new io.mtini.proto.RequestResponseProtos.RequestResponse.Request(this);
           result.jsonRequest_ = jsonRequest_;
           result.data_ = data_;
+          if (entriesBuilder_ == null) {
+            result.entries_ = entries_;
+          } else {
+            result.entries_ = entriesBuilder_.build();
+          }
           onBuilt();
           return result;
         }
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -577,6 +682,9 @@ public final class RequestResponseProtos {
           }
           if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
             setData(other.getData());
+          }
+          if (other.hasEntries()) {
+            mergeEntries(other.getEntries());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -610,6 +718,7 @@ public final class RequestResponseProtos {
         private java.lang.Object jsonRequest_ = "";
         /**
          * <code>string jsonRequest = 1;</code>
+         * @return The jsonRequest.
          */
         public java.lang.String getJsonRequest() {
           java.lang.Object ref = jsonRequest_;
@@ -625,6 +734,7 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>string jsonRequest = 1;</code>
+         * @return The bytes for jsonRequest.
          */
         public com.google.protobuf.ByteString
             getJsonRequestBytes() {
@@ -641,6 +751,8 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>string jsonRequest = 1;</code>
+         * @param value The jsonRequest to set.
+         * @return This builder for chaining.
          */
         public Builder setJsonRequest(
             java.lang.String value) {
@@ -654,6 +766,7 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>string jsonRequest = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearJsonRequest() {
           
@@ -663,6 +776,8 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>string jsonRequest = 1;</code>
+         * @param value The bytes for jsonRequest to set.
+         * @return This builder for chaining.
          */
         public Builder setJsonRequestBytes(
             com.google.protobuf.ByteString value) {
@@ -679,12 +794,16 @@ public final class RequestResponseProtos {
         private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
         /**
          * <code>bytes data = 2;</code>
+         * @return The data.
          */
+        @java.lang.Override
         public com.google.protobuf.ByteString getData() {
           return data_;
         }
         /**
          * <code>bytes data = 2;</code>
+         * @param value The data to set.
+         * @return This builder for chaining.
          */
         public Builder setData(com.google.protobuf.ByteString value) {
           if (value == null) {
@@ -697,6 +816,7 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>bytes data = 2;</code>
+         * @return This builder for chaining.
          */
         public Builder clearData() {
           
@@ -704,10 +824,129 @@ public final class RequestResponseProtos {
           onChanged();
           return this;
         }
+
+        private com.google.protobuf.Any entries_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> entriesBuilder_;
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         * @return Whether the entries field is set.
+         */
+        public boolean hasEntries() {
+          return entriesBuilder_ != null || entries_ != null;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         * @return The entries.
+         */
+        public com.google.protobuf.Any getEntries() {
+          if (entriesBuilder_ == null) {
+            return entries_ == null ? com.google.protobuf.Any.getDefaultInstance() : entries_;
+          } else {
+            return entriesBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public Builder setEntries(com.google.protobuf.Any value) {
+          if (entriesBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            entries_ = value;
+            onChanged();
+          } else {
+            entriesBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public Builder setEntries(
+            com.google.protobuf.Any.Builder builderForValue) {
+          if (entriesBuilder_ == null) {
+            entries_ = builderForValue.build();
+            onChanged();
+          } else {
+            entriesBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public Builder mergeEntries(com.google.protobuf.Any value) {
+          if (entriesBuilder_ == null) {
+            if (entries_ != null) {
+              entries_ =
+                com.google.protobuf.Any.newBuilder(entries_).mergeFrom(value).buildPartial();
+            } else {
+              entries_ = value;
+            }
+            onChanged();
+          } else {
+            entriesBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public Builder clearEntries() {
+          if (entriesBuilder_ == null) {
+            entries_ = null;
+            onChanged();
+          } else {
+            entries_ = null;
+            entriesBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public com.google.protobuf.Any.Builder getEntriesBuilder() {
+          
+          onChanged();
+          return getEntriesFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public com.google.protobuf.AnyOrBuilder getEntriesOrBuilder() {
+          if (entriesBuilder_ != null) {
+            return entriesBuilder_.getMessageOrBuilder();
+          } else {
+            return entries_ == null ?
+                com.google.protobuf.Any.getDefaultInstance() : entries_;
+          }
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+            getEntriesFieldBuilder() {
+          if (entriesBuilder_ == null) {
+            entriesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                    getEntries(),
+                    getParentForChildren(),
+                    isClean());
+            entries_ = null;
+          }
+          return entriesBuilder_;
+        }
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -763,23 +1002,41 @@ public final class RequestResponseProtos {
 
       /**
        * <code>string jsonResponse = 1;</code>
+       * @return The jsonResponse.
        */
       java.lang.String getJsonResponse();
       /**
        * <code>string jsonResponse = 1;</code>
+       * @return The bytes for jsonResponse.
        */
       com.google.protobuf.ByteString
           getJsonResponseBytes();
 
       /**
        * <code>bytes data = 2;</code>
+       * @return The data.
        */
       com.google.protobuf.ByteString getData();
+
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       * @return Whether the entries field is set.
+       */
+      boolean hasEntries();
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       * @return The entries.
+       */
+      com.google.protobuf.Any getEntries();
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       */
+      com.google.protobuf.AnyOrBuilder getEntriesOrBuilder();
     }
     /**
      * Protobuf type {@code io.mtini.proto.RequestResponse.Response}
      */
-    public  static final class Response extends
+    public static final class Response extends
         com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:io.mtini.proto.RequestResponse.Response)
         ResponseOrBuilder {
@@ -791,6 +1048,13 @@ public final class RequestResponseProtos {
       private Response() {
         jsonResponse_ = "";
         data_ = com.google.protobuf.ByteString.EMPTY;
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Response();
       }
 
       @java.lang.Override
@@ -806,7 +1070,6 @@ public final class RequestResponseProtos {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -828,8 +1091,21 @@ public final class RequestResponseProtos {
                 data_ = input.readBytes();
                 break;
               }
+              case 26: {
+                com.google.protobuf.Any.Builder subBuilder = null;
+                if (entries_ != null) {
+                  subBuilder = entries_.toBuilder();
+                }
+                entries_ = input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(entries_);
+                  entries_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -864,7 +1140,9 @@ public final class RequestResponseProtos {
       private volatile java.lang.Object jsonResponse_;
       /**
        * <code>string jsonResponse = 1;</code>
+       * @return The jsonResponse.
        */
+      @java.lang.Override
       public java.lang.String getJsonResponse() {
         java.lang.Object ref = jsonResponse_;
         if (ref instanceof java.lang.String) {
@@ -879,7 +1157,9 @@ public final class RequestResponseProtos {
       }
       /**
        * <code>string jsonResponse = 1;</code>
+       * @return The bytes for jsonResponse.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getJsonResponseBytes() {
         java.lang.Object ref = jsonResponse_;
@@ -898,9 +1178,37 @@ public final class RequestResponseProtos {
       private com.google.protobuf.ByteString data_;
       /**
        * <code>bytes data = 2;</code>
+       * @return The data.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getData() {
         return data_;
+      }
+
+      public static final int ENTRIES_FIELD_NUMBER = 3;
+      private com.google.protobuf.Any entries_;
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       * @return Whether the entries field is set.
+       */
+      @java.lang.Override
+      public boolean hasEntries() {
+        return entries_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       * @return The entries.
+       */
+      @java.lang.Override
+      public com.google.protobuf.Any getEntries() {
+        return entries_ == null ? com.google.protobuf.Any.getDefaultInstance() : entries_;
+      }
+      /**
+       * <code>.google.protobuf.Any entries = 3;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.AnyOrBuilder getEntriesOrBuilder() {
+        return getEntries();
       }
 
       private byte memoizedIsInitialized = -1;
@@ -923,6 +1231,9 @@ public final class RequestResponseProtos {
         if (!data_.isEmpty()) {
           output.writeBytes(2, data_);
         }
+        if (entries_ != null) {
+          output.writeMessage(3, getEntries());
+        }
         unknownFields.writeTo(output);
       }
 
@@ -939,6 +1250,10 @@ public final class RequestResponseProtos {
           size += com.google.protobuf.CodedOutputStream
             .computeBytesSize(2, data_);
         }
+        if (entries_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(3, getEntries());
+        }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
         return size;
@@ -954,13 +1269,17 @@ public final class RequestResponseProtos {
         }
         io.mtini.proto.RequestResponseProtos.RequestResponse.Response other = (io.mtini.proto.RequestResponseProtos.RequestResponse.Response) obj;
 
-        boolean result = true;
-        result = result && getJsonResponse()
-            .equals(other.getJsonResponse());
-        result = result && getData()
-            .equals(other.getData());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getJsonResponse()
+            .equals(other.getJsonResponse())) return false;
+        if (!getData()
+            .equals(other.getData())) return false;
+        if (hasEntries() != other.hasEntries()) return false;
+        if (hasEntries()) {
+          if (!getEntries()
+              .equals(other.getEntries())) return false;
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -974,6 +1293,10 @@ public final class RequestResponseProtos {
         hash = (53 * hash) + getJsonResponse().hashCode();
         hash = (37 * hash) + DATA_FIELD_NUMBER;
         hash = (53 * hash) + getData().hashCode();
+        if (hasEntries()) {
+          hash = (37 * hash) + ENTRIES_FIELD_NUMBER;
+          hash = (53 * hash) + getEntries().hashCode();
+        }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -1111,6 +1434,12 @@ public final class RequestResponseProtos {
 
           data_ = com.google.protobuf.ByteString.EMPTY;
 
+          if (entriesBuilder_ == null) {
+            entries_ = null;
+          } else {
+            entries_ = null;
+            entriesBuilder_ = null;
+          }
           return this;
         }
 
@@ -1139,41 +1468,46 @@ public final class RequestResponseProtos {
           io.mtini.proto.RequestResponseProtos.RequestResponse.Response result = new io.mtini.proto.RequestResponseProtos.RequestResponse.Response(this);
           result.jsonResponse_ = jsonResponse_;
           result.data_ = data_;
+          if (entriesBuilder_ == null) {
+            result.entries_ = entries_;
+          } else {
+            result.entries_ = entriesBuilder_.build();
+          }
           onBuilt();
           return result;
         }
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1193,6 +1527,9 @@ public final class RequestResponseProtos {
           }
           if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
             setData(other.getData());
+          }
+          if (other.hasEntries()) {
+            mergeEntries(other.getEntries());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -1226,6 +1563,7 @@ public final class RequestResponseProtos {
         private java.lang.Object jsonResponse_ = "";
         /**
          * <code>string jsonResponse = 1;</code>
+         * @return The jsonResponse.
          */
         public java.lang.String getJsonResponse() {
           java.lang.Object ref = jsonResponse_;
@@ -1241,6 +1579,7 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>string jsonResponse = 1;</code>
+         * @return The bytes for jsonResponse.
          */
         public com.google.protobuf.ByteString
             getJsonResponseBytes() {
@@ -1257,6 +1596,8 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>string jsonResponse = 1;</code>
+         * @param value The jsonResponse to set.
+         * @return This builder for chaining.
          */
         public Builder setJsonResponse(
             java.lang.String value) {
@@ -1270,6 +1611,7 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>string jsonResponse = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearJsonResponse() {
           
@@ -1279,6 +1621,8 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>string jsonResponse = 1;</code>
+         * @param value The bytes for jsonResponse to set.
+         * @return This builder for chaining.
          */
         public Builder setJsonResponseBytes(
             com.google.protobuf.ByteString value) {
@@ -1295,12 +1639,16 @@ public final class RequestResponseProtos {
         private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
         /**
          * <code>bytes data = 2;</code>
+         * @return The data.
          */
+        @java.lang.Override
         public com.google.protobuf.ByteString getData() {
           return data_;
         }
         /**
          * <code>bytes data = 2;</code>
+         * @param value The data to set.
+         * @return This builder for chaining.
          */
         public Builder setData(com.google.protobuf.ByteString value) {
           if (value == null) {
@@ -1313,6 +1661,7 @@ public final class RequestResponseProtos {
         }
         /**
          * <code>bytes data = 2;</code>
+         * @return This builder for chaining.
          */
         public Builder clearData() {
           
@@ -1320,10 +1669,129 @@ public final class RequestResponseProtos {
           onChanged();
           return this;
         }
+
+        private com.google.protobuf.Any entries_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> entriesBuilder_;
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         * @return Whether the entries field is set.
+         */
+        public boolean hasEntries() {
+          return entriesBuilder_ != null || entries_ != null;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         * @return The entries.
+         */
+        public com.google.protobuf.Any getEntries() {
+          if (entriesBuilder_ == null) {
+            return entries_ == null ? com.google.protobuf.Any.getDefaultInstance() : entries_;
+          } else {
+            return entriesBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public Builder setEntries(com.google.protobuf.Any value) {
+          if (entriesBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            entries_ = value;
+            onChanged();
+          } else {
+            entriesBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public Builder setEntries(
+            com.google.protobuf.Any.Builder builderForValue) {
+          if (entriesBuilder_ == null) {
+            entries_ = builderForValue.build();
+            onChanged();
+          } else {
+            entriesBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public Builder mergeEntries(com.google.protobuf.Any value) {
+          if (entriesBuilder_ == null) {
+            if (entries_ != null) {
+              entries_ =
+                com.google.protobuf.Any.newBuilder(entries_).mergeFrom(value).buildPartial();
+            } else {
+              entries_ = value;
+            }
+            onChanged();
+          } else {
+            entriesBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public Builder clearEntries() {
+          if (entriesBuilder_ == null) {
+            entries_ = null;
+            onChanged();
+          } else {
+            entries_ = null;
+            entriesBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public com.google.protobuf.Any.Builder getEntriesBuilder() {
+          
+          onChanged();
+          return getEntriesFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        public com.google.protobuf.AnyOrBuilder getEntriesOrBuilder() {
+          if (entriesBuilder_ != null) {
+            return entriesBuilder_.getMessageOrBuilder();
+          } else {
+            return entries_ == null ?
+                com.google.protobuf.Any.getDefaultInstance() : entries_;
+          }
+        }
+        /**
+         * <code>.google.protobuf.Any entries = 3;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+            getEntriesFieldBuilder() {
+          if (entriesBuilder_ == null) {
+            entriesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                    getEntries(),
+                    getParentForChildren(),
+                    isClean());
+            entries_ = null;
+          }
+          return entriesBuilder_;
+        }
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -1377,19 +1845,24 @@ public final class RequestResponseProtos {
     private io.mtini.proto.RequestResponseProtos.RequestResponse.Request request_;
     /**
      * <code>.io.mtini.proto.RequestResponse.Request request = 1;</code>
+     * @return Whether the request field is set.
      */
+    @java.lang.Override
     public boolean hasRequest() {
       return request_ != null;
     }
     /**
      * <code>.io.mtini.proto.RequestResponse.Request request = 1;</code>
+     * @return The request.
      */
+    @java.lang.Override
     public io.mtini.proto.RequestResponseProtos.RequestResponse.Request getRequest() {
       return request_ == null ? io.mtini.proto.RequestResponseProtos.RequestResponse.Request.getDefaultInstance() : request_;
     }
     /**
      * <code>.io.mtini.proto.RequestResponse.Request request = 1;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.RequestResponseProtos.RequestResponse.RequestOrBuilder getRequestOrBuilder() {
       return getRequest();
     }
@@ -1398,19 +1871,24 @@ public final class RequestResponseProtos {
     private io.mtini.proto.RequestResponseProtos.RequestResponse.Response response_;
     /**
      * <code>.io.mtini.proto.RequestResponse.Response response = 2;</code>
+     * @return Whether the response field is set.
      */
+    @java.lang.Override
     public boolean hasResponse() {
       return response_ != null;
     }
     /**
      * <code>.io.mtini.proto.RequestResponse.Response response = 2;</code>
+     * @return The response.
      */
+    @java.lang.Override
     public io.mtini.proto.RequestResponseProtos.RequestResponse.Response getResponse() {
       return response_ == null ? io.mtini.proto.RequestResponseProtos.RequestResponse.Response.getDefaultInstance() : response_;
     }
     /**
      * <code>.io.mtini.proto.RequestResponse.Response response = 2;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.RequestResponseProtos.RequestResponse.ResponseOrBuilder getResponseOrBuilder() {
       return getResponse();
     }
@@ -1467,19 +1945,18 @@ public final class RequestResponseProtos {
       }
       io.mtini.proto.RequestResponseProtos.RequestResponse other = (io.mtini.proto.RequestResponseProtos.RequestResponse) obj;
 
-      boolean result = true;
-      result = result && (hasRequest() == other.hasRequest());
+      if (hasRequest() != other.hasRequest()) return false;
       if (hasRequest()) {
-        result = result && getRequest()
-            .equals(other.getRequest());
+        if (!getRequest()
+            .equals(other.getRequest())) return false;
       }
-      result = result && (hasResponse() == other.hasResponse());
+      if (hasResponse() != other.hasResponse()) return false;
       if (hasResponse()) {
-        result = result && getResponse()
-            .equals(other.getResponse());
+        if (!getResponse()
+            .equals(other.getResponse())) return false;
       }
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -1684,35 +2161,35 @@ public final class RequestResponseProtos {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1761,17 +2238,19 @@ public final class RequestResponseProtos {
         return this;
       }
 
-      private io.mtini.proto.RequestResponseProtos.RequestResponse.Request request_ = null;
+      private io.mtini.proto.RequestResponseProtos.RequestResponse.Request request_;
       private com.google.protobuf.SingleFieldBuilderV3<
           io.mtini.proto.RequestResponseProtos.RequestResponse.Request, io.mtini.proto.RequestResponseProtos.RequestResponse.Request.Builder, io.mtini.proto.RequestResponseProtos.RequestResponse.RequestOrBuilder> requestBuilder_;
       /**
        * <code>.io.mtini.proto.RequestResponse.Request request = 1;</code>
+       * @return Whether the request field is set.
        */
       public boolean hasRequest() {
         return requestBuilder_ != null || request_ != null;
       }
       /**
        * <code>.io.mtini.proto.RequestResponse.Request request = 1;</code>
+       * @return The request.
        */
       public io.mtini.proto.RequestResponseProtos.RequestResponse.Request getRequest() {
         if (requestBuilder_ == null) {
@@ -1878,17 +2357,19 @@ public final class RequestResponseProtos {
         return requestBuilder_;
       }
 
-      private io.mtini.proto.RequestResponseProtos.RequestResponse.Response response_ = null;
+      private io.mtini.proto.RequestResponseProtos.RequestResponse.Response response_;
       private com.google.protobuf.SingleFieldBuilderV3<
           io.mtini.proto.RequestResponseProtos.RequestResponse.Response, io.mtini.proto.RequestResponseProtos.RequestResponse.Response.Builder, io.mtini.proto.RequestResponseProtos.RequestResponse.ResponseOrBuilder> responseBuilder_;
       /**
        * <code>.io.mtini.proto.RequestResponse.Response response = 2;</code>
+       * @return Whether the response field is set.
        */
       public boolean hasResponse() {
         return responseBuilder_ != null || response_ != null;
       }
       /**
        * <code>.io.mtini.proto.RequestResponse.Response response = 2;</code>
+       * @return The response.
        */
       public io.mtini.proto.RequestResponseProtos.RequestResponse.Response getResponse() {
         if (responseBuilder_ == null) {
@@ -1997,7 +2478,7 @@ public final class RequestResponseProtos {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -2072,26 +2553,22 @@ public final class RequestResponseProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\033proto/RequestResponse.proto\022\016io.mtini." +
-      "proto\"\345\001\n\017RequestResponse\0228\n\007request\030\001 \001" +
-      "(\0132\'.io.mtini.proto.RequestResponse.Requ" +
-      "est\022:\n\010response\030\002 \001(\0132(.io.mtini.proto.R" +
-      "equestResponse.Response\032,\n\007Request\022\023\n\013js" +
-      "onRequest\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\032.\n\010Respons" +
-      "e\022\024\n\014jsonResponse\030\001 \001(\t\022\014\n\004data\030\002 \001(\014B\027B" +
-      "\025RequestResponseProtosb\006proto3"
+      "proto\032\031google/protobuf/any.proto\"\263\002\n\017Req" +
+      "uestResponse\0228\n\007request\030\001 \001(\0132\'.io.mtini" +
+      ".proto.RequestResponse.Request\022:\n\010respon" +
+      "se\030\002 \001(\0132(.io.mtini.proto.RequestRespons" +
+      "e.Response\032S\n\007Request\022\023\n\013jsonRequest\030\001 \001" +
+      "(\t\022\014\n\004data\030\002 \001(\014\022%\n\007entries\030\003 \001(\0132\024.goog" +
+      "le.protobuf.Any\032U\n\010Response\022\024\n\014jsonRespo" +
+      "nse\030\001 \001(\t\022\014\n\004data\030\002 \001(\014\022%\n\007entries\030\003 \001(\013" +
+      "2\024.google.protobuf.AnyB\027B\025RequestRespons" +
+      "eProtosb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+          com.google.protobuf.AnyProto.getDescriptor(),
+        });
     internal_static_io_mtini_proto_RequestResponse_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_io_mtini_proto_RequestResponse_fieldAccessorTable = new
@@ -2103,13 +2580,14 @@ public final class RequestResponseProtos {
     internal_static_io_mtini_proto_RequestResponse_Request_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_mtini_proto_RequestResponse_Request_descriptor,
-        new java.lang.String[] { "JsonRequest", "Data", });
+        new java.lang.String[] { "JsonRequest", "Data", "Entries", });
     internal_static_io_mtini_proto_RequestResponse_Response_descriptor =
       internal_static_io_mtini_proto_RequestResponse_descriptor.getNestedTypes().get(1);
     internal_static_io_mtini_proto_RequestResponse_Response_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_io_mtini_proto_RequestResponse_Response_descriptor,
-        new java.lang.String[] { "JsonResponse", "Data", });
+        new java.lang.String[] { "JsonResponse", "Data", "Entries", });
+    com.google.protobuf.AnyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

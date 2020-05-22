@@ -49,6 +49,8 @@ public final class CustomerAccountProtos {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -56,6 +58,10 @@ public final class CustomerAccountProtos {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static AccountType forNumber(int value) {
       switch (value) {
         case 0: return DEBIT;
@@ -78,6 +84,10 @@ public final class CustomerAccountProtos {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -143,7 +153,7 @@ public final class CustomerAccountProtos {
   /**
    * Protobuf type {@code io.mtini.proto.TestLedgerEntries}
    */
-  public  static final class TestLedgerEntries extends
+  public static final class TestLedgerEntries extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:io.mtini.proto.TestLedgerEntries)
       TestLedgerEntriesOrBuilder {
@@ -154,6 +164,13 @@ public final class CustomerAccountProtos {
     }
     private TestLedgerEntries() {
       ledgerEntry_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TestLedgerEntries();
     }
 
     @java.lang.Override
@@ -181,7 +198,7 @@ public final class CustomerAccountProtos {
               done = true;
               break;
             case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 ledgerEntry_ = new java.util.ArrayList<io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData>();
                 mutable_bitField0_ |= 0x00000001;
               }
@@ -190,7 +207,7 @@ public final class CustomerAccountProtos {
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -204,7 +221,7 @@ public final class CustomerAccountProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           ledgerEntry_ = java.util.Collections.unmodifiableList(ledgerEntry_);
         }
         this.unknownFields = unknownFields.build();
@@ -230,50 +247,60 @@ public final class CustomerAccountProtos {
 
       /**
        * <code>string accountName = 1;</code>
+       * @return The accountName.
        */
       java.lang.String getAccountName();
       /**
        * <code>string accountName = 1;</code>
+       * @return The bytes for accountName.
        */
       com.google.protobuf.ByteString
           getAccountNameBytes();
 
       /**
        * <code>string leftAccount = 2;</code>
+       * @return The leftAccount.
        */
       java.lang.String getLeftAccount();
       /**
        * <code>string leftAccount = 2;</code>
+       * @return The bytes for leftAccount.
        */
       com.google.protobuf.ByteString
           getLeftAccountBytes();
 
       /**
        * <code>string rightAccount = 3;</code>
+       * @return The rightAccount.
        */
       java.lang.String getRightAccount();
       /**
        * <code>string rightAccount = 3;</code>
+       * @return The bytes for rightAccount.
        */
       com.google.protobuf.ByteString
           getRightAccountBytes();
 
       /**
        * <code>.io.mtini.proto.AccountType action = 4;</code>
+       * @return The enum numeric value on the wire for action.
        */
       int getActionValue();
       /**
        * <code>.io.mtini.proto.AccountType action = 4;</code>
+       * @return The action.
        */
       io.mtini.proto.CustomerAccountProtos.AccountType getAction();
 
       /**
        * <code>double amount = 5;</code>
+       * @return The amount.
        */
       double getAmount();
 
       /**
        * <code>double balance = 6;</code>
+       * @return The balance.
        */
       double getBalance();
 
@@ -324,7 +351,7 @@ public final class CustomerAccountProtos {
     /**
      * Protobuf type {@code io.mtini.proto.TestLedgerEntries.LedgerData}
      */
-    public  static final class LedgerData extends
+    public static final class LedgerData extends
         com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:io.mtini.proto.TestLedgerEntries.LedgerData)
         LedgerDataOrBuilder {
@@ -338,9 +365,14 @@ public final class CustomerAccountProtos {
         leftAccount_ = "";
         rightAccount_ = "";
         action_ = 0;
-        amount_ = 0D;
-        balance_ = 0D;
         journal_ = java.util.Collections.emptyList();
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new LedgerData();
       }
 
       @java.lang.Override
@@ -402,16 +434,16 @@ public final class CustomerAccountProtos {
                 break;
               }
               case 58: {
-                if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                   journal_ = new java.util.ArrayList<io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData>();
-                  mutable_bitField0_ |= 0x00000040;
+                  mutable_bitField0_ |= 0x00000001;
                 }
                 journal_.add(
                     input.readMessage(io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData.parser(), extensionRegistry));
                 break;
               }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -425,7 +457,7 @@ public final class CustomerAccountProtos {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          if (((mutable_bitField0_ & 0x00000001) != 0)) {
             journal_ = java.util.Collections.unmodifiableList(journal_);
           }
           this.unknownFields = unknownFields.build();
@@ -451,34 +483,41 @@ public final class CustomerAccountProtos {
 
         /**
          * <code>int64 date = 1;</code>
+         * @return The date.
          */
         long getDate();
 
         /**
          * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+         * @return The enum numeric value on the wire for accountType.
          */
         int getAccountTypeValue();
         /**
          * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+         * @return The accountType.
          */
         io.mtini.proto.CustomerAccountProtos.AccountType getAccountType();
 
         /**
          * <code>double debitAmount = 3;</code>
+         * @return The debitAmount.
          */
         double getDebitAmount();
 
         /**
          * <code>double creditAmount = 4;</code>
+         * @return The creditAmount.
          */
         double getCreditAmount();
 
         /**
          * <code>string notes = 5;</code>
+         * @return The notes.
          */
         java.lang.String getNotes();
         /**
          * <code>string notes = 5;</code>
+         * @return The bytes for notes.
          */
         com.google.protobuf.ByteString
             getNotesBytes();
@@ -486,7 +525,7 @@ public final class CustomerAccountProtos {
       /**
        * Protobuf type {@code io.mtini.proto.TestLedgerEntries.LedgerData.JournalData}
        */
-      public  static final class JournalData extends
+      public static final class JournalData extends
           com.google.protobuf.GeneratedMessageV3 implements
           // @@protoc_insertion_point(message_implements:io.mtini.proto.TestLedgerEntries.LedgerData.JournalData)
           JournalDataOrBuilder {
@@ -496,11 +535,15 @@ public final class CustomerAccountProtos {
           super(builder);
         }
         private JournalData() {
-          date_ = 0L;
           accountType_ = 0;
-          debitAmount_ = 0D;
-          creditAmount_ = 0D;
           notes_ = "";
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new JournalData();
         }
 
         @java.lang.Override
@@ -516,7 +559,6 @@ public final class CustomerAccountProtos {
           if (extensionRegistry == null) {
             throw new java.lang.NullPointerException();
           }
-          int mutable_bitField0_ = 0;
           com.google.protobuf.UnknownFieldSet.Builder unknownFields =
               com.google.protobuf.UnknownFieldSet.newBuilder();
           try {
@@ -555,7 +597,7 @@ public final class CustomerAccountProtos {
                   break;
                 }
                 default: {
-                  if (!parseUnknownFieldProto3(
+                  if (!parseUnknownField(
                       input, unknownFields, extensionRegistry, tag)) {
                     done = true;
                   }
@@ -590,7 +632,9 @@ public final class CustomerAccountProtos {
         private long date_;
         /**
          * <code>int64 date = 1;</code>
+         * @return The date.
          */
+        @java.lang.Override
         public long getDate() {
           return date_;
         }
@@ -599,14 +643,16 @@ public final class CustomerAccountProtos {
         private int accountType_;
         /**
          * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+         * @return The enum numeric value on the wire for accountType.
          */
-        public int getAccountTypeValue() {
+        @java.lang.Override public int getAccountTypeValue() {
           return accountType_;
         }
         /**
          * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+         * @return The accountType.
          */
-        public io.mtini.proto.CustomerAccountProtos.AccountType getAccountType() {
+        @java.lang.Override public io.mtini.proto.CustomerAccountProtos.AccountType getAccountType() {
           @SuppressWarnings("deprecation")
           io.mtini.proto.CustomerAccountProtos.AccountType result = io.mtini.proto.CustomerAccountProtos.AccountType.valueOf(accountType_);
           return result == null ? io.mtini.proto.CustomerAccountProtos.AccountType.UNRECOGNIZED : result;
@@ -616,7 +662,9 @@ public final class CustomerAccountProtos {
         private double debitAmount_;
         /**
          * <code>double debitAmount = 3;</code>
+         * @return The debitAmount.
          */
+        @java.lang.Override
         public double getDebitAmount() {
           return debitAmount_;
         }
@@ -625,7 +673,9 @@ public final class CustomerAccountProtos {
         private double creditAmount_;
         /**
          * <code>double creditAmount = 4;</code>
+         * @return The creditAmount.
          */
+        @java.lang.Override
         public double getCreditAmount() {
           return creditAmount_;
         }
@@ -634,7 +684,9 @@ public final class CustomerAccountProtos {
         private volatile java.lang.Object notes_;
         /**
          * <code>string notes = 5;</code>
+         * @return The notes.
          */
+        @java.lang.Override
         public java.lang.String getNotes() {
           java.lang.Object ref = notes_;
           if (ref instanceof java.lang.String) {
@@ -649,7 +701,9 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string notes = 5;</code>
+         * @return The bytes for notes.
          */
+        @java.lang.Override
         public com.google.protobuf.ByteString
             getNotesBytes() {
           java.lang.Object ref = notes_;
@@ -736,22 +790,19 @@ public final class CustomerAccountProtos {
           }
           io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData other = (io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData) obj;
 
-          boolean result = true;
-          result = result && (getDate()
-              == other.getDate());
-          result = result && accountType_ == other.accountType_;
-          result = result && (
-              java.lang.Double.doubleToLongBits(getDebitAmount())
-              == java.lang.Double.doubleToLongBits(
-                  other.getDebitAmount()));
-          result = result && (
-              java.lang.Double.doubleToLongBits(getCreditAmount())
-              == java.lang.Double.doubleToLongBits(
-                  other.getCreditAmount()));
-          result = result && getNotes()
-              .equals(other.getNotes());
-          result = result && unknownFields.equals(other.unknownFields);
-          return result;
+          if (getDate()
+              != other.getDate()) return false;
+          if (accountType_ != other.accountType_) return false;
+          if (java.lang.Double.doubleToLongBits(getDebitAmount())
+              != java.lang.Double.doubleToLongBits(
+                  other.getDebitAmount())) return false;
+          if (java.lang.Double.doubleToLongBits(getCreditAmount())
+              != java.lang.Double.doubleToLongBits(
+                  other.getCreditAmount())) return false;
+          if (!getNotes()
+              .equals(other.getNotes())) return false;
+          if (!unknownFields.equals(other.unknownFields)) return false;
+          return true;
         }
 
         @java.lang.Override
@@ -954,35 +1005,35 @@ public final class CustomerAccountProtos {
 
           @java.lang.Override
           public Builder clone() {
-            return (Builder) super.clone();
+            return super.clone();
           }
           @java.lang.Override
           public Builder setField(
               com.google.protobuf.Descriptors.FieldDescriptor field,
               java.lang.Object value) {
-            return (Builder) super.setField(field, value);
+            return super.setField(field, value);
           }
           @java.lang.Override
           public Builder clearField(
               com.google.protobuf.Descriptors.FieldDescriptor field) {
-            return (Builder) super.clearField(field);
+            return super.clearField(field);
           }
           @java.lang.Override
           public Builder clearOneof(
               com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-            return (Builder) super.clearOneof(oneof);
+            return super.clearOneof(oneof);
           }
           @java.lang.Override
           public Builder setRepeatedField(
               com.google.protobuf.Descriptors.FieldDescriptor field,
               int index, java.lang.Object value) {
-            return (Builder) super.setRepeatedField(field, index, value);
+            return super.setRepeatedField(field, index, value);
           }
           @java.lang.Override
           public Builder addRepeatedField(
               com.google.protobuf.Descriptors.FieldDescriptor field,
               java.lang.Object value) {
-            return (Builder) super.addRepeatedField(field, value);
+            return super.addRepeatedField(field, value);
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1044,12 +1095,16 @@ public final class CustomerAccountProtos {
           private long date_ ;
           /**
            * <code>int64 date = 1;</code>
+           * @return The date.
            */
+          @java.lang.Override
           public long getDate() {
             return date_;
           }
           /**
            * <code>int64 date = 1;</code>
+           * @param value The date to set.
+           * @return This builder for chaining.
            */
           public Builder setDate(long value) {
             
@@ -1059,6 +1114,7 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>int64 date = 1;</code>
+           * @return This builder for chaining.
            */
           public Builder clearDate() {
             
@@ -1070,21 +1126,27 @@ public final class CustomerAccountProtos {
           private int accountType_ = 0;
           /**
            * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+           * @return The enum numeric value on the wire for accountType.
            */
-          public int getAccountTypeValue() {
+          @java.lang.Override public int getAccountTypeValue() {
             return accountType_;
           }
           /**
            * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+           * @param value The enum numeric value on the wire for accountType to set.
+           * @return This builder for chaining.
            */
           public Builder setAccountTypeValue(int value) {
+            
             accountType_ = value;
             onChanged();
             return this;
           }
           /**
            * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+           * @return The accountType.
            */
+          @java.lang.Override
           public io.mtini.proto.CustomerAccountProtos.AccountType getAccountType() {
             @SuppressWarnings("deprecation")
             io.mtini.proto.CustomerAccountProtos.AccountType result = io.mtini.proto.CustomerAccountProtos.AccountType.valueOf(accountType_);
@@ -1092,6 +1154,8 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+           * @param value The accountType to set.
+           * @return This builder for chaining.
            */
           public Builder setAccountType(io.mtini.proto.CustomerAccountProtos.AccountType value) {
             if (value == null) {
@@ -1104,6 +1168,7 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>.io.mtini.proto.AccountType accountType = 2;</code>
+           * @return This builder for chaining.
            */
           public Builder clearAccountType() {
             
@@ -1115,12 +1180,16 @@ public final class CustomerAccountProtos {
           private double debitAmount_ ;
           /**
            * <code>double debitAmount = 3;</code>
+           * @return The debitAmount.
            */
+          @java.lang.Override
           public double getDebitAmount() {
             return debitAmount_;
           }
           /**
            * <code>double debitAmount = 3;</code>
+           * @param value The debitAmount to set.
+           * @return This builder for chaining.
            */
           public Builder setDebitAmount(double value) {
             
@@ -1130,6 +1199,7 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>double debitAmount = 3;</code>
+           * @return This builder for chaining.
            */
           public Builder clearDebitAmount() {
             
@@ -1141,12 +1211,16 @@ public final class CustomerAccountProtos {
           private double creditAmount_ ;
           /**
            * <code>double creditAmount = 4;</code>
+           * @return The creditAmount.
            */
+          @java.lang.Override
           public double getCreditAmount() {
             return creditAmount_;
           }
           /**
            * <code>double creditAmount = 4;</code>
+           * @param value The creditAmount to set.
+           * @return This builder for chaining.
            */
           public Builder setCreditAmount(double value) {
             
@@ -1156,6 +1230,7 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>double creditAmount = 4;</code>
+           * @return This builder for chaining.
            */
           public Builder clearCreditAmount() {
             
@@ -1167,6 +1242,7 @@ public final class CustomerAccountProtos {
           private java.lang.Object notes_ = "";
           /**
            * <code>string notes = 5;</code>
+           * @return The notes.
            */
           public java.lang.String getNotes() {
             java.lang.Object ref = notes_;
@@ -1182,6 +1258,7 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>string notes = 5;</code>
+           * @return The bytes for notes.
            */
           public com.google.protobuf.ByteString
               getNotesBytes() {
@@ -1198,6 +1275,8 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>string notes = 5;</code>
+           * @param value The notes to set.
+           * @return This builder for chaining.
            */
           public Builder setNotes(
               java.lang.String value) {
@@ -1211,6 +1290,7 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>string notes = 5;</code>
+           * @return This builder for chaining.
            */
           public Builder clearNotes() {
             
@@ -1220,6 +1300,8 @@ public final class CustomerAccountProtos {
           }
           /**
            * <code>string notes = 5;</code>
+           * @param value The bytes for notes to set.
+           * @return This builder for chaining.
            */
           public Builder setNotesBytes(
               com.google.protobuf.ByteString value) {
@@ -1235,7 +1317,7 @@ public final class CustomerAccountProtos {
           @java.lang.Override
           public final Builder setUnknownFields(
               final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.setUnknownFieldsProto3(unknownFields);
+            return super.setUnknownFields(unknownFields);
           }
 
           @java.lang.Override
@@ -1285,12 +1367,13 @@ public final class CustomerAccountProtos {
 
       }
 
-      private int bitField0_;
       public static final int ACCOUNTNAME_FIELD_NUMBER = 1;
       private volatile java.lang.Object accountName_;
       /**
        * <code>string accountName = 1;</code>
+       * @return The accountName.
        */
+      @java.lang.Override
       public java.lang.String getAccountName() {
         java.lang.Object ref = accountName_;
         if (ref instanceof java.lang.String) {
@@ -1305,7 +1388,9 @@ public final class CustomerAccountProtos {
       }
       /**
        * <code>string accountName = 1;</code>
+       * @return The bytes for accountName.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getAccountNameBytes() {
         java.lang.Object ref = accountName_;
@@ -1324,7 +1409,9 @@ public final class CustomerAccountProtos {
       private volatile java.lang.Object leftAccount_;
       /**
        * <code>string leftAccount = 2;</code>
+       * @return The leftAccount.
        */
+      @java.lang.Override
       public java.lang.String getLeftAccount() {
         java.lang.Object ref = leftAccount_;
         if (ref instanceof java.lang.String) {
@@ -1339,7 +1426,9 @@ public final class CustomerAccountProtos {
       }
       /**
        * <code>string leftAccount = 2;</code>
+       * @return The bytes for leftAccount.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getLeftAccountBytes() {
         java.lang.Object ref = leftAccount_;
@@ -1358,7 +1447,9 @@ public final class CustomerAccountProtos {
       private volatile java.lang.Object rightAccount_;
       /**
        * <code>string rightAccount = 3;</code>
+       * @return The rightAccount.
        */
+      @java.lang.Override
       public java.lang.String getRightAccount() {
         java.lang.Object ref = rightAccount_;
         if (ref instanceof java.lang.String) {
@@ -1373,7 +1464,9 @@ public final class CustomerAccountProtos {
       }
       /**
        * <code>string rightAccount = 3;</code>
+       * @return The bytes for rightAccount.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getRightAccountBytes() {
         java.lang.Object ref = rightAccount_;
@@ -1392,14 +1485,16 @@ public final class CustomerAccountProtos {
       private int action_;
       /**
        * <code>.io.mtini.proto.AccountType action = 4;</code>
+       * @return The enum numeric value on the wire for action.
        */
-      public int getActionValue() {
+      @java.lang.Override public int getActionValue() {
         return action_;
       }
       /**
        * <code>.io.mtini.proto.AccountType action = 4;</code>
+       * @return The action.
        */
-      public io.mtini.proto.CustomerAccountProtos.AccountType getAction() {
+      @java.lang.Override public io.mtini.proto.CustomerAccountProtos.AccountType getAction() {
         @SuppressWarnings("deprecation")
         io.mtini.proto.CustomerAccountProtos.AccountType result = io.mtini.proto.CustomerAccountProtos.AccountType.valueOf(action_);
         return result == null ? io.mtini.proto.CustomerAccountProtos.AccountType.UNRECOGNIZED : result;
@@ -1409,7 +1504,9 @@ public final class CustomerAccountProtos {
       private double amount_;
       /**
        * <code>double amount = 5;</code>
+       * @return The amount.
        */
+      @java.lang.Override
       public double getAmount() {
         return amount_;
       }
@@ -1418,7 +1515,9 @@ public final class CustomerAccountProtos {
       private double balance_;
       /**
        * <code>double balance = 6;</code>
+       * @return The balance.
        */
+      @java.lang.Override
       public double getBalance() {
         return balance_;
       }
@@ -1432,6 +1531,7 @@ public final class CustomerAccountProtos {
        *
        * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData.JournalData journal = 7;</code>
        */
+      @java.lang.Override
       public java.util.List<io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData> getJournalList() {
         return journal_;
       }
@@ -1442,6 +1542,7 @@ public final class CustomerAccountProtos {
        *
        * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData.JournalData journal = 7;</code>
        */
+      @java.lang.Override
       public java.util.List<? extends io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalDataOrBuilder> 
           getJournalOrBuilderList() {
         return journal_;
@@ -1453,6 +1554,7 @@ public final class CustomerAccountProtos {
        *
        * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData.JournalData journal = 7;</code>
        */
+      @java.lang.Override
       public int getJournalCount() {
         return journal_.size();
       }
@@ -1463,6 +1565,7 @@ public final class CustomerAccountProtos {
        *
        * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData.JournalData journal = 7;</code>
        */
+      @java.lang.Override
       public io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData getJournal(int index) {
         return journal_.get(index);
       }
@@ -1473,6 +1576,7 @@ public final class CustomerAccountProtos {
        *
        * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData.JournalData journal = 7;</code>
        */
+      @java.lang.Override
       public io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalDataOrBuilder getJournalOrBuilder(
           int index) {
         return journal_.get(index);
@@ -1562,26 +1666,23 @@ public final class CustomerAccountProtos {
         }
         io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData other = (io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData) obj;
 
-        boolean result = true;
-        result = result && getAccountName()
-            .equals(other.getAccountName());
-        result = result && getLeftAccount()
-            .equals(other.getLeftAccount());
-        result = result && getRightAccount()
-            .equals(other.getRightAccount());
-        result = result && action_ == other.action_;
-        result = result && (
-            java.lang.Double.doubleToLongBits(getAmount())
-            == java.lang.Double.doubleToLongBits(
-                other.getAmount()));
-        result = result && (
-            java.lang.Double.doubleToLongBits(getBalance())
-            == java.lang.Double.doubleToLongBits(
-                other.getBalance()));
-        result = result && getJournalList()
-            .equals(other.getJournalList());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getAccountName()
+            .equals(other.getAccountName())) return false;
+        if (!getLeftAccount()
+            .equals(other.getLeftAccount())) return false;
+        if (!getRightAccount()
+            .equals(other.getRightAccount())) return false;
+        if (action_ != other.action_) return false;
+        if (java.lang.Double.doubleToLongBits(getAmount())
+            != java.lang.Double.doubleToLongBits(
+                other.getAmount())) return false;
+        if (java.lang.Double.doubleToLongBits(getBalance())
+            != java.lang.Double.doubleToLongBits(
+                other.getBalance())) return false;
+        if (!getJournalList()
+            .equals(other.getJournalList())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -1757,7 +1858,7 @@ public final class CustomerAccountProtos {
 
           if (journalBuilder_ == null) {
             journal_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             journalBuilder_.clear();
           }
@@ -1788,7 +1889,6 @@ public final class CustomerAccountProtos {
         public io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData buildPartial() {
           io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData result = new io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData(this);
           int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
           result.accountName_ = accountName_;
           result.leftAccount_ = leftAccount_;
           result.rightAccount_ = rightAccount_;
@@ -1796,50 +1896,49 @@ public final class CustomerAccountProtos {
           result.amount_ = amount_;
           result.balance_ = balance_;
           if (journalBuilder_ == null) {
-            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            if (((bitField0_ & 0x00000001) != 0)) {
               journal_ = java.util.Collections.unmodifiableList(journal_);
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000001);
             }
             result.journal_ = journal_;
           } else {
             result.journal_ = journalBuilder_.build();
           }
-          result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
         }
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1878,7 +1977,7 @@ public final class CustomerAccountProtos {
             if (!other.journal_.isEmpty()) {
               if (journal_.isEmpty()) {
                 journal_ = other.journal_;
-                bitField0_ = (bitField0_ & ~0x00000040);
+                bitField0_ = (bitField0_ & ~0x00000001);
               } else {
                 ensureJournalIsMutable();
                 journal_.addAll(other.journal_);
@@ -1891,7 +1990,7 @@ public final class CustomerAccountProtos {
                 journalBuilder_.dispose();
                 journalBuilder_ = null;
                 journal_ = other.journal_;
-                bitField0_ = (bitField0_ & ~0x00000040);
+                bitField0_ = (bitField0_ & ~0x00000001);
                 journalBuilder_ = 
                   com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                      getJournalFieldBuilder() : null;
@@ -1933,6 +2032,7 @@ public final class CustomerAccountProtos {
         private java.lang.Object accountName_ = "";
         /**
          * <code>string accountName = 1;</code>
+         * @return The accountName.
          */
         public java.lang.String getAccountName() {
           java.lang.Object ref = accountName_;
@@ -1948,6 +2048,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string accountName = 1;</code>
+         * @return The bytes for accountName.
          */
         public com.google.protobuf.ByteString
             getAccountNameBytes() {
@@ -1964,6 +2065,8 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string accountName = 1;</code>
+         * @param value The accountName to set.
+         * @return This builder for chaining.
          */
         public Builder setAccountName(
             java.lang.String value) {
@@ -1977,6 +2080,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string accountName = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearAccountName() {
           
@@ -1986,6 +2090,8 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string accountName = 1;</code>
+         * @param value The bytes for accountName to set.
+         * @return This builder for chaining.
          */
         public Builder setAccountNameBytes(
             com.google.protobuf.ByteString value) {
@@ -2002,6 +2108,7 @@ public final class CustomerAccountProtos {
         private java.lang.Object leftAccount_ = "";
         /**
          * <code>string leftAccount = 2;</code>
+         * @return The leftAccount.
          */
         public java.lang.String getLeftAccount() {
           java.lang.Object ref = leftAccount_;
@@ -2017,6 +2124,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string leftAccount = 2;</code>
+         * @return The bytes for leftAccount.
          */
         public com.google.protobuf.ByteString
             getLeftAccountBytes() {
@@ -2033,6 +2141,8 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string leftAccount = 2;</code>
+         * @param value The leftAccount to set.
+         * @return This builder for chaining.
          */
         public Builder setLeftAccount(
             java.lang.String value) {
@@ -2046,6 +2156,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string leftAccount = 2;</code>
+         * @return This builder for chaining.
          */
         public Builder clearLeftAccount() {
           
@@ -2055,6 +2166,8 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string leftAccount = 2;</code>
+         * @param value The bytes for leftAccount to set.
+         * @return This builder for chaining.
          */
         public Builder setLeftAccountBytes(
             com.google.protobuf.ByteString value) {
@@ -2071,6 +2184,7 @@ public final class CustomerAccountProtos {
         private java.lang.Object rightAccount_ = "";
         /**
          * <code>string rightAccount = 3;</code>
+         * @return The rightAccount.
          */
         public java.lang.String getRightAccount() {
           java.lang.Object ref = rightAccount_;
@@ -2086,6 +2200,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string rightAccount = 3;</code>
+         * @return The bytes for rightAccount.
          */
         public com.google.protobuf.ByteString
             getRightAccountBytes() {
@@ -2102,6 +2217,8 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string rightAccount = 3;</code>
+         * @param value The rightAccount to set.
+         * @return This builder for chaining.
          */
         public Builder setRightAccount(
             java.lang.String value) {
@@ -2115,6 +2232,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string rightAccount = 3;</code>
+         * @return This builder for chaining.
          */
         public Builder clearRightAccount() {
           
@@ -2124,6 +2242,8 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>string rightAccount = 3;</code>
+         * @param value The bytes for rightAccount to set.
+         * @return This builder for chaining.
          */
         public Builder setRightAccountBytes(
             com.google.protobuf.ByteString value) {
@@ -2140,21 +2260,27 @@ public final class CustomerAccountProtos {
         private int action_ = 0;
         /**
          * <code>.io.mtini.proto.AccountType action = 4;</code>
+         * @return The enum numeric value on the wire for action.
          */
-        public int getActionValue() {
+        @java.lang.Override public int getActionValue() {
           return action_;
         }
         /**
          * <code>.io.mtini.proto.AccountType action = 4;</code>
+         * @param value The enum numeric value on the wire for action to set.
+         * @return This builder for chaining.
          */
         public Builder setActionValue(int value) {
+          
           action_ = value;
           onChanged();
           return this;
         }
         /**
          * <code>.io.mtini.proto.AccountType action = 4;</code>
+         * @return The action.
          */
+        @java.lang.Override
         public io.mtini.proto.CustomerAccountProtos.AccountType getAction() {
           @SuppressWarnings("deprecation")
           io.mtini.proto.CustomerAccountProtos.AccountType result = io.mtini.proto.CustomerAccountProtos.AccountType.valueOf(action_);
@@ -2162,6 +2288,8 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>.io.mtini.proto.AccountType action = 4;</code>
+         * @param value The action to set.
+         * @return This builder for chaining.
          */
         public Builder setAction(io.mtini.proto.CustomerAccountProtos.AccountType value) {
           if (value == null) {
@@ -2174,6 +2302,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>.io.mtini.proto.AccountType action = 4;</code>
+         * @return This builder for chaining.
          */
         public Builder clearAction() {
           
@@ -2185,12 +2314,16 @@ public final class CustomerAccountProtos {
         private double amount_ ;
         /**
          * <code>double amount = 5;</code>
+         * @return The amount.
          */
+        @java.lang.Override
         public double getAmount() {
           return amount_;
         }
         /**
          * <code>double amount = 5;</code>
+         * @param value The amount to set.
+         * @return This builder for chaining.
          */
         public Builder setAmount(double value) {
           
@@ -2200,6 +2333,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>double amount = 5;</code>
+         * @return This builder for chaining.
          */
         public Builder clearAmount() {
           
@@ -2211,12 +2345,16 @@ public final class CustomerAccountProtos {
         private double balance_ ;
         /**
          * <code>double balance = 6;</code>
+         * @return The balance.
          */
+        @java.lang.Override
         public double getBalance() {
           return balance_;
         }
         /**
          * <code>double balance = 6;</code>
+         * @param value The balance to set.
+         * @return This builder for chaining.
          */
         public Builder setBalance(double value) {
           
@@ -2226,6 +2364,7 @@ public final class CustomerAccountProtos {
         }
         /**
          * <code>double balance = 6;</code>
+         * @return This builder for chaining.
          */
         public Builder clearBalance() {
           
@@ -2237,9 +2376,9 @@ public final class CustomerAccountProtos {
         private java.util.List<io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData> journal_ =
           java.util.Collections.emptyList();
         private void ensureJournalIsMutable() {
-          if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          if (!((bitField0_ & 0x00000001) != 0)) {
             journal_ = new java.util.ArrayList<io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData>(journal_);
-            bitField0_ |= 0x00000040;
+            bitField0_ |= 0x00000001;
            }
         }
 
@@ -2433,7 +2572,7 @@ public final class CustomerAccountProtos {
         public Builder clearJournal() {
           if (journalBuilder_ == null) {
             journal_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
           } else {
             journalBuilder_.clear();
@@ -2538,7 +2677,7 @@ public final class CustomerAccountProtos {
             journalBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
                 io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData, io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalData.Builder, io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.JournalDataOrBuilder>(
                     journal_,
-                    ((bitField0_ & 0x00000040) == 0x00000040),
+                    ((bitField0_ & 0x00000001) != 0),
                     getParentForChildren(),
                     isClean());
             journal_ = null;
@@ -2548,7 +2687,7 @@ public final class CustomerAccountProtos {
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -2603,12 +2742,14 @@ public final class CustomerAccountProtos {
     /**
      * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData ledgerEntry = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData> getLedgerEntryList() {
       return ledgerEntry_;
     }
     /**
      * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData ledgerEntry = 1;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerDataOrBuilder> 
         getLedgerEntryOrBuilderList() {
       return ledgerEntry_;
@@ -2616,18 +2757,21 @@ public final class CustomerAccountProtos {
     /**
      * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData ledgerEntry = 1;</code>
      */
+    @java.lang.Override
     public int getLedgerEntryCount() {
       return ledgerEntry_.size();
     }
     /**
      * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData ledgerEntry = 1;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData getLedgerEntry(int index) {
       return ledgerEntry_.get(index);
     }
     /**
      * <code>repeated .io.mtini.proto.TestLedgerEntries.LedgerData ledgerEntry = 1;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerDataOrBuilder getLedgerEntryOrBuilder(
         int index) {
       return ledgerEntry_.get(index);
@@ -2678,11 +2822,10 @@ public final class CustomerAccountProtos {
       }
       io.mtini.proto.CustomerAccountProtos.TestLedgerEntries other = (io.mtini.proto.CustomerAccountProtos.TestLedgerEntries) obj;
 
-      boolean result = true;
-      result = result && getLedgerEntryList()
-          .equals(other.getLedgerEntryList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getLedgerEntryList()
+          .equals(other.getLedgerEntryList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -2864,7 +3007,7 @@ public final class CustomerAccountProtos {
         io.mtini.proto.CustomerAccountProtos.TestLedgerEntries result = new io.mtini.proto.CustomerAccountProtos.TestLedgerEntries(this);
         int from_bitField0_ = bitField0_;
         if (ledgerEntryBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             ledgerEntry_ = java.util.Collections.unmodifiableList(ledgerEntry_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
@@ -2878,35 +3021,35 @@ public final class CustomerAccountProtos {
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2979,7 +3122,7 @@ public final class CustomerAccountProtos {
       private java.util.List<io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData> ledgerEntry_ =
         java.util.Collections.emptyList();
       private void ensureLedgerEntryIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           ledgerEntry_ = new java.util.ArrayList<io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData>(ledgerEntry_);
           bitField0_ |= 0x00000001;
          }
@@ -3208,7 +3351,7 @@ public final class CustomerAccountProtos {
           ledgerEntryBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData, io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerData.Builder, io.mtini.proto.CustomerAccountProtos.TestLedgerEntries.LedgerDataOrBuilder>(
                   ledgerEntry_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           ledgerEntry_ = null;
@@ -3218,7 +3361,7 @@ public final class CustomerAccountProtos {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -3308,18 +3451,10 @@ public final class CustomerAccountProtos {
       "\n\005DEBIT\020\000\022\n\n\006CREDIT\020\001B\027B\025CustomerAccount" +
       "Protosb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_io_mtini_proto_TestLedgerEntries_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_io_mtini_proto_TestLedgerEntries_fieldAccessorTable = new

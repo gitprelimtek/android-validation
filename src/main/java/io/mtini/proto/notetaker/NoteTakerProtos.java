@@ -57,6 +57,8 @@ public final class NoteTakerProtos {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -64,6 +66,10 @@ public final class NoteTakerProtos {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static NoteType forNumber(int value) {
       switch (value) {
         case 0: return notype;
@@ -87,6 +93,10 @@ public final class NoteTakerProtos {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -212,6 +222,8 @@ public final class NoteTakerProtos {
     }
 
     /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
@@ -219,6 +231,10 @@ public final class NoteTakerProtos {
       return forNumber(value);
     }
 
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
     public static Operation forNumber(int value) {
       switch (value) {
         case 0: return NOTSET;
@@ -248,6 +264,10 @@ public final class NoteTakerProtos {
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
       return getDescriptor().getValues().get(ordinal());
     }
     public final com.google.protobuf.Descriptors.EnumDescriptor
@@ -288,10 +308,12 @@ public final class NoteTakerProtos {
 
     /**
      * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+     * @return The enum numeric value on the wire for operation.
      */
     int getOperationValue();
     /**
      * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+     * @return The operation.
      */
     io.mtini.proto.notetaker.NoteTakerProtos.Operation getOperation();
 
@@ -370,7 +392,7 @@ public final class NoteTakerProtos {
   /**
    * Protobuf type {@code io.mtini.proto.notetaker.NoteEntries}
    */
-  public  static final class NoteEntries extends
+  public static final class NoteEntries extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:io.mtini.proto.notetaker.NoteEntries)
       NoteEntriesOrBuilder {
@@ -384,6 +406,13 @@ public final class NoteTakerProtos {
       topics_ = java.util.Collections.emptyList();
       images_ = java.util.Collections.emptyList();
       notes_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NoteEntries();
     }
 
     @java.lang.Override
@@ -417,34 +446,34 @@ public final class NoteTakerProtos {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 topics_ = new java.util.ArrayList<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               topics_.add(
                   input.readMessage(io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel.parser(), extensionRegistry));
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 images_ = new java.util.ArrayList<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000002;
               }
               images_.add(
                   input.readMessage(io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel.parser(), extensionRegistry));
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 notes_ = new java.util.ArrayList<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000004;
               }
               notes_.add(
                   input.readMessage(io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel.parser(), extensionRegistry));
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -458,13 +487,13 @@ public final class NoteTakerProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           topics_ = java.util.Collections.unmodifiableList(topics_);
         }
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
           images_ = java.util.Collections.unmodifiableList(images_);
         }
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
           notes_ = java.util.Collections.unmodifiableList(notes_);
         }
         this.unknownFields = unknownFields.build();
@@ -490,25 +519,30 @@ public final class NoteTakerProtos {
 
       /**
        * <code>bytes id = 1;</code>
+       * @return The id.
        */
       com.google.protobuf.ByteString getId();
 
       /**
        * <code>string name = 2;</code>
+       * @return The name.
        */
       java.lang.String getName();
       /**
        * <code>string name = 2;</code>
+       * @return The bytes for name.
        */
       com.google.protobuf.ByteString
           getNameBytes();
 
       /**
        * <code>string description = 3;</code>
+       * @return The description.
        */
       java.lang.String getDescription();
       /**
        * <code>string description = 3;</code>
+       * @return The bytes for description.
        */
       com.google.protobuf.ByteString
           getDescriptionBytes();
@@ -516,7 +550,7 @@ public final class NoteTakerProtos {
     /**
      * Protobuf type {@code io.mtini.proto.notetaker.NoteEntries.TopicModel}
      */
-    public  static final class TopicModel extends
+    public static final class TopicModel extends
         com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:io.mtini.proto.notetaker.NoteEntries.TopicModel)
         TopicModelOrBuilder {
@@ -532,6 +566,13 @@ public final class NoteTakerProtos {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new TopicModel();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -544,7 +585,6 @@ public final class NoteTakerProtos {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -573,7 +613,7 @@ public final class NoteTakerProtos {
                 break;
               }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -608,7 +648,9 @@ public final class NoteTakerProtos {
       private com.google.protobuf.ByteString id_;
       /**
        * <code>bytes id = 1;</code>
+       * @return The id.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
@@ -617,7 +659,9 @@ public final class NoteTakerProtos {
       private volatile java.lang.Object name_;
       /**
        * <code>string name = 2;</code>
+       * @return The name.
        */
+      @java.lang.Override
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (ref instanceof java.lang.String) {
@@ -632,7 +676,9 @@ public final class NoteTakerProtos {
       }
       /**
        * <code>string name = 2;</code>
+       * @return The bytes for name.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getNameBytes() {
         java.lang.Object ref = name_;
@@ -651,7 +697,9 @@ public final class NoteTakerProtos {
       private volatile java.lang.Object description_;
       /**
        * <code>string description = 3;</code>
+       * @return The description.
        */
+      @java.lang.Override
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
         if (ref instanceof java.lang.String) {
@@ -666,7 +714,9 @@ public final class NoteTakerProtos {
       }
       /**
        * <code>string description = 3;</code>
+       * @return The bytes for description.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
         java.lang.Object ref = description_;
@@ -738,15 +788,14 @@ public final class NoteTakerProtos {
         }
         io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel other = (io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel) obj;
 
-        boolean result = true;
-        result = result && getId()
-            .equals(other.getId());
-        result = result && getName()
-            .equals(other.getName());
-        result = result && getDescription()
-            .equals(other.getDescription());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getId()
+            .equals(other.getId())) return false;
+        if (!getName()
+            .equals(other.getName())) return false;
+        if (!getDescription()
+            .equals(other.getDescription())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -936,35 +985,35 @@ public final class NoteTakerProtos {
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1021,12 +1070,16 @@ public final class NoteTakerProtos {
         private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
         /**
          * <code>bytes id = 1;</code>
+         * @return The id.
          */
+        @java.lang.Override
         public com.google.protobuf.ByteString getId() {
           return id_;
         }
         /**
          * <code>bytes id = 1;</code>
+         * @param value The id to set.
+         * @return This builder for chaining.
          */
         public Builder setId(com.google.protobuf.ByteString value) {
           if (value == null) {
@@ -1039,6 +1092,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>bytes id = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearId() {
           
@@ -1050,6 +1104,7 @@ public final class NoteTakerProtos {
         private java.lang.Object name_ = "";
         /**
          * <code>string name = 2;</code>
+         * @return The name.
          */
         public java.lang.String getName() {
           java.lang.Object ref = name_;
@@ -1065,6 +1120,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string name = 2;</code>
+         * @return The bytes for name.
          */
         public com.google.protobuf.ByteString
             getNameBytes() {
@@ -1081,6 +1137,8 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string name = 2;</code>
+         * @param value The name to set.
+         * @return This builder for chaining.
          */
         public Builder setName(
             java.lang.String value) {
@@ -1094,6 +1152,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string name = 2;</code>
+         * @return This builder for chaining.
          */
         public Builder clearName() {
           
@@ -1103,6 +1162,8 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string name = 2;</code>
+         * @param value The bytes for name to set.
+         * @return This builder for chaining.
          */
         public Builder setNameBytes(
             com.google.protobuf.ByteString value) {
@@ -1119,6 +1180,7 @@ public final class NoteTakerProtos {
         private java.lang.Object description_ = "";
         /**
          * <code>string description = 3;</code>
+         * @return The description.
          */
         public java.lang.String getDescription() {
           java.lang.Object ref = description_;
@@ -1134,6 +1196,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string description = 3;</code>
+         * @return The bytes for description.
          */
         public com.google.protobuf.ByteString
             getDescriptionBytes() {
@@ -1150,6 +1213,8 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string description = 3;</code>
+         * @param value The description to set.
+         * @return This builder for chaining.
          */
         public Builder setDescription(
             java.lang.String value) {
@@ -1163,6 +1228,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string description = 3;</code>
+         * @return This builder for chaining.
          */
         public Builder clearDescription() {
           
@@ -1172,6 +1238,8 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string description = 3;</code>
+         * @param value The bytes for description to set.
+         * @return This builder for chaining.
          */
         public Builder setDescriptionBytes(
             com.google.protobuf.ByteString value) {
@@ -1187,7 +1255,7 @@ public final class NoteTakerProtos {
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -1243,20 +1311,24 @@ public final class NoteTakerProtos {
 
       /**
        * <code>bytes id = 1;</code>
+       * @return The id.
        */
       com.google.protobuf.ByteString getId();
 
       /**
        * <code>bytes modelId = 2;</code>
+       * @return The modelId.
        */
       com.google.protobuf.ByteString getModelId();
 
       /**
        * <code>string encodedBitmap = 3;</code>
+       * @return The encodedBitmap.
        */
       java.lang.String getEncodedBitmap();
       /**
        * <code>string encodedBitmap = 3;</code>
+       * @return The bytes for encodedBitmap.
        */
       com.google.protobuf.ByteString
           getEncodedBitmapBytes();
@@ -1264,7 +1336,7 @@ public final class NoteTakerProtos {
     /**
      * Protobuf type {@code io.mtini.proto.notetaker.NoteEntries.ImageModel}
      */
-    public  static final class ImageModel extends
+    public static final class ImageModel extends
         com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:io.mtini.proto.notetaker.NoteEntries.ImageModel)
         ImageModelOrBuilder {
@@ -1280,6 +1352,13 @@ public final class NoteTakerProtos {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new ImageModel();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -1292,7 +1371,6 @@ public final class NoteTakerProtos {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -1320,7 +1398,7 @@ public final class NoteTakerProtos {
                 break;
               }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -1355,7 +1433,9 @@ public final class NoteTakerProtos {
       private com.google.protobuf.ByteString id_;
       /**
        * <code>bytes id = 1;</code>
+       * @return The id.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
@@ -1364,7 +1444,9 @@ public final class NoteTakerProtos {
       private com.google.protobuf.ByteString modelId_;
       /**
        * <code>bytes modelId = 2;</code>
+       * @return The modelId.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getModelId() {
         return modelId_;
       }
@@ -1373,7 +1455,9 @@ public final class NoteTakerProtos {
       private volatile java.lang.Object encodedBitmap_;
       /**
        * <code>string encodedBitmap = 3;</code>
+       * @return The encodedBitmap.
        */
+      @java.lang.Override
       public java.lang.String getEncodedBitmap() {
         java.lang.Object ref = encodedBitmap_;
         if (ref instanceof java.lang.String) {
@@ -1388,7 +1472,9 @@ public final class NoteTakerProtos {
       }
       /**
        * <code>string encodedBitmap = 3;</code>
+       * @return The bytes for encodedBitmap.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getEncodedBitmapBytes() {
         java.lang.Object ref = encodedBitmap_;
@@ -1461,15 +1547,14 @@ public final class NoteTakerProtos {
         }
         io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel other = (io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel) obj;
 
-        boolean result = true;
-        result = result && getId()
-            .equals(other.getId());
-        result = result && getModelId()
-            .equals(other.getModelId());
-        result = result && getEncodedBitmap()
-            .equals(other.getEncodedBitmap());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getId()
+            .equals(other.getId())) return false;
+        if (!getModelId()
+            .equals(other.getModelId())) return false;
+        if (!getEncodedBitmap()
+            .equals(other.getEncodedBitmap())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -1659,35 +1744,35 @@ public final class NoteTakerProtos {
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1743,12 +1828,16 @@ public final class NoteTakerProtos {
         private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
         /**
          * <code>bytes id = 1;</code>
+         * @return The id.
          */
+        @java.lang.Override
         public com.google.protobuf.ByteString getId() {
           return id_;
         }
         /**
          * <code>bytes id = 1;</code>
+         * @param value The id to set.
+         * @return This builder for chaining.
          */
         public Builder setId(com.google.protobuf.ByteString value) {
           if (value == null) {
@@ -1761,6 +1850,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>bytes id = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearId() {
           
@@ -1772,12 +1862,16 @@ public final class NoteTakerProtos {
         private com.google.protobuf.ByteString modelId_ = com.google.protobuf.ByteString.EMPTY;
         /**
          * <code>bytes modelId = 2;</code>
+         * @return The modelId.
          */
+        @java.lang.Override
         public com.google.protobuf.ByteString getModelId() {
           return modelId_;
         }
         /**
          * <code>bytes modelId = 2;</code>
+         * @param value The modelId to set.
+         * @return This builder for chaining.
          */
         public Builder setModelId(com.google.protobuf.ByteString value) {
           if (value == null) {
@@ -1790,6 +1884,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>bytes modelId = 2;</code>
+         * @return This builder for chaining.
          */
         public Builder clearModelId() {
           
@@ -1801,6 +1896,7 @@ public final class NoteTakerProtos {
         private java.lang.Object encodedBitmap_ = "";
         /**
          * <code>string encodedBitmap = 3;</code>
+         * @return The encodedBitmap.
          */
         public java.lang.String getEncodedBitmap() {
           java.lang.Object ref = encodedBitmap_;
@@ -1816,6 +1912,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string encodedBitmap = 3;</code>
+         * @return The bytes for encodedBitmap.
          */
         public com.google.protobuf.ByteString
             getEncodedBitmapBytes() {
@@ -1832,6 +1929,8 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string encodedBitmap = 3;</code>
+         * @param value The encodedBitmap to set.
+         * @return This builder for chaining.
          */
         public Builder setEncodedBitmap(
             java.lang.String value) {
@@ -1845,6 +1944,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string encodedBitmap = 3;</code>
+         * @return This builder for chaining.
          */
         public Builder clearEncodedBitmap() {
           
@@ -1854,6 +1954,8 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string encodedBitmap = 3;</code>
+         * @param value The bytes for encodedBitmap to set.
+         * @return This builder for chaining.
          */
         public Builder setEncodedBitmapBytes(
             com.google.protobuf.ByteString value) {
@@ -1869,7 +1971,7 @@ public final class NoteTakerProtos {
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -1925,25 +2027,30 @@ public final class NoteTakerProtos {
 
       /**
        * <code>bytes id = 1;</code>
+       * @return The id.
        */
       com.google.protobuf.ByteString getId();
 
       /**
        * <code>int64 date = 2;</code>
+       * @return The date.
        */
       long getDate();
 
       /**
        * <code>bytes modelId = 3;</code>
+       * @return The modelId.
        */
       com.google.protobuf.ByteString getModelId();
 
       /**
        * <code>string noteText = 4;</code>
+       * @return The noteText.
        */
       java.lang.String getNoteText();
       /**
        * <code>string noteText = 4;</code>
+       * @return The bytes for noteText.
        */
       com.google.protobuf.ByteString
           getNoteTextBytes();
@@ -1951,7 +2058,7 @@ public final class NoteTakerProtos {
     /**
      * Protobuf type {@code io.mtini.proto.notetaker.NoteEntries.NotesModel}
      */
-    public  static final class NotesModel extends
+    public static final class NotesModel extends
         com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:io.mtini.proto.notetaker.NoteEntries.NotesModel)
         NotesModelOrBuilder {
@@ -1962,9 +2069,15 @@ public final class NoteTakerProtos {
       }
       private NotesModel() {
         id_ = com.google.protobuf.ByteString.EMPTY;
-        date_ = 0L;
         modelId_ = com.google.protobuf.ByteString.EMPTY;
         noteText_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new NotesModel();
       }
 
       @java.lang.Override
@@ -1980,7 +2093,6 @@ public final class NoteTakerProtos {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -2013,7 +2125,7 @@ public final class NoteTakerProtos {
                 break;
               }
               default: {
-                if (!parseUnknownFieldProto3(
+                if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
                   done = true;
                 }
@@ -2048,7 +2160,9 @@ public final class NoteTakerProtos {
       private com.google.protobuf.ByteString id_;
       /**
        * <code>bytes id = 1;</code>
+       * @return The id.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getId() {
         return id_;
       }
@@ -2057,7 +2171,9 @@ public final class NoteTakerProtos {
       private long date_;
       /**
        * <code>int64 date = 2;</code>
+       * @return The date.
        */
+      @java.lang.Override
       public long getDate() {
         return date_;
       }
@@ -2066,7 +2182,9 @@ public final class NoteTakerProtos {
       private com.google.protobuf.ByteString modelId_;
       /**
        * <code>bytes modelId = 3;</code>
+       * @return The modelId.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString getModelId() {
         return modelId_;
       }
@@ -2075,7 +2193,9 @@ public final class NoteTakerProtos {
       private volatile java.lang.Object noteText_;
       /**
        * <code>string noteText = 4;</code>
+       * @return The noteText.
        */
+      @java.lang.Override
       public java.lang.String getNoteText() {
         java.lang.Object ref = noteText_;
         if (ref instanceof java.lang.String) {
@@ -2090,7 +2210,9 @@ public final class NoteTakerProtos {
       }
       /**
        * <code>string noteText = 4;</code>
+       * @return The bytes for noteText.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getNoteTextBytes() {
         java.lang.Object ref = noteText_;
@@ -2170,17 +2292,16 @@ public final class NoteTakerProtos {
         }
         io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel other = (io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel) obj;
 
-        boolean result = true;
-        result = result && getId()
-            .equals(other.getId());
-        result = result && (getDate()
-            == other.getDate());
-        result = result && getModelId()
-            .equals(other.getModelId());
-        result = result && getNoteText()
-            .equals(other.getNoteText());
-        result = result && unknownFields.equals(other.unknownFields);
-        return result;
+        if (!getId()
+            .equals(other.getId())) return false;
+        if (getDate()
+            != other.getDate()) return false;
+        if (!getModelId()
+            .equals(other.getModelId())) return false;
+        if (!getNoteText()
+            .equals(other.getNoteText())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
       @java.lang.Override
@@ -2376,35 +2497,35 @@ public final class NoteTakerProtos {
 
         @java.lang.Override
         public Builder clone() {
-          return (Builder) super.clone();
+          return super.clone();
         }
         @java.lang.Override
         public Builder setField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.setField(field, value);
+          return super.setField(field, value);
         }
         @java.lang.Override
         public Builder clearField(
             com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return (Builder) super.clearField(field);
+          return super.clearField(field);
         }
         @java.lang.Override
         public Builder clearOneof(
             com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return (Builder) super.clearOneof(oneof);
+          return super.clearOneof(oneof);
         }
         @java.lang.Override
         public Builder setRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             int index, java.lang.Object value) {
-          return (Builder) super.setRepeatedField(field, index, value);
+          return super.setRepeatedField(field, index, value);
         }
         @java.lang.Override
         public Builder addRepeatedField(
             com.google.protobuf.Descriptors.FieldDescriptor field,
             java.lang.Object value) {
-          return (Builder) super.addRepeatedField(field, value);
+          return super.addRepeatedField(field, value);
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2463,12 +2584,16 @@ public final class NoteTakerProtos {
         private com.google.protobuf.ByteString id_ = com.google.protobuf.ByteString.EMPTY;
         /**
          * <code>bytes id = 1;</code>
+         * @return The id.
          */
+        @java.lang.Override
         public com.google.protobuf.ByteString getId() {
           return id_;
         }
         /**
          * <code>bytes id = 1;</code>
+         * @param value The id to set.
+         * @return This builder for chaining.
          */
         public Builder setId(com.google.protobuf.ByteString value) {
           if (value == null) {
@@ -2481,6 +2606,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>bytes id = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearId() {
           
@@ -2492,12 +2618,16 @@ public final class NoteTakerProtos {
         private long date_ ;
         /**
          * <code>int64 date = 2;</code>
+         * @return The date.
          */
+        @java.lang.Override
         public long getDate() {
           return date_;
         }
         /**
          * <code>int64 date = 2;</code>
+         * @param value The date to set.
+         * @return This builder for chaining.
          */
         public Builder setDate(long value) {
           
@@ -2507,6 +2637,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>int64 date = 2;</code>
+         * @return This builder for chaining.
          */
         public Builder clearDate() {
           
@@ -2518,12 +2649,16 @@ public final class NoteTakerProtos {
         private com.google.protobuf.ByteString modelId_ = com.google.protobuf.ByteString.EMPTY;
         /**
          * <code>bytes modelId = 3;</code>
+         * @return The modelId.
          */
+        @java.lang.Override
         public com.google.protobuf.ByteString getModelId() {
           return modelId_;
         }
         /**
          * <code>bytes modelId = 3;</code>
+         * @param value The modelId to set.
+         * @return This builder for chaining.
          */
         public Builder setModelId(com.google.protobuf.ByteString value) {
           if (value == null) {
@@ -2536,6 +2671,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>bytes modelId = 3;</code>
+         * @return This builder for chaining.
          */
         public Builder clearModelId() {
           
@@ -2547,6 +2683,7 @@ public final class NoteTakerProtos {
         private java.lang.Object noteText_ = "";
         /**
          * <code>string noteText = 4;</code>
+         * @return The noteText.
          */
         public java.lang.String getNoteText() {
           java.lang.Object ref = noteText_;
@@ -2562,6 +2699,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string noteText = 4;</code>
+         * @return The bytes for noteText.
          */
         public com.google.protobuf.ByteString
             getNoteTextBytes() {
@@ -2578,6 +2716,8 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string noteText = 4;</code>
+         * @param value The noteText to set.
+         * @return This builder for chaining.
          */
         public Builder setNoteText(
             java.lang.String value) {
@@ -2591,6 +2731,7 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string noteText = 4;</code>
+         * @return This builder for chaining.
          */
         public Builder clearNoteText() {
           
@@ -2600,6 +2741,8 @@ public final class NoteTakerProtos {
         }
         /**
          * <code>string noteText = 4;</code>
+         * @param value The bytes for noteText to set.
+         * @return This builder for chaining.
          */
         public Builder setNoteTextBytes(
             com.google.protobuf.ByteString value) {
@@ -2615,7 +2758,7 @@ public final class NoteTakerProtos {
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFieldsProto3(unknownFields);
+          return super.setUnknownFields(unknownFields);
         }
 
         @java.lang.Override
@@ -2665,19 +2808,20 @@ public final class NoteTakerProtos {
 
     }
 
-    private int bitField0_;
     public static final int OPERATION_FIELD_NUMBER = 1;
     private int operation_;
     /**
      * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+     * @return The enum numeric value on the wire for operation.
      */
-    public int getOperationValue() {
+    @java.lang.Override public int getOperationValue() {
       return operation_;
     }
     /**
      * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+     * @return The operation.
      */
-    public io.mtini.proto.notetaker.NoteTakerProtos.Operation getOperation() {
+    @java.lang.Override public io.mtini.proto.notetaker.NoteTakerProtos.Operation getOperation() {
       @SuppressWarnings("deprecation")
       io.mtini.proto.notetaker.NoteTakerProtos.Operation result = io.mtini.proto.notetaker.NoteTakerProtos.Operation.valueOf(operation_);
       return result == null ? io.mtini.proto.notetaker.NoteTakerProtos.Operation.UNRECOGNIZED : result;
@@ -2688,12 +2832,14 @@ public final class NoteTakerProtos {
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.TopicModel topics = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel> getTopicsList() {
       return topics_;
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.TopicModel topics = 2;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModelOrBuilder> 
         getTopicsOrBuilderList() {
       return topics_;
@@ -2701,18 +2847,21 @@ public final class NoteTakerProtos {
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.TopicModel topics = 2;</code>
      */
+    @java.lang.Override
     public int getTopicsCount() {
       return topics_.size();
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.TopicModel topics = 2;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel getTopics(int index) {
       return topics_.get(index);
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.TopicModel topics = 2;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModelOrBuilder getTopicsOrBuilder(
         int index) {
       return topics_.get(index);
@@ -2723,12 +2872,14 @@ public final class NoteTakerProtos {
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.ImageModel images = 3;</code>
      */
+    @java.lang.Override
     public java.util.List<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel> getImagesList() {
       return images_;
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.ImageModel images = 3;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModelOrBuilder> 
         getImagesOrBuilderList() {
       return images_;
@@ -2736,18 +2887,21 @@ public final class NoteTakerProtos {
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.ImageModel images = 3;</code>
      */
+    @java.lang.Override
     public int getImagesCount() {
       return images_.size();
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.ImageModel images = 3;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel getImages(int index) {
       return images_.get(index);
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.ImageModel images = 3;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModelOrBuilder getImagesOrBuilder(
         int index) {
       return images_.get(index);
@@ -2758,12 +2912,14 @@ public final class NoteTakerProtos {
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.NotesModel notes = 4;</code>
      */
+    @java.lang.Override
     public java.util.List<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel> getNotesList() {
       return notes_;
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.NotesModel notes = 4;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModelOrBuilder> 
         getNotesOrBuilderList() {
       return notes_;
@@ -2771,18 +2927,21 @@ public final class NoteTakerProtos {
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.NotesModel notes = 4;</code>
      */
+    @java.lang.Override
     public int getNotesCount() {
       return notes_.size();
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.NotesModel notes = 4;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel getNotes(int index) {
       return notes_.get(index);
     }
     /**
      * <code>repeated .io.mtini.proto.notetaker.NoteEntries.NotesModel notes = 4;</code>
      */
+    @java.lang.Override
     public io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModelOrBuilder getNotesOrBuilder(
         int index) {
       return notes_.get(index);
@@ -2854,16 +3013,15 @@ public final class NoteTakerProtos {
       }
       io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries other = (io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries) obj;
 
-      boolean result = true;
-      result = result && operation_ == other.operation_;
-      result = result && getTopicsList()
-          .equals(other.getTopicsList());
-      result = result && getImagesList()
-          .equals(other.getImagesList());
-      result = result && getNotesList()
-          .equals(other.getNotesList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (operation_ != other.operation_) return false;
+      if (!getTopicsList()
+          .equals(other.getTopicsList())) return false;
+      if (!getImagesList()
+          .equals(other.getImagesList())) return false;
+      if (!getNotesList()
+          .equals(other.getNotesList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -3027,19 +3185,19 @@ public final class NoteTakerProtos {
 
         if (topicsBuilder_ == null) {
           topics_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           topicsBuilder_.clear();
         }
         if (imagesBuilder_ == null) {
           images_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           imagesBuilder_.clear();
         }
         if (notesBuilder_ == null) {
           notes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           notesBuilder_.clear();
         }
@@ -3070,71 +3228,69 @@ public final class NoteTakerProtos {
       public io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries buildPartial() {
         io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries result = new io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.operation_ = operation_;
         if (topicsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             topics_ = java.util.Collections.unmodifiableList(topics_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.topics_ = topics_;
         } else {
           result.topics_ = topicsBuilder_.build();
         }
         if (imagesBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             images_ = java.util.Collections.unmodifiableList(images_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.images_ = images_;
         } else {
           result.images_ = imagesBuilder_.build();
         }
         if (notesBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000004) != 0)) {
             notes_ = java.util.Collections.unmodifiableList(notes_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.notes_ = notes_;
         } else {
           result.notes_ = notesBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3155,7 +3311,7 @@ public final class NoteTakerProtos {
           if (!other.topics_.isEmpty()) {
             if (topics_.isEmpty()) {
               topics_ = other.topics_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureTopicsIsMutable();
               topics_.addAll(other.topics_);
@@ -3168,7 +3324,7 @@ public final class NoteTakerProtos {
               topicsBuilder_.dispose();
               topicsBuilder_ = null;
               topics_ = other.topics_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
               topicsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getTopicsFieldBuilder() : null;
@@ -3181,7 +3337,7 @@ public final class NoteTakerProtos {
           if (!other.images_.isEmpty()) {
             if (images_.isEmpty()) {
               images_ = other.images_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureImagesIsMutable();
               images_.addAll(other.images_);
@@ -3194,7 +3350,7 @@ public final class NoteTakerProtos {
               imagesBuilder_.dispose();
               imagesBuilder_ = null;
               images_ = other.images_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
               imagesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getImagesFieldBuilder() : null;
@@ -3207,7 +3363,7 @@ public final class NoteTakerProtos {
           if (!other.notes_.isEmpty()) {
             if (notes_.isEmpty()) {
               notes_ = other.notes_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureNotesIsMutable();
               notes_.addAll(other.notes_);
@@ -3220,7 +3376,7 @@ public final class NoteTakerProtos {
               notesBuilder_.dispose();
               notesBuilder_ = null;
               notes_ = other.notes_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
               notesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getNotesFieldBuilder() : null;
@@ -3262,21 +3418,27 @@ public final class NoteTakerProtos {
       private int operation_ = 0;
       /**
        * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+       * @return The enum numeric value on the wire for operation.
        */
-      public int getOperationValue() {
+      @java.lang.Override public int getOperationValue() {
         return operation_;
       }
       /**
        * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+       * @param value The enum numeric value on the wire for operation to set.
+       * @return This builder for chaining.
        */
       public Builder setOperationValue(int value) {
+        
         operation_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+       * @return The operation.
        */
+      @java.lang.Override
       public io.mtini.proto.notetaker.NoteTakerProtos.Operation getOperation() {
         @SuppressWarnings("deprecation")
         io.mtini.proto.notetaker.NoteTakerProtos.Operation result = io.mtini.proto.notetaker.NoteTakerProtos.Operation.valueOf(operation_);
@@ -3284,6 +3446,8 @@ public final class NoteTakerProtos {
       }
       /**
        * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+       * @param value The operation to set.
+       * @return This builder for chaining.
        */
       public Builder setOperation(io.mtini.proto.notetaker.NoteTakerProtos.Operation value) {
         if (value == null) {
@@ -3296,6 +3460,7 @@ public final class NoteTakerProtos {
       }
       /**
        * <code>.io.mtini.proto.notetaker.Operation operation = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearOperation() {
         
@@ -3307,9 +3472,9 @@ public final class NoteTakerProtos {
       private java.util.List<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel> topics_ =
         java.util.Collections.emptyList();
       private void ensureTopicsIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           topics_ = new java.util.ArrayList<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel>(topics_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -3459,7 +3624,7 @@ public final class NoteTakerProtos {
       public Builder clearTopics() {
         if (topicsBuilder_ == null) {
           topics_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           topicsBuilder_.clear();
@@ -3536,7 +3701,7 @@ public final class NoteTakerProtos {
           topicsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel, io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModel.Builder, io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.TopicModelOrBuilder>(
                   topics_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           topics_ = null;
@@ -3547,9 +3712,9 @@ public final class NoteTakerProtos {
       private java.util.List<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel> images_ =
         java.util.Collections.emptyList();
       private void ensureImagesIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           images_ = new java.util.ArrayList<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel>(images_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -3699,7 +3864,7 @@ public final class NoteTakerProtos {
       public Builder clearImages() {
         if (imagesBuilder_ == null) {
           images_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           imagesBuilder_.clear();
@@ -3776,7 +3941,7 @@ public final class NoteTakerProtos {
           imagesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel, io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModel.Builder, io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.ImageModelOrBuilder>(
                   images_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
           images_ = null;
@@ -3787,9 +3952,9 @@ public final class NoteTakerProtos {
       private java.util.List<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel> notes_ =
         java.util.Collections.emptyList();
       private void ensureNotesIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000004) != 0)) {
           notes_ = new java.util.ArrayList<io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel>(notes_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -3939,7 +4104,7 @@ public final class NoteTakerProtos {
       public Builder clearNotes() {
         if (notesBuilder_ == null) {
           notes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           notesBuilder_.clear();
@@ -4016,7 +4181,7 @@ public final class NoteTakerProtos {
           notesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel, io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModel.Builder, io.mtini.proto.notetaker.NoteTakerProtos.NoteEntries.NotesModelOrBuilder>(
                   notes_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000004) != 0),
                   getParentForChildren(),
                   isClean());
           notes_ = null;
@@ -4026,7 +4191,7 @@ public final class NoteTakerProtos {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -4125,18 +4290,10 @@ public final class NoteTakerProtos {
       "TE_NOTE\020\006\022\r\n\tADD_IMAGE\020\007\022\020\n\014DELETE_IMAGE" +
       "\020\010B\021B\017NoteTakerProtosb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_io_mtini_proto_notetaker_NoteEntries_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_io_mtini_proto_notetaker_NoteEntries_fieldAccessorTable = new

@@ -20,76 +20,91 @@ public final class MtiniWalletProtos {
 
     /**
      * <code>string privateKeyHex = 1;</code>
+     * @return The privateKeyHex.
      */
     java.lang.String getPrivateKeyHex();
     /**
      * <code>string privateKeyHex = 1;</code>
+     * @return The bytes for privateKeyHex.
      */
     com.google.protobuf.ByteString
         getPrivateKeyHexBytes();
 
     /**
      * <code>string initializationVectorHex = 2;</code>
+     * @return The initializationVectorHex.
      */
     java.lang.String getInitializationVectorHex();
     /**
      * <code>string initializationVectorHex = 2;</code>
+     * @return The bytes for initializationVectorHex.
      */
     com.google.protobuf.ByteString
         getInitializationVectorHexBytes();
 
     /**
      * <code>bool encrypted = 3;</code>
+     * @return The encrypted.
      */
     boolean getEncrypted();
 
     /**
      * <code>string publicKeyHex = 4;</code>
+     * @return The publicKeyHex.
      */
     java.lang.String getPublicKeyHex();
     /**
      * <code>string publicKeyHex = 4;</code>
+     * @return The bytes for publicKeyHex.
      */
     com.google.protobuf.ByteString
         getPublicKeyHexBytes();
 
     /**
      * <code>string id = 5;</code>
+     * @return The id.
      */
     java.lang.String getId();
     /**
      * <code>string id = 5;</code>
+     * @return The bytes for id.
      */
     com.google.protobuf.ByteString
         getIdBytes();
 
     /**
      * <code>string id2 = 6;</code>
+     * @return The id2.
      */
     java.lang.String getId2();
     /**
      * <code>string id2 = 6;</code>
+     * @return The bytes for id2.
      */
     com.google.protobuf.ByteString
         getId2Bytes();
 
     /**
      * <code>repeated bytes transactionOutputs = 7;</code>
+     * @return A list containing the transactionOutputs.
      */
     java.util.List<com.google.protobuf.ByteString> getTransactionOutputsList();
     /**
      * <code>repeated bytes transactionOutputs = 7;</code>
+     * @return The count of transactionOutputs.
      */
     int getTransactionOutputsCount();
     /**
      * <code>repeated bytes transactionOutputs = 7;</code>
+     * @param index The index of the element to return.
+     * @return The transactionOutputs at the given index.
      */
     com.google.protobuf.ByteString getTransactionOutputs(int index);
   }
   /**
    * Protobuf type {@code io.mtini.proto.MtiniWallet}
    */
-  public  static final class MtiniWallet extends
+  public static final class MtiniWallet extends
       com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:io.mtini.proto.MtiniWallet)
       MtiniWalletOrBuilder {
@@ -101,11 +116,17 @@ public final class MtiniWalletProtos {
     private MtiniWallet() {
       privateKeyHex_ = "";
       initializationVectorHex_ = "";
-      encrypted_ = false;
       publicKeyHex_ = "";
       id_ = "";
       id2_ = "";
       transactionOutputs_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MtiniWallet();
     }
 
     @java.lang.Override
@@ -168,15 +189,15 @@ public final class MtiniWalletProtos {
               break;
             }
             case 58: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 transactionOutputs_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-                mutable_bitField0_ |= 0x00000040;
+                mutable_bitField0_ |= 0x00000001;
               }
               transactionOutputs_.add(input.readBytes());
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -190,8 +211,8 @@ public final class MtiniWalletProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-          transactionOutputs_ = java.util.Collections.unmodifiableList(transactionOutputs_);
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          transactionOutputs_ = java.util.Collections.unmodifiableList(transactionOutputs_); // C
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -210,12 +231,13 @@ public final class MtiniWalletProtos {
               io.mtini.proto.MtiniWalletProtos.MtiniWallet.class, io.mtini.proto.MtiniWalletProtos.MtiniWallet.Builder.class);
     }
 
-    private int bitField0_;
     public static final int PRIVATEKEYHEX_FIELD_NUMBER = 1;
     private volatile java.lang.Object privateKeyHex_;
     /**
      * <code>string privateKeyHex = 1;</code>
+     * @return The privateKeyHex.
      */
+    @java.lang.Override
     public java.lang.String getPrivateKeyHex() {
       java.lang.Object ref = privateKeyHex_;
       if (ref instanceof java.lang.String) {
@@ -230,7 +252,9 @@ public final class MtiniWalletProtos {
     }
     /**
      * <code>string privateKeyHex = 1;</code>
+     * @return The bytes for privateKeyHex.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPrivateKeyHexBytes() {
       java.lang.Object ref = privateKeyHex_;
@@ -249,7 +273,9 @@ public final class MtiniWalletProtos {
     private volatile java.lang.Object initializationVectorHex_;
     /**
      * <code>string initializationVectorHex = 2;</code>
+     * @return The initializationVectorHex.
      */
+    @java.lang.Override
     public java.lang.String getInitializationVectorHex() {
       java.lang.Object ref = initializationVectorHex_;
       if (ref instanceof java.lang.String) {
@@ -264,7 +290,9 @@ public final class MtiniWalletProtos {
     }
     /**
      * <code>string initializationVectorHex = 2;</code>
+     * @return The bytes for initializationVectorHex.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getInitializationVectorHexBytes() {
       java.lang.Object ref = initializationVectorHex_;
@@ -283,7 +311,9 @@ public final class MtiniWalletProtos {
     private boolean encrypted_;
     /**
      * <code>bool encrypted = 3;</code>
+     * @return The encrypted.
      */
+    @java.lang.Override
     public boolean getEncrypted() {
       return encrypted_;
     }
@@ -292,7 +322,9 @@ public final class MtiniWalletProtos {
     private volatile java.lang.Object publicKeyHex_;
     /**
      * <code>string publicKeyHex = 4;</code>
+     * @return The publicKeyHex.
      */
+    @java.lang.Override
     public java.lang.String getPublicKeyHex() {
       java.lang.Object ref = publicKeyHex_;
       if (ref instanceof java.lang.String) {
@@ -307,7 +339,9 @@ public final class MtiniWalletProtos {
     }
     /**
      * <code>string publicKeyHex = 4;</code>
+     * @return The bytes for publicKeyHex.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPublicKeyHexBytes() {
       java.lang.Object ref = publicKeyHex_;
@@ -326,7 +360,9 @@ public final class MtiniWalletProtos {
     private volatile java.lang.Object id_;
     /**
      * <code>string id = 5;</code>
+     * @return The id.
      */
+    @java.lang.Override
     public java.lang.String getId() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
@@ -341,7 +377,9 @@ public final class MtiniWalletProtos {
     }
     /**
      * <code>string id = 5;</code>
+     * @return The bytes for id.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getIdBytes() {
       java.lang.Object ref = id_;
@@ -360,7 +398,9 @@ public final class MtiniWalletProtos {
     private volatile java.lang.Object id2_;
     /**
      * <code>string id2 = 6;</code>
+     * @return The id2.
      */
+    @java.lang.Override
     public java.lang.String getId2() {
       java.lang.Object ref = id2_;
       if (ref instanceof java.lang.String) {
@@ -375,7 +415,9 @@ public final class MtiniWalletProtos {
     }
     /**
      * <code>string id2 = 6;</code>
+     * @return The bytes for id2.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getId2Bytes() {
       java.lang.Object ref = id2_;
@@ -394,19 +436,24 @@ public final class MtiniWalletProtos {
     private java.util.List<com.google.protobuf.ByteString> transactionOutputs_;
     /**
      * <code>repeated bytes transactionOutputs = 7;</code>
+     * @return A list containing the transactionOutputs.
      */
+    @java.lang.Override
     public java.util.List<com.google.protobuf.ByteString>
         getTransactionOutputsList() {
       return transactionOutputs_;
     }
     /**
      * <code>repeated bytes transactionOutputs = 7;</code>
+     * @return The count of transactionOutputs.
      */
     public int getTransactionOutputsCount() {
       return transactionOutputs_.size();
     }
     /**
      * <code>repeated bytes transactionOutputs = 7;</code>
+     * @param index The index of the element to return.
+     * @return The transactionOutputs at the given index.
      */
     public com.google.protobuf.ByteString getTransactionOutputs(int index) {
       return transactionOutputs_.get(index);
@@ -499,23 +546,22 @@ public final class MtiniWalletProtos {
       }
       io.mtini.proto.MtiniWalletProtos.MtiniWallet other = (io.mtini.proto.MtiniWalletProtos.MtiniWallet) obj;
 
-      boolean result = true;
-      result = result && getPrivateKeyHex()
-          .equals(other.getPrivateKeyHex());
-      result = result && getInitializationVectorHex()
-          .equals(other.getInitializationVectorHex());
-      result = result && (getEncrypted()
-          == other.getEncrypted());
-      result = result && getPublicKeyHex()
-          .equals(other.getPublicKeyHex());
-      result = result && getId()
-          .equals(other.getId());
-      result = result && getId2()
-          .equals(other.getId2());
-      result = result && getTransactionOutputsList()
-          .equals(other.getTransactionOutputsList());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
+      if (!getPrivateKeyHex()
+          .equals(other.getPrivateKeyHex())) return false;
+      if (!getInitializationVectorHex()
+          .equals(other.getInitializationVectorHex())) return false;
+      if (getEncrypted()
+          != other.getEncrypted()) return false;
+      if (!getPublicKeyHex()
+          .equals(other.getPublicKeyHex())) return false;
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!getId2()
+          .equals(other.getId2())) return false;
+      if (!getTransactionOutputsList()
+          .equals(other.getTransactionOutputsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
     @java.lang.Override
@@ -688,7 +734,7 @@ public final class MtiniWalletProtos {
         id2_ = "";
 
         transactionOutputs_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -716,54 +762,52 @@ public final class MtiniWalletProtos {
       public io.mtini.proto.MtiniWalletProtos.MtiniWallet buildPartial() {
         io.mtini.proto.MtiniWalletProtos.MtiniWallet result = new io.mtini.proto.MtiniWalletProtos.MtiniWallet(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.privateKeyHex_ = privateKeyHex_;
         result.initializationVectorHex_ = initializationVectorHex_;
         result.encrypted_ = encrypted_;
         result.publicKeyHex_ = publicKeyHex_;
         result.id_ = id_;
         result.id2_ = id2_;
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((bitField0_ & 0x00000001) != 0)) {
           transactionOutputs_ = java.util.Collections.unmodifiableList(transactionOutputs_);
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.transactionOutputs_ = transactionOutputs_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       @java.lang.Override
       public Builder clone() {
-        return (Builder) super.clone();
+        return super.clone();
       }
       @java.lang.Override
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.setField(field, value);
+        return super.setField(field, value);
       }
       @java.lang.Override
       public Builder clearField(
           com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
+        return super.clearField(field);
       }
       @java.lang.Override
       public Builder clearOneof(
           com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
+        return super.clearOneof(oneof);
       }
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
+        return super.setRepeatedField(field, index, value);
       }
       @java.lang.Override
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
           java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
+        return super.addRepeatedField(field, value);
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -803,7 +847,7 @@ public final class MtiniWalletProtos {
         if (!other.transactionOutputs_.isEmpty()) {
           if (transactionOutputs_.isEmpty()) {
             transactionOutputs_ = other.transactionOutputs_;
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureTransactionOutputsIsMutable();
             transactionOutputs_.addAll(other.transactionOutputs_);
@@ -843,6 +887,7 @@ public final class MtiniWalletProtos {
       private java.lang.Object privateKeyHex_ = "";
       /**
        * <code>string privateKeyHex = 1;</code>
+       * @return The privateKeyHex.
        */
       public java.lang.String getPrivateKeyHex() {
         java.lang.Object ref = privateKeyHex_;
@@ -858,6 +903,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string privateKeyHex = 1;</code>
+       * @return The bytes for privateKeyHex.
        */
       public com.google.protobuf.ByteString
           getPrivateKeyHexBytes() {
@@ -874,6 +920,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string privateKeyHex = 1;</code>
+       * @param value The privateKeyHex to set.
+       * @return This builder for chaining.
        */
       public Builder setPrivateKeyHex(
           java.lang.String value) {
@@ -887,6 +935,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string privateKeyHex = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPrivateKeyHex() {
         
@@ -896,6 +945,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string privateKeyHex = 1;</code>
+       * @param value The bytes for privateKeyHex to set.
+       * @return This builder for chaining.
        */
       public Builder setPrivateKeyHexBytes(
           com.google.protobuf.ByteString value) {
@@ -912,6 +963,7 @@ public final class MtiniWalletProtos {
       private java.lang.Object initializationVectorHex_ = "";
       /**
        * <code>string initializationVectorHex = 2;</code>
+       * @return The initializationVectorHex.
        */
       public java.lang.String getInitializationVectorHex() {
         java.lang.Object ref = initializationVectorHex_;
@@ -927,6 +979,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string initializationVectorHex = 2;</code>
+       * @return The bytes for initializationVectorHex.
        */
       public com.google.protobuf.ByteString
           getInitializationVectorHexBytes() {
@@ -943,6 +996,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string initializationVectorHex = 2;</code>
+       * @param value The initializationVectorHex to set.
+       * @return This builder for chaining.
        */
       public Builder setInitializationVectorHex(
           java.lang.String value) {
@@ -956,6 +1011,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string initializationVectorHex = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearInitializationVectorHex() {
         
@@ -965,6 +1021,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string initializationVectorHex = 2;</code>
+       * @param value The bytes for initializationVectorHex to set.
+       * @return This builder for chaining.
        */
       public Builder setInitializationVectorHexBytes(
           com.google.protobuf.ByteString value) {
@@ -981,12 +1039,16 @@ public final class MtiniWalletProtos {
       private boolean encrypted_ ;
       /**
        * <code>bool encrypted = 3;</code>
+       * @return The encrypted.
        */
+      @java.lang.Override
       public boolean getEncrypted() {
         return encrypted_;
       }
       /**
        * <code>bool encrypted = 3;</code>
+       * @param value The encrypted to set.
+       * @return This builder for chaining.
        */
       public Builder setEncrypted(boolean value) {
         
@@ -996,6 +1058,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>bool encrypted = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEncrypted() {
         
@@ -1007,6 +1070,7 @@ public final class MtiniWalletProtos {
       private java.lang.Object publicKeyHex_ = "";
       /**
        * <code>string publicKeyHex = 4;</code>
+       * @return The publicKeyHex.
        */
       public java.lang.String getPublicKeyHex() {
         java.lang.Object ref = publicKeyHex_;
@@ -1022,6 +1086,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string publicKeyHex = 4;</code>
+       * @return The bytes for publicKeyHex.
        */
       public com.google.protobuf.ByteString
           getPublicKeyHexBytes() {
@@ -1038,6 +1103,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string publicKeyHex = 4;</code>
+       * @param value The publicKeyHex to set.
+       * @return This builder for chaining.
        */
       public Builder setPublicKeyHex(
           java.lang.String value) {
@@ -1051,6 +1118,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string publicKeyHex = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPublicKeyHex() {
         
@@ -1060,6 +1128,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string publicKeyHex = 4;</code>
+       * @param value The bytes for publicKeyHex to set.
+       * @return This builder for chaining.
        */
       public Builder setPublicKeyHexBytes(
           com.google.protobuf.ByteString value) {
@@ -1076,6 +1146,7 @@ public final class MtiniWalletProtos {
       private java.lang.Object id_ = "";
       /**
        * <code>string id = 5;</code>
+       * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
@@ -1091,6 +1162,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string id = 5;</code>
+       * @return The bytes for id.
        */
       public com.google.protobuf.ByteString
           getIdBytes() {
@@ -1107,6 +1179,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string id = 5;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
        */
       public Builder setId(
           java.lang.String value) {
@@ -1120,6 +1194,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string id = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearId() {
         
@@ -1129,6 +1204,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string id = 5;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
        */
       public Builder setIdBytes(
           com.google.protobuf.ByteString value) {
@@ -1145,6 +1222,7 @@ public final class MtiniWalletProtos {
       private java.lang.Object id2_ = "";
       /**
        * <code>string id2 = 6;</code>
+       * @return The id2.
        */
       public java.lang.String getId2() {
         java.lang.Object ref = id2_;
@@ -1160,6 +1238,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string id2 = 6;</code>
+       * @return The bytes for id2.
        */
       public com.google.protobuf.ByteString
           getId2Bytes() {
@@ -1176,6 +1255,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string id2 = 6;</code>
+       * @param value The id2 to set.
+       * @return This builder for chaining.
        */
       public Builder setId2(
           java.lang.String value) {
@@ -1189,6 +1270,7 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string id2 = 6;</code>
+       * @return This builder for chaining.
        */
       public Builder clearId2() {
         
@@ -1198,6 +1280,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>string id2 = 6;</code>
+       * @param value The bytes for id2 to set.
+       * @return This builder for chaining.
        */
       public Builder setId2Bytes(
           com.google.protobuf.ByteString value) {
@@ -1213,32 +1297,40 @@ public final class MtiniWalletProtos {
 
       private java.util.List<com.google.protobuf.ByteString> transactionOutputs_ = java.util.Collections.emptyList();
       private void ensureTransactionOutputsIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           transactionOutputs_ = new java.util.ArrayList<com.google.protobuf.ByteString>(transactionOutputs_);
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000001;
          }
       }
       /**
        * <code>repeated bytes transactionOutputs = 7;</code>
+       * @return A list containing the transactionOutputs.
        */
       public java.util.List<com.google.protobuf.ByteString>
           getTransactionOutputsList() {
-        return java.util.Collections.unmodifiableList(transactionOutputs_);
+        return ((bitField0_ & 0x00000001) != 0) ?
+                 java.util.Collections.unmodifiableList(transactionOutputs_) : transactionOutputs_;
       }
       /**
        * <code>repeated bytes transactionOutputs = 7;</code>
+       * @return The count of transactionOutputs.
        */
       public int getTransactionOutputsCount() {
         return transactionOutputs_.size();
       }
       /**
        * <code>repeated bytes transactionOutputs = 7;</code>
+       * @param index The index of the element to return.
+       * @return The transactionOutputs at the given index.
        */
       public com.google.protobuf.ByteString getTransactionOutputs(int index) {
         return transactionOutputs_.get(index);
       }
       /**
        * <code>repeated bytes transactionOutputs = 7;</code>
+       * @param index The index to set the value at.
+       * @param value The transactionOutputs to set.
+       * @return This builder for chaining.
        */
       public Builder setTransactionOutputs(
           int index, com.google.protobuf.ByteString value) {
@@ -1252,6 +1344,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>repeated bytes transactionOutputs = 7;</code>
+       * @param value The transactionOutputs to add.
+       * @return This builder for chaining.
        */
       public Builder addTransactionOutputs(com.google.protobuf.ByteString value) {
         if (value == null) {
@@ -1264,6 +1358,8 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>repeated bytes transactionOutputs = 7;</code>
+       * @param values The transactionOutputs to add.
+       * @return This builder for chaining.
        */
       public Builder addAllTransactionOutputs(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
@@ -1275,17 +1371,18 @@ public final class MtiniWalletProtos {
       }
       /**
        * <code>repeated bytes transactionOutputs = 7;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTransactionOutputs() {
         transactionOutputs_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1356,18 +1453,10 @@ public final class MtiniWalletProtos {
       "\030\005 \001(\t\022\013\n\003id2\030\006 \001(\t\022\032\n\022transactionOutput" +
       "s\030\007 \003(\014B\023B\021MtiniWalletProtosb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_io_mtini_proto_MtiniWallet_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_io_mtini_proto_MtiniWallet_fieldAccessorTable = new
