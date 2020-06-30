@@ -4,20 +4,22 @@ package io.mtini.proto;
 
 option java_outer_classname="RequestResponseProtos";
 
-import "google/protobuf/any.proto";
+//import "google/protobuf/any.proto";//not supported for lite
 
 message RequestResponse{
 
     message Request{
         string jsonRequest = 1;
         bytes data = 2;
-        google.protobuf.Any entries = 3;
+        //google.protobuf.Any entries = 3;
+        bytes entries = 3;
     }
     
     message Response{
         string jsonResponse = 1;
         bytes data = 2;
-        google.protobuf.Any entries = 3;
+        //google.protobuf.Any entries = 3;
+        bytes entries = 3;
     }
     
     Request request  = 1;

@@ -8,10 +8,22 @@
 	<artifactId>eat-protos</artifactId>
 	<version>2.0.1</version>
 
+    <properties>
+        <proto.directory>./src/main/proto</proto.directory>
+        <protobufjavalite.version>3.10.0</protobufjavalite.version>
+    </properties>
+    
+     <dependencies>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-javalite</artifactId>
+            <version>${protobufjavalite.version}</version>
+        </dependency>
+    </dependencies>
+    
 	<build>
 	
-		<sourceDirectory>${basedir}</sourceDirectory>
-		
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -22,19 +34,35 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			           
+			 <plugin>
+                <groupId>com.github.os72</groupId>
+                <artifactId>protoc-jar-maven-plugin</artifactId>
+                <version>3.11.4</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <inputDirectories>
+                                <include>${proto.directory}</include>
+                            </inputDirectories>
+                            <outputTargets>
+                                <outputTarget>
+                                    <type>java</type>
+                                    <outputOptions>lite</outputOptions>
+                                </outputTarget>
+                            </outputTargets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
 		</plugins>
 	</build>
-	<dependencies>
 
-		<dependency>
-			<groupId>com.google.protobuf</groupId>
-			<artifactId>protobuf-java</artifactId>
-			<version>3.12.0</version>
-			<scope>compile</scope>
-		</dependency>
-
-	</dependencies>
 	<organization>
 		<name>Mtini</name>
 		<url>http://mtini.io</url>
