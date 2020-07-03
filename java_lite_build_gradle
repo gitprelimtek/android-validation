@@ -1,7 +1,9 @@
-
+/***
 apply plugin: 'java-library'
 apply plugin: 'com.google.protobuf'
-
+dependencies {
+    implementation 'com.google.protobuf:protobuf-javalite:3.10.0'
+}
 
 sourceSets {
     main {
@@ -16,33 +18,20 @@ sourceSets {
     }
     // remove the test configuration - at least in your example you don't have a special test proto file
 }
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.protobuf:protobuf-lite:3.0.0'
-}
+
 
 protobuf {
     protoc {
-        // You still need protoc like in the non-Android case
-        artifact = 'com.google.protobuf:protoc:3.0.0'
-    }
-    plugins {
-        javalite {
-            // The codegen for lite comes as a separate artifact
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
+        artifact = 'com.google.protobuf:protoc:3.12.0'
     }
     generateProtoTasks {
         all().each { task ->
             task.builtins {
-                // In most cases you don't need the full Java output
-                // if you use the lite output.
-                remove java
-
-            }
-            task.plugins {
-                javalite {}
+                java {
+                    option 'lite'
+                }
             }
         }
     }
 }
+***/

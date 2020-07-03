@@ -10,3 +10,9 @@ These classes are commandline generated:
 ```
 protoc  --java_out=./java/ ./proto/*proto
 ```
+
+For javalite 
+
+```
+protoc  --java_out=lite:./java/ ./proto/*proto
+```
