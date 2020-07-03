@@ -15,6 +15,7 @@ import org.bitcoinj.core.ECKey;
 import org.spongycastle.util.encoders.Hex;
 
 import com.google.protobuf.ByteString;
+import com.google.protobuf.GeneratedMessageLite;
 import com.google.protobuf.GeneratedMessageV3;
 
 import io.jsonwebtoken.Claims;
@@ -156,6 +157,15 @@ public class SawtoothUtils {
 		return signedHeader;
 	}
 
+	public static String createHeaderSignature(GeneratedMessageLite header, ECKey privateKey){
+
+		//String signedHeader  = Signing.sign(privateKey,header.toByteArray());
+		//ECKey.fromPrivate(privKeyBytes)
+		Context context = CryptoFactory.createContext("secp256k1");
+		PrivateKey spk_privateKey = Secp256k1PrivateKey.fromHex(privateKey.getPrivateKeyAsHex());
+		String signedHeader = new Signer(context,spk_privateKey).sign(header.toByteArray());
+		return signedHeader;
+	}
 
 	public static String sign(byte[] data , ECKey privateKey){
 
