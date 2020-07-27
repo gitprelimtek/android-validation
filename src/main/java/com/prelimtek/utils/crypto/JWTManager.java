@@ -87,8 +87,6 @@ public class JWTManager {
 
 	public Claims parseJWT(String jwt) {
 
-		System.out.println(jwt);
-
 		//This line will throw an exception if it is not a signed JWS (as expected)
 		byte[] apiKeySecretBytes = Base64.getEncoder().encode(signingKey.getBytes(Charsets.UTF_8));
 
@@ -98,18 +96,11 @@ public class JWTManager {
 				.parseClaimsJws(jwt)
 				.getBody();
 
-		System.out.println("ID: " + claims.getId());
-		System.out.println("Subject: " + claims.getSubject());
-		System.out.println("Issuer: " + claims.getIssuer());
-		System.out.println("Expiration: " + claims.getExpiration());
-		System.out.println("Audience: " + claims.getAudience());
-
 		return claims;
 	}
 
 	public static Claims parseJWT(String signingKey, String jwt) {
 
-		System.out.println(jwt);
 		byte[] apiKeySecretBytes = Base64.getEncoder().encode(signingKey.getBytes(Charsets.UTF_8));
 
 		//This line will throw an exception if it is not a signed JWS (as expected)
@@ -117,18 +108,10 @@ public class JWTManager {
 				.setSigningKey(apiKeySecretBytes)
 				.parseClaimsJws(jwt).getBody();
 
-		System.out.println("ID: " + claims.getId());
-		System.out.println("Subject: " + claims.getSubject());
-		System.out.println("Issuer: " + claims.getIssuer());
-		System.out.println("Expiration: " + claims.getExpiration());
-		System.out.println("Audience: " + claims.getAudience());
-
 		return claims;
 	}
 
 	public Jwt<Header,Claims> parseJWTAndHeader(String jwt) {
-
-		System.out.println(jwt);
 
 		//This line will throw an exception if it is not a signed JWS (as expected)
 		byte[] apiKeySecretBytes = Base64.getEncoder().encode(signingKey.getBytes(Charsets.UTF_8));
@@ -140,13 +123,7 @@ public class JWTManager {
 
 		Claims claims	= headClaims.getBody();
 		Header header =  headClaims.getHeader();
-		//Jwts.parser().
 
-		System.out.println("ID: " + claims.getId());
-		System.out.println("Subject: " + claims.getSubject());
-		System.out.println("Issuer: " + claims.getIssuer());
-		System.out.println("Expiration: " + claims.getExpiration());
-		System.out.println("Audience: " + claims.getAudience());
 
 		return headClaims;
 	}

@@ -27,7 +27,8 @@ public class BitcoinCryptoUtils {
 	}
 	
 	/**Expects 128,192,256 bit = 16, 24,32 bytes
-	 * Therefpre appends 0s to satisfy max.**/
+	 * Therefore appends 0s to satisfy max.
+	 * Opt2: MD5 Hash simple string **/
 	public static CharSequence generatePassPhrase(@Nonnull CharSequence passPhrase, boolean hashed){
 
 		String ret = passPhrase.toString().trim();
@@ -36,7 +37,6 @@ public class BitcoinCryptoUtils {
 
 		if(hashed)
 			return Hashing.md5().hashString(passPhrase, Charsets.UTF_8).toString();
-			//return Hex.toHexString(passPhrase.toString().getBytes());//Hashing.goodFastHash(128).hashString(passPhrase, Charsets.UTF_8).toString();
 
 		
 		if(length==16 || length==24 || length ==32)return ret;
