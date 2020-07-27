@@ -16,8 +16,6 @@ import org.bitcoinj.crypto.KeyCrypter;
 import org.bitcoinj.crypto.KeyCrypterScrypt;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.util.encoders.Base64;
-import org.spongycastle.util.encoders.Hex;
-
 
 public class BitcoinCryptoUtils {
 	
