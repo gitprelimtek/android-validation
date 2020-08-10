@@ -3,6 +3,7 @@ package com.prelimtek.utils.crypto;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hashing;
 
+import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import javax.annotation.Nonnull;
@@ -111,8 +112,6 @@ public class BitcoinCryptoUtils {
 		if(recoveredkey.isEncrypted()){
 			recoveredkey = recoveredkey.decrypt(new KeyParameter(passphrase.toString().getBytes()));
 
-			//EncryptedData data = key1.getEncryptedData();
-			//key1 = this.recoverPrimaryKey(data.initialisationVector,data.encryptedBytes,publicKeyBytes,passphrase);
 		}
 		return recoveredkey;
 	}
@@ -144,9 +143,6 @@ public class BitcoinCryptoUtils {
 			}
 		}
 
-		KeyCrypter crypter = new KeyCrypterScrypt();
-
-
 		return newPassphrase==null?decryptedKey:encryptPrivateKey(decryptedKey,newPassphrase);
 	}
 
@@ -169,6 +165,16 @@ public class BitcoinCryptoUtils {
 		String encodedDERSignature = Base64.toBase64String(signture.encodeToDER());
 
 		return encodedDERSignature;
+	}
+
+	public static boolean isPrivateKeyEncrypted(@Nonnull byte[] privateKeyBytes){
+		ECKey recoveredkey = ECKey.fromPrivate(privateKeyBytes);
+		return recoveredkey.isEncrypted();
+	}
+
+	public static boolean isPrivateKeyEncrypted(@Nonnull BigInteger privateKey){
+		ECKey recoveredkey = ECKey.fromPrivate(privateKey);
+		return recoveredkey.isEncrypted();
 	}
 
 

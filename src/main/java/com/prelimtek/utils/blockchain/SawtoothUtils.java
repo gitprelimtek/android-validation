@@ -29,7 +29,6 @@ import sawtooth.sdk.signing.CryptoFactory;
 import sawtooth.sdk.signing.PrivateKey;
 import sawtooth.sdk.signing.Secp256k1PrivateKey;
 import sawtooth.sdk.signing.Signer;
-//import sawtooth.sdk.client.Signing;
 import sawtooth.sdk.processor.Utils;
 
 public class SawtoothUtils {
@@ -78,9 +77,7 @@ public class SawtoothUtils {
 
 	public static BatchList createBatchList(ECKey privateKey,ByteString input) throws UnsupportedEncodingException, NoSuchAlgorithmException  {
 
-		//ECKey privateKey = ECKey.fromPrivate(Hex.decode(jwt.getId()));
-
-		String publicKey = privateKey.getPublicKeyAsHex();////Signing.getPublicKey(privateKey);
+		String publicKey = privateKey.getPublicKeyAsHex();
 
 		ByteString publicKeyByteString = ByteString.copyFromUtf8(publicKey);
 
@@ -92,26 +89,22 @@ public class SawtoothUtils {
 
 		BatchList trxnBatchList = BatchList.newBuilder().addBatches(trxnBatch).build();
 
-		//ByteString batchBytes = trxnBatchList.toByteString();
-
 		return trxnBatchList;
 	}
 
-	public static BatchList createBatchList(ECKey privateKey, List<Transaction> transactionList) throws NoSuchAlgorithmException, IOException {
+    public static ByteString createBatchListByteString(ECKey privateKey,ByteString input) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return createBatchList(privateKey,input).toByteString();
+	}
 
-		//ECKey privateKey = ECKey.fromPrivate(Hex.decode(jwt.getId()));
+        public static BatchList createBatchList(ECKey privateKey, List<Transaction> transactionList) throws NoSuchAlgorithmException, IOException {
 
-		String publicKey = privateKey.getPublicKeyAsHex();////Signing.getPublicKey(privateKey);
+		String publicKey = privateKey.getPublicKeyAsHex();
 
 		ByteString publicKeyByteString = ByteString.copyFromUtf8(publicKey);
-
-		//String hashedAddress = SawtoothUtils.calculateAddress(SawtoothUtils.FAMILY,publicKeyByteString.toByteArray());
 
 		Batch trxnBatch = SawtoothUtils.createTransactionBatch(transactionList, privateKey, publicKeyByteString);
 
 		BatchList trxnBatchList = BatchList.newBuilder().addBatches(trxnBatch).build();
-
-		//ByteString batchBytes = trxnBatchList.toByteString();
 
 		return trxnBatchList;
 	}
@@ -120,8 +113,6 @@ public class SawtoothUtils {
 
 		ByteString hashedPayload = ByteString.copyFromUtf8(
 				Utils.hash512(encodedPayload.toByteArray()));
-
-		//Assert.assertTrue(hashedPayload.isValidUtf8());
 
 		TransactionHeader header = createTrxnHeader(hashedPayload,publicKey,inputAddresses,outputAddresses);
 
@@ -139,9 +130,11 @@ public class SawtoothUtils {
 		BatchHeader header = createBatchHeader(transactionList,publicKey);
 
 		Batch.Builder builder = Batch.newBuilder();
-		builder.addAllTransactions(transactionList)
+		builder
 		.setHeader(header.toByteString())
 		.setHeaderSignature(createHeaderSignature(header,privateKey));
+
+		transactionList.stream().forEach(t->builder.addTransactions(t));
 
 		return builder.build();
 	}
@@ -149,8 +142,6 @@ public class SawtoothUtils {
 	/**TODO test! This is the most significant change since switching from sawtooth-SNAPSHOT*/
 	public static String createHeaderSignature(GeneratedMessageV3 header, ECKey privateKey){
 
-		//String signedHeader  = Signing.sign(privateKey,header.toByteArray());
-		//ECKey.fromPrivate(privKeyBytes)
 		Context context = CryptoFactory.createContext("secp256k1");
 		PrivateKey spk_privateKey = Secp256k1PrivateKey.fromHex(privateKey.getPrivateKeyAsHex());
 		String signedHeader = new Signer(context,spk_privateKey).sign(header.toByteArray());
@@ -159,8 +150,6 @@ public class SawtoothUtils {
 
 	public static String createHeaderSignature(GeneratedMessageLite header, ECKey privateKey){
 
-		//String signedHeader  = Signing.sign(privateKey,header.toByteArray());
-		//ECKey.fromPrivate(privKeyBytes)
 		Context context = CryptoFactory.createContext("secp256k1");
 		PrivateKey spk_privateKey = Secp256k1PrivateKey.fromHex(privateKey.getPrivateKeyAsHex());
 		String signedHeader = new Signer(context,spk_privateKey).sign(header.toByteArray());
@@ -169,8 +158,6 @@ public class SawtoothUtils {
 
 	public static String sign(byte[] data , ECKey privateKey){
 
-		//String signedHeader  = Signing.sign(data);
-		//ECKey.fromPrivate(privKeyBytes)
 		Context context = CryptoFactory.createContext("secp256k1");
 		PrivateKey spk_privateKey = Secp256k1PrivateKey.fromHex(privateKey.getPrivateKeyAsHex());
 		String signedHeader = new Signer(context,spk_privateKey).sign(data);
@@ -185,9 +172,10 @@ public class SawtoothUtils {
 				.setSignerPublicKeyBytes(pubicKey)
 				.setFamilyName(FAMILY)
 				.setFamilyVersion(VERSION)
-				.setNonce(generateNonce())
-				.addAllInputs(inputAddresses)
-				.addAllOutputs(outputAddresses);
+				.setNonce(generateNonce());
+
+		inputAddresses.stream().forEach(i-> builder.addInputs(i));
+		outputAddresses.stream().forEach(o->builder.addOutputs(o));
 
 		return builder.build();
 	}
@@ -195,16 +183,9 @@ public class SawtoothUtils {
 
 	public static BatchHeader createBatchHeader(List<Transaction> transactionList,ByteString publicKeyBytes){
 
-		List<String> transactionHeaders = new ArrayList<String>();
-
-		for(Transaction t : transactionList){
-			transactionHeaders.add(t.getHeaderSignature());
-		}
-
 		BatchHeader.Builder builder =  BatchHeader.newBuilder()
-				.setSignerPublicKeyBytes(publicKeyBytes)
-				.addAllTransactionIds(transactionHeaders);
-
+				.setSignerPublicKeyBytes(publicKeyBytes);
+		transactionList.stream().forEach(t->builder.addTransactionIds(t.getHeaderSignature()));
 		return builder.build();
 	}
 
