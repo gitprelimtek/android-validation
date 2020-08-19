@@ -1,4 +1,4 @@
-package com.prelimtek.android.basecomponents.fragment;
+package com.prelimtek.android.basecomponents.usersettings;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,7 +30,6 @@ public class SettingsFragment extends PreferenceFragment
         this.addPreferencesFromResource(R.xml.preferences);
 
         sp = this.getPreferenceScreen().getSharedPreferences();
-
 
     }
 
