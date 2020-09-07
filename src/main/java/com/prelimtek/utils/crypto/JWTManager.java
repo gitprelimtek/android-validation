@@ -17,6 +17,7 @@ import java.security.Key;
 import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Is a simplified class for creating expirable JWT tokens.
@@ -148,6 +149,16 @@ public class JWTManager {
 		cal.setTime(date);
 		cal.add(Calendar.HOUR , hours);
 		return cal.getTime();
+	}
+
+	public static String createJWT(String id, String subject , String signingKey, int expiration_milliseconds){
+		JWTManager mn =  new JWTManager(signingKey);
+		long expiration = JWTManager.incrementMillis(new Date(),expiration_milliseconds).getTime();
+		String jwt =  mn.createJWT(id,"mtini",subject, expiration );
+
+		//Log.(TAG,jwt);
+
+		return jwt;
 	}
 
 }
