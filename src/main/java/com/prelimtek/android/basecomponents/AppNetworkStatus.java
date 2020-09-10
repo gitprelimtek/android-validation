@@ -18,7 +18,7 @@ public class AppNetworkStatus {
             return instance;
     }
 
-    private boolean isOnline() {
+    public boolean isOnline() {
 
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -32,13 +32,10 @@ public class AppNetworkStatus {
         return false;
     }
 
-    public boolean networkIsRequired(){
-        if(!isOnline()){
+    public void networkIsRequired(boolean required){
+        if(required && !isOnline()){
             redirectToNoNetworkPage();
         }
-
-
-        return true;
     }
 
     public void redirectToNoNetworkPage(){
@@ -46,6 +43,17 @@ public class AppNetworkStatus {
         Intent intent = new Intent(context,NoNetworkActivity.class);
         context.startActivity(intent);
 
+    }
+
+    public void restartApplication(){
+        Context baseContext = context.getApplicationContext();
+        Intent intent = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.CUPCAKE) {
+            intent = baseContext.getPackageManager()
+                    .getLaunchIntentForPackage( baseContext.getPackageName() );
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        baseContext.startActivity(intent);
     }
 
 }
