@@ -3,6 +3,7 @@ package com.prelimtek.utils.crypto;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hashing;
 
+import java.math.BigInteger;
 import java.security.SecureRandom;
 
 import javax.annotation.Nonnull;
@@ -16,8 +17,6 @@ import org.bitcoinj.crypto.KeyCrypter;
 import org.bitcoinj.crypto.KeyCrypterScrypt;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.util.encoders.Base64;
-import org.spongycastle.util.encoders.Hex;
-
 
 public class BitcoinCryptoUtils {
 	
@@ -27,7 +26,8 @@ public class BitcoinCryptoUtils {
 	}
 	
 	/**Expects 128,192,256 bit = 16, 24,32 bytes
-	 * Therefpre appends 0s to satisfy max.**/
+	 * Therefore appends 0s to satisfy max.
+	 * Opt2: MD5 Hash simple string **/
 	public static CharSequence generatePassPhrase(@Nonnull CharSequence passPhrase, boolean hashed){
 
 		String ret = passPhrase.toString().trim();
@@ -36,7 +36,6 @@ public class BitcoinCryptoUtils {
 
 		if(hashed)
 			return Hashing.md5().hashString(passPhrase, Charsets.UTF_8).toString();
-			//return Hex.toHexString(passPhrase.toString().getBytes());//Hashing.goodFastHash(128).hashString(passPhrase, Charsets.UTF_8).toString();
 
 		
 		if(length==16 || length==24 || length ==32)return ret;
@@ -113,8 +112,6 @@ public class BitcoinCryptoUtils {
 		if(recoveredkey.isEncrypted()){
 			recoveredkey = recoveredkey.decrypt(new KeyParameter(passphrase.toString().getBytes()));
 
-			//EncryptedData data = key1.getEncryptedData();
-			//key1 = this.recoverPrimaryKey(data.initialisationVector,data.encryptedBytes,publicKeyBytes,passphrase);
 		}
 		return recoveredkey;
 	}
@@ -146,9 +143,6 @@ public class BitcoinCryptoUtils {
 			}
 		}
 
-		KeyCrypter crypter = new KeyCrypterScrypt();
-
-
 		return newPassphrase==null?decryptedKey:encryptPrivateKey(decryptedKey,newPassphrase);
 	}
 
@@ -171,6 +165,16 @@ public class BitcoinCryptoUtils {
 		String encodedDERSignature = Base64.toBase64String(signture.encodeToDER());
 
 		return encodedDERSignature;
+	}
+
+	public static boolean isPrivateKeyEncrypted(@Nonnull byte[] privateKeyBytes){
+		ECKey recoveredkey = ECKey.fromPrivate(privateKeyBytes);
+		return recoveredkey.isEncrypted();
+	}
+
+	public static boolean isPrivateKeyEncrypted(@Nonnull BigInteger privateKey){
+		ECKey recoveredkey = ECKey.fromPrivate(privateKey);
+		return recoveredkey.isEncrypted();
 	}
 
 

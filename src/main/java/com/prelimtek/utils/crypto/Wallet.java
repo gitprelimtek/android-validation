@@ -14,7 +14,7 @@ import org.bitcoinj.crypto.EncryptedData;
 import org.spongycastle.util.encoders.Hex;
 
 
-public class Wallet <T> implements Serializable {
+public class Wallet <T>  implements Serializable {
 
 	private T[]transactionOutputs = null;//TransactionOutputs for this wallet
 
@@ -47,6 +47,8 @@ public class Wallet <T> implements Serializable {
 		generateKeyPairs(null);
 	}
 	*/
+
+	private Wallet(){}
 
 	public Wallet(@Nonnull String hashed_idHex, @Nullable String hashed_id2Hex,@Nonnull CharSequence keyphrase){
 		id = hashed_idHex;id2=hashed_id2Hex;
@@ -147,16 +149,16 @@ public class Wallet <T> implements Serializable {
 
 		if(!encrypted){
 			ECKey key = BitcoinCryptoUtils.recoverPrimaryKey(getPrivateKeyBytes());
-			key = BitcoinCryptoUtils.encryptPrivateKey(key, passPhrase);
-			EncryptedData encryptedData = key.getEncryptedData();
+			ECKey enckey = BitcoinCryptoUtils.encryptPrivateKey(key, passPhrase);
+			EncryptedData encryptedData = enckey.getEncryptedData();
 			privateKeyHex = Hex.toHexString(encryptedData.encryptedBytes);//getPrivateKeyAsHex();
 			initializationVectorHex = Hex.toHexString(encryptedData.initialisationVector);
-			encrypted = key.isEncrypted();
+			encrypted = enckey.isEncrypted();
 		}else{
 			throw new WalletException("PrivateKey is already encrypted.");
 		}
 
-		return true;
+		return encrypted;
 	}
 
 	public String decryptPrivateKeyHex(CharSequence passPhrase) throws WalletException {
@@ -212,6 +214,19 @@ public class Wallet <T> implements Serializable {
 
 	public boolean isEncrypted(){return encrypted;}
 
+
+	public T[] getTransactionOutputs() {
+		return transactionOutputs;
+	}
+
+	public void setTransactionOutputs(T[] transactionOutputs) {
+		this.transactionOutputs = transactionOutputs;
+	}
+
+	public String getInitializationVectorHex(){
+		return initializationVectorHex;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -256,5 +271,71 @@ public class Wallet <T> implements Serializable {
 		private static final long serialVersionUID = -2480207234057205389L;
 
 		public WalletException(String s){super(s);}
+	}
+
+	private static Builder builder = null;
+	public static Builder newBuilder(){
+		if(builder==null){
+			builder = new Builder();
+		}
+
+		return builder;
+	}
+
+	public static class Builder<T>{
+
+		public Builder setTransactionOutputs(T[] transactionOutputs) {
+			this.transactionOutputs = transactionOutputs;
+			return this;
+		}
+
+		public Builder setPublicKeyHex(String publicKeyHex) {
+			this.publicKeyHex = publicKeyHex;
+			return this;
+		}
+
+		public Builder setPrivateKeyHex(String privateKeyHex) {
+			this.privateKeyHex = privateKeyHex;
+			return this;
+		}
+
+		public Builder setId(String id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder setId2(String id2) {
+			this.id2 = id2;
+			return this;
+		}
+
+		public Builder setEncrypted(boolean encrypted){
+			this.encrypted = encrypted;
+			return this;
+		}
+
+		public Builder setInitializationVectorHex(String initializationVectorHex){
+			this.initializationVectorHex=initializationVectorHex;
+			return this;
+		}
+
+		private T[] transactionOutputs;
+		private String publicKeyHex, privateKeyHex, id, id2,initializationVectorHex;
+		private boolean encrypted;
+
+		public Wallet<T> build(){
+			Wallet wallet = new Wallet();
+
+			wallet.setTransactionOutputs(this.transactionOutputs);
+			wallet.privateKeyHex =this.privateKeyHex;
+			wallet.publicKeyHex = this.publicKeyHex;
+			wallet.id = this.id;
+			wallet.id2 = this.id2;
+			wallet.encrypted = this.encrypted;
+			wallet.initializationVectorHex=this.initializationVectorHex;
+
+			return wallet;
+		}
+
 	}
 }

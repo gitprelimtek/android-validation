@@ -17,6 +17,7 @@ import java.security.Key;
 import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Is a simplified class for creating expirable JWT tokens.
@@ -87,8 +88,6 @@ public class JWTManager {
 
 	public Claims parseJWT(String jwt) {
 
-		System.out.println(jwt);
-
 		//This line will throw an exception if it is not a signed JWS (as expected)
 		byte[] apiKeySecretBytes = Base64.getEncoder().encode(signingKey.getBytes(Charsets.UTF_8));
 
@@ -98,18 +97,11 @@ public class JWTManager {
 				.parseClaimsJws(jwt)
 				.getBody();
 
-		System.out.println("ID: " + claims.getId());
-		System.out.println("Subject: " + claims.getSubject());
-		System.out.println("Issuer: " + claims.getIssuer());
-		System.out.println("Expiration: " + claims.getExpiration());
-		System.out.println("Audience: " + claims.getAudience());
-
 		return claims;
 	}
 
 	public static Claims parseJWT(String signingKey, String jwt) {
 
-		System.out.println(jwt);
 		byte[] apiKeySecretBytes = Base64.getEncoder().encode(signingKey.getBytes(Charsets.UTF_8));
 
 		//This line will throw an exception if it is not a signed JWS (as expected)
@@ -117,18 +109,10 @@ public class JWTManager {
 				.setSigningKey(apiKeySecretBytes)
 				.parseClaimsJws(jwt).getBody();
 
-		System.out.println("ID: " + claims.getId());
-		System.out.println("Subject: " + claims.getSubject());
-		System.out.println("Issuer: " + claims.getIssuer());
-		System.out.println("Expiration: " + claims.getExpiration());
-		System.out.println("Audience: " + claims.getAudience());
-
 		return claims;
 	}
 
 	public Jwt<Header,Claims> parseJWTAndHeader(String jwt) {
-
-		System.out.println(jwt);
 
 		//This line will throw an exception if it is not a signed JWS (as expected)
 		byte[] apiKeySecretBytes = Base64.getEncoder().encode(signingKey.getBytes(Charsets.UTF_8));
@@ -140,13 +124,7 @@ public class JWTManager {
 
 		Claims claims	= headClaims.getBody();
 		Header header =  headClaims.getHeader();
-		//Jwts.parser().
 
-		System.out.println("ID: " + claims.getId());
-		System.out.println("Subject: " + claims.getSubject());
-		System.out.println("Issuer: " + claims.getIssuer());
-		System.out.println("Expiration: " + claims.getExpiration());
-		System.out.println("Audience: " + claims.getAudience());
 
 		return headClaims;
 	}
@@ -171,6 +149,16 @@ public class JWTManager {
 		cal.setTime(date);
 		cal.add(Calendar.HOUR , hours);
 		return cal.getTime();
+	}
+
+	public static String createJWT(String id, String subject , String signingKey, int expiration_milliseconds){
+		JWTManager mn =  new JWTManager(signingKey);
+		long expiration = JWTManager.incrementMillis(new Date(),expiration_milliseconds).getTime();
+		String jwt =  mn.createJWT(id,"mtini",subject, expiration );
+
+		//Log.(TAG,jwt);
+
+		return jwt;
 	}
 
 }
