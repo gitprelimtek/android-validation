@@ -1,8 +1,10 @@
 package com.prelimtek.android.appmessage;
 
+import com.prelimtek.android.basecomponents.dao.BaseDAOInterface;
+
 import java.util.List;
 
-public interface AppMessageDAOInterface {
+public interface AppMessageDAOInterface extends BaseDAOInterface {
 
     List<AppMessageModel> retrieveAllAppMessages();
 

@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-
 android {
     compileSdkVersion 28
 
@@ -50,14 +49,16 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     implementation 'com.squareup.retrofit2:converter-protobuf:2.2.0'
-    implementation 'com.google.protobuf:protobuf-java-util:3.2.0'
     implementation 'cz.msebera.android:httpclient:4.4.1.1'
-    //implementation 'com.facebook.android:facebook-login:[3,5)'
     implementation 'io.jsonwebtoken:jjwt:0.7.0'
     implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
 
     def nav_version = "1.0.0-alpha01"
     implementation 'androidx.navigation:navigation-fragment:2.0.0-rc02'
     implementation 'androidx.navigation:navigation-ui:2.0.0-rc02'
+
+    def work_version = "2.4.0"
+    implementation "androidx.work:work-runtime:$work_version"
+    androidTestImplementation "androidx.work:work-testing:$work_version"
 
 }
