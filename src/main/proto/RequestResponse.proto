@@ -14,15 +14,15 @@ message RequestResponse{
         //google.protobuf.Any entries = 3;
         bytes entries = 3;
     }
-    
+
     message Response{
         string jsonResponse = 1;
         bytes data = 2;
         //google.protobuf.Any entries = 3;
         bytes entries = 3;
     }
-    
+
     Request request  = 1;
     Response response = 2;
-    
+
 }
