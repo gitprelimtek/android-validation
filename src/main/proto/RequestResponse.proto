@@ -4,7 +4,7 @@ package io.mtini.proto;
 
 option java_outer_classname="RequestResponseProtos";
 
-//import "google/protobuf/any.proto";
+//import "google/protobuf/any.proto";//not supported for lite
 
 message RequestResponse{
 
