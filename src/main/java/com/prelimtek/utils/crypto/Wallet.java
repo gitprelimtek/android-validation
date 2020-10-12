@@ -16,6 +16,11 @@ import org.spongycastle.util.encoders.Hex;
 
 public class Wallet <T>  implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5409453880297356107L;
+
 	private T[]transactionOutputs = null;//TransactionOutputs for this wallet
 
 	/**generated from unencrypted private key*/
@@ -71,7 +76,7 @@ public class Wallet <T>  implements Serializable {
 		}
 	}
 
-	public Wallet updateWallet(@Nullable  CharSequence newKeyPhrase, @Nullable CharSequence oldKeyPhrase , boolean generateNewKey) throws WalletException {
+	public Wallet<T> updateWallet(@Nullable  CharSequence newKeyPhrase, @Nullable CharSequence oldKeyPhrase , boolean generateNewKey) throws WalletException {
 		if(generateNewKey){
 			generateKeyPairs(newKeyPhrase);
 		}else{
@@ -273,10 +278,10 @@ public class Wallet <T>  implements Serializable {
 		public WalletException(String s){super(s);}
 	}
 
-	private static Builder builder = null;
-	public static Builder newBuilder(){
+	private static Builder<?> builder = null;
+	public static <T> Builder<?> newBuilder(){
 		if(builder==null){
-			builder = new Builder();
+			builder = new Builder<T>();
 		}
 
 		return builder;
@@ -284,37 +289,37 @@ public class Wallet <T>  implements Serializable {
 
 	public static class Builder<T>{
 
-		public Builder setTransactionOutputs(T[] transactionOutputs) {
+		public Builder<T> setTransactionOutputs(T[] transactionOutputs) {
 			this.transactionOutputs = transactionOutputs;
 			return this;
 		}
 
-		public Builder setPublicKeyHex(String publicKeyHex) {
+		public Builder<T> setPublicKeyHex(String publicKeyHex) {
 			this.publicKeyHex = publicKeyHex;
 			return this;
 		}
 
-		public Builder setPrivateKeyHex(String privateKeyHex) {
+		public Builder<T> setPrivateKeyHex(String privateKeyHex) {
 			this.privateKeyHex = privateKeyHex;
 			return this;
 		}
 
-		public Builder setId(String id) {
+		public Builder<T> setId(String id) {
 			this.id = id;
 			return this;
 		}
 
-		public Builder setId2(String id2) {
+		public Builder<T> setId2(String id2) {
 			this.id2 = id2;
 			return this;
 		}
 
-		public Builder setEncrypted(boolean encrypted){
+		public Builder<T> setEncrypted(boolean encrypted){
 			this.encrypted = encrypted;
 			return this;
 		}
 
-		public Builder setInitializationVectorHex(String initializationVectorHex){
+		public Builder<T> setInitializationVectorHex(String initializationVectorHex){
 			this.initializationVectorHex=initializationVectorHex;
 			return this;
 		}
@@ -324,7 +329,7 @@ public class Wallet <T>  implements Serializable {
 		private boolean encrypted;
 
 		public Wallet<T> build(){
-			Wallet wallet = new Wallet();
+			Wallet<T> wallet = new Wallet<T>();
 
 			wallet.setTransactionOutputs(this.transactionOutputs);
 			wallet.privateKeyHex =this.privateKeyHex;
