@@ -47,7 +47,7 @@ enum Operation {
 message LedgerEntries {
 
 message EstateModel {
-  bytes id = 1;
+  string id = 1;
   string name = 2;
   string address = 3;
   string description = 4;
@@ -56,8 +56,8 @@ message EstateModel {
 
 
   message TenantModel {
-    bytes id = 1;
-    bytes estateId = 2;
+    string id = 1;
+    string estateId = 2;
     string name = 3;
     string buildingNumber = 4;
     string contacts = 5;
@@ -77,14 +77,14 @@ message EstateModel {
 }
 
 message ImageModel{
-	bytes id = 1;
-	bytes modelId = 2;
+	string id = 1;
+	string modelId = 2;
 	string encodedBitmap = 3;
 }
 
 message NotesModel{
     int64 date = 1;
-	bytes modelId = 2;
+	string modelId = 2;
 	string noteText = 3;
 }
 

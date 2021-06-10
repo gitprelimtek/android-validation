@@ -1,3 +1,8 @@
+#plugins{
+# id 'java-library'
+# id 'com.google.protobuf' version '0.8.15'
+#}
+
 apply plugin: 'java-library'
 apply plugin: 'com.google.protobuf'
 
@@ -11,7 +16,6 @@ sourceSets {
    // include self written and generated code -- also include generated source for main project to access
    srcDirs 'src/main/java','build/generated/source/proto/main/javalite'
   }
-
  }
  // remove the test configuration - at least in your example you don't have a special test proto file
 }
