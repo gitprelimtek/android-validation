@@ -47,44 +47,44 @@ enum Operation {
 message LedgerEntries {
 
 message EstateModel {
-  bytes id = 1;
+  string id = 1;
   string name = 2;
   string address = 3;
   string description = 4;
   string contacts = 5;
-  EstateType type = 6; 
+  EstateType type = 6;
 
 
   message TenantModel {
-    bytes id = 1;
-    bytes estateId = 2;
+    string id = 1;
+    string estateId = 2;
     string name = 3;
     string buildingNumber = 4;
     string contacts = 5;
   	double rentDue = 6;
   	TenantStatus status = 7;
-  	double rent = 8;   
-  	double balance = 9;   
+  	double rent = 8;
+  	double balance = 9;
   	string notes = 10;
   	string currency = 11;
   	int64 paidDate = 12;
   	PaymentSchedule paySchedule = 13;
   	int64 dueDate = 14;
-  	
+
   }
-  
+
   repeated TenantModel tenantData = 7;
 }
 
 message ImageModel{
-	bytes id = 1;
-	bytes modelId = 2;
+	string id = 1;
+	string modelId = 2;
 	string encodedBitmap = 3;
 }
 
 message NotesModel{
     int64 date = 1;
-	bytes modelId = 2;
+	string modelId = 2;
 	string noteText = 3;
 }
 
