@@ -18,9 +18,11 @@ public interface CryptoDAOInterface  extends Serializable {
      }
 
      public interface RemoteCryptoDAO<T1,T2>extends Serializable{
-         T2 retrieveMyWallet(String address, T1 sModel,  String... jwt) throws Exception ;
 
-         boolean updateWallet(String address, String oldAddress, T1 sModel, T2 wallet, String action,  String... jwt) throws Exception;
+         T2 retrieveMyWallet(String address, T1 sModel,  String jwt) throws Exception ;
 
+         boolean updateWallet(String address, String oldAddress, T1 sModel, T2 wallet, String action,  String jwt) throws Exception;
+
+         T1 requestRemoteCustomerDetails(T1 user,String jwt) throws Exception;
      }
 }
