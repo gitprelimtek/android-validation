@@ -52,7 +52,7 @@ message EstateModel {
   string address = 3;
   string description = 4;
   string contacts = 5;
-  EstateType type = 6; 
+  EstateType type = 6;
 
 
   message TenantModel {
@@ -63,16 +63,16 @@ message EstateModel {
     string contacts = 5;
   	double rentDue = 6;
   	TenantStatus status = 7;
-  	double rent = 8;   
-  	double balance = 9;   
+  	double rent = 8;
+  	double balance = 9;
   	string notes = 10;
   	string currency = 11;
   	int64 paidDate = 12;
   	PaymentSchedule paySchedule = 13;
   	int64 dueDate = 14;
-  	
+
   }
-  
+
   repeated TenantModel tenantData = 7;
 }
 
