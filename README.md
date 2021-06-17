@@ -8,6 +8,6 @@ NoteTaker Protos
 ~~These classes are commandline generated:
 protoc  --java_out=./java/ ./proto/*proto~~
 
-##Release notes
+## Release notesc##
 Stringified id as a replacement of bytestring types
 
