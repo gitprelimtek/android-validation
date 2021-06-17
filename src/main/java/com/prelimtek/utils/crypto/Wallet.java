@@ -126,7 +126,8 @@ public class Wallet <T>  implements Serializable {
 
 	public static String generateWalletAddress(UserInterface sModel)throws WalletException{
 
-		String preHash = strip(sModel.getUserName()+sModel.getEmail()+sModel.getPhoneNumber());
+		//String preHash = strip(sModel.getUserName()+sModel.getEmail()+sModel.getPhoneNumber());
+		String preHash = strip(sModel.getEmail()+sModel.getPhoneNumber());
 		System.out.println("Prehash -> "+preHash);
 		if(preHash.length()<10)throw new WalletException("Email and Phone character Length has to be greater than 10");
 
