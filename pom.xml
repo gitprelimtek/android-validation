@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.prelimtek.utils</groupId>
 	<artifactId>ptek-crypto-utils</artifactId>
-	<version>1.1.1</version>
+	<version>2..0.0</version>
 	<packaging>jar</packaging>
 	 <organization>
     	<name>Prelimtek</name>
