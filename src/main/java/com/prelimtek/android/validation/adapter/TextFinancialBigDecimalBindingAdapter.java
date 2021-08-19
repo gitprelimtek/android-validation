@@ -210,7 +210,9 @@ public class TextFinancialBigDecimalBindingAdapter {
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        view.removeTextChangedListener(this);
+
+                        TextWatcher watcher = this;
+                        view.removeTextChangedListener(watcher);
                         if (!editable.toString().isEmpty()){
                             int len = editable.length();
                             String s = editable.toString();
@@ -221,13 +223,15 @@ public class TextFinancialBigDecimalBindingAdapter {
                             editable.clear();
                             editable.append(s);
                         }
-                        view.addTextChangedListener(this);
+                        view.addTextChangedListener(watcher);
+
                         new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
+
                                     listener.onChange();
                                 }
-                            },500);
+                            },1000);
 
                     }
                 });
