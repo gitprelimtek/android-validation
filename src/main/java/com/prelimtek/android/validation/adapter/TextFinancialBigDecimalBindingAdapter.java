@@ -19,6 +19,8 @@ import java.util.Currency;
 import java.util.regex.Pattern;
 
 import com.prelimtek.android.basecomponents.Configuration;
+import com.prelimtek.android.basecomponents.ResourcesUtils;
+import com.prelimtek.android.validation.R;
 
 /**
  *
@@ -50,8 +52,8 @@ public class TextFinancialBigDecimalBindingAdapter {
     }
 
 
-    @BindingAdapter({"currencyValue","currencyCode"})
-    public static String setCurrencyValue(TextView view,final BigDecimal amount,final String currencyCode ){
+    @BindingAdapter(value = {"currencyValue","currencyCode","currencyHighlight"} , requireAll = false)
+    public static String setCurrencyValue(TextView view,final BigDecimal amount,final String currencyCode , boolean currencyHighlight ){
         String ret = null;
         if(amount !=null ) {
 
@@ -73,6 +75,14 @@ public class TextFinancialBigDecimalBindingAdapter {
             ret = moneyFormat.format(amount);
             if (amount != null && view != null) {
                 view.setText(ret);
+
+                if(currencyHighlight){
+                    if (amount.longValue() <= 0) {
+                        view.setTextColor(ResourcesUtils.getColor(view, R.color.Teal_700));
+                    } else {
+                        view.setTextColor(ResourcesUtils.getColor(view, R.color.Red_700));
+                    }
+                }
             }
         }
 
@@ -111,6 +121,10 @@ public class TextFinancialBigDecimalBindingAdapter {
         }
 
         return strVal;
+    }
+    @InverseBindingAdapter(attribute = "currencyHighlight")
+    public static boolean getCurrencyHighlight(TextView view){
+        return true;
     }
 
     @BindingAdapter({"bindCurrency"})

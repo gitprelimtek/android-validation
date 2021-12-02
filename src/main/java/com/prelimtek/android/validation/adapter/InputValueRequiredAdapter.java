@@ -120,16 +120,6 @@ public class InputValueRequiredAdapter {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            /*if(view.getText()==null || view.getText().toString().trim().isEmpty()){
-                                String errorMessage = ErrorHandler.clarify(view,null);
-                                //view.setError(errorMessage);
-                                ErrorHandler.setError(errorLabel,errorMessage);
-                            }else if(!validatePattern(view.getText().toString(), patternRule)){
-                                String errorMsg = ErrorHandler.clarify(errorLabel,errorMessage);
-                                ErrorHandler.setError(errorLabel,errorMsg);
-                            }else{
-                                ErrorHandler.clearError(errorLabel);
-                            }*/
                             ruleValidate(true,view ,patternRule,errorMessage,label);
 
                             if(listener!=null)
@@ -232,10 +222,10 @@ public class InputValueRequiredAdapter {
                             if(textView.getText()==null
                                     || !validatePattern(textView.getText().toString().trim(), patternRule)){
                                 String errorMsg = ErrorHandler.clarify(textView,errorMessage);
-                                ErrorHandler.setError(textView,errorMsg);
+                                //ErrorHandler.setError(textView,errorMsg);
                                 ErrorHandler.setError(errorLabel,errorMsg);
                             }else{
-                                ErrorHandler.clearError(textView);
+                                //ErrorHandler.clearError(textView);
                                 ErrorHandler.clearError(errorLabel);
                             }
 
@@ -413,19 +403,30 @@ public class InputValueRequiredAdapter {
         return false;
     }
 
+
+    private int getTextColor(TextView textView){
+        return textView.getTextColors().getDefaultColor();
+    }
+
    static class ErrorHandler{
 
         public static void setError(TextView view, String message){
             if(view==null)return;
-            //view.setTextColor(view.getResources().getColor(R.color.Red_700));
-            view.setTextColor(ResourcesUtils.getColor(view,R.color.Red_700));
+
             view.setError(message);
 
         }
         public static void clearError(TextView view){
             if(view==null)return;
+
             view.setError(null);
         }
+
+       public static void clearError(TextView view, int originalTextColor){
+           if(view==null)return;
+           view.setTextColor(originalTextColor);
+           view.setError(null);
+       }
 
         public static String clarify(TextView view, String errorMessage){
             if(view!=null && (errorMessage==null||errorMessage.isEmpty())){
@@ -434,6 +435,9 @@ public class InputValueRequiredAdapter {
 
             return errorMessage;
         }
+
     }
+
+
 
 }
