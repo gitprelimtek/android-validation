@@ -11,6 +11,9 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -33,6 +36,7 @@ public class TextFinancialBigDecimalBindingAdapter {
     public static final Pattern pattern = Pattern.compile(regex);
     private static NumberFormat moneyFormat = NumberFormat.getCurrencyInstance();
 
+    @Deprecated
     public static NumberFormat getMoneyFormat(Context context){
 
         String currencyCode = getPreferenceCurrency(context);
@@ -45,10 +49,15 @@ public class TextFinancialBigDecimalBindingAdapter {
     }
 
     public static String getPreferenceCurrency(Context context){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        //tring currencyCode = prefs.getString("base_currency","USD");
-        //return currencyCode;
+        /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        String currencyCode = prefs.getString("base_currency","USD");
+        return currencyCode;*/
         return Configuration.configuredPreferences(context).currencyCode;
+    }
+
+    public static void setPreferenceCurrency(Context context,String currencycode){
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        Configuration.configuredPreferences(context).currencyCode = currencycode;//prefs.edit().putString("base_currency", currencycode).apply();
     }
 
 
@@ -67,6 +76,7 @@ public class TextFinancialBigDecimalBindingAdapter {
                 view.setError("Invalid currency code '"+currencyCode+"'");
                 currency = Currency.getInstance(getPreferenceCurrency(view.getContext()));
             }else{
+                System.out.println("currencyCode = "+currencyCode);
                 currency=Currency.getInstance(currencyCode);
             }
 
@@ -127,9 +137,24 @@ public class TextFinancialBigDecimalBindingAdapter {
         return true;
     }
 
+
+    public static String setBindCurrencyValue(TextView view,
+                                              String currencyCode, final BigDecimal amount ){
+        String ret = null;
+        if(amount !=null && currencyCode!=null ) {
+            moneyFormat.setCurrency(Currency.getInstance(currencyCode));
+            ret = moneyFormat.format(amount);
+            if (view != null) {
+                view.setText(ret);
+            }
+        }
+
+        return ret;
+    }
+    @Deprecated
     @BindingAdapter({"bindCurrency"})
     public static String setBindCurrencyValue(TextView view,
-                                          final BigDecimal amount ){
+                                              final BigDecimal amount ){
         String ret = null;
         if(amount !=null ) {
             ret = getMoneyFormat(view.getContext()).format(amount);
@@ -148,7 +173,8 @@ public class TextFinancialBigDecimalBindingAdapter {
         if(view.getText()!=null) {
             String strVal =  view.getText().toString();
             try {
-                ret = new BigDecimal(getMoneyFormat(view.getContext()).parse(strVal).byteValue());
+                //ret = new BigDecimal(getMoneyFormat(view.getContext()).parse(strVal).byteValue());
+                ret = new BigDecimal(moneyFormat.parse(strVal).byteValue());
             } catch (Throwable e) {
                 e.printStackTrace();
                 view.setError("Invalid data format");
@@ -162,7 +188,7 @@ public class TextFinancialBigDecimalBindingAdapter {
     @BindingAdapter({"bindFinancial"})
     public static void setFinancialValue(TextView view, BigDecimal amount ){
 
-            amount = amount==null?new BigDecimal(0.00):amount;
+        amount = amount==null?new BigDecimal(0.00):amount;
         //if(amount !=null) {
 
         String strVal = null;
@@ -174,14 +200,14 @@ public class TextFinancialBigDecimalBindingAdapter {
             strVal=df.format(amount);
         }else{
             strVal = NumberFormat.getNumberInstance(java.util.Locale.US).format(amount);
-             //strVal = amount.toPlainString();
+            //strVal = amount.toPlainString();
         }
 
-            //String strVal = amount.toPlainString();
-            if (view.getText() != null && !view.getText().toString().equals(strVal)) {
-                //view.setText(moneyFormat.format(amount));
-                view.setText(strVal);
-            }
+        //String strVal = amount.toPlainString();
+        if (view.getText() != null && !view.getText().toString().equals(strVal)) {
+            //view.setText(moneyFormat.format(amount));
+            view.setText(strVal);
+        }
         //}
     }
 
@@ -196,13 +222,13 @@ public class TextFinancialBigDecimalBindingAdapter {
             //TODO find a way to keep old valid value in pojo if text is invalid
             //Matcher matcher = pattern.matcher(strVal);
             //if (matcher.matches()) {
-                try {
-                    //ret = new BigDecimal(moneyFormat.parse(strVal).byteValue());//new BigDecimal(matcher.group(0));
-                    ret = new BigDecimal(strVal);
-                } catch (Throwable e) {
-                    e.printStackTrace();
-                    view.setError("Invalid data format");
-                }
+            try {
+                //ret = new BigDecimal(moneyFormat.parse(strVal).byteValue());//new BigDecimal(matcher.group(0));
+                ret = new BigDecimal(strVal);
+            } catch (Throwable e) {
+                e.printStackTrace();
+                view.setError("Invalid data format");
+            }
         }
 
         return ret;
@@ -212,45 +238,45 @@ public class TextFinancialBigDecimalBindingAdapter {
     @BindingAdapter({"bindFinancialAttrChanged"})
     public static void setListener(final TextView view, final InverseBindingListener listener) {
 
-            if (listener != null) {
-                view.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        if (listener != null) {
+            view.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                    TextWatcher watcher = this;
+                    view.removeTextChangedListener(watcher);
+                    if (!editable.toString().isEmpty()){
+                        int len = editable.length();
+                        String s = editable.toString();
+                        int pos = s.indexOf(".");
+                        s = s.replace(".","");
+                        len = s.length();
+                        s=len>2?s.substring(0,len-2)+"."+s.substring(len-2,len):"."+s;
+                        editable.clear();
+                        editable.append(s);
                     }
+                    view.addTextChangedListener(watcher);
 
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
 
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-
-                        TextWatcher watcher = this;
-                        view.removeTextChangedListener(watcher);
-                        if (!editable.toString().isEmpty()){
-                            int len = editable.length();
-                            String s = editable.toString();
-                            int pos = s.indexOf(".");
-                            s = s.replace(".","");
-                            len = s.length();
-                            s=len>2?s.substring(0,len-2)+"."+s.substring(len-2,len):"."+s;
-                            editable.clear();
-                            editable.append(s);
+                            listener.onChange();
                         }
-                        view.addTextChangedListener(watcher);
+                    },1000);
 
-                        new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
+                }
+            });
 
-                                    listener.onChange();
-                                }
-                            },1000);
-
-                    }
-                });
-
-            }
+        }
 
     }
 
@@ -303,5 +329,50 @@ public class TextFinancialBigDecimalBindingAdapter {
             });
         }
     }
+
+
+
+    @BindingAdapter(value = {"currencyCodeSpinnerDescr","currencyCodeSpinnerDescrAttrChanged"}, requireAll = false)
+    public static void currencyCodeToDesc(Spinner spinner, String code, final InverseBindingListener newTextAttrChanged) {
+
+        String[] val = spinner.getResources().getStringArray(R.array.currency_names);
+        String[] arr = spinner.getResources().getStringArray(R.array.currency_codes);
+        for(int i = 0 ; i < arr.length; i++){
+            if(arr[i].equalsIgnoreCase(code)) {
+                setPreferenceCurrency(spinner.getContext(), code);
+                spinner.setSelection(i);
+                break;
+            }
+        }
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(newTextAttrChanged!=null)
+                    newTextAttrChanged.onChange();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+    }
+
+    @InverseBindingAdapter(attribute = "currencyCodeSpinnerDescr", event = "currencyCodeSpinnerDescrAttrChanged")
+    public static String currencyDescToCode(Spinner spinner) {
+        String ret = null;
+
+        int pos = spinner.getSelectedItemPosition();
+        if ( pos>=0 ) {
+            String[] arr = spinner.getResources().getStringArray(R.array.currency_codes);
+            ret = arr[pos];
+            if(ret!=null && !ret.isEmpty())
+                setPreferenceCurrency(spinner.getContext(), ret);
+
+        };
+
+        return ret;
+    }
+
 
 }
