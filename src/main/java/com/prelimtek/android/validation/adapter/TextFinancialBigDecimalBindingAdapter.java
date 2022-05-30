@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -84,15 +85,17 @@ public class TextFinancialBigDecimalBindingAdapter {
 
             ret = moneyFormat.format(amount);
             if (amount != null && view != null) {
-                view.setText(ret);
 
                 if(currencyHighlight){
                     if (amount.longValue() <= 0) {
                         view.setTextColor(ResourcesUtils.getColor(view, R.color.Teal_700));
                     } else {
+                        ret = "( "+ret+" )";
                         view.setTextColor(ResourcesUtils.getColor(view, R.color.Red_700));
                     }
                 }
+
+                view.setText(ret);
             }
         }
 
@@ -102,6 +105,7 @@ public class TextFinancialBigDecimalBindingAdapter {
     //@Deprecated
     @InverseBindingAdapter(attribute="currencyValue")
     public static BigDecimal getCurrencyValue(TextView view){
+        moneyFormat = NumberFormat.getCurrencyInstance();
         BigDecimal ret = null;
         String strVal =  view.getText()==null?null:view.getText().toString();
         if(strVal != null) {
@@ -169,12 +173,11 @@ public class TextFinancialBigDecimalBindingAdapter {
     @InverseBindingAdapter(attribute="bindCurrency")
     public static BigDecimal getBindCurrencyValue(TextView view){
         BigDecimal ret = null;
-
+        moneyFormat = NumberFormat.getCurrencyInstance(java.util.Locale.US);
         if(view.getText()!=null) {
             String strVal =  view.getText().toString();
             try {
-                //ret = new BigDecimal(getMoneyFormat(view.getContext()).parse(strVal).byteValue());
-                ret = new BigDecimal(moneyFormat.parse(strVal).byteValue());
+                ret = new BigDecimal(moneyFormat.parse(strVal).doubleValue());
             } catch (Throwable e) {
                 e.printStackTrace();
                 view.setError("Invalid data format");
@@ -184,60 +187,114 @@ public class TextFinancialBigDecimalBindingAdapter {
         return ret;
     }
 
-    //setter
-    @BindingAdapter({"bindFinancial"})
-    public static void setFinancialValue(TextView view, BigDecimal amount ){
-
-        amount = amount==null?new BigDecimal(0.00):amount;
-        //if(amount !=null) {
-
-        String strVal = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            DecimalFormat df = new DecimalFormat();
-            df.setMaximumFractionDigits(2);
-            df.setMinimumFractionDigits(2);
-            df.setGroupingUsed(false);
-            strVal=df.format(amount);
-        }else{
-            strVal = NumberFormat.getNumberInstance(java.util.Locale.US).format(amount);
-            //strVal = amount.toPlainString();
-        }
-
-        //String strVal = amount.toPlainString();
-        if (view.getText() != null && !view.getText().toString().equals(strVal)) {
-            //view.setText(moneyFormat.format(amount));
+    /*
+    @BindingAdapter(value = {"bindFinancial","bindFinancialAttrChanged",},requireAll = false)
+    public static void setRequired( final Editable view,final BigDecimal amount, final InverseBindingListener listener) {
+        System.out.println("bindFinancial text = "+view.getText()+" : amount = "+amount);
+        String strVal = amount==null?null:NumberFormat.getCurrencyInstance().format(amount);
+        System.out.println("bindFinancial = "+strVal);
+        if (view.getText() != null) {
             view.setText(strVal);
         }
-        //}
+
+            view.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    //InputValueRequiredAdapter.ErrorHandler.clearError(view);
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (!editable.toString().isEmpty()) {
+                                int len = editable.length();
+                                String s = editable.toString();
+                                int pos = s.indexOf(".");
+                                s = s.replace(".", "");
+                                len = s.length();
+                                s = len > 2 ? s.substring(0, len - 2) + "." + s.substring(len - 2, len) : "." + s;
+                                editable.clear();
+                                editable.append(s);
+                            }
+
+                            if (listener != null)
+                                listener.onChange();
+                        }
+                    }, 500);
+                }
+            });
+
+            view.setOnFocusChangeListener(
+                    new View.OnFocusChangeListener() {
+
+                        @Override
+                        public void onFocusChange(Editable editable, boolean hasFocus) {
+
+                            if (!hasFocus) {
+                                if (!editable.toString().isEmpty()) {
+                                    int len = editable.length();
+                                    String s = editable.toString();
+                                    int pos = s.indexOf(".");
+                                    s = s.replace(".", "");
+                                    len = s.length();
+                                    s = len > 2 ? s.substring(0, len - 2) + "." + s.substring(len - 2, len) : "." + s;
+                                    editable.clear();
+                                    editable.append(s);
+                                }
+                                if (listener != null)
+                                    listener.onChange();
+                            }
+                        }
+                    }
+            );
+
     }
+    */
 
     //getter
+    @Deprecated
     @InverseBindingAdapter(attribute="bindFinancial")
     public static BigDecimal getFinancialValue(TextView view){
 
         BigDecimal ret = new BigDecimal(0.00);
         String strVal =  view.getText()==null?null:view.getText().toString();
         if(strVal != null) {
-            //TODO verify matching patter to suite financial
-            //TODO find a way to keep old valid value in pojo if text is invalid
-            //Matcher matcher = pattern.matcher(strVal);
-            //if (matcher.matches()) {
-            try {
-                //ret = new BigDecimal(moneyFormat.parse(strVal).byteValue());//new BigDecimal(matcher.group(0));
-                ret = new BigDecimal(strVal);
-            } catch (Throwable e) {
-                e.printStackTrace();
-                view.setError("Invalid data format");
-            }
+            ret = new BigDecimal(strVal);
         }
 
         return ret;
     }
 
+    //setter
+    @Deprecated
+    @BindingAdapter({"bindFinancial"})
+    public static void setFinancialValue(TextView view, BigDecimal amount ){
+
+        amount = amount==null?new BigDecimal(0.00):amount;
+
+        //String strVal = NumberFormat.getCurrencyInstance().format(amount);
+        String strVal = amount.toString();
+        System.out.println("bindFinancial = "+strVal);
+        if (view.getText() != null) {
+            view.setText(strVal);
+        }
+
+    }
+
     //TODO find a way to pass this delay value as an attribute or value
+    @Deprecated
     @BindingAdapter({"bindFinancialAttrChanged"})
     public static void setListener(final TextView view, final InverseBindingListener listener) {
-
+        //view.keyEvent
+        //view.getKeyListener().onKeyUp()
         if (listener != null) {
             view.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -252,26 +309,31 @@ public class TextFinancialBigDecimalBindingAdapter {
                 public void afterTextChanged(Editable editable) {
 
                     TextWatcher watcher = this;
-                    view.removeTextChangedListener(watcher);
-                    if (!editable.toString().isEmpty()){
+                    view.removeTextChangedListener(this);
+
+                    if (!editable.toString().isEmpty()) {
                         int len = editable.length();
                         String s = editable.toString();
                         int pos = s.indexOf(".");
-                        s = s.replace(".","");
+                        s = s.replace(".", "");
                         len = s.length();
-                        s=len>2?s.substring(0,len-2)+"."+s.substring(len-2,len):"."+s;
+                        s = len > 2 ? s.substring(0, len - 2) + "." + s.substring(len - 2, len) : "." + s;
                         editable.clear();
                         editable.append(s);
                     }
-                    view.addTextChangedListener(watcher);
-
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
 
-                            listener.onChange();
+                            view.addTextChangedListener(watcher);
+
+                            //if (listener != null)
+                            //    listener.onChange();
+
                         }
                     },1000);
+
+
 
                 }
             });
@@ -373,6 +435,5 @@ public class TextFinancialBigDecimalBindingAdapter {
 
         return ret;
     }
-
 
 }
