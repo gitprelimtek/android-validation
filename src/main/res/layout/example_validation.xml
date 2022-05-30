@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+    <variable
+        name="tenant"
+        type="com.prelimtek.android.validation.ExampleModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/fragment_padding">
+
+
+        <TextView
+            android:id="@+id/testLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scheduled Rent:" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/testEditLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/rentEditTxt">
+        <EditText
+            android:id="@+id/testEditTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bindFinancial="@={tenant.rentDue}"
+            app:errorLabel="@{testLabel}"
+            app:errorMessage="@{@string/error_currency_ge0}"
+            app:required="@{true}"
+            app:validationRule="@{@string/currency_digits_ge0_match_pattern}">
+
+        </EditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</layout>
