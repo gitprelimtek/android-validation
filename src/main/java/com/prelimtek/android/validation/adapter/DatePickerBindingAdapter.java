@@ -6,6 +6,7 @@ import androidx.databinding.InverseBindingAdapter;
 import androidx.databinding.InverseBindingListener;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.prelimtek.android.basecomponents.Configuration;
 
 public class DatePickerBindingAdapter {
 
+    private final static String TAG = DatePickerBindingAdapter.class.getSimpleName();
     //public static final String DATE_PATTERN = "yyyy/MM/dd";
     //public final static SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
 
@@ -113,6 +115,7 @@ public class DatePickerBindingAdapter {
     }
 
     public static void onClickDate( View view, final Date currentDate) {
+        Log.d(TAG,"onClickDate");
 
         final TextView textView = (TextView)view;
         Calendar mCalendar = Calendar.getInstance();
@@ -136,7 +139,7 @@ public class DatePickerBindingAdapter {
     }
 
     public static void onClickDate( View view, final Long currentDate) {
-
+        Log.d(TAG,"onClickDate");
         final TextView textView = (TextView)view;
         Calendar mCalendar = Calendar.getInstance();
         mCalendar.setTime(currentDate==null?new Date(): new Date(currentDate));
