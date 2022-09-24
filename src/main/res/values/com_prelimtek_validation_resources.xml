@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">validation</string>
     <string name="required_error_message">Error. Value required.</string>
+    <string name="error_currency_ge0">Expected currency value greater or equal to zero.</string>
+
 
     <color name="Red_700">#ffc53929</color>
 </resources>

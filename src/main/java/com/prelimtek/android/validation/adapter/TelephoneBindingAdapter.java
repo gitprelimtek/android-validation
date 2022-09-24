@@ -1,5 +1,6 @@
 package com.prelimtek.android.validation.adapter;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,9 +11,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TelephoneBindingAdapter {
-
+    private static final String TAG = TelephoneBindingAdapter.class.getSimpleName();
     public static void onClickPhoneEdit(View view, final String phoneNumber) {
-
+        Log.d(TAG,"onClickPhoneEdit");
         final TextView textView = (TextView)view;
         String prefixCountryCode = null;
         String suffixPhoneNumber=null;
