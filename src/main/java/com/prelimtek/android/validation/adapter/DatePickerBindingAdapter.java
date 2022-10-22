@@ -108,7 +108,12 @@ public class DatePickerBindingAdapter {
 
                 @Override
                 public void afterTextChanged(Editable editable) {
-                    listener.onChange();
+                    view.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            listener.onChange();
+                        }
+                    }, 500);
                 }
             });
         }
